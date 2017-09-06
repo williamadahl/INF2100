@@ -1,5 +1,5 @@
 package no.uio.ifi.asp.scanner;
-
+//hhhhhhh nutt
 import java.io.*;
 import java.util.*;
 
@@ -12,8 +12,9 @@ public class Scanner {
     private ArrayList<Token> curLineTokens = new ArrayList<>();
     private int indents[] = new int[100];
     private int numIndents = 0;
+    private int n;
     private final int tabDist = 4;
-    private Stack<int> theStack = new Stack<int>(); 	
+    private Stack<Integer> theStack = new Stack<Integer>();
 
 
     public Scanner(String fileName) {
@@ -68,15 +69,20 @@ public class Scanner {
 	* Returns the first non-blank
 	***/
 	public char findFirstNonBlank (String temp){
-		for(int i = 0; i<temp.length(); i++)
-			if(i == temp.length()-1)
-				return ' ';
-			else if(temp.charAt(i) != ' ')
-				return temp.charAt(i);
-			else
-				continue;
+    n = 0;
+		for(int i = 0; i<temp.length(); i++){
+      if(i == temp.length()-1){
+      return ' ';
+      }
+			else if(temp.charAt(i) != ' '){
+        return temp.charAt(i);
+      }
+			else{
+        n++;
+        continue;
+      }
 		}
-
+}
 	/***
 	* Reads one line at the time, ignoring comments & empty lines
 	* Adding and clearing curLineTokens for each method call
@@ -110,7 +116,7 @@ public class Scanner {
 			return;
 		}
 		else if (hashtag == ' '){
-			return;	
+			return;
 		}
 		else{ //Line contains tokens
 			numIndents = findIndent(line);
@@ -122,17 +128,17 @@ public class Scanner {
 				theStack.push(numIndents);
 				curLineTokens.add(new Token(indentToken, curLineNum()));
 			}
-			//Hva hvis indents er like?	
+			//Hva hvis indents er like?
 			else {
 				while (n < theStack.peek()){
 					theStack.pop();
 					curLineTokens.add(new Token(dedentToken, curLineNum()));
 				}
-				if (n != theStack.peek()){	
-					scannerError("Indeteringsfeil");	
+				if (n != theStack.peek()){
+					scannerError("Indeteringsfeil");
 				}
 			}
-			checkString(line);  //INDENTS/DEDENT finished, create enums	
+			checkString(line);  //INDENTS/DEDENT finished, create enums
 		}
 
 		// Terminate line:
@@ -140,7 +146,7 @@ public class Scanner {
 
 		for (Token t: curLineTokens){
 			Main.log.noteToken(t);
-			
+
 		}
 	}
 
@@ -155,6 +161,7 @@ public class Scanner {
 		String doubleOp="";
 		char[] bracketList = {'(', ')', '[', ']','{', '}'};
 		int quoteCount = 0;
+
 		//Basecase, if nothing is sent - exit from method
 		if(msg == null || msg == " "){
 			//System.out.println("We are free");
@@ -166,7 +173,7 @@ public class Scanner {
 			}
 		}
 		if(quoteCount % 2 != 0){
-			//System.out.println("String literal not terminated");
+			System.out.println("String literal not terminated");
 			System.exit(1);
 		}
 
@@ -245,8 +252,8 @@ public class Scanner {
 					int counter = i+1;
 					//Checking if any additional operators is present next to the
 					//Current operators
-					while (msg.charAt(counter) != '"' &&  
-						(!(isLetterAZ(msg.charAt(counter)))) && 
+					while (msg.charAt(counter) != '"' &&
+						(!(isLetterAZ(msg.charAt(counter)))) &&
 						(!(isDigit(msg.charAt(counter)))) && (counter<msg.length())) {
 
 						for(int l = 0; l < bracketList.length; l++){
@@ -268,7 +275,7 @@ public class Scanner {
 					//System.out.println("Etter while: ");
 					//Concatinate operators if found, else single
 					op = msg.substring(i, counter);
-					//System.out.println("OP ER : " + op);	
+					//System.out.println("OP ER : " + op);
 					//Checking if the symbol # is present inside the msg
 					boolean foundHash = false;
 					int k;
@@ -288,7 +295,7 @@ public class Scanner {
 						return;
 					}
 					//Symbol # isn't found in the msg, sending as usual
-					else{						
+					else{
 						beforeOpText = msg.substring(0, i);
 						afterOpText = msg.substring(counter, msg.length());
 					//System.out.println("Sending beforeOpText: " + beforeOpText);
@@ -302,8 +309,8 @@ public class Scanner {
 
 				}
 				/*
-				if ((msg.charAt(i+1) == '"') || 
-					((isDigit(msg.charAt(i+1))) || 
+				if ((msg.charAt(i+1) == '"') ||
+					((isDigit(msg.charAt(i+1))) ||
 						(isLetterAZ(msg.charAt(i+1))))){
 
 					singleOp = msg.charAt(i);
@@ -348,7 +355,7 @@ public class Scanner {
 			//If the message starts with a ", create a string litteral token
 		if(msg.charAt(0) == '"'){
 				//String token
-			TokenKind kind = stringToken(msg);
+			TokenKind kind = new TokenKind();
 			Token tok = new Token(kind, curLineNum());
 			curLineTokens.add(tok);
 		}
@@ -381,12 +388,12 @@ public class Scanner {
 					return;
 				}
 			}
-				//If for doesn't hit, it's an integer token	
+				//If for doesn't hit, it's an integer token
 			TokenKind kind = integerToken(msg);
 			Token tok = new Token(kind, line.curLineTokens());
 			curLineTokens.add(tok);
 		}
-			//It's otherwise an operator token, need to iterate through the list of 
+			//It's otherwise an operator token, need to iterate through the list of
 			//known operators and assign new Token on that kind
 		else{
 				//Operator
@@ -469,7 +476,7 @@ public class Scanner {
 	//-- Must be changed in part 2:
 	return false;
     }
-	
+
 
     public boolean isTermOpr() {
 	TokenKind k = curToken().kind;
