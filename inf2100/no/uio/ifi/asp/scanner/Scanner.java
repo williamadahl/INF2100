@@ -18,8 +18,8 @@ public class Scanner {
 
 
     public Scanner(String fileName) {
-	curFileName = fileName;
-	indents[0] = 0;  numIndents = 1;
+	     curFileName = fileName;
+	      indents[0] = 0;  numIndents = 1;
 
 	try {
 	    sourceFile = new LineNumberReader(
@@ -82,6 +82,7 @@ public class Scanner {
         continue;
       }
 		}
+    return ' ';
 }
 	/***
 	* Reads one line at the time, ignoring comments & empty lines
@@ -110,6 +111,10 @@ public class Scanner {
 
 	//-- Must be changed in part 1:
 		String result = expandLeadingTabs(line);
+    System.out.println("Result" + result);
+    if(result == null){
+      return;
+    }
 		char hashtag = findFirstNonBlank(result);
 
 		if (hashtag == '#'){
@@ -355,8 +360,9 @@ public class Scanner {
 			//If the message starts with a ", create a string litteral token
 		if(msg.charAt(0) == '"'){
 				//String token
-			TokenKind kind = new TokenKind();
+			TokenKind kind = TokenKind.stringToken;
 			Token tok = new Token(kind, curLineNum());
+      tok.stringLit = msg;
 			curLineTokens.add(tok);
 		}
 			//If the first symbol is a char, make it a nameToken
@@ -372,8 +378,9 @@ public class Scanner {
 				System.out.println("KeywordToken not found");
 			}
 				//Else, create a name token
-			TokenKind kind = nameToken(msg);
+			TokenKind kind = TokenKind.nameToken;
 			Token tok = new Token(kind, curLineNum());
+      tok.name = msg;
 			curLineTokens.add(tok);
 		}
 			//If the symbol is digit, create int / float token
@@ -382,15 +389,17 @@ public class Scanner {
 				// Checks if the token is a float
 			for(int k = 0; k < msg.length(); k++){
 				if(msg.charAt(k) == '.'){
-					TokenKind kind = floatToken(msg);
-					Token tok = new Token(kind, line.curLineTokens());
+					TokenKind kind = TokenKind.floatToken;
+					Token tok = new Token(kind, curLineNum());
+          tok.floatLit = Float.parseFloat(msg);
 					curLineTokens.add(tok);
 					return;
 				}
 			}
 				//If for doesn't hit, it's an integer token
-			TokenKind kind = integerToken(msg);
-			Token tok = new Token(kind, line.curLineTokens());
+			TokenKind kind = TokenKind.integerToken;
+			Token tok = new Token(kind, curLineNum());
+      tok.integerLit = Integer.parseInt(msg);
 			curLineTokens.add(tok);
 		}
 			//It's otherwise an operator token, need to iterate through the list of
@@ -429,6 +438,7 @@ public class Scanner {
     }
 
     private String expandLeadingTabs(String s) {
+  
 	String newS = "";
 	for (int i = 0;  i < s.length();  i++) {
 	    char c = s.charAt(i);
