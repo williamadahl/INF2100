@@ -1,6 +1,1 @@
-navn = "Dag"
-print("Hei,", navn)
-
-
-
-thth= "tht"
+int[4] == "help"
