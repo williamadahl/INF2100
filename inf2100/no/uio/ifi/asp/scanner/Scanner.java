@@ -286,10 +286,10 @@ public class Scanner {
 								singleOp = msg.charAt(counter);
 							System.out.println("Bracket detected : hello: " +singleOp);
 
-							  checkEnums(Character.toString(singleOp));
 								beforeOpText = msg.substring(0, counter);
 								checkString(beforeOpText);
-								afterOpText =  msg.substring(counter, msg.length());
+                checkEnums(Character.toString(singleOp));
+								afterOpText =  msg.substring(counter+1, msg.length());
 								checkString(afterOpText);
 								return;
 							}
@@ -325,10 +325,10 @@ public class Scanner {
 						beforeOpText = msg.substring(0, i);
 						afterOpText = msg.substring(counter, msg.length());
             System.out.println("Sending operator to checkEnums: " + op);
-					System.out.println("Sending beforeOpText to checkEnums: " + beforeOpText);
-					System.out.println("Sending afterOpText to checkString: " + afterOpText);
+					  System.out.println("Sending beforeOpText to checkEnums: " + beforeOpText);
+					  System.out.println("Sending afterOpText to checkString: " + afterOpText);
+            checkEnums(beforeOpText);
 					  checkEnums(op);
-					  checkEnums(beforeOpText);
 						checkString(afterOpText);
 						return;
 					}
@@ -364,6 +364,7 @@ public class Scanner {
 			TokenKind kind = TokenKind.stringToken;
 			Token tok = new Token(kind, curLineNum());
       tok.stringLit = msg;
+      System.out.println( ANSI_PURPLE +"MSGMSGMSGMSGMSGMSGMSGMSG: " + tok.showInfo() + ANSI_RESET);
 			curLineTokens.add(tok);
       System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 		}
@@ -371,17 +372,74 @@ public class Scanner {
 		else if(isLetterAZ(msg.charAt(0))){
 				//Name and keyword tokens
 				//Find out if it's a keyword token
-			TokenKind temp = checkToken(msg);
+    //for(TokenKind t : TokenKind.values()){
+        //if(msg.contains(t.toString())){
+        if(msg.contains("while")){
+          TokenKind tokenWhile = TokenKind.whileToken;
+          String tempString = msg;
+          String substring = "";
+          int shaveCount = 1;
+          System.out.println("MSG ");
+          System.out.println("To string: "+ tokenWhile.toString());
+
+          tempString = msg.substring(5, msg.length());
+          System.out.println(ANSI_RED + "tempstring : " + tempString + ANSI_RESET);
+            // while(!tempString.equals(tokenCheck.toString())){
+            //   tempString = tempString.substring(0,tempString.length()-shaveCount);
+            //   shaveCount ++;
+            // }
+            Token tok22 = new Token(tokenWhile, curLineNum());
+            curLineTokens.add(tok22);
+
+            // original = original.substring(tempString.length(), original.length());
+            // System.out.println("NEW ORIGINGA :" + original);
+            TokenKind kind = TokenKind.nameToken;
+        		Token tokIsName = new Token(kind, curLineNum());
+            tokIsName.name = tempString;
+            curLineTokens.add(tokIsName);
+            return;
+        }else if(msg.contains("for")){
+          TokenKind tokenFor = TokenKind.forToken;
+          String tempString = msg;
+          String substring = "";
+          int shaveCount = 1;
+          System.out.println("MSG ");
+          System.out.println("To string: "+ tokenFor.toString());
+
+          tempString = msg.substring(3, msg.length());
+          System.out.println(ANSI_RED + "tempstring : " + tempString + ANSI_RESET);
+            // while(!tempString.equals(tokenCheck.toString())){
+            //   tempString = tempString.substring(0,tempString.length()-shaveCount);
+            //   shaveCount ++;
+            // }
+            Token tok22 = new Token(tokenFor, curLineNum());
+            curLineTokens.add(tok22);
+
+            // original = original.substring(tempString.length(), original.length());
+            // System.out.println("NEW ORIGINGA :" + original);
+            TokenKind kind = TokenKind.nameToken;
+            Token tokIsName = new Token(kind, curLineNum());
+            tokIsName.name = tempString;
+            curLineTokens.add(tokIsName);
+            return;
+        }
+
+          TokenKind temp = checkToken(msg);
+
+
 
 			if(temp != null){
+
+
 				Token tok = new Token(temp, curLineNum());
 				curLineTokens.add(tok);
-      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+        System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 
 			}else{
 				System.out.println("KeywordToken not found: " + msg);
 			}
 				//Else, create a name token
+
 			TokenKind kind = TokenKind.nameToken;
 			Token tok = new Token(kind, curLineNum());
       tok.name = msg;
