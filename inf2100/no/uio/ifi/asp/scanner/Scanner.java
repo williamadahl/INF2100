@@ -1,4 +1,5 @@
 package no.uio.ifi.asp.scanner;
+
 //hhhhhhh nutt
 import java.io.*;
 import java.util.*;
@@ -94,6 +95,7 @@ public class Scanner {
 		Scanner lineshaver;
 		curLineTokens.clear();
 
+
 	// Read the next line:
 		String line = null;
 		try {
@@ -111,12 +113,12 @@ public class Scanner {
 
 	//-- Must be changed in part 1:
 		String result = expandLeadingTabs(line);
-    System.out.println("Result" + result);
-    if(result == null){
+  //  System.out.println("Result" + result);
+    if(result == null || result.equals("")){
       return;
     }
-		char hashtag = findFirstNonBlank(result);
 
+		char hashtag = findFirstNonBlank(result);
 		if (hashtag == '#'){
 			return;
 		}
@@ -349,6 +351,9 @@ public class Scanner {
 		//checkEnum(msg);
 	}
 
+
+
+
 	public void checkEnums(String msg){
 			//TODO: Need to use .toString();
 
@@ -360,6 +365,7 @@ public class Scanner {
 			//If the message starts with a ", create a string litteral token
 		if(msg.charAt(0) == '"'){
 				//String token
+      curLineTokens.add(new Token(indentToken,curLineNum()));
 			TokenKind kind = TokenKind.stringToken;
 			Token tok = new Token(kind, curLineNum());
       tok.stringLit = msg;
@@ -374,6 +380,7 @@ public class Scanner {
 			if(temp != null){
 				Token tok = new Token(temp, curLineNum());
 				curLineTokens.add(tok);
+
 			}else{
 				System.out.println("KeywordToken not found");
 			}
@@ -381,6 +388,7 @@ public class Scanner {
 			TokenKind kind = TokenKind.nameToken;
 			Token tok = new Token(kind, curLineNum());
       tok.name = msg;
+      Main.log.noteToken(tok);
 			curLineTokens.add(tok);
 		}
 			//If the symbol is digit, create int / float token
@@ -416,6 +424,8 @@ public class Scanner {
 		}
 	}
 
+
+
 	private TokenKind checkToken(String msg){
 		for(TokenKind t : TokenKind.values()){
 			if(t.toString().equals(msg)){
@@ -427,7 +437,7 @@ public class Scanner {
 	}
 
     public int curLineNum() {
-	return sourceFile!=null ? sourceFile.getLineNumber() : 0;
+	     return sourceFile!=null ? sourceFile.getLineNumber() : 0;
     }
 
     private int findIndent(String s) {
@@ -438,23 +448,25 @@ public class Scanner {
     }
 
     private String expandLeadingTabs(String s) {
-  
-	String newS = "";
-	for (int i = 0;  i < s.length();  i++) {
-	    char c = s.charAt(i);
-	    if (c == '\t') {
-		do {
-		    newS += " ";
-		} while (newS.length()%tabDist != 0);
-	    } else if (c == ' ') {
-		newS += " ";
-	    } else {
-		newS += s.substring(i);
-		break;
+      if(s == null){
+        return "";
+      }
+	      String newS = "";
+	       for (int i = 0;  i < s.length();  i++) {
+	          char c = s.charAt(i);
+	           if (c == '\t') {
+		             do {
+		                 newS += " ";
+		                } while (newS.length()%tabDist != 0);
+	            } else if (c == ' ') {
+		            newS += " ";
+	           } else {
+		          newS += s.substring(i);
+		     break;
 	    }
 	}
-	return newS;
-    }
+	 return newS;
+  }
 
 
     private boolean isLetterAZ(char c) {
