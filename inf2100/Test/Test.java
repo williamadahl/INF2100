@@ -26,7 +26,12 @@ public class Test{
 			return;
 		}
 		int i = 0;
+
+		/*
+		* While comes through the whole line, stops at the first symbol
+		*/
 		while((isDigit(msg.charAt(i))) || (isLetterAZ(msg.charAt(i)))){
+			//If no weird symbol is found, the whole msg is sent to checkEnums
 			if(i == msg.length()-1){
 				System.out.println("Done, sending " + msg + " to checkEnums");
 				//checkEnums(msg)
@@ -34,7 +39,11 @@ public class Test{
 			}	
 			i++;
 		}
-		
+		/*
+		* If the symbol is a space, send everything before to checkEnums
+		* Then send everything after recursively to checkString for further
+		* Inspection 
+		*/
 		if(msg.charAt(i) == ' '){
 			System.out.println("Kommer inn i mellomrom");
 			beforeText = msg.substring(0, i);
@@ -44,9 +53,19 @@ public class Test{
 			checkString(afterText);
 			return;
 		}else{	
+			/*
+			* If not space, we know it's a symbol
+			* Need to check if the symbol is a quote, if so
+			* Iterate through the rest of msg to locate second quote
+			*/
 			System.out.println("Moter operator: " + msg.charAt(i));
 			if(msg.charAt(i) == '"'){
 				for (int j = i+1; j < msg.length() ; j++) {
+					/*
+					* Located second quote, sending string literal to checkEnums
+					* Also checking if the string literal was the last of the msg
+					* If not, send the rest back to checkString
+					*/
 					if(msg.charAt(j) == '"'){
 						quoteText = msg.substring(i, j+1);
 						System.out.println("Quote= Sending quoteText to checkEnums: " + quoteText);
@@ -65,6 +84,10 @@ public class Test{
 				}
 				return;
 			}
+			/*
+			* If the symbol is a hashtag, send everything before it to checkString
+			* Ignore everything behind #
+			*/
 			if(msg.charAt(i) == '#'){
 				System.out.println("Met hashtag or end, sending shit");
 				beforeText = msg.substring(0, i);
@@ -72,29 +95,41 @@ public class Test{
 				checkString(beforeText);
 				return;
 			}
-
-			//Checking if any additional operators is present next to the Current operators
+			/*
+			* If operator was last on the line, send everything before to checkString
+			* Send the operator to checkEnums
+			*/
 			int counter = i+1;
 			if(counter == msg.length()){
 				System.out.println("LAST ON THIS LINE");
 				beforeText = msg.substring(0, i);
-				System.out.println("Last= Sending beforeText to checkString: "+ beforeText);
+				System.out.println("Last= Sending beforeText to checkEnums: "+ beforeText);
 				singleOp = msg.charAt(i);
 				System.out.println("Last= Sending singleOp to checkEnums: "+ singleOp);
-				checkString(beforeText);
+				
 				//checkEnums(singleOp);
 				return;
 			}
-			//=============NEED TO CHECK THIS OUT?=====================
+			/*
+			* If any of the if-s above didn't activate,
+			* Loop through msg starting from the operator's position
+			* In order to see if the operator is several combined.
+			* However, the while-loop terminates immediately if it meets an
+			* letter, digit, hashtag, or end-of-line
+			*/
 			while (msg.charAt(counter) != '"' &&
 				(!(isLetterAZ(msg.charAt(counter)))) &&
 				(!(isDigit(msg.charAt(counter)))) && (counter<msg.length()) 
 				&& msg.charAt(counter) != '#') {
-
+				/*
+				* If a bracket is found, send everything before the operator (i) to
+				* checkString, the operator (i) to checkEnum, and everything
+				* after the operator recursively to checkString
+				*/
 				for(int l = 0; l < bracketList.length; l++){
 					if(msg.charAt(counter) == bracketList[l]){
 						singleOp = msg.charAt(counter);
-						System.out.println("Bracket detected : hello: " +singleOp);
+						System.out.println("!!!Bracket detected!!!: " +singleOp);
 
 						beforeText = msg.substring(0, counter);
 						System.out.println("Bracket= sending beforeText to checkString " + beforeText);
@@ -109,6 +144,12 @@ public class Test{
 				}
 				counter++;
 			}
+
+			/*
+			* Concatinate operators if there found, else send only single
+			* Send text before the operator(s) to checkEnums
+			* Send text after the operator(s) to checkString
+			*/
 			System.out.println("========Etter while=========");
 			//Concatinate operators if found, else single
 			beforeText = msg.substring(0, i);
