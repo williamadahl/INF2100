@@ -1,1 +1,1 @@
-navn==="dag"
+print(str(day) + ". " + M_name[month], y)

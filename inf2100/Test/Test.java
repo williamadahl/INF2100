@@ -95,6 +95,23 @@ public class Test{
 				checkString(beforeText);
 				return;
 			}
+			for(int l = 0; l < bracketList.length; l++){
+				if(msg.charAt(i) == bracketList[l]){
+					singleOp = msg.charAt(i);
+					System.out.println("!!!Bracket detected!!!: " +singleOp);
+
+					beforeText = msg.substring(0, i);
+					System.out.println("Bracket= sending beforeText to checkString " + beforeText);
+					checkString(beforeText);
+					//checkEnums(Character.toString(singleOp));
+					System.out.println("Bracket= Sending bracket to checkEnums " + singleOp);
+					afterText =  msg.substring(i+1, msg.length());
+					System.out.println("Bracket= sending afterText to checkString " + afterText);
+					checkString(afterText);
+					return;
+				}
+			}
+
 			/*
 			* If operator was last on the line, send everything before to checkString
 			* Send the operator to checkEnums
@@ -115,12 +132,12 @@ public class Test{
 			* Loop through msg starting from the operator's position
 			* In order to see if the operator is several combined.
 			* However, the while-loop terminates immediately if it meets an
-			* letter, digit, hashtag, or end-of-line
+			* letter, digit, hashtag, space, or end-of-line
 			*/
 			while (msg.charAt(counter) != '"' &&
 				(!(isLetterAZ(msg.charAt(counter)))) &&
 				(!(isDigit(msg.charAt(counter)))) && (counter<msg.length()) 
-				&& msg.charAt(counter) != '#') {
+				&& msg.charAt(counter) != '#' && msg.charAt(counter) != ' ') {
 				/*
 				* If a bracket is found, send everything before the operator (i) to
 				* checkString, the operator (i) to checkEnum, and everything
