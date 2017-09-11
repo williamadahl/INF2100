@@ -28,6 +28,9 @@ public class Scanner {
     private int n;
     private final int tabDist = 4;
     private Stack<Integer> theStack = new Stack<Integer>();
+    private int numQuotes = 0;
+    private int numSingleQuotes = 0;
+
 
 
     public Scanner(String fileName) {
@@ -112,10 +115,10 @@ public class Scanner {
 		String line = null;
 		try {
 			line = sourceFile.readLine();
-    //  Main.log.writeLogLine(line);
+
 			if (line == null) {
         TokenKind kind = TokenKind.eofToken;
-        Token tok = new Token(kind, curLineNum());
+        Token tok = new Token(kind);
         curLineTokens.add(tok);
         Main.log.noteToken(tok);
 
@@ -163,6 +166,7 @@ public class Scanner {
 					scannerError("Indeteringsfeil");
 				}
 			}
+      preScan(line, '"');
 			checkString(line);  //INDENTS/DEDENT finished, create enums
 		}
 
@@ -188,7 +192,10 @@ public class Scanner {
     String doubleOp="";
     String floatNumber="";
     char[] bracketList = {'(', ')', '[', ']','{', '}'};
-    int quoteCount = 0;
+
+    int i = 0;
+
+
 
     //Basecase, if nothing is sent - exit from method
     System.out.println("Message parsed : " + msg);
@@ -196,7 +203,6 @@ public class Scanner {
       System.out.println("We are free");
       return;
     }
-    int i = 0;
 
     /*
     * While comes through the whole line, stops at the first symbol
@@ -276,6 +282,7 @@ public class Scanner {
       */
       System.out.println("Moter operator: " + msg.charAt(i));
       if(msg.charAt(i) == '"'){
+
         for (int j = i+1; j < msg.length() ; j++) {
           /*
           * Located second quote, sending string literal to checkEnums
@@ -283,8 +290,10 @@ public class Scanner {
           * If not, send the rest back to checkString
           */
           if(msg.charAt(j) == '"'){
+
             quoteText = msg.substring(i, j+1);
             System.out.println("Quote= Sending quoteText to checkEnums: " + quoteText);
+
             checkEnums(quoteText);
             //End of line, don't need to do anything more
             if(j+1 > msg.length()){
@@ -296,11 +305,51 @@ public class Scanner {
               afterText = msg.substring(j+1, msg.length());
               System.out.println("Operator= AfterText to checkString: " + afterText);
               checkString(afterText);
+              return;
             }
           }
         }
         return;
       }
+      /*
+      * If not space, we know it's a symbol
+      * Need to check if the symbol is a singlequote too, if so
+      * Iterate through the rest of msg to locate second singlequote
+      */
+      System.out.println("Moter operator: " + msg.charAt(i));
+      if(msg.charAt(i) == '\''){
+
+        for (int j = i+1; j < msg.length() ; j++) {
+          /*
+          * Located second quote, sending string literal to checkEnums
+          * Also checking if the string literal was the last of the msg
+          * If not, send the rest back to checkString
+          */
+          if(msg.charAt(j) == '\''){
+
+            quoteText = msg.substring(i, j+1);
+            System.out.println("Quote= Sending quoteText to checkEnums: " + quoteText);
+
+            checkEnums(quoteText);
+            //End of line, don't need to do anything more
+            if(j+1 > msg.length()){
+              System.out.println("Quote= End of line (j+1): " + j+1);
+
+            //Sending everything after the quotations to checkString
+              return;
+            }else{
+              afterText = msg.substring(j+1, msg.length());
+              System.out.println("Operator= AfterText to checkString: " + afterText);
+              checkString(afterText);
+              return;
+            }
+          }
+        }
+        return;
+      }
+
+
+
       /*
       * If the symbol is a hashtag, send everything before it to checkString
       * Ignore everything behind #
@@ -429,6 +478,21 @@ public class Scanner {
       // curLineTokens.add(tok1);
 
     }
+    if(msg.charAt(0) == '\''){
+        //String token
+      msg = msg.replace('\'', '"');
+      System.out.println("FNUT MESSAGE ER " + msg);
+      TokenKind kind = TokenKind.stringToken;
+      Token tok = new Token(kind, curLineNum());
+      tok.stringLit = msg;
+      System.out.println( ANSI_PURPLE +"MSGMSGMSGMSGMSGMSGMSGMSG: " + tok.showInfo() + ANSI_RESET);
+      curLineTokens.add(tok);
+      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+      // TokenKind kind1 = TokenKind.eofToken;
+      // Token tok1 = new Token(kind1, curLineNum());
+      // curLineTokens.add(tok1);
+
+    }
 			//If the first symbol is a char, make it a nameToken
 		 else if(isLetterAZ(msg.charAt(0))){
 				//Name and keyword tokens
@@ -496,6 +560,23 @@ public class Scanner {
 		}
 	}
 
+  private void preScan(String line, char c){
+    for(int i = 0; i<line.length(); i++){
+      if(line.charAt(i) == c){
+        if(c == '\''){
+        //  numSingleQuotes++;
+        }else{
+          numQuotes++;
+        }
+      }
+    }
+    if((numQuotes%2) != 0){
+      scannerError("String literal not terminated!");
+      System.exit(1);
+    }else{
+      System.out.println("Quotes looks alrighty");
+    }
+  }
 
 
 	private TokenKind checkToken(String msg){

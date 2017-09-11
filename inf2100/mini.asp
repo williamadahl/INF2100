@@ -1,1 +1,1 @@
-1017.1234 and navn = "dag"
+print('GCD('+str(v1)+','+str(v2)+') =', res)

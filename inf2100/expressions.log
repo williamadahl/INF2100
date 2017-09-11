@@ -94,19 +94,6 @@ Scanner: * token on line 17
 Scanner: integer literal token on line 17: 5
 Scanner: + token on line 17
 Scanner: string literal token on line 17: "ω"
-Scanner: string literal token on line 17: "-"*5 + "
-Scanner: string literal token on line 17: "-"*5 + "ω"
-Scanner: string literal token on line 17: "α" + "
-Scanner: - token on line 17
-Scanner: string literal token on line 17: "*5 + "
-Scanner: string literal token on line 17: "*5 + "ω"
-Scanner: string literal token on line 17: "α" + "-"
-Scanner: * token on line 17
-Scanner: integer literal token on line 17: 5
-Scanner: + token on line 17
-Scanner: string literal token on line 17: "ω"
-Scanner: string literal token on line 17: "α" + "-"*5 + "
-Scanner: string literal token on line 17: "α" + "-"*5 + "ω"
 Scanner: NEWLINE token on line 17
   18: 
   19: "Testing boolean expressions"
@@ -120,15 +107,11 @@ Scanner: NEWLINE token on line 20
 Scanner: string literal token on line 21: "To be"
 Scanner: or token on line 21
 Scanner: string literal token on line 21: "not to be"
-Scanner: string literal token on line 21: "To be" or "
-Scanner: not token on line 21
-Scanner: name token on line 21: to
-Scanner: string literal token on line 21: "To be" or "not to be"
 Scanner: NEWLINE token on line 21
   22: "Yes" and 3.14
 Scanner: string literal token on line 22: "Yes"
 Scanner: and token on line 22
-Scanner: float literal token on line 22: 3.1
+Scanner: float literal token on line 22: 3.14
 Scanner: NEWLINE token on line 22
   23: False or True or 144 or "?"
 Scanner: False token on line 23
@@ -156,24 +139,6 @@ Scanner: != token on line 27
 Scanner: string literal token on line 27: "b"
 Scanner: > token on line 27
 Scanner: string literal token on line 27: "b"
-Scanner: != token on line 27
-Scanner: integer literal token on line 27: 99
-Scanner: string literal token on line 27: "b" > "
-Scanner: string literal token on line 27: "b" > "b"
-Scanner: != token on line 27
-Scanner: integer literal token on line 27: 99
-Scanner: string literal token on line 27: "a" != "
-Scanner: string literal token on line 27: " > "
-Scanner: string literal token on line 27: " > "b"
-Scanner: != token on line 27
-Scanner: integer literal token on line 27: 99
-Scanner: string literal token on line 27: "a" != "b"
-Scanner: > token on line 27
-Scanner: string literal token on line 27: "b"
-Scanner: != token on line 27
-Scanner: integer literal token on line 27: 99
-Scanner: string literal token on line 27: "a" != "b" > "
-Scanner: string literal token on line 27: "a" != "b" > "b"
 Scanner: != token on line 27
 Scanner: integer literal token on line 27: 99
 Scanner: NEWLINE token on line 27
@@ -255,36 +220,6 @@ Scanner: integer literal token on line 38: 1
 Scanner: + token on line 38
 Scanner: integer literal token on line 38: 2
 Scanner: } token on line 38
-Scanner: string literal token on line 38: "a", "
-Scanner: string literal token on line 38: "a", "B"
-Scanner: : token on line 38
-Scanner: integer literal token on line 38: 1
-Scanner: + token on line 38
-Scanner: integer literal token on line 38: 2
-Scanner: } token on line 38
-Scanner: string literal token on line 38: "A": "
-Scanner: string literal token on line 38: ", "
-Scanner: string literal token on line 38: ", "B"
-Scanner: : token on line 38
-Scanner: integer literal token on line 38: 1
-Scanner: + token on line 38
-Scanner: integer literal token on line 38: 2
-Scanner: } token on line 38
-Scanner: string literal token on line 38: "A": "a"
-Scanner: , token on line 38
-Scanner: string literal token on line 38: "B"
-Scanner: : token on line 38
-Scanner: integer literal token on line 38: 1
-Scanner: + token on line 38
-Scanner: integer literal token on line 38: 2
-Scanner: } token on line 38
-Scanner: string literal token on line 38: "A": "a", "
-Scanner: string literal token on line 38: "A": "a", "B"
-Scanner: : token on line 38
-Scanner: integer literal token on line 38: 1
-Scanner: + token on line 38
-Scanner: integer literal token on line 38: 2
-Scanner: } token on line 38
 Scanner: NEWLINE token on line 38
   39: {"Ja": 1, "Nei": 0}["Ja"]
 Scanner: { token on line 39
@@ -299,22 +234,5 @@ Scanner: } token on line 39
 Scanner: [ token on line 39
 Scanner: string literal token on line 39: "Ja"
 Scanner: ] token on line 39
-Scanner: string literal token on line 39: "Nei": 0}["
-Scanner: string literal token on line 39: "Nei": 0}["Ja"
-Scanner: ] token on line 39
-Scanner: string literal token on line 39: "Ja": 1, "
-Scanner: string literal token on line 39: ": 0}["
-Scanner: string literal token on line 39: ": 0}["Ja"
-Scanner: ] token on line 39
-Scanner: string literal token on line 39: "Ja": 1, "Nei"
-Scanner: : token on line 39
-Scanner: integer literal token on line 39: 0
-Scanner: } token on line 39
-Scanner: [ token on line 39
-Scanner: string literal token on line 39: "Ja"
-Scanner: ] token on line 39
-Scanner: string literal token on line 39: "Ja": 1, "Nei": 0}["
-Scanner: string literal token on line 39: "Ja": 1, "Nei": 0}["Ja"
-Scanner: ] token on line 39
 Scanner: NEWLINE token on line 39
-Scanner: E-o-f token on line 39
+Scanner: E-o-f token

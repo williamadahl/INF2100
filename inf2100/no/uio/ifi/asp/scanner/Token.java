@@ -43,8 +43,9 @@ public class Token {
 			case integerToken: t += ": " + integerLit;  break;
 			case nameToken: t += ": " + name;  break;
 			case stringToken:
-			if (stringLit.indexOf('"') >= 0)
-				t += ": " + stringLit + ""; 
+			if (stringLit.indexOf('"') >= 0){
+				t += ": " + stringLit + "";
+			}
 			else
 				t += ": \"" + stringLit + "\"";
 			break;
