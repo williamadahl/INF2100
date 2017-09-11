@@ -1,0 +1,8 @@
+   1: 1017.1234 and navn = "dag"
+Scanner: float literal token on line 1: 1017.1234
+Scanner: and token on line 1
+Scanner: name token on line 1: navn
+Scanner: = token on line 1
+Scanner: string literal token on line 1: "dag"
+Scanner: NEWLINE token on line 1
+Scanner: E-o-f token on line 1

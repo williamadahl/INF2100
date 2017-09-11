@@ -1,1 +1,1 @@
-int[4] == "help"
+1017.1234 and navn = "dag"

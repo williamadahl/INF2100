@@ -114,7 +114,11 @@ public class Scanner {
 			line = sourceFile.readLine();
     //  Main.log.writeLogLine(line);
 			if (line == null) {
-        curLineTokens.add(new Token(eofToken,curLineNum()));
+        TokenKind kind = TokenKind.eofToken;
+        Token tok = new Token(kind, curLineNum());
+        curLineTokens.add(tok);
+        Main.log.noteToken(tok);
+
 				sourceFile.close();
 				sourceFile = null;
 			} else {
@@ -169,185 +173,238 @@ public class Scanner {
 			Main.log.noteToken(t);
 
 		}
+
 	}
+//:TODO sjekke for partal antall quoteationmarks
+//:TODO fikse dedents token
 
-	public void checkString (String msg){
-		String regex = "\\s+(?=((\\\\[\\\\\"]|[^\\\\\"])*\"(\\\\[\\\\\"]|[^\\\\\"])*\")*(\\\\[\\\\\"]|[^\\\\\"])*$)";
-		msg = msg.replaceAll(regex, "");
-		String quoteText="";
-		char singleOp;
-		String op;
-		String beforeOpText="";
-		String afterOpText="";
-		String doubleOp="";
-		char[] bracketList = {'(', ')', '[', ']','{', '}'};
-		int quoteCount = 0;
 
-		//Basecase, if nothing is sent - exit from method
-		if(msg == null || msg == " "){
-			System.out.println("We are free");
-			return;
-		}
-		for(int i = 0; i<msg.length(); i++){
-			if(msg.charAt(i) == '"'){
-				quoteCount++;
-			}
-		}
-		if(quoteCount % 2 != 0){
-			System.out.println("String literal not terminated");
-			System.exit(1);
-		}
+  public void checkString(String msg){
+    String quoteText="";
+    char singleOp;
+    String op;
+    String beforeText="";
+    String afterText="";
+    String doubleOp="";
+    String floatNumber="";
+    char[] bracketList = {'(', ')', '[', ']','{', '}'};
+    int quoteCount = 0;
 
-		System.out.println("Message parsed : " + msg);
-		//Loop through msg
-		for(int i = 0; i<msg.length(); i++){
-			//Checking if character is equal to ", if so
-			//Loop again to find the next "
-			//Now we know it's a string literal, and we can send it to checkEnums
-			//We then send everything after the string recursively.
-			if(msg.charAt(i) == '"'){
-				for (int j = i+1; j < msg.length() ; j++) {
-					if(msg.charAt(j) == '"'){
-						quoteText = msg.substring(i, j+1);
-						System.out.println("Sending quoteText to checkEnums: " + quoteText);
-						checkEnums(quoteText);
+    //Basecase, if nothing is sent - exit from method
+    System.out.println("Message parsed : " + msg);
+    if(msg == null || msg == " " || msg.length() == 0) {
+      System.out.println("We are free");
+      return;
+    }
+    int i = 0;
 
-						//End of line, don't need to do anything more
-						if(j+1 > msg.length()){
-							System.out.println("End of line (j+1): " + j+1);
-						//Sending everything after the quotations to checkString
-						}else{
-							afterOpText = msg.substring(j+1, msg.length());
-							System.out.println("AfterOpText to checkString: " + afterOpText);
-							checkString(afterOpText);
-						}
-					}
-				}
-				return;
-			//Chack if the character is an operator, or a bracket. If so, we need to handle it
-			}else if((!isLetterAZ(msg.charAt(i))) && (!(isDigit(msg.charAt(i))))) {
-				// If the char is a '#' we only send the text previously before the #
-				// to checkString
-				if(msg.charAt(i) == '#'){
-					System.out.println("Met hashtag or end, sending shit");
-					beforeOpText = msg.substring(0, i);
-          System.out.println("Sending b4opText to checkString " + beforeOpText);
-					checkString(beforeOpText);
-					return;
-				}
-				//If the char is something else
-				System.out.println("Moter operator: " + msg.charAt(i));
-				//If the char is last of msg, send everything before the char
-				//back recursively and and operator to checkEnums
-				for(int l = 0; l < bracketList.length; l++){
-					if(msg.charAt(i) == bracketList[l]){
-						singleOp = msg.charAt(i);
-						System.out.println("Bracket detected, sending to checkEnums, " +singleOp);
-						beforeOpText = msg.substring(0, i);
-            System.out.println("Sending b4text to checkString: " +beforeOpText);
-						checkString(beforeOpText);
-            checkEnums(Character.toString(singleOp));
-						afterOpText =  msg.substring(i+1, msg.length());
-            System.out.println("Sending afterText to checkString " +afterOpText);
-						checkString(afterOpText);
-						return;
+    /*
+    * While comes through the whole line, stops at the first symbol
+    */
+    while((isDigit(msg.charAt(i))) || (isLetterAZ(msg.charAt(i)))){
+      //If no weird symbol is found, the whole msg is sent to checkEnums
+      if(i == msg.length()-1){
+        System.out.println("Done, sending " + msg + " to checkEnums");
+        checkEnums(msg);
+        return;
+      }
+      i++;
+    }
 
-					}
-				}
+    if(msg.charAt(i) == '.'){
+      int nextSymbol = i+1;
+      if(nextSymbol == msg.length()-1){
+      //  System.out.println("Naa er det slutt");
+        beforeText = msg.substring(0, nextSymbol+1);
+      //  singleOp = msg.charAt(nextSymbol);
+      //  System.out.println("HER?" + singleOp);
+        checkEnums(beforeText);
+      //  checkEnums(Character.toString(singleOp));
+        return;
+      }
+      else if(isLetterAZ(msg.charAt(nextSymbol))){
+        beforeText = msg.substring(0, nextSymbol);
+        singleOp = msg.charAt(nextSymbol);
+        afterText = msg.substring(nextSymbol + 1, msg.length());
+        System.out.println("REEEEEEEEEEEEEEEEEEEE " + afterText);
 
-				if(i == msg.length()-1){
-					beforeOpText = msg.substring(0, i);
-					singleOp = msg.charAt(i);
-					System.out.println("Beforetext sent to checkString: " + beforeOpText);
-					System.out.println("Last operator sent to checkEnums: " + singleOp);
-					checkString(beforeOpText);
-					//checkEnums(op);
+
+        checkEnums(beforeText);
+        checkEnums(Character.toString(singleOp));
+        checkString(afterText);
+        return;
+      }else{
+        System.out.println("Naa er det slutt");
+          //Presumably integers after the .
+          while(isDigit(msg.charAt(nextSymbol))){
+            if(nextSymbol == msg.length() -1){
+              System.out.println("Naa er det slutt");
+              floatNumber = msg.substring(0, nextSymbol+1);
+              checkEnums(floatNumber);
+              return;
+            }
+            nextSymbol ++;
+          }
+          floatNumber = msg.substring(0, nextSymbol);
+          afterText = msg.substring(nextSymbol, msg.length());
+          checkEnums(floatNumber);
+          System.out.println("REEEEEEEEEEEEEEEEEEEE " + afterText);
+          checkString(afterText);
+          return;
+      }
+    }
+
+    /*
+    * If the symbol is a space, send everything before to checkEnums
+    * Then send everything after recursively to checkString for further
+    * Inspection
+    */
+    if(msg.charAt(i) == ' '){
+      System.out.println("Kommer inn i mellomrom");
+      beforeText = msg.substring(0, i);
+      checkEnums(beforeText);
+      System.out.println("Mellomrom= BeforeText sendes til checkEnums: " + beforeText);
+      afterText = msg.substring(i+1, msg.length());
+      System.out.println("Mellomrom= AfterText sendes til checkString: " + afterText);
+      checkString(afterText);
+      return;
+    }else{
+      /*
+      * If not space, we know it's a symbol
+      * Need to check if the symbol is a quote, if so
+      * Iterate through the rest of msg to locate second quote
+      */
+      System.out.println("Moter operator: " + msg.charAt(i));
+      if(msg.charAt(i) == '"'){
+        for (int j = i+1; j < msg.length() ; j++) {
+          /*
+          * Located second quote, sending string literal to checkEnums
+          * Also checking if the string literal was the last of the msg
+          * If not, send the rest back to checkString
+          */
+          if(msg.charAt(j) == '"'){
+            quoteText = msg.substring(i, j+1);
+            System.out.println("Quote= Sending quoteText to checkEnums: " + quoteText);
+            checkEnums(quoteText);
+            //End of line, don't need to do anything more
+            if(j+1 > msg.length()){
+              System.out.println("Quote= End of line (j+1): " + j+1);
+
+            //Sending everything after the quotations to checkString
+              return;
+            }else{
+              afterText = msg.substring(j+1, msg.length());
+              System.out.println("Operator= AfterText to checkString: " + afterText);
+              checkString(afterText);
+            }
+          }
+        }
+        return;
+      }
+      /*
+      * If the symbol is a hashtag, send everything before it to checkString
+      * Ignore everything behind #
+      */
+      if(msg.charAt(i) == '#'){
+        System.out.println("Met hashtag or end, sending shit");
+        beforeText = msg.substring(0, i);
+        System.out.println("Hashtag= Sending beforeText to checkString: " + beforeText);
+        checkString(beforeText);
+        return;
+      }
+      for(int l = 0; l < bracketList.length; l++){
+        if(msg.charAt(i) == bracketList[l]){
+          singleOp = msg.charAt(i);
+          System.out.println("!!!Bracket detected!!!: " +singleOp);
+
+          beforeText = msg.substring(0, i);
+          System.out.println("Bracket= sending beforeText to checkString " + beforeText);
+          checkString(beforeText);
           checkEnums(Character.toString(singleOp));
-					return;
-				}
-				/* Undo if problem surfaces up
-				if(i+1 == msg.length()){
-					System.out.println("End of line: (i+1): " + (i+1));
-					System.out.println("Sending Op to checkEnums: " + msg.charAt(i));
-					return;
-				}
-				*/
-				//Not end of line, need to check if more operators next to it
-				else{
-					int counter = i+1;
-					//Checking if any additional operators is present next to the
-					//Current operators
-					while (msg.charAt(counter) != '"' &&
-						(!(isLetterAZ(msg.charAt(counter)))) &&
-						(!(isDigit(msg.charAt(counter)))) && (counter<msg.length())) {
+          System.out.println("Bracket= Sending bracket to checkEnums " + singleOp);
+          afterText =  msg.substring(i+1, msg.length());
+          System.out.println("Bracket= sending afterText to checkString " + afterText);
+          checkString(afterText);
+          return;
+        }
+      }
 
-						for(int l = 0; l < bracketList.length; l++){
-							if(msg.charAt(counter) == bracketList[l]){
-								singleOp = msg.charAt(counter);
-							System.out.println("Bracket detected : hello: " +singleOp);
+      /*
+      * If operator was last on the line, send everything before to checkString
+      * Send the operator to checkEnums
+      */
+      int counter = i+1;
+      if(counter == msg.length()){
+        System.out.println("LAST ON THIS LINE");
+        beforeText = msg.substring(0, i);
+        System.out.println("Last= Sending beforeText to checkEnums: "+ beforeText);
+        checkEnums(beforeText);
+        singleOp = msg.charAt(i);
+        System.out.println("Last= Sending singleOp to checkEnums: "+ singleOp);
 
-								beforeOpText = msg.substring(0, counter);
-								checkString(beforeOpText);
-                checkEnums(Character.toString(singleOp));
-								afterOpText =  msg.substring(counter+1, msg.length());
-								checkString(afterOpText);
-								return;
-							}
-						}
+        checkEnums(Character.toString(singleOp));
+        return;
+      }
+      /*
+      * If any of the if-s above didn't activate,
+      * Loop through msg starting from the operator's position
+      * In order to see if the operator is several combined.
+      * However, the while-loop terminates immediately if it meets an
+      * letter, digit, hashtag, space, or end-of-line
+      */
+      while (msg.charAt(counter) != '"' &&
+        (!(isLetterAZ(msg.charAt(counter)))) &&
+        (!(isDigit(msg.charAt(counter)))) && (counter<msg.length())
+        && msg.charAt(counter) != '#' && msg.charAt(counter) != ' ') {
+        /*
+        * If a bracket is found, send everything before the operator (i) to
+        * checkString, the operator (i) to checkEnum, and everything
+        * after the operator recursively to checkString
+        */
+        for(int l = 0; l < bracketList.length; l++){
+          if(msg.charAt(counter) == bracketList[l]){
+            singleOp = msg.charAt(counter);
+            System.out.println("!!!Bracket detected!!!: " +singleOp);
 
-						counter++;
-					}
+            beforeText = msg.substring(0, counter);
+            System.out.println("Bracket= sending beforeText to checkString " + beforeText);
+            checkString(beforeText);
+            checkEnums(Character.toString(singleOp));
+            System.out.println("Bracket= Sending bracket to checkEnums " + singleOp);
+            afterText =  msg.substring(counter+1, msg.length());
+            System.out.println("Bracket= sending afterText to checkString " + afterText);
+            checkString(afterText);
+            return;
+          }
+        }
+        counter++;
+      }
 
-					System.out.println("Etter while: ");
-					//Concatinate operators if found, else single
-					op = msg.substring(i, counter);
-					System.out.println("OP ER : " + op);
-					//Checking if the symbol # is present inside the msg
-					boolean foundHash = false;
-					int k;
-					//If the symbol is found, use k as a pointer
-					for(k = 0; k < op.length(); k++){
-						if(op.charAt(k) == '#'){
-							foundHash = true;
-							break;
-						}
-					}
-					//Symbol is found, discard everything after #
-					//Send everything before the symbol to checkString
-					if(foundHash){
-						beforeOpText = msg.substring(0,i+k);
-						System.out.println("Sending this to checkString: " + beforeOpText);
-						checkString(beforeOpText);
-						return;
-					}
-					//Symbol # isn't found in the msg, sending as usual
-					else{
-						beforeOpText = msg.substring(0, i);
-						afterOpText = msg.substring(counter, msg.length());
-            System.out.println("Sending operator to checkEnums: " + op);
-					  System.out.println("Sending beforeOpText to checkEnums: " + beforeOpText);
-					  System.out.println("Sending afterOpText to checkString: " + afterOpText);
-            checkEnums(beforeOpText);
-					  checkEnums(op);
-						checkString(afterOpText);
-						return;
-					}
-
-				}
-
-			}else{
-				continue;
-			}
-		}
-		System.out.println("Status green, sending string to checkEnums: " + msg);
-		checkEnums(msg);
-	}
+      /*
+      * Concatinate operators if there found, else send only single
+      * Send text before the operator(s) to checkEnums
+      * Send text after the operator(s) to checkString
+      */
+      System.out.println("========Etter while=========");
+      //Concatinate operators if found, else single
+      beforeText = msg.substring(0, i);
+      System.out.println("Operator= BeforeText sendes til checkEnums: " + beforeText);
+      checkEnums(beforeText);
+      op = msg.substring(i, counter);
+      System.out.println("Operator= Operator sendes til checkEnums: " + op);
+      checkEnums(op);
+      afterText = msg.substring(counter, msg.length());
+      System.out.println("Operator= AfterText sendes til checkString: " + afterText);
+      checkString(afterText);
+      return;
+    }
+  }
 
 
 
 
 	public void checkEnums(String msg){
-			//TODO: Need to use .toString();
+    System.out.println("dumb dumb " + msg);
 
 			//Message is null, exiting..
 		if(msg == null){
@@ -367,76 +424,30 @@ public class Scanner {
       System.out.println( ANSI_PURPLE +"MSGMSGMSGMSGMSGMSGMSGMSG: " + tok.showInfo() + ANSI_RESET);
 			curLineTokens.add(tok);
       System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
-		}
+      // TokenKind kind1 = TokenKind.eofToken;
+      // Token tok1 = new Token(kind1, curLineNum());
+      // curLineTokens.add(tok1);
+
+    }
 			//If the first symbol is a char, make it a nameToken
-		else if(isLetterAZ(msg.charAt(0))){
+		 else if(isLetterAZ(msg.charAt(0))){
 				//Name and keyword tokens
 				//Find out if it's a keyword token
     //for(TokenKind t : TokenKind.values()){
         //if(msg.contains(t.toString())){
-        if(msg.contains("while")){
-          TokenKind tokenWhile = TokenKind.whileToken;
-          String tempString = msg;
-          String substring = "";
-          int shaveCount = 1;
-          System.out.println("MSG ");
-          System.out.println("To string: "+ tokenWhile.toString());
-
-          tempString = msg.substring(5, msg.length());
-          System.out.println(ANSI_RED + "tempstring : " + tempString + ANSI_RESET);
-            // while(!tempString.equals(tokenCheck.toString())){
-            //   tempString = tempString.substring(0,tempString.length()-shaveCount);
-            //   shaveCount ++;
-            // }
-            Token tok22 = new Token(tokenWhile, curLineNum());
-            curLineTokens.add(tok22);
-
-            // original = original.substring(tempString.length(), original.length());
-            // System.out.println("NEW ORIGINGA :" + original);
-            TokenKind kind = TokenKind.nameToken;
-        		Token tokIsName = new Token(kind, curLineNum());
-            tokIsName.name = tempString;
-            curLineTokens.add(tokIsName);
-            return;
-        }else if(msg.contains("for")){
-          TokenKind tokenFor = TokenKind.forToken;
-          String tempString = msg;
-          String substring = "";
-          int shaveCount = 1;
-          System.out.println("MSG ");
-          System.out.println("To string: "+ tokenFor.toString());
-
-          tempString = msg.substring(3, msg.length());
-          System.out.println(ANSI_RED + "tempstring : " + tempString + ANSI_RESET);
-            // while(!tempString.equals(tokenCheck.toString())){
-            //   tempString = tempString.substring(0,tempString.length()-shaveCount);
-            //   shaveCount ++;
-            // }
-            Token tok22 = new Token(tokenFor, curLineNum());
-            curLineTokens.add(tok22);
-
-            // original = original.substring(tempString.length(), original.length());
-            // System.out.println("NEW ORIGINGA :" + original);
-            TokenKind kind = TokenKind.nameToken;
-            Token tokIsName = new Token(kind, curLineNum());
-            tokIsName.name = tempString;
-            curLineTokens.add(tokIsName);
-            return;
-        }
 
           TokenKind temp = checkToken(msg);
 
 
 
 			if(temp != null){
-
-
 				Token tok = new Token(temp, curLineNum());
 				curLineTokens.add(tok);
         System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
-
+        return;
 			}else{
 				System.out.println("KeywordToken not found: " + msg);
+
 			}
 				//Else, create a name token
 
@@ -455,7 +466,7 @@ public class Scanner {
 				if(msg.charAt(k) == '.'){
 					TokenKind kind = TokenKind.floatToken;
 					Token tok = new Token(kind, curLineNum());
-          tok.floatLit = Float.parseFloat(msg);
+          tok.floatLit = Double.parseDouble(msg);
 					curLineTokens.add(tok);
           System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 					return;
@@ -478,7 +489,7 @@ public class Scanner {
 
 				Token tok = new Token(temp, curLineNum());
 				curLineTokens.add(tok);
-      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+        System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 			}else{
 				System.out.println("OperatorToken not found");
 			}
