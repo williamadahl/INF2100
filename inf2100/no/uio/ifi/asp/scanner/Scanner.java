@@ -176,7 +176,7 @@ public class Scanner {
     }
     //Line contains tokens, continuing
     else{
-      numIndents = findIndent(line
+      numIndents = findIndent(line);
       if (theStack.isEmpty()){
         theStack.push(numIndents);
       }
