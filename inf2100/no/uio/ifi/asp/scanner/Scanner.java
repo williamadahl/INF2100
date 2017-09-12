@@ -117,6 +117,17 @@ public class Scanner {
 			line = sourceFile.readLine();
 
 			if (line == null) {
+        while(!theStack.empty()){
+
+          if(theStack.pop() > 0){
+            System.out.println(ANSI_RED + "vag vag vag :" + n+ANSI_RESET);
+            TokenKind dedent = TokenKind.dedentToken;
+            Token dedentTok = new Token(dedent);
+            curLineTokens.add(dedentTok);
+            Main.log.noteToken(dedentTok);
+          }
+        }
+
         TokenKind kind = TokenKind.eofToken;
         Token tok = new Token(kind);
         curLineTokens.add(tok);
@@ -158,15 +169,19 @@ public class Scanner {
 			}
 			//Hva hvis indents er like?
 			else {
-				while (n < theStack.peek()){
-					theStack.pop();
-					curLineTokens.add(new Token(dedentToken, curLineNum()));
-				}
+        System.out.println(ANSI_RED + "dick dick dick :" + n+ANSI_RESET);
+        if(n < theStack.peek()){
+          while (n < theStack.peek()){
+            theStack.pop();
+            curLineTokens.add(new Token(dedentToken, curLineNum()));
+          }
+        }
 				if (n != theStack.peek()){
 					scannerError("Indeteringsfeil");
 				}
 			}
       preScan(line, '"');
+      addDedent();
 			checkString(line);  //INDENTS/DEDENT finished, create enums
 		}
 
@@ -521,9 +536,7 @@ public class Scanner {
       System.out.println( ANSI_PURPLE +"MSGMSGMSGMSGMSGMSGMSGMSG: " + tok.showInfo() + ANSI_RESET);
 			curLineTokens.add(tok);
       System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
-      // TokenKind kind1 = TokenKind.eofToken;
-      // Token tok1 = new Token(kind1, curLineNum());
-      // curLineTokens.add(tok1);
+
       return;
     }
     if(msg.charAt(0) == '\''){
@@ -536,17 +549,10 @@ public class Scanner {
       System.out.println( ANSI_PURPLE +"MSGMSGMSGMSGMSGMSGMSGMSG: " + tok.showInfo() + ANSI_RESET);
       curLineTokens.add(tok);
       System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
-      // TokenKind kind1 = TokenKind.eofToken;
-      // Token tok1 = new Token(kind1, curLineNum());
-      // curLineTokens.add(tok1);
 
     }
 			//If the first symbol is a char, make it a nameToken
 		 else if(isLetterAZ(msg.charAt(0))){
-				//Name and keyword tokens
-				//Find out if it's a keyword token
-    //for(TokenKind t : TokenKind.values()){
-        //if(msg.contains(t.toString())){
 
           TokenKind temp = checkToken(msg);
 
@@ -668,6 +674,17 @@ public class Scanner {
 	    }
 	}
 	 return newS;
+  }
+
+  private void addDedent(){
+    while(n < theStack.peek()){
+      theStack.pop();
+      curLineTokens.add(new Token(dedentToken, curLineNum()));
+    }
+    if(n != theStack.peek()){
+      System.out.println(ANSI_RED +"Indent error " + ANSI_RESET);
+    }
+    return;
   }
 
 
