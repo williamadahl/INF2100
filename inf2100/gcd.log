@@ -80,3 +80,25 @@ Scanner: name token on line 15: v2
 Scanner: ) token on line 15
 Scanner: NEWLINE token on line 15
   16: print('GCD('+str(v1)+','+str(v2)+') =', res)
+Scanner: name token on line 16: print
+Scanner: ( token on line 16
+Scanner: string literal token on line 16: "GCD("
+Scanner: + token on line 16
+Scanner: name token on line 16: str
+Scanner: ( token on line 16
+Scanner: name token on line 16: v1
+Scanner: ) token on line 16
+Scanner: + token on line 16
+Scanner: string literal token on line 16: ","
+Scanner: + token on line 16
+Scanner: name token on line 16: str
+Scanner: ( token on line 16
+Scanner: name token on line 16: v2
+Scanner: ) token on line 16
+Scanner: + token on line 16
+Scanner: string literal token on line 16: ") ="
+Scanner: , token on line 16
+Scanner: name token on line 16: res
+Scanner: ) token on line 16
+Scanner: NEWLINE token on line 16
+Scanner: E-o-f token

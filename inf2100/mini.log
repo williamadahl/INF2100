@@ -1,1 +1,19 @@
-   1: print('GCD('+str(v1)+','+str(v2)+') =', res)
+   1: [22, "w", [-1+,1], 3.14159265]
+Scanner: [ token on line 1
+Scanner: integer literal token on line 1: 22
+Scanner: , token on line 1
+Scanner: string literal token on line 1: "w"
+Scanner: , token on line 1
+Scanner: [ token on line 1
+Scanner: - token on line 1
+Scanner: integer literal token on line 1: 1
+Scanner: + token on line 1
+Scanner: , token on line 1
+Scanner: integer literal token on line 1: 1
+Scanner: ] token on line 1
+Scanner: , token on line 1
+Scanner: float literal token on line 1: 3.14159265
+Scanner: ] token on line 1
+Scanner: NEWLINE token on line 1
+   2: 
+Scanner: E-o-f token

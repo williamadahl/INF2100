@@ -404,12 +404,29 @@ public class Scanner {
       while (msg.charAt(counter) != '"' &&
         (!(isLetterAZ(msg.charAt(counter)))) &&
         (!(isDigit(msg.charAt(counter)))) && (counter<msg.length())
-        && msg.charAt(counter) != '#' && msg.charAt(counter) != ' ') {
+        && msg.charAt(counter) != '#' && msg.charAt(counter) != ' '
+        && msg.charAt(counter) != '\'' ) {
         /*
         * If a bracket is found, send everything before the operator (i) to
         * checkString, the operator (i) to checkEnum, and everything
         * after the operator recursively to checkString
         */
+
+        // if(msg.charAt(i) == ','){
+        //     System.out.println(ANSI_YELLOW +"Found a comma !" + ANSI_RESET);
+        //     singleOp = msg.charAt(i);
+        //     beforeText = msg.substring(0, i);
+        //     System.out.println("Comma, sending beforetext " + beforeText);
+        //     System.out.println("Comma  Sending comma to checkEnums " + singleOp);
+        //     checkString(beforeText);
+        //     checkEnums(Character.toString(singleOp));
+        //     afterText =  msg.substring(counter+1, msg.length());
+        //     System.out.println("Comma sending afterText to checkString " + afterText);
+        //     checkString(afterText);
+        //     return;
+        //
+        // }
+
         for(int l = 0; l < bracketList.length; l++){
           if(msg.charAt(counter) == bracketList[l]){
             singleOp = msg.charAt(counter);
@@ -440,6 +457,7 @@ public class Scanner {
       System.out.println("Operator= BeforeText sendes til checkEnums: " + beforeText);
       checkEnums(beforeText);
       op = msg.substring(i, counter);
+      System.out.println("Sending this to OPChack" + op);
       System.out.println("Operator= Operator sendes til checkEnums: " + op);
       checkEnums(op);
       afterText = msg.substring(counter, msg.length());
@@ -449,7 +467,37 @@ public class Scanner {
     }
   }
 
+  public void operatorCheck(String msg) {
+    System.out.println(ANSI_RED + "FIKK DETTE FRA OPChack : " + ANSI_RESET + msg);
+    for(TokenKind t : TokenKind.values()){
+    //  System.out.println(ANSI_YELLOW + "HEHEHEH :" + t.toString()+ ANSI_RESET);
+      if(msg.contains(t.toString())){
+        if(t.toString().charAt(0) == msg.charAt(0)){
 
+          checkEnums(t.toString());
+          System.out.println(ANSI_YELLOW + "RRRRRRRRRRRRREEEEEE"+ ANSI_RESET);
+          String [] parts = msg.split("\\"+t.toString());
+          for(String s : parts){
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!" +s );
+          }
+          checkEnums(parts[1]);
+          return;
+        }else{
+          // her kan det være feil LMAOOOOOO
+          System.out.println("Herregud :" + msg.indexOf(t.toString().charAt(0)));
+          int firstOccu = msg.indexOf(t.toString().charAt(0));
+          String start = msg.substring(0, firstOccu);
+          checkEnums(start);
+          checkEnums(t.toString());
+          return;
+
+        }
+      }
+
+    }
+    System.out.println("MÅ LAGE EN NAMETOKEN ERROR");
+    return;
+  }
 
 
 	public void checkEnums(String msg){
@@ -476,7 +524,7 @@ public class Scanner {
       // TokenKind kind1 = TokenKind.eofToken;
       // Token tok1 = new Token(kind1, curLineNum());
       // curLineTokens.add(tok1);
-
+      return;
     }
     if(msg.charAt(0) == '\''){
         //String token
@@ -555,7 +603,8 @@ public class Scanner {
 				curLineTokens.add(tok);
         System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 			}else{
-				System.out.println("OperatorToken not found");
+				System.out.println(ANSI_RED + "OperatorToken not found"+ ANSI_RESET);
+        operatorCheck(msg);
 			}
 		}
 	}
