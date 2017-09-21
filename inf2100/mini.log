@@ -1,63 +1,158 @@
-   1: 
-   2: a = 7
-Scanner: name token on line 2: a
-Scanner: = token on line 2
-Scanner: integer literal token on line 2: 7
-Scanner: NEWLINE token on line 2
-   3: if a == 0:
-Scanner: if token on line 3
-Scanner: name token on line 3: a
-Scanner: == token on line 3
-Scanner: integer literal token on line 3: 0
-Scanner: : token on line 3
-Scanner: NEWLINE token on line 3
-   4:   b = -2
-Scanner: INDENT token on line 4
-Scanner: name token on line 4: b
-Scanner: = token on line 4
-Scanner: - token on line 4
-Scanner: integer literal token on line 4: 2
-Scanner: NEWLINE token on line 4
-   5:   if a < b:
-Scanner: if token on line 5
-Scanner: name token on line 5: a
-Scanner: < token on line 5
-Scanner: name token on line 5: b
-Scanner: : token on line 5
-Scanner: NEWLINE token on line 5
-   6:         b = b+1
-Scanner: INDENT token on line 6
-Scanner: name token on line 6: b
-Scanner: = token on line 6
-Scanner: name token on line 6: b
-Scanner: + token on line 6
-Scanner: integer literal token on line 6: 1
-Scanner: NEWLINE token on line 6
-   7:   else:
-Scanner: DEDENT token on line 7
-Scanner: else token on line 7
-Scanner: : token on line 7
-Scanner: NEWLINE token on line 7
-   8:    b = b-1
-Scanner: INDENT token on line 8
-Scanner: name token on line 8: b
-Scanner: = token on line 8
-Scanner: name token on line 8: b
-Scanner: - token on line 8
-Scanner: integer literal token on line 8: 1
-Scanner: NEWLINE token on line 8
-   9: else:
-Scanner: DEDENT token on line 9
-Scanner: DEDENT token on line 9
-Scanner: else token on line 9
-Scanner: : token on line 9
-Scanner: NEWLINE token on line 9
-  10:         b = 0
-Scanner: INDENT token on line 10
-Scanner: name token on line 10: b
-Scanner: = token on line 10
-Scanner: integer literal token on line 10: 0
-Scanner: NEWLINE token on line 10
-  11: 	
-Scanner: DEDENT token
-Scanner: E-o-f token
+<program>
+   1: a = 3
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   2: x = 4
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   3: 
+   4: if (a or x):
+  <stmt>
+    <if stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <inner expr>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </inner expr>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
+   5: 	print(a)
+        <stmt>
+          <expr stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                          <primary suffix>
+                            <arguments>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </arguments>
+                          </primary suffix>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </expr stmt>
+        </stmt>
+   6: 
+      </suite>
+    </if stmt>
+  </stmt>
+</program>
