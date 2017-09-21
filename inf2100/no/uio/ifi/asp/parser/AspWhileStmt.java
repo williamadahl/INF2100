@@ -16,4 +16,6 @@ class AspWhileStmt extends AspStmt {
 
     Main.log.leaveParser("while stmt");
     return aws;
+
+    System.out.println("Weienerdoggos r superior than cattos");
 }
