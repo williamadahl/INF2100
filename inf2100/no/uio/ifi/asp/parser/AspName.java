@@ -20,12 +20,19 @@ class AspName extends AspAtom{
 		Main.log.enterParser("name");
 		skip(s, nameToken);
 
-		test(s, leftBracketToken);
-		asnm.body1 = AspSubscription.parse(s);
-
-		test(s, equalToken);
-		asnm.body2 = AspExpr.parse(s);
-		
-		Main.log.ecitParser("name");
+		if(testToken(s, leftBracketToken)){
+			asnm.body1 = AspSubscription.parse(s);
+		}else if(testToken(s, equalToken )){
+			//Skipping equalToken because expr isn't expecting
+			//Any symbol that's not suppose to be in expr
+			skip(s, equalToken);
+			asnm.body2 = AspExpr.parse(s);
+		}else{
+			parserError("Expected a " + leftBracketToken + " or a " + equalToken + " but found a " +
+			s.curToken().kind + "!", s.curLineNum());
+		}
+		Main.log.exitParser("name");
+		return asnm;
 	}
+
 }

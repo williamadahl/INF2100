@@ -53,5 +53,12 @@ public abstract class AspSyntax {
     Token t = s.curToken();
     return t;
   }
-  
+
+  Boolen testToken(Scanner s, TokenKind tk){
+    if(s.curToken().kind==tk){
+      return true;
+    }
+    return false;
+  }
+
 }

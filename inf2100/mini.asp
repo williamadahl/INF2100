@@ -1,4 +1,1 @@
-
-nav______n = "Dagg" 
-navn[i] = 3
-
+uck[a or b 

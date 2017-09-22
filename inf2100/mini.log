@@ -1,10 +1,7 @@
 <program>
-   1: 
-   2: nav______n = "Dagg" 
+   1: uck[a or b 
   <stmt>
-    <assignment>
-      <name>
-      </name>
+    <expr stmt>
       <expr>
         <and test>
           <not test>
@@ -13,63 +10,43 @@
                 <factor>
                   <primary>
                     <atom>
-                      <string literal>
-                      </string literal>
+                      <name>
+                      </name>
                     </atom>
-                  </primary>
-                </factor>
-              </term>
-            </comparison>
-          </not test>
-        </and test>
-      </expr>
-    </assignment>
-  </stmt>
-   3: navn[i] = 3
-  <stmt>
-    <assignment>
-      <name>
-      </name>
-      <subscription>
-        <expr>
-          <and test>
-            <not test>
-              <comparison>
-                <term>
-                  <factor>
-                    <primary>
-                      <atom>
-                        <name>
-                        </name>
-                      </atom>
-                    </primary>
-                  </factor>
-                </term>
-              </comparison>
-            </not test>
-          </and test>
-        </expr>
-      </subscription>
-      <expr>
-        <and test>
-          <not test>
-            <comparison>
-              <term>
-                <factor>
-                  <primary>
-                    <atom>
-                      <integer literal>
-                      </integer literal>
-                    </atom>
-                  </primary>
-                </factor>
-              </term>
-            </comparison>
-          </not test>
-        </and test>
-      </expr>
-    </assignment>
-  </stmt>
-   4: 
-</program>
-Asp runtime error on line 3: Name navn not defined!
+                    <primary suffix>
+                      <subscription>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+Asp parser error on line 1: Expected a ] but found a NEWLINE!
