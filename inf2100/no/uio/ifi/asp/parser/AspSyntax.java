@@ -11,7 +11,7 @@ public abstract class AspSyntax {
     lineNum = n;
   }
 
-  
+
   abstract void prettyPrint();
   abstract RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue;
 
@@ -47,4 +47,11 @@ public abstract class AspSyntax {
   void trace(String what) {
     Main.log.traceEval(what, this);
   }
+
+  Token getNextToken(Scanner s){
+    s.readNextToken();
+    Token t = s.curToken();
+    return t;
+  }
+  
 }

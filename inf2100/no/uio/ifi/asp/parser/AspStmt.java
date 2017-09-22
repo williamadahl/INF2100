@@ -19,7 +19,7 @@ class AspStmt exteds AspSyntax{
 		Main.log.enterParser("stmt");
 		AspStmt asmt = new AspStmt(s.curLineNum());
 
-		if(s.curToken.TokenKind == nameToken){
+		if(s.curToken().TokenKind == nameToken){
 			if (s.anyEqualToken()){
 				//now we know it is an assignment
 					asmt.body1 = AspAssingment.parse(s);
@@ -27,13 +27,13 @@ class AspStmt exteds AspSyntax{
 				// else it is an expression
 					asmt.body2 = AspExpr.parse(s);
 			}
-		}else if(s.curToken.TokenKind == ifToken){
+		}else if(s.curToken().TokenKind == ifToken){
 				asmt.body3 = AspIfStmt.parse(s);
-		}else if(s.curToken.TokenKind == whileToken){
+		}else if(s.curToken().TokenKind == whileToken){
 				asmt.body4 = AspWhileStmt.parse(s);
-		}else if(s.curToken.TokenKind == returnToken){
+		}else if(s.curToken().TokenKind == returnToken){
 				asmt.body5 = AspReturnStmt.parse(s);
-		}else if(s.curToken.TokenKind == passToken){
+		}else if(s.curToken().TokenKind == passToken){
 				asmt.body6 = AspPassStmt.parse(s);
 		}else{
 				asmt.body7 = AspFuncDef.parse(s);
