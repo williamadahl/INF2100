@@ -1,1 +1,1 @@
-uck[a or b 
+a + b

@@ -1,5 +1,5 @@
 <program>
-   1: uck[a or b 
+   1: a + b
   <stmt>
     <expr stmt>
       <expr>
@@ -13,40 +13,24 @@
                       <name>
                       </name>
                     </atom>
-                    <primary suffix>
-                      <subscription>
-                        <expr>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <name>
-                                        </name>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <name>
-                                        </name>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                        </expr>
-Asp parser error on line 1: Expected a ] but found a NEWLINE!
+                  </primary>
+                </factor>
+                <term opr>
+                </term opr>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </expr stmt>
+  </stmt>
+</program>
+Asp runtime error on line 1: Name a not defined!

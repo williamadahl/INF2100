@@ -1,6 +1,6 @@
 class AspAndTest extends AspSyntax {
 	ArrayList<AspNotTest> notTests = new ArrayList<>();
-	
+
 	AspAndTest(int n) {
 		super(n);
 	}
@@ -11,6 +11,7 @@ class AspAndTest extends AspSyntax {
 		while (true) {
 			aat.notTests.add(AspNotTest.parse(s));
 			if (s.curToken().kind != andToken) break;
+			// wtf vil ikke man skippe dobbelt naar man evnt skipper i notTests
 			skip(s, andToken);
 		}
 
