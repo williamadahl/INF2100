@@ -1,3 +1,5 @@
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+
 class AspSubscription extends AspPrimarySuffix{
 	AspExpr body1;
 
