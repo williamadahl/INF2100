@@ -4,10 +4,10 @@ class AspComparison extends AspSyntax{
 	ArrayList<AspTerm> termTests = new ArrayList<>();
 	ArrayList<AspCompOpr> compOprTests = new ArrayList<>();
 
-	char[] compOperators = {'<', '>', '==', '>=', '<=', '!='};
+	//char[] compOperators = new char[]{ '<', '>', '==', '>=', '<=', '!=' };
 
 	AspComparison(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspComparison parse(Scanner s) {

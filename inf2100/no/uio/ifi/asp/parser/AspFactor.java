@@ -1,4 +1,5 @@
 import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 class AspFactor extends AspSyntax{
 	ArrayList<AspFactorOpr> factorOprTests = new ArrayList<>();
@@ -6,7 +7,7 @@ class AspFactor extends AspSyntax{
 	ArrayList<AspFactorPrefix> prefixTests = new ArrayList<>();
 
 	AspFactor(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspFactor parse(Scanner s) {
@@ -15,10 +16,10 @@ class AspFactor extends AspSyntax{
 
 		Token temp = s.getNextToken();
 		if(temp.kind == plusToken){
-			prefixTests.add(AspFactorPrefix.parse(s))
+			prefixTests.add(AspFactorPrefix.parse(s));
 			skip(s, plusToken);
 		}else if(temp.kind == minusToken){
-			prefixTests.add(AspFactorPrefix.parse(s))
+			prefixTests.add(AspFactorPrefix.parse(s));
 			skip(s, minusToken);
 		}else{
 				while(true){

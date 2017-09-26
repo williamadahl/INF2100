@@ -2,7 +2,7 @@ class AspNotTest extends AspSyntax{
 	AspComparison body1;
 
 	AspNotTest(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspNotTest parse(Scanner s) {

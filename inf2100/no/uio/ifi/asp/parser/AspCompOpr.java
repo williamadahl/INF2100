@@ -1,6 +1,6 @@
 class AspCompOpr extends AspSyntax{
 	AspCompOpr(int n){
-		super(n)
+		super(n);
 	}
 	static AspCompOpr parse(Scanner s) {
 		AspCompOpr aco = new AspCompOpr(s.curLineNum());

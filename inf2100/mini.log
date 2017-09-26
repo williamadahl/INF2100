@@ -1,7 +1,9 @@
 <program>
-   1: a + b
+   1: na_234vn = "SLucas"
   <stmt>
-    <expr stmt>
+    <assignment>
+      <name>
+      </name>
       <expr>
         <and test>
           <not test>
@@ -10,18 +12,8 @@
                 <factor>
                   <primary>
                     <atom>
-                      <name>
-                      </name>
-                    </atom>
-                  </primary>
-                </factor>
-                <term opr>
-                </term opr>
-                <factor>
-                  <primary>
-                    <atom>
-                      <name>
-                      </name>
+                      <string literal>
+                      </string literal>
                     </atom>
                   </primary>
                 </factor>
@@ -30,7 +22,6 @@
           </not test>
         </and test>
       </expr>
-    </expr stmt>
+    </assignment>
   </stmt>
 </program>
-Asp runtime error on line 1: Name a not defined!

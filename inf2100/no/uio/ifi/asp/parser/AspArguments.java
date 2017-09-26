@@ -8,7 +8,7 @@ class AspArguments extends AspPrimarySuffix{
 	static AspArguments parse(Scanner s){
 		Main.log.enterParser("arguments");
 		AspArguments arar = new AspArguments(s.curLineNum());
-
+		skip(s, leftParToken);
 	while(true){
 		Token temp = s.curToken();
 		if(testToken(temp, rightParToken)){
@@ -25,7 +25,7 @@ class AspArguments extends AspPrimarySuffix{
 					break;
 				}
 			}
-		}	
+		}
 		}
 	}
 }

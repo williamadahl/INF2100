@@ -1,6 +1,6 @@
 class AspFactorPrefix extends AspSyntax{
 	AspFactorPrefix(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspFactorPrefix parse(Scanner s){

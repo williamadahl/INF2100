@@ -4,7 +4,7 @@ class AspListDisplay extends AspAtom{
 	AspExpr bod1;
 
 	AspListDisplay(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspListDisplay parse(Scanner s){
@@ -27,7 +27,6 @@ class AspListDisplay extends AspAtom{
 						break;
 					}
 				}
-				
 			}
 		}
 	}

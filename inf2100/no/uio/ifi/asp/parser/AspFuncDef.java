@@ -1,7 +1,6 @@
-AspFuncDef exteds AspStmt{
-               
+class AspFuncDef extends AspStmt{
+
 	AspFuncDef(int n){
-  	      super(n)
+  	      super(n);
         }
 }
-

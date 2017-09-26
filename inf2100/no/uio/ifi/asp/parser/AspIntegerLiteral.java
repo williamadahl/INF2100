@@ -2,4 +2,20 @@ class AspIntegerLiteral extends AspAtom{
 	AspIntegerLiteral(int n){
 		super(n);
 	}
+	static AspIntegerLiteral parse(Scanner s){
+		AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
+		Main.log.enterParser("integer literal");
+		if(s.curToken().kind.integerLit == 0){
+			skip(s, integerToken);
+			return ail;
+		}else{
+			for(int i = 0; i<s.curToken.integerLit.length(); i++){
+				if(!(isDigit(s.curToken.integerLit.charAt(i)))){
+					Main.parserError("Not all chars are integers!", s.curLineNum());
+				}
+			}
+			Main.log.leaveParser("integer literal");
+			return ail;
+		}
+	}
 }

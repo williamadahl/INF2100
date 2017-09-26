@@ -1,4 +1,4 @@
-class AspStmt exteds AspSyntax{
+class AspStmt extends AspSyntax{
 
 	AspAssingment body1;
 	AspExpr body2;
@@ -10,7 +10,7 @@ class AspStmt exteds AspSyntax{
 
 
 	AspStmt(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspStmt parse(Scanner s) {

@@ -5,7 +5,7 @@ class AspTerm extends AspSyntax{
 	ArrayList<AspTermOpr> termOprTests = new ArrayList<>();
 
 	AspTerm(int n){
-		super(n)
+		super(n);
 	}
 
 	static AspTerm parse(Scanner s) {

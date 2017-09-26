@@ -1,6 +1,6 @@
 class AspTermOpr extends AspSyntax{
 	AspTermOpr(int n){
-		super(n)
+		super(n);
 	}
 	static AspTermOpr parse(Scanner s) {
 		AspTermOpr ato = new AspTermOpr(s.curLineNum());
