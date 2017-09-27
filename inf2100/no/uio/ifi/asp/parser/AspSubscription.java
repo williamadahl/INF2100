@@ -16,6 +16,7 @@ class AspSubscription extends AspPrimarySuffix{
 			Token temp = s.curToken();
 			if(testToken(temp, rightBracketToken)){
 				Main.Log.exitParser("subscription");
+				skip(temp, rightBracketToken);
 				return asub;
 			}else if(testToken(temp, newLineToken)){
 				parserError("Expected a " + rightBracketToken + " but found a " +

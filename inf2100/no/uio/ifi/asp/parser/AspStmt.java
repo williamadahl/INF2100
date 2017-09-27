@@ -1,7 +1,7 @@
 class AspStmt extends AspSyntax{
 
 	AspAssingment body1;
-	AspExpr body2;
+	AspExprStmt body2;
 	AspIfStmt body3;
 	AspWhileStmt body4;
 	AspReturnStmt body5;
@@ -25,7 +25,7 @@ class AspStmt extends AspSyntax{
 					asmt.body1 = AspAssingment.parse(s);
 			}else{
 				// else it is an expression
-					asmt.body2 = AspExpr.parse(s);
+					asmt.body2 = AspExprStmt.parse(s);
 			}
 		}else if(s.curToken().TokenKind == ifToken){
 				asmt.body3 = AspIfStmt.parse(s);

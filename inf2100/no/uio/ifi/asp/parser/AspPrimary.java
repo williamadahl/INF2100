@@ -13,11 +13,12 @@ class AspPrimary extends AspSyntax{
 		skip(s, s.curToken.Kind);
 
 		while(true){
-			ap.aps.add(AspPrimarySuffix.parse(s));
 			if(s.curToken().Kind != leftParToken ||
 					s.curToken().Kind != leftBracketToken){
 						break;
 					}
+
+			ap.aps.add(AspPrimarySuffix.parse(s));
 			s.readNextToken();
 		}
 

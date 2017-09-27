@@ -13,6 +13,7 @@ class AspArguments extends AspPrimarySuffix{
 		Token temp = s.curToken();
 		if(testToken(temp, rightParToken)){
 			Main.Log.exitParser("arguments");
+			skip(s, rightParToken);
 			return arar;
 		}else if(testToken(temp, newLineToken)){
 			parserError("Expected a " + rightBracketToken + " but found a " +
