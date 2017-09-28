@@ -49,13 +49,7 @@ public abstract class AspSyntax {
     Main.log.traceEval(what, this);
   }
 
-  Token getNextToken(Scanner s){
-    s.readNextToken();
-    Token t = s.curToken();
-    return t;
-  }
-
-  boolean testToken(Scanner s, TokenKind tk){
+  public static boolean testToken(Scanner s, TokenKind tk){
     if(s.curToken().kind==tk){
       return true;
     }

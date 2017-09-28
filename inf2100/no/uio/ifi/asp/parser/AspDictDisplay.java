@@ -1,4 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 
 class AspDictDisplay extends AspAtom{
 	AspStringLiteral atl;
@@ -15,10 +22,10 @@ class AspDictDisplay extends AspAtom{
 		Token temp = s.curToken();
 
 		while(true){
-			if(testToken(temp, rightBraceToken)){
-				Main.Log.leaveParser("dict display");
+			if(testToken(s, rightBraceToken)){
+				Main.log.leaveParser("dict display");
 				return add;
-			}else if(testToken(temp, newLineToken)){
+			}else if(testToken(s, newLineToken)){
 				parserError("Expected a " + rightBraceToken + " but found a " +
 				s.curToken().kind + "!", s.curLineNum());
 			}else{
@@ -27,8 +34,8 @@ class AspDictDisplay extends AspAtom{
 				skip(s, colonToken);
 				add.ae = AspExpr.parse(s);
 				s.readNextToken();
-				
-				if(s.curToken.kind != commaToken){
+
+				if(s.curToken().kind != commaToken){
 					break;
 				}
 			}

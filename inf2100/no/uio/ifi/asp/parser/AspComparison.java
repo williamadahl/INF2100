@@ -1,3 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 import no.uio.ifi.asp.scanner.*;
 
 class AspComparison extends AspSyntax{
@@ -40,6 +48,6 @@ class AspComparison extends AspSyntax{
 			}
 		}
 		Main.log.leaveParser("comparison");
-		return nut;
+		return acp;
 	}
 }

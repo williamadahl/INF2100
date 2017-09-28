@@ -1,3 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 class AspExprStmt extends AspStmt{
 	AspExpr body;
 
@@ -11,7 +19,7 @@ class AspExprStmt extends AspStmt{
 		s.readNextToken();
 		aes.body = AspExpr.parse(s);
 		skip(s, newLineToken);
-		Main.log.exitParser("expr stmt");
+		Main.log.leaveParser("expr stmt");
 		return aes;
 	}
 }

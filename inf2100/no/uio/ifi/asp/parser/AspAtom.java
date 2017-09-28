@@ -1,3 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 abstract class AspAtom extends AspSyntax{
 	AspAtom(int n) {
@@ -5,13 +13,13 @@ abstract class AspAtom extends AspSyntax{
 	}
 
 	static AspAtom parse(Scanner s){
-		AspAtom aat = new AspAtom(s.curLineNum());
+		AspAtom a = null;
 		Main.log.enterParser("atom");
 		switch (s.curToken().kind) {
 			case falseToken:
 			case trueToken:
 			a = AspBooleanLiteral.parse(s);
-			skip(s, s.curToken.kind); break;
+			skip(s, s.curToken().kind); break;
 			case floatToken:
 			a = AspFloatLiteral.parse(s);
 			skip(s, floatToken); break;
@@ -40,45 +48,8 @@ abstract class AspAtom extends AspSyntax{
 			parserError("Expected an expression atom but found a " +
 			s.curToken().kind + "!", s.curLineNum());
 		}
-		/*
-		if(s.curToken().kind == nameToken){
-				Main.log.enterParser("name");
-				Main.log.leaveParser("name");
-				skip(s, nameToken);
-		}else if(s.curToken().kind == integerToken){
-			Main.log.enterParser("integer literal");
-			Main.log.leaveParser("integer literal");
-			skip(s, integerToken);
-		}else if(s.curToken().kind == floatToken){
-			Main.log.enterParser("float literal");
-			Main.log.leaveParser("float literal");
-			skip(s, floatToken);
-		}else if(s.curToken.kind == stringToken){
-			Main.log.enterParser("string literal");
-			Main.log.leaveParser("string literal");
-			skip(s, stringToken);
-		}else if((s.curToken.kind == falseToken) || (s.curToken.kind == falseToken) ){
-			Main.log.enterParser("boolean literal");
-			Main.log.leaveParser("boolean literal");
-			skip(s, s.curToken.kind);
-		}else if((s.curToken.kind == noneToken ){
-			Main.log.enterParser("none literal");
-			Main.log.leaveParser("none literal");
-			skip(s, noneToken);
-		}else if(s.curToken.toString().charAt(0) == '('){
-			skip(s, leftParToken);
-			aat.body1 = AspInnerExpr.parse(s);
-		}else if(s.curToken.toString().charAt(0) == '['){
-			skip(s, leftBracketToken);
-			aat.body3 = AspListDisplay.parse(s);
-		}else if(s.curToken.toString().charAt(0) == '{'){
-			skip(s, leftBraceToken);
-			aat.body2 = AspListDisplay.parse(s);
-		}else{
-			parserError("no elem ",s.curLineNum());
-		}*/
 		Main.log.leaveParser("atom");
-		return aat;
+		return a;
 	}
 
 }

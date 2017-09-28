@@ -1,3 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 class AspAssignment extends AspStmt{
 	AspName test;
 	AspExpr test2;
@@ -15,7 +23,7 @@ class AspAssignment extends AspStmt{
 		asss.test = AspName.parse(s);
 		skip(s, nameToken);
 
-		if(s.curToken.kind == leftBracketToken){
+		if(s.curToken().kind == leftBracketToken){
 			while(true){
 				asss.as.add(AspSubscription.parse(s));
 				if(s.curToken().kind == equalToken){
@@ -29,7 +37,7 @@ class AspAssignment extends AspStmt{
 		}
 
 
-		Main.log.exitParser("assignment");
+		Main.log.leaveParser("assignment");
 
 
 

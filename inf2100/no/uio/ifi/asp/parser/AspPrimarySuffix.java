@@ -1,3 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 class AspPrimarySuffix extends AspSyntax{
 	AspSubscription as;
 	AspArguments aa;
@@ -18,7 +26,7 @@ class AspPrimarySuffix extends AspSyntax{
 				aps.as = AspSubscription.parse(s);
 				skip(s, rightBracketToken);
 		}else{
-			Main.parserError("No brackets", s.curLineNum());
+			//Main.parserError("No brackets", s.curLineNum());
 		}
 		Main.log.leaveParser("primary suffix");
 		return aps;

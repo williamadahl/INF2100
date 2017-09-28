@@ -1,3 +1,11 @@
+package no.uio.ifi.asp.parser;
+
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
+
 class AspIfStmt extends AspStmt{
 	ArrayList <AspExpr> aexp = new ArrayList<>();
 	ArrayList <AspSuite> asui = new ArrayList<>();
@@ -17,11 +25,11 @@ class AspIfStmt extends AspStmt{
 			skip(s, colonToken);
 			aif.asui.add(AspSuite.parse(s));
 			s.readNextToken();
-			if(s.curToken() != elifToken){
+			if(s.curToken().kind != elifToken){
 				break;
 			}
 		}
-		if(s.curToken == elseToken){
+		if(s.curToken().kind == elseToken){
 			skip(s, elseToken);
 			skip(s, colonToken);
 			aif.asui.add(AspSuite.parse(s));

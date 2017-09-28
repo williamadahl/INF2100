@@ -1,5 +1,10 @@
-import static no.uio.ifi.asp.scanner.TokenKind.*;
+package no.uio.ifi.asp.parser;
 
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.*;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
 class AspListDisplay extends AspAtom{
 	AspExpr bod1;
 
@@ -13,10 +18,10 @@ class AspListDisplay extends AspAtom{
 
 		while(true){
 			Token temp = s.curToken();
-			if(testToken(temp, rightBracketToken)){
-				Main.Log.exitParser("list display");
+			if(testToken(s, rightBracketToken)){
+				Main.log.leaveParser("list display");
 				return ald;
-			}else if(testToken(temp, newLineToken)){
+			}else if(testToken(s, newLineToken)){
 				parserError("Expected a " + rightBracketToken + " but found a " +
 				s.curToken().kind + "!", s.curLineNum());
 			}else{
