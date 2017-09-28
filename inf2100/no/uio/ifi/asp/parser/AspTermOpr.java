@@ -16,4 +16,17 @@ class AspTermOpr extends AspSyntax{
 		Main.log.leaveParser("term opr");
 		return ato;
 	}
+
+
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+
+			Main.log.prettyWrite(" term opr ");
+
+		}
 }

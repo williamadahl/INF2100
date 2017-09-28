@@ -16,4 +16,18 @@ class AspCompOpr extends AspSyntax{
 		Main.log.leaveParser("comp opr");
 		return aco;
 	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope){
+		return null;
+	}
+
+	@Override
+	void prettyPrint() {
+
+		Main.log.prettyWrite(" compOpr ");
+
+	}
+
+
 }

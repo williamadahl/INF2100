@@ -28,5 +28,19 @@ class AspSuite extends AspSyntax{
 		Main.log.leaveParser("suite");
 		return as;
 	}
-
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+		@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			for (AspStmt a: astmt) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" suite ");
+				}
+				a.prettyPrint();
+				++nPrinted;
+			}
+		}
 }

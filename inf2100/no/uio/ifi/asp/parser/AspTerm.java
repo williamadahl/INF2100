@@ -32,4 +32,28 @@ class AspTerm extends AspSyntax{
 		Main.log.leaveParser("term");
 		return atat;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			for (AspFactor af: factorTests) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" term ");
+				}
+				af.prettyPrint();
+				++nPrinted;
+			}
+			int nPrinted2 = 0;
+			for (AspTermOpr ato: termOprTests) {
+				if (nPrinted2 > 0){
+					Main.log.prettyWrite(" term ");
+				}
+				ato.prettyPrint();
+				++nPrinted2;
+			}
+		}
 }

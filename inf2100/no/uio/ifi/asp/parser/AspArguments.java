@@ -13,6 +13,8 @@ class AspArguments extends AspPrimarySuffix{
 		super(n);
 	}
 
+
+
 	static AspArguments parse(Scanner s){
 		Main.log.enterParser("arguments");
 		AspArguments arar = new AspArguments(s.curLineNum());
@@ -37,4 +39,20 @@ class AspArguments extends AspPrimarySuffix{
 		}
 		}
 	}
+	@Override
+		public RuntimeValue eval(RuntimeScope curScope){
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			for (AspExpr ae: asex) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" arguments ");
+				}
+				ae.prettyPrint();
+				++nPrinted;
+			}
+		}
 }

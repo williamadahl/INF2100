@@ -20,4 +20,17 @@ class AspName extends AspAtom{
 			Main.log.leaveParser("navn");
 			return an;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" name ");
+				body1.prettyPrint();
+				body2.prettyPrint();
+
+			}
+
 }

@@ -7,11 +7,15 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 public class AspAndTest extends AspSyntax {
+
 	ArrayList<AspNotTest> notTests = new ArrayList<>();
 
 	AspAndTest(int n) {
 		super(n);
 	}
+
+
+
 
 	public static AspAndTest parse(Scanner s) {
 		Main.log.enterParser("and test");
@@ -19,8 +23,10 @@ public class AspAndTest extends AspSyntax {
 
 		while (true) {
 			aat.notTests.add(AspNotTest.parse(s));
-			if (s.curToken().kind != andToken) break;
+			if (s.curToken().kind != andToken) {
+				break;
 			// wtf vil ikke man skippe dobbelt naar man evnt skipper i notTests
+			}
 			skip(s, andToken);
 		}
 
@@ -28,4 +34,22 @@ public class AspAndTest extends AspSyntax {
 		Main.log.leaveParser("and test");
 		return aat;
 	}
+
+	@Override
+	void prettyPrint() {
+		int nPrinted = 0;
+		for (AspNotTest ant: notTests) {
+			if (nPrinted > 0){
+				Main.log.prettyWrite(" and ");
+			}
+			ant.prettyPrint();
+			++nPrinted;
+		}
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
+
 }

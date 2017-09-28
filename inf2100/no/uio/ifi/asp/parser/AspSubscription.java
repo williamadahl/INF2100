@@ -6,6 +6,7 @@ import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 class AspSubscription extends AspPrimarySuffix{
+
 	AspExpr body1;
 
 	AspSubscription(int n){
@@ -32,4 +33,13 @@ class AspSubscription extends AspPrimarySuffix{
 			}
 		}
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" subscription ");
+			body1.prettyPrint();
+		}
 }

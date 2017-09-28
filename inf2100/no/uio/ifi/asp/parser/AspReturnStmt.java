@@ -21,5 +21,16 @@ class AspReturnStmt extends AspStmt{
     Main.log.leaveParser("return");
     return ars;
   }
+  @Override
+    RuntimeValue eval(RuntimeScope curScope) {
+      return null;
+    }
 
+    @Override
+    void prettyPrint() {
+
+      Main.log.prettyWrite(" return ");
+      ae.prettyPrint();
+
+    }
 }

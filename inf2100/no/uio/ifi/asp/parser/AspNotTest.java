@@ -27,4 +27,17 @@ class AspNotTest extends AspSyntax{
 		Main.log.leaveParser("not test");
 		return nut;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+
+			Main.log.prettyWrite(" not ");
+			body1.prettyPrint();
+		}
+
+
 }

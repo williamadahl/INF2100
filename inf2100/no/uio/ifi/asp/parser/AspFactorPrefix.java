@@ -18,4 +18,14 @@ class AspFactorPrefix extends AspSyntax{
 		return afp;
 
 	}
-}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+
+	@Override
+		void prettyPrint() {
+				Main.log.prettyWrite(" factor prefix ");
+		}
+	}

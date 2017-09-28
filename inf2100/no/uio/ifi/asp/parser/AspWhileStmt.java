@@ -26,4 +26,17 @@ class AspWhileStmt extends AspStmt {
       return aws;
 
     }
+    @Override
+  		RuntimeValue eval(RuntimeScope curScope) {
+  			return null;
+  		}
+
+      @Override
+  		void prettyPrint() {
+
+  			Main.log.prettyWrite(" while ");
+  			test.prettyPrint();
+  			body.prettyPrint();
+
+  		}
 }

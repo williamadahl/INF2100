@@ -19,5 +19,15 @@ class AspNoneLiteral extends AspAtom{
 		}else{
 			//Main.parserError("Not none token :(", s.curLineNum());
 		}
+		return anl;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" none ");
+		}
 }

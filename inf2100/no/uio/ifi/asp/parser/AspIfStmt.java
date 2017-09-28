@@ -38,4 +38,27 @@ class AspIfStmt extends AspStmt{
 		Main.log.leaveParser("if statement");
 		return aif;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			for (AspExpr ae: aexp) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" if statement ");
+				}
+				ae.prettyPrint();
+				++nPrinted;
+			}
+			for (AspSuite a: asui) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" if statement ");
+				}
+				a.prettyPrint();
+				++nPrinted;
+			}
+		}
 }

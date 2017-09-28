@@ -40,5 +40,17 @@ class AspDictDisplay extends AspAtom{
 				}
 			}
 		}
+		return add;
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope){
+		return null;
+	}
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(" dict display ");
+		atl.prettyPrint();
+		ae.prettyPrint();
 	}
 }

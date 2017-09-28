@@ -11,6 +11,10 @@ abstract class AspAtom extends AspSyntax{
 	AspAtom(int n) {
 		super(n);
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope){
+			return null;
+		}
 
 	static AspAtom parse(Scanner s){
 		AspAtom a = null;

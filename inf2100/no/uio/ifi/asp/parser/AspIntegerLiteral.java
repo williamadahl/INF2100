@@ -28,4 +28,13 @@ class AspIntegerLiteral extends AspAtom{
 		Main.log.leaveParser("integer literal");
 		return ail;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" integer literal ");
+		}
 }

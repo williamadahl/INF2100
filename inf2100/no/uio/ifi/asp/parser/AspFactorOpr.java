@@ -17,5 +17,13 @@ class AspFactorOpr extends AspSyntax{
 		Main.log.leaveParser("Factor opr");
 		return noe;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
 
+	@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" factor opr ");
+		}
 }

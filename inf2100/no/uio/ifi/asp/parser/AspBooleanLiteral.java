@@ -10,6 +10,7 @@ class AspBooleanLiteral extends AspAtom{
 	AspBooleanLiteral(int n){
 		super(n);
 	}
+
 	static AspBooleanLiteral parse(Scanner s){
 		AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum());
 		if(s.curToken().kind == trueToken ||
@@ -20,5 +21,19 @@ class AspBooleanLiteral extends AspAtom{
 		}else{
 			//Main.parserError("Neither true or false", s.curLineNum());
 		}
+		return abl;
+		// remember to fix this
+
+	}
+
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope){
+		return null;
+	}
+
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(" boolean ");
 	}
 }

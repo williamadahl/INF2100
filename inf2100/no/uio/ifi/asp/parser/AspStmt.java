@@ -6,7 +6,7 @@ import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
-class AspStmt extends AspSyntax{
+abstract class AspStmt extends AspSyntax{
 
 	AspAssignment body1;
 	AspExprStmt body2;
@@ -25,7 +25,7 @@ class AspStmt extends AspSyntax{
 
 
 		Main.log.enterParser("stmt");
-		AspStmt asmt = new AspStmt(s.curLineNum());
+		AspStmt asmt = null;
 
 		if(s.curToken().kind == nameToken){
 			if (s.anyEqualToken()){
@@ -51,5 +51,29 @@ class AspStmt extends AspSyntax{
 		return asmt;
 
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+	/*@Override
+		void prettyPrint() {
+
+			Main.log.prettyWrite(" assignment ");
+			body1.prettyPrint();
+			Main.log.prettyWrite(" expr ");
+			body2.prettyPrint();
+			Main.log.prettyWrite(" if ");
+			body3.prettyPrint();
+			Main.log.prettyWrite(" while ");
+			body4.prettyPrint();
+			Main.log.prettyWrite(" return ");
+			body5.prettyPrint();
+			Main.log.prettyWrite(" pass ");
+			body6.prettyPrint();
+			Main.log.prettyWrite(" func ");
+			body7.prettyPrint();
+
+		}*/
+
 
 }

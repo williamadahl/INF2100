@@ -36,10 +36,27 @@ class AspAssignment extends AspStmt{
 			skip(s, newLineToken);
 		}
 
-
 		Main.log.leaveParser("assignment");
-
-
-
+		return asss;
 	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope){
+		return null;
+	}
+
+	@Override
+	void prettyPrint() {
+		int nPrinted = 0;
+		for (AspSubscription asus : as) {
+			if (nPrinted > 0){
+				Main.log.prettyWrite(" assignment ");
+			}
+			asus.prettyPrint();
+			++nPrinted;
+		}
+			test.prettyPrint();
+			test2.prettyPrint();
+	}
+
 }

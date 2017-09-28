@@ -32,4 +32,23 @@ class AspFuncDef extends AspStmt{
 		Main.log.leaveParser("func def");
 		return afd;
 	}
-}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+
+	@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			for (AspName an: aname) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" func def ");
+				}
+				an.prettyPrint();
+				++nPrinted;
+			}
+			Main.log.prettyWrite(" func def ");
+			pentHouse.prettyPrint();
+		}
+	}

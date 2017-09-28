@@ -5,6 +5,7 @@ import no.uio.ifi.asp.runtime.*;
 import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
+
 class AspListDisplay extends AspAtom{
 	AspExpr bod1;
 
@@ -33,6 +34,16 @@ class AspListDisplay extends AspAtom{
 					}
 				}
 			}
+			return ald;
 		}
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" list display ");
+			bod1.prettyPrint();
+		}
 }

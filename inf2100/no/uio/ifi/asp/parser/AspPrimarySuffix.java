@@ -6,7 +6,7 @@ import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
-class AspPrimarySuffix extends AspSyntax{
+abstract class AspPrimarySuffix extends AspSyntax{
 	AspSubscription as;
 	AspArguments aa;
 
@@ -15,7 +15,7 @@ class AspPrimarySuffix extends AspSyntax{
 	}
 
 	static AspPrimarySuffix parse(Scanner s){
-		AspPrimarySuffix aps = new AspPrimarySuffix(s.curLineNum());
+		AspPrimarySuffix aps = null;
 
 		Main.log.enterParser("primary suffix");
 		if(s.curToken().kind == leftParToken){
@@ -31,4 +31,8 @@ class AspPrimarySuffix extends AspSyntax{
 		Main.log.leaveParser("primary suffix");
 		return aps;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
 }

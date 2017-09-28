@@ -16,4 +16,14 @@ class AspFloatLiteral extends AspAtom{
 		Main.log.leaveParser("float literal");
 		return afl;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+
+	@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" float literal ");
+		}
 }

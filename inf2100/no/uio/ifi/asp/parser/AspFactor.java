@@ -49,4 +49,37 @@ class AspFactor extends AspSyntax{
 		Main.log.leaveParser("factor");
 		return af;
 	}
+
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			for (AspFactorOpr afo: factorOprTests) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" factor ");
+				}
+				afo.prettyPrint();
+				++nPrinted;
+			}
+			int nPrinted2 = 0;
+			for (AspPrimary ap: primaryTests) {
+				if (nPrinted2 > 0){
+					Main.log.prettyWrite(" factor ");
+				}
+				ap.prettyPrint();
+				++nPrinted2;
+			}
+			int nPrinted3 = 0;
+			for (AspFactorPrefix afp: prefixTests) {
+				if (nPrinted3 > 0){
+					Main.log.prettyWrite(" factor ");
+				}
+				afp.prettyPrint();
+				++nPrinted3;
+			}
+		}
 }

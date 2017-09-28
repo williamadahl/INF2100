@@ -4,37 +4,44 @@ import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
 import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
+import java.util.ArrayList;
 
 
 public class AspExpr extends AspSyntax {
-    //-- Must be changed in part 2:
-    // ArrayList<AspAndTest> andTests = new ArrayList<>();
+
+    ArrayList<AspAndTest> andTests = new ArrayList<>();
 
     AspExpr(int n) {
 	     super(n);
     }
 
-
     public static AspExpr parse(Scanner s) {
-	Main.log.enterParser("expr");
+      AspExpr ae = new AspExpr(s.curLineNum());
+	     Main.log.enterParser("expr");
 
-	//-- Must be changed in part 2:
-	AspExpr ae = null;
+       while(true){
+         ae.andTests.add(AspAndTest.parse(s));
+         s.readNextToken();
+         if(s.curToken().kind != orToken){
+           break;
+         }
+         skip(s, orToken);
+       }
 
-	Main.log.leaveParser("expr");
-	return ae;
-    }
+	      Main.log.leaveParser("expr");
+	      return ae;
+      }
 
 
     @Override
     public void prettyPrint() {
-	//-- Must be changed in part 2:
+  
     }
 
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 	//-- Must be changed in part 3:
-	return null;
+	     return null;
     }
 }

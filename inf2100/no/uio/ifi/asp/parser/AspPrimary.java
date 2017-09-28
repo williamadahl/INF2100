@@ -29,10 +29,27 @@ class AspPrimary extends AspSyntax{
 			ap.aps.add(AspPrimarySuffix.parse(s));
 			s.readNextToken();
 		}
-
-
-
-
 		Main.log.leaveParser("primary");
+		return ap;
 	}
+
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+		@Override
+		void prettyPrint() {
+			int nPrinted = 0;
+			Main.log.prettyWrite(" primary suffix ");
+			aa.prettyPrint();
+
+			for (AspPrimarySuffix ap: aps) {
+				if (nPrinted > 0){
+					Main.log.prettyWrite(" pirmary suffix ");
+				}
+				ap.prettyPrint();
+				++nPrinted;
+			}
+		}
+
 }

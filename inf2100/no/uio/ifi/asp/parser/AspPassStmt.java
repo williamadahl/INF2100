@@ -18,5 +18,12 @@ class AspPassStmt extends AspStmt{
     Main.log.leaveParser("pass");
     return aps;
   }
-
+  @Override
+    RuntimeValue eval(RuntimeScope curScope) {
+      return null;
+    }
+    @Override
+    void prettyPrint() {
+      Main.log.prettyWrite(" pass ");
+    }
 }

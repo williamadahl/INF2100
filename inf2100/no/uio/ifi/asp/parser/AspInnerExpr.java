@@ -31,4 +31,14 @@ class AspInnerExpr extends AspAtom{
 			}
 		}
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" inner expr ");
+			bod1.prettyPrint();
+		}
 }

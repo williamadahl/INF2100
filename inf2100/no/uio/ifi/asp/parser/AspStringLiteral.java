@@ -17,4 +17,13 @@ class AspStringLiteral extends AspAtom{
 		Main.log.leaveParser("string literal");
 		return asl;
 	}
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+			Main.log.prettyWrite(" string literal ");
+		}
 }

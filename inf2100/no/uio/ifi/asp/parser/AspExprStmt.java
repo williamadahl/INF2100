@@ -22,4 +22,17 @@ class AspExprStmt extends AspStmt{
 		Main.log.leaveParser("expr stmt");
 		return aes;
 	}
+
+	@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+		@Override
+		void prettyPrint() {
+
+			Main.log.prettyWrite(" expr statement ");
+			body.prettyPrint();
+		}
+
 }
