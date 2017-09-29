@@ -15,10 +15,12 @@ class AspPrimary extends AspSyntax{
 	}
 
 	static AspPrimary parse(Scanner s){
+		System.out.println("DETTE HER ER I PRIMARY: " + s.curToken().kind.toString());
 		Main.log.enterParser("primary");
 		AspPrimary ap = new AspPrimary(s.curLineNum());
 		ap.aa = AspAtom.parse(s);
-		skip(s, s.curToken().kind);
+		System.out.println("DETTE HER ER I PRIMARY: " + s.curToken().kind.toString());
+		//skip(s, s.curToken().kind);
 
 		while(true){
 			if(s.curToken().kind != leftParToken ||

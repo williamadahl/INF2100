@@ -19,6 +19,7 @@ abstract class AspAtom extends AspSyntax{
 	static AspAtom parse(Scanner s){
 		AspAtom a = null;
 		Main.log.enterParser("atom");
+		System.out.println("DETTE HER ER I ATOM: " + s.curToken().kind.toString());
 		switch (s.curToken().kind) {
 			case falseToken:
 			case trueToken:
@@ -47,7 +48,8 @@ abstract class AspAtom extends AspSyntax{
 			skip(s, noneToken);  break;
 			case stringToken:
 			a = AspStringLiteral.parse(s);
-			skip(s, stringToken);  break;
+			skip(s, stringToken);
+			break;
 			default:
 			parserError("Expected an expression atom but found a " +
 			s.curToken().kind + "!", s.curLineNum());

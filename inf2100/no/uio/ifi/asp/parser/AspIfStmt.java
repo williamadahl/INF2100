@@ -44,7 +44,7 @@ class AspIfStmt extends AspStmt{
 		}
 
 		@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
 			int nPrinted = 0;
 			for (AspExpr ae: aexp) {
 				if (nPrinted > 0){
@@ -59,6 +59,6 @@ class AspIfStmt extends AspStmt{
 				}
 				a.prettyPrint();
 				++nPrinted;
-			}
+			}*/
 		}
 }

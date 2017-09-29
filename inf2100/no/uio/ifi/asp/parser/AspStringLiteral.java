@@ -23,7 +23,7 @@ class AspStringLiteral extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(" string literal ");
+		void prettyPrint() {/*
+			Main.log.prettyWrite(" string literal ");*/
 		}
 }

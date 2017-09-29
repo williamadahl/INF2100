@@ -27,10 +27,10 @@ class AspReturnStmt extends AspStmt{
     }
 
     @Override
-    void prettyPrint() {
+    void prettyPrint() {/*
 
       Main.log.prettyWrite(" return ");
       ae.prettyPrint();
-
+         */
     }
 }

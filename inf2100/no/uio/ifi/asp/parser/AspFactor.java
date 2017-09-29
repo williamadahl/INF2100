@@ -17,8 +17,10 @@ class AspFactor extends AspSyntax{
 
 	static AspFactor parse(Scanner s) {
 		Main.log.enterParser("factor");
+		System.out.println("DETTE HER ER I FACTOR: " + s.curToken().kind.toString());
+
 		AspFactor af = new AspFactor(s.curLineNum());
-		s.readNextToken();
+		//s.readNextToken();
 		Token temp = s.curToken();
 		if(temp.kind == plusToken){
 			af.prefixTests.add(AspFactorPrefix.parse(s));

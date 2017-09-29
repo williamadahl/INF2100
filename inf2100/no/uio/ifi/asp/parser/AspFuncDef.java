@@ -39,7 +39,7 @@ class AspFuncDef extends AspStmt{
 
 
 	@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
 			int nPrinted = 0;
 			for (AspName an: aname) {
 				if (nPrinted > 0){
@@ -49,6 +49,6 @@ class AspFuncDef extends AspStmt{
 				++nPrinted;
 			}
 			Main.log.prettyWrite(" func def ");
-			pentHouse.prettyPrint();
+			pentHouse.prettyPrint();*/
 		}
 	}

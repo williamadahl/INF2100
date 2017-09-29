@@ -38,8 +38,8 @@ class AspSubscription extends AspPrimarySuffix{
 			return null;
 		}
 		@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
 			Main.log.prettyWrite(" subscription ");
-			body1.prettyPrint();
+			body1.prettyPrint();*/
 		}
 }

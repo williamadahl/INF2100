@@ -34,7 +34,7 @@ class AspIntegerLiteral extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(" integer literal ");
+		void prettyPrint() {/*
+			Main.log.prettyWrite(" integer literal ");*/
 		}
 }

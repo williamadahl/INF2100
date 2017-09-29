@@ -17,11 +17,14 @@ public class AspExpr extends AspSyntax {
 
     public static AspExpr parse(Scanner s) {
       AspExpr ae = new AspExpr(s.curLineNum());
+      System.out.println("DETTE HER ER I EXPR: " + s.curToken().kind.toString());
+
 	     Main.log.enterParser("expr");
 
        while(true){
          ae.andTests.add(AspAndTest.parse(s));
-         s.readNextToken();
+          s.readNextToken();
+          //skip(s, andToken);
          if(s.curToken().kind != orToken){
            break;
          }
@@ -29,13 +32,15 @@ public class AspExpr extends AspSyntax {
        }
 
 	      Main.log.leaveParser("expr");
+        System.out.println("DETTE HER ER I EXPR2: " + s.curToken().kind.toString());
+
 	      return ae;
       }
 
 
     @Override
     public void prettyPrint() {
-  
+
     }
 
 

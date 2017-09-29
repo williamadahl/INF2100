@@ -45,7 +45,7 @@ class AspArguments extends AspPrimarySuffix{
 		}
 
 		@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
 			int nPrinted = 0;
 			for (AspExpr ae: asex) {
 				if (nPrinted > 0){
@@ -53,6 +53,6 @@ class AspArguments extends AspPrimarySuffix{
 				}
 				ae.prettyPrint();
 				++nPrinted;
-			}
+			}*/
 		}
 }

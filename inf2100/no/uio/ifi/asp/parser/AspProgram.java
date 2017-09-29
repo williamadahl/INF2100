@@ -8,31 +8,43 @@ import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspProgram extends AspSyntax {
-    //-- Must be changed in part 2:
-    // ArrayList<AspStmt> stmts = new ArrayList<>();
+    ArrayList<AspStmt> stmts = new ArrayList<>();
 
     AspProgram(int n) {
-	super(n);
+	     super(n);
     }
 
 
     public static AspProgram parse(Scanner s) {
-	Main.log.enterParser("program");
+	     Main.log.enterParser("program");
+       System.out.println("DETTE HER ER I PROGRAM: " + s.curToken().kind.toString());
 
-	AspProgram ap = new AspProgram(s.curLineNum());
-	while (s.curToken().kind != eofToken) {
-	    //-- Must be changed in part 2:
-	    // ap.stmts.add(AspStmt.parse(s));
-	}
+	      AspProgram ap = new AspProgram(s.curLineNum());
+        System.out.println("eheheheh");
+	       while (s.curToken().kind != eofToken) {
+	          ap.stmts.add(AspStmt.parse(s));
+            if(s.curToken().kind == eofToken){
+              break;
+            }
+            System.out.println("DETTE HER ER I PROGRAM2: " + s.curToken().kind.toString());
+            s.readNextToken();
+	         }
 
-	Main.log.leaveParser("program");
-	return ap;
+	          Main.log.leaveParser("program");
+	          return ap;
     }
 
 
     @Override
     public void prettyPrint() {
-	//-- Must be changed in part 2:
+    	int nPrinted = 0;
+    	for (AspStmt ast: stmts) {
+    		if (nPrinted > 0){
+    			Main.log.prettyWrite(" program ");
+    		}
+    		ast.prettyPrint();
+    		++nPrinted;
+    		}
     }
 
 

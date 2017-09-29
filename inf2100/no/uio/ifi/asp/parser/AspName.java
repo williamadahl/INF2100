@@ -7,17 +7,14 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspName extends AspAtom{
-	AspSubscription body1;
-	AspExpr body2;
-
 	AspName(int n){
 		super(n);
 	}
 
 	static AspName parse(Scanner s){
 		AspName an = new AspName(s.curLineNum());
-			Main.log.enterParser("navn");
-			Main.log.leaveParser("navn");
+			Main.log.enterParser("name");
+			Main.log.leaveParser("name");
 			return an;
 	}
 	@Override
@@ -26,11 +23,19 @@ class AspName extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
+			Main.log.prettyWrite(" name ");*/
 			Main.log.prettyWrite(" name ");
-				body1.prettyPrint();
-				body2.prettyPrint();
+			s.nextToken();
+			if(s.curToken() == null){
+				Main.log.parserError("Did not expect eof", s.curLineNum());
 
 			}
+			else if(s.curToken().kind == equalToken){
+				Main.log.prettyWrite(" = ");
+			}
+			 //AspSubscription.prettyPrint();
+
+		}
 
 }

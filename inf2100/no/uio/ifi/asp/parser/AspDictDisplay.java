@@ -47,10 +47,12 @@ class AspDictDisplay extends AspAtom{
 	RuntimeValue eval(RuntimeScope curScope){
 		return null;
 	}
+
 	@Override
-	void prettyPrint() {
+
+	void prettyPrint() {/*
 		Main.log.prettyWrite(" dict display ");
 		atl.prettyPrint();
-		ae.prettyPrint();
+		ae.prettyPrint();*/
 	}
 }

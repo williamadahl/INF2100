@@ -33,10 +33,10 @@ class AspWhileStmt extends AspStmt {
 
       @Override
   		void prettyPrint() {
-
+        /*
   			Main.log.prettyWrite(" while ");
   			test.prettyPrint();
   			body.prettyPrint();
-
+        */
   		}
 }

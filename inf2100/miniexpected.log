@@ -1,6 +1,6 @@
 <program>
    1: navn = "Dag"
-  <statement>
+  <stmt>
     <assignment>
       <name>
       </name>
@@ -23,6 +23,5 @@
         </and test>
       </expr>
     </assignment>
-  </atom>
+  </stmt>
 </program>
-PP>  =  name 

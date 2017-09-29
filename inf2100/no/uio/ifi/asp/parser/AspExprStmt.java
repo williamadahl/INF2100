@@ -29,10 +29,10 @@ class AspExprStmt extends AspStmt{
 		}
 
 		@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
 
 			Main.log.prettyWrite(" expr statement ");
-			body.prettyPrint();
+			body.prettyPrint();*/
 		}
 
 }

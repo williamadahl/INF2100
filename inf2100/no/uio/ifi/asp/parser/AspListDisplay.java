@@ -42,8 +42,8 @@ class AspListDisplay extends AspAtom{
 			return null;
 		}
 		@Override
-		void prettyPrint() {
+		void prettyPrint() {/*
 			Main.log.prettyWrite(" list display ");
-			bod1.prettyPrint();
+			bod1.prettyPrint();*/
 		}
 }
