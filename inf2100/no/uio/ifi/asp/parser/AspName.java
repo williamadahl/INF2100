@@ -26,14 +26,17 @@ class AspName extends AspAtom{
 		void prettyPrint() {/*
 			Main.log.prettyWrite(" name ");*/
 			Main.log.prettyWrite(" name ");
-			s.nextToken();
-			if(s.curToken() == null){
-				Main.log.parserError("Did not expect eof", s.curLineNum());
+			//Main.log.prettyWrite(" = ");
 
-			}
-			else if(s.curToken().kind == equalToken){
-				Main.log.prettyWrite(" = ");
-			}
+
+			// s.nextToken();
+			// if(s.curToken() == null){
+			// 	Main.log.parserError("Did not expect eof", s.curLineNum());
+			//
+			// }
+			// else if(s.curToken().kind == equalToken){
+			// 	Main.log.prettyWrite(" = ");
+			// }
 			 //AspSubscription.prettyPrint();
 
 		}

@@ -16,10 +16,12 @@ abstract class AspPrimarySuffix extends AspSyntax{
 
 	static AspPrimarySuffix parse(Scanner s){
 		AspPrimarySuffix aps = null;
+		System.out.println("DETTE HER ER I PIMARYSUFFIX 1: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("primary suffix");
 		if(s.curToken().kind == leftParToken){
 				aps.aa = AspArguments.parse(s);
+				System.out.println("DETTE HER ER I PIMARYSUFFIX ARGUMENTS: " + s.curToken().kind.toString());
 				skip(s, rightParToken);
 
 		}else if(s.curToken().kind == leftBracketToken){
@@ -27,8 +29,12 @@ abstract class AspPrimarySuffix extends AspSyntax{
 				skip(s, rightBracketToken);
 		}else{
 			//Main.parserError("No brackets", s.curLineNum());
+			Main.log.leaveParser("primary suffix");
+			return aps;
 		}
 		Main.log.leaveParser("primary suffix");
+		System.out.println("DETTE HER ER I PIMARYSUFFIX 2: " + s.curToken().kind.toString());
+
 		return aps;
 	}
 	@Override

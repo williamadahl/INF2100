@@ -16,7 +16,7 @@ class AspExprStmt extends AspStmt{
 	static AspExprStmt parse(Scanner s){
 		Main.log.enterParser("expr stmt");
 		AspExprStmt aes = new AspExprStmt(s.curLineNum());
-		s.readNextToken();
+		//s.readNextToken();
 		aes.body = AspExpr.parse(s);
 		skip(s, newLineToken);
 		Main.log.leaveParser("expr stmt");
@@ -29,10 +29,11 @@ class AspExprStmt extends AspStmt{
 		}
 
 		@Override
-		void prettyPrint() {/*
+		public void prettyPrint() {/*
 
 			Main.log.prettyWrite(" expr statement ");
-			body.prettyPrint();*/
+			body.prettyPrint();
 		}
-
+ */
+ }
 }

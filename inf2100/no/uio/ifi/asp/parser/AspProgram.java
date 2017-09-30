@@ -10,6 +10,7 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 public class AspProgram extends AspSyntax {
     ArrayList<AspStmt> stmts = new ArrayList<>();
 
+
     AspProgram(int n) {
 	     super(n);
     }
@@ -37,14 +38,21 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public void prettyPrint() {
+
     	int nPrinted = 0;
     	for (AspStmt ast: stmts) {
+        Main.log.prettyWrite(" program ");
+        ast.prettyPrint();
+        System.out.println("{}");
     		if (nPrinted > 0){
     			Main.log.prettyWrite(" program ");
     		}
     		ast.prettyPrint();
+        System.out.println("{}");
+
     		++nPrinted;
     		}
+
     }
 
 

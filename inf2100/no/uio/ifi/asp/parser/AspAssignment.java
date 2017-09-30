@@ -51,8 +51,10 @@ class AspAssignment extends AspStmt{
 	}
 
 	@Override
-	void prettyPrint() {
-		test.prettyPrint();
+	public void prettyPrint() {
+		Main.log.prettyWrite(" 12323 ");
+
+		 test.prettyPrint();
 
 
 		int nPrinted = 0;
@@ -65,9 +67,9 @@ class AspAssignment extends AspStmt{
 		}
 		if(test == null){
 			test2.prettyPrint();
-		}else if(test2 == null){
+		}
+		else if(test2 == null){
 			test.prettyPrint();
 		}
 	}
-
 }

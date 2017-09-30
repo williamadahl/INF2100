@@ -16,18 +16,26 @@ class AspArguments extends AspPrimarySuffix{
 
 
 	static AspArguments parse(Scanner s){
+		System.out.println("DETTE HER ER I ARGUMENTS 1: " + s.curToken().kind.toString());
+
 		Main.log.enterParser("arguments");
 		AspArguments arar = new AspArguments(s.curLineNum());
 		skip(s, leftParToken);
 	while(true){
 		Token temp = s.curToken();
+		System.out.println("HER HAR DU TEMP: " + temp.kind.toString());
 		if(testToken(s, rightParToken)){
 			Main.log.leaveParser("arguments");
 			skip(s, rightParToken);
+			System.out.println("DETTE HER ER I ARGUMENTS 2: " + s.curToken().kind.toString());
 			return arar;
 		}else if(testToken(s, newLineToken)){
-			parserError("Expected a " + rightBracketToken + " but found a " +
-			s.curToken().kind + "!", s.curLineNum());
+			Main.log.leaveParser("arguments");
+			return arar;
+			// FORTSETT HERFRA AXAXAXAX
+			//
+			//parserError("Expected a " + rightBracketToken + " but found a " +
+			//s.curToken().kind + "!", s.curLineNum());
 		}else{
 			while(true){
 				arar.asex.add(AspExpr.parse(s));
@@ -37,8 +45,12 @@ class AspArguments extends AspPrimarySuffix{
 				}
 			}
 		}
+		// return arar;
 		}
+
 	}
+
+
 	@Override
 		public RuntimeValue eval(RuntimeScope curScope){
 			return null;

@@ -55,6 +55,7 @@ abstract class AspAtom extends AspSyntax{
 			s.curToken().kind + "!", s.curLineNum());
 		}
 		Main.log.leaveParser("atom");
+
 		return a;
 	}
 

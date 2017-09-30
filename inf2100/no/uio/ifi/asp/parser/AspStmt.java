@@ -7,17 +7,19 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 abstract class AspStmt extends AspSyntax{
+
 	AspStmt(int n){
 		super(n);
 	}
 
 	static AspStmt parse(Scanner s){
 		AspStmt a = null;
-		Main.log.enterParser("statement");
+		Main.log.enterParser("stmt");
 		System.out.println("DETTE HER ER I STATEMENT: " + s.curToken().kind.toString());
 
 		switch (s.curToken().kind) {
 			case nameToken:
+			case integerToken:
 			if (s.anyEqualToken()){
 				//now we know it is an assignment
 					a = AspAssignment.parse(s);
@@ -59,7 +61,7 @@ abstract class AspStmt extends AspSyntax{
 			s.curToken().kind + "!", s.curLineNum());
 		}
 		System.out.println("DETTE HER ER I STATEMENT2: " + s.curToken().kind.toString());
-		Main.log.leaveParser("atom");
+		Main.log.leaveParser("stmt");
 		return a;
 	}
 /*
@@ -96,15 +98,18 @@ abstract class AspStmt extends AspSyntax{
 
 	}
 */
+@Override
+public void prettyPrint() {
+	System.out.println("{}");
+
+	Main.log.prettyWrite(" Statement ");
+
+	//a.prettyPrint();
+
+}
 	@Override
 		RuntimeValue eval(RuntimeScope curScope) {
 			return null;
-		}
-	@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(" Statement ");
-			//a.prettyPrint();
-
 		}
 
 

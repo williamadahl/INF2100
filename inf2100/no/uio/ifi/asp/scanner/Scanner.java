@@ -224,9 +224,9 @@ public class Scanner {
     int i = 0;
 
     //Basecase, if nothing is sent - exit from method
-    System.out.println("Message parsed : " + msg);
+    //System.out.println("Message parsed : " + msg);
     if(msg == null || msg == " " || msg.length() == 0) {
-      System.out.println("We are free");
+    //  System.out.println("We are free");
       return;
     }
 
@@ -236,7 +236,7 @@ public class Scanner {
     while((isDigit(msg.charAt(i))) || (isLetterAZ(msg.charAt(i)))){
       //If no weird symbol is found, the whole msg is sent to checkEnums
       if(i == msg.length()-1){
-        System.out.println("Done, sending " + msg + " to checkEnums");
+    //    System.out.println("Done, sending " + msg + " to checkEnums");
         checkEnums(msg);
         return;
       }
@@ -309,7 +309,7 @@ public class Scanner {
           */
           if(msg.charAt(j) == '"'){
             quoteText = msg.substring(i, j+1);
-            System.out.println("Sending quoteText to checkEnums: " + quoteText);
+          //  System.out.println("Sending quoteText to checkEnums: " + quoteText);
             checkEnums(quoteText);
             //End of line, don't need to do anything more
             if(j+1 > msg.length()){
@@ -317,7 +317,7 @@ public class Scanner {
               return;
             }else{
               afterText = msg.substring(j+1, msg.length());
-              System.out.println("AfterText to checkString: " + afterText);
+          //    System.out.println("AfterText to checkString: " + afterText);
               checkString(afterText);
               return;
             }
@@ -339,7 +339,7 @@ public class Scanner {
           */
           if(msg.charAt(j) == '\''){
             quoteText = msg.substring(i, j+1);
-            System.out.println("Sending apostrophe string to checkEnums: " + quoteText);
+            //System.out.println("Sending apostrophe string to checkEnums: " + quoteText);
 
             checkEnums(quoteText);
             //End of line, don't need to do anything more
@@ -348,7 +348,7 @@ public class Scanner {
               return;
             }else{
               afterText = msg.substring(j+1, msg.length());
-              System.out.println("AfterText to checkString: " + afterText);
+            //  System.out.println("AfterText to checkString: " + afterText);
               checkString(afterText);
               return;
             }
@@ -362,9 +362,9 @@ public class Scanner {
       * Ignore everything behind #
       */
       if(msg.charAt(i) == '#'){
-        System.out.println("Met hashtag or end, sending shit");
+      //  System.out.println("Met hashtag or end, sending shit");
         beforeText = msg.substring(0, i);
-        System.out.println("Hashtag= Sending beforeText to checkString: " + beforeText);
+      //  System.out.println("Hashtag= Sending beforeText to checkString: " + beforeText);
         checkString(beforeText);
         return;
       }
@@ -378,12 +378,12 @@ public class Scanner {
         if(msg.charAt(i) == bracketList[l]){
           singleOp = msg.charAt(i);
           beforeText = msg.substring(0, i);
-          System.out.println("Sending beforeText to checkString " + beforeText);
+      //    System.out.println("Sending beforeText to checkString " + beforeText);
           checkString(beforeText);
           checkEnums(Character.toString(singleOp));
-          System.out.println("Sending bracket to checkEnums " + singleOp);
+        //  System.out.println("Sending bracket to checkEnums " + singleOp);
           afterText =  msg.substring(i+1, msg.length());
-          System.out.println("Sending afterText to checkString " + afterText);
+        //  System.out.println("Sending afterText to checkString " + afterText);
           checkString(afterText);
           return;
         }
@@ -396,10 +396,10 @@ public class Scanner {
       int counter = i+1;
       if(counter == msg.length()){
         beforeText = msg.substring(0, i);
-        System.out.println("Sending beforeText to checkEnums: "+ beforeText);
+      //  System.out.println("Sending beforeText to checkEnums: "+ beforeText);
         checkEnums(beforeText);
         singleOp = msg.charAt(i);
-        System.out.println("Sending singleOp to checkEnums: "+ singleOp);
+    //    System.out.println("Sending singleOp to checkEnums: "+ singleOp);
 
         checkEnums(Character.toString(singleOp));
         return;
@@ -426,12 +426,12 @@ public class Scanner {
             singleOp = msg.charAt(counter);
 
             beforeText = msg.substring(0, counter);
-            System.out.println("Sending beforeText to checkString " + beforeText);
+          //  System.out.println("Sending beforeText to checkString " + beforeText);
             checkString(beforeText);
             checkEnums(Character.toString(singleOp));
-            System.out.println("Sending bracket to checkEnums " + singleOp);
+        //    System.out.println("Sending bracket to checkEnums " + singleOp);
             afterText =  msg.substring(counter+1, msg.length());
-            System.out.println("Sending afterText to checkString " + afterText);
+          //  System.out.println("Sending afterText to checkString " + afterText);
             checkString(afterText);
             return;
           }
@@ -445,14 +445,14 @@ public class Scanner {
       * Send text after the operator(s) to checkString
       */
       beforeText = msg.substring(0, i);
-      System.out.println("BeforeText sendes til checkEnums: " + beforeText);
+    //  System.out.println("BeforeText sendes til checkEnums: " + beforeText);
       checkEnums(beforeText);
       op = msg.substring(i, counter);
-      System.out.println("Sending this to OPCheck" + op);
-      System.out.println("Operator sendes til checkEnums: " + op);
+    //  System.out.println("Sending this to OPCheck" + op);
+    //  System.out.println("Operator sendes til checkEnums: " + op);
       checkEnums(op);
       afterText = msg.substring(counter, msg.length());
-      System.out.println("AfterText sendes til checkString: " + afterText);
+      //System.out.println("AfterText sendes til checkString: " + afterText);
       checkString(afterText);
       return;
     }
@@ -481,7 +481,7 @@ public class Scanner {
       }
 
     }
-    System.out.println("Error, something shouldn't hit here");
+  //  System.out.println("Error, something shouldn't hit here");
     return;
   }
 
@@ -492,7 +492,7 @@ public class Scanner {
   public void checkEnums(String msg){
     //Message is null, exiting..
     if(msg == null){
-      System.out.println("msg is NULL");
+  //    System.out.println("msg is NULL");
       return;
     }
     if(msg.length() == 0){
@@ -505,7 +505,7 @@ public class Scanner {
       Token tok = new Token(kind, curLineNum());
       tok.stringLit = msg;
       curLineTokens.add(tok);
-      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+  //    System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 
       return;
     }
@@ -517,7 +517,7 @@ public class Scanner {
       Token tok = new Token(kind, curLineNum());
       tok.stringLit = msg;
       curLineTokens.add(tok);
-      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+  //    System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
 
     }
     //If the first symbol is a char, make it a nameToken
@@ -526,10 +526,10 @@ public class Scanner {
       if(temp != null){
         Token tok = new Token(temp, curLineNum());
         curLineTokens.add(tok);
-        System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+    //    System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
         return;
       }else{
-        System.out.println("KeywordToken not found: " + msg);
+    //    System.out.println("KeywordToken not found: " + msg);
 
       }
       //Else, create a name token
@@ -538,7 +538,7 @@ public class Scanner {
       tok.name = msg;
 
       curLineTokens.add(tok);
-      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+  //    System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
     }
     //If the symbol is digit, create int / float token
     else if(isDigit(msg.charAt(0))){
@@ -550,7 +550,7 @@ public class Scanner {
           Token tok = new Token(kind, curLineNum());
           tok.floatLit = Double.parseDouble(msg);
           curLineTokens.add(tok);
-          System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+      //    System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
           return;
         }
       }
@@ -569,9 +569,9 @@ public class Scanner {
       if(temp != null){
         Token tok = new Token(temp, curLineNum());
         curLineTokens.add(tok);
-        System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+  //      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
       }else{
-        System.out.println(ANSI_RED + "OperatorToken not found"+ ANSI_RESET);
+    //    System.out.println(ANSI_RED + "OperatorToken not found"+ ANSI_RESET);
         operatorCheck(msg);
       }
     }
@@ -595,7 +595,7 @@ public class Scanner {
       scannerError("String literal not terminated!");
       System.exit(1);
     }else{
-      System.out.println("Quotes looks alrighty");
+  //    System.out.println("Quotes looks alrighty");
     }
   }
 
@@ -609,7 +609,7 @@ public class Scanner {
         return t;
       }
     }
-    System.out.println("Tokenkind not found: " + msg);
+  //  System.out.println("Tokenkind not found: " + msg);
     return null;
   }
 
@@ -654,7 +654,7 @@ public class Scanner {
       curLineTokens.add(new Token(dedentToken, curLineNum()));
     }
     if(n != theStack.peek()){
-      System.out.println(ANSI_RED +"Indent error " + ANSI_RESET);
+  //    System.out.println(ANSI_RED +"Indent error " + ANSI_RESET);
     }
     return;
   }

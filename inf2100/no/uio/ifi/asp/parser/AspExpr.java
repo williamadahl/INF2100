@@ -23,8 +23,8 @@ public class AspExpr extends AspSyntax {
 
        while(true){
          ae.andTests.add(AspAndTest.parse(s));
-          s.readNextToken();
           //skip(s, andToken);
+          //s.readNextToken();
          if(s.curToken().kind != orToken){
            break;
          }
