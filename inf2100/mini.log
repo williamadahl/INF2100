@@ -25,8 +25,8 @@
         </and test>
       </expr>
     </assignment>
-  </stmt>
    4: print("Hei,", navn)
+  </stmt>
   <stmt>
     <expr stmt>
       <expr>
@@ -79,3 +79,15 @@
                           </and test>
                         </expr>
                       </arguments>
+                    </primary suffix>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </expr stmt>
+  </stmt>
+</program>
+PP>  program  12323  name  12323  name  program  program 

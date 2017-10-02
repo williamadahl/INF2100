@@ -559,7 +559,7 @@ public class Scanner {
       Token tok = new Token(kind, curLineNum());
       tok.integerLit = Integer.parseInt(msg);
       curLineTokens.add(tok);
-      System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
+      //System.out.println(ANSI_GREEN +"created and added: " + tok.toString() +ANSI_RESET);
     }
     //It's otherwise an operator token, need to iterate through the list of
     //known operators and assign new Token on that kind

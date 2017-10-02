@@ -7,6 +7,15 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspPrimary extends AspSyntax{
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
 	AspAtom aa;
 	ArrayList<AspPrimarySuffix> aps = new ArrayList<>();
 
@@ -25,7 +34,7 @@ class AspPrimary extends AspSyntax{
 		while((s.curToken().kind == leftParToken) || (s.curToken().kind == leftBracketToken)){
 				ap.aps.add(AspPrimarySuffix.parse(s));
 				System.out.println("DETTE HER ER I PRIMARY 3: " + s.curToken().kind.toString());
-				s.readNextToken();
+				//s.readNextToken();
 		}
 
 		Main.log.leaveParser("primary");
@@ -38,17 +47,17 @@ class AspPrimary extends AspSyntax{
 		}
 		@Override
 		void prettyPrint() {
-			int nPrinted = 0;
-			Main.log.prettyWrite(" primary suffix ");
-			aa.prettyPrint();
-
-			for (AspPrimarySuffix ap: aps) {
-				if (nPrinted > 0){
-					Main.log.prettyWrite(" pirmary suffix ");
-				}
-				ap.prettyPrint();
-				++nPrinted;
-			}
+			// int nPrinted = 0;
+			// Main.log.prettyWrite(" primary suffix ");
+			// aa.prettyPrint();
+			//
+			// for (AspPrimarySuffix ap: aps) {
+			// 	if (nPrinted > 0){
+			// 		Main.log.prettyWrite(" pirmary suffix ");
+			// 	}
+			// 	ap.prettyPrint();
+			// 	++nPrinted;
+			// }
 		}
 
 }
