@@ -39,6 +39,32 @@ class AspAssignment extends AspStmt{
 				asss.as.add(AspSubscription.parse(s));
 				if(s.curToken().kind == equalToken){
 					skip(s, equalToken);
+					asss.test2 = AspExpr.parse(s);
+					skip(s, newLineToken);
+					Main.log.leaveParser("assignment");
+					System.out.println("DETTE HER ER I ASSIGNMENT3: " + s.curToken().kind.toString());
+					return asss;
+				}
+			}
+		}
+		else{
+
+			skip(s, equalToken);
+			asss.test2 = AspExpr.parse(s);
+			skip(s, newLineToken);
+			System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString());
+			Main.log.leaveParser("assignment");
+			return asss;
+		}
+	}
+
+
+/*
+		if(s.curToken().kind == leftBracketToken){
+			while(true){
+				asss.as.add(AspSubscription.parse(s));
+				if(s.curToken().kind == equalToken){
+					skip(s, equalToken);
 					break;
 				}
 			}
@@ -48,19 +74,19 @@ class AspAssignment extends AspStmt{
 			skip(s, equalToken);
 
 			asss.test2 = AspExpr.parse(s);
-			skip(s, newLineToken);
 			Main.log.leaveParser("assignment");
-			System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString() /*s.curToken().kind.toString()*/);
+			skip(s, newLineToken);
+			System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString());
 			return asss;
 		}
 		asss.test2 = AspExpr.parse(s);
-		skip(s, newLineToken);
 		Main.log.leaveParser("assignment");
+		// skip(s, newLineToken);
 		System.out.println("DETTE HER ER I ASSIGNMENT3: " + s.curToken().kind.toString());
 
 		return asss;
 	}
-
+*/
 	@Override
 	RuntimeValue eval(RuntimeScope curScope){
 		return null;

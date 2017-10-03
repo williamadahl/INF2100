@@ -26,9 +26,9 @@
           </not test>
         </and test>
       </expr>
-   6: primes = [True] * (n+1)
     </assignment>
   </stmt>
+   6: primes = [True] * (n+1)
   <stmt>
     <assignment>
       <name>
@@ -105,10 +105,10 @@
           </not test>
         </and test>
       </expr>
-   7: 
-   8: def find_primes():
     </assignment>
   </stmt>
+   7: 
+   8: def find_primes():
   <stmt>
     <func def>
       <name>
@@ -137,9 +137,9 @@
                 </not test>
               </and test>
             </expr>
-  10:    while i1 <= n:
           </assignment>
         </stmt>
+  10:    while i1 <= n:
         <stmt>
           <while stmt>
             <expr>
@@ -204,9 +204,9 @@
                       </not test>
                     </and test>
                   </expr>
-  12:       while i2 <= n:
                 </assignment>
               </stmt>
+  12:       while i2 <= n:
               <stmt>
                 <while stmt>
                   <expr>
@@ -284,8 +284,8 @@
                           </and test>
                         </expr>
                       </assignment>
-  14:          i2 = i2 + i1
                     </stmt>
+  14:          i2 = i2 + i1
                     <stmt>
                       <assignment>
                         <name>
@@ -318,9 +318,9 @@
                             </not test>
                           </and test>
                         </expr>
-  15:       i1 = i1+1
                       </assignment>
                     </stmt>
+  15:       i1 = i1+1
                   </suite>
                 </while stmt>
               </stmt>
@@ -356,10 +356,10 @@
                       </not test>
                     </and test>
                   </expr>
-  16: 
-  17: def w4(n):
                 </assignment>
               </stmt>
+  16: 
+  17: def w4(n):
             </suite>
           </while stmt>
         </stmt>
@@ -461,8 +461,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-  20:     elif n <= 99:
               </stmt>
+  20:     elif n <= 99:
             </suite>
             <expr>
               <and test>
@@ -549,8 +549,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-  22:     elif n <= 999:
               </stmt>
+  22:     elif n <= 999:
             </suite>
             <expr>
               <and test>
@@ -637,8 +637,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-  24:     else:
               </stmt>
+  24:     else:
             </suite>
             <suite>
   25:         return str(n)
@@ -685,10 +685,10 @@
                     </and test>
                   </expr>
                 </return stmt>
+              </stmt>
   26:    
   27: 
   28: def list_primes():
-              </stmt>
             </suite>
           </if stmt>
         </stmt>
@@ -723,9 +723,9 @@
                 </not test>
               </and test>
             </expr>
-  30:     line_buf = ''
           </assignment>
         </stmt>
+  30:     line_buf = ''
         <stmt>
           <assignment>
             <name>
@@ -748,9 +748,9 @@
                 </not test>
               </and test>
             </expr>
-  31:     i = 2
           </assignment>
         </stmt>
+  31:     i = 2
         <stmt>
           <assignment>
             <name>
@@ -773,9 +773,9 @@
                 </not test>
               </and test>
             </expr>
-  32:     while i <= n:
           </assignment>
         </stmt>
+  32:     while i <= n:
         <stmt>
           <while stmt>
             <expr>
@@ -965,8 +965,8 @@
                                 </and test>
                               </expr>
                             </expr stmt>
-  36:              line_buf = ''
                           </stmt>
+  36:              line_buf = ''
                           <stmt>
                             <assignment>
                               <name>
@@ -989,9 +989,9 @@
                                   </not test>
                                 </and test>
                               </expr>
-  37:           line_buf = line_buf + w4(i)
                             </assignment>
                           </stmt>
+  37:           line_buf = line_buf + w4(i)
                         </suite>
                       </if stmt>
                     </stmt>
@@ -1049,9 +1049,9 @@
                             </not test>
                           </and test>
                         </expr>
-  38:           n_printed = n_printed + 1
                       </assignment>
                     </stmt>
+  38:           n_printed = n_printed + 1
                     <stmt>
                       <assignment>
                         <name>
@@ -1084,9 +1084,9 @@
                             </not test>
                           </and test>
                         </expr>
-  39:        i = i+1
                       </assignment>
                     </stmt>
+  39:        i = i+1
                   </suite>
                 </if stmt>
               </stmt>
@@ -1122,9 +1122,9 @@
                       </not test>
                     </and test>
                   </expr>
-  40:     print(line_buf)
                 </assignment>
               </stmt>
+  40:     print(line_buf)
             </suite>
           </while stmt>
         </stmt>
@@ -1171,10 +1171,10 @@
               </and test>
             </expr>
           </expr stmt>
+        </stmt>
   41: 
   42: 
   43: find_primes()
-        </stmt>
       </suite>
     </func def>
   </stmt>
@@ -1203,8 +1203,8 @@
         </and test>
       </expr>
     </expr stmt>
-  44: list_primes()
   </stmt>
+  44: list_primes()
   <stmt>
     <expr stmt>
       <expr>
@@ -1232,3 +1232,40 @@
     </expr stmt>
   </stmt>
 </program>
+PP> n = 1000
+PP> primes = [True] * (n + 1)
+PP> def find_primes ():
+PP>   i1 = 2
+PP>   while i1 <= n:
+PP>     i2 = 2 * i1
+PP>     while i2 <= n:
+PP>       primes[i2] = False
+PP>       i2 = i2 + i1
+PP>     i1 = i1 + 1
+PP> 
+PP> def w4 (n):
+PP>   if n <= 9:
+PP>     return "   " + str(n)
+PP>   elif n <= 99:
+PP>     return "  " + str(n)
+PP>   elif n <= 999:
+PP>     return " " + str(n)
+PP>   else:
+PP>     return str(n)
+PP> 
+PP> def list_primes ():
+PP>   n_printed = 0
+PP>   line_buf = ""
+PP>   i = 2
+PP>   while i <= n:
+PP>     if primes[i]:
+PP>       if n_printed > 0 and n_printed % 10 == 0:
+PP>         print(line_buf)
+PP>         line_buf = ""
+PP>       line_buf = line_buf + w4(i)
+PP>       n_printed = n_printed + 1
+PP>     i = i + 1
+PP>   print(line_buf)
+PP> 
+PP> find_primes()
+PP> list_primes()

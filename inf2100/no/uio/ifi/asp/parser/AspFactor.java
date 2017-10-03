@@ -33,10 +33,47 @@ class AspFactor extends AspSyntax{
 		Token temp = s.curToken();
 		if(temp.kind == plusToken){
 			af.prefixTests.add(AspFactorPrefix.parse(s));
-			skip(s, plusToken);
+			while(true){
+				af.primaryTests.add(AspPrimary.parse(s));
+				if(s.curToken().kind == astToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, astToken);
+				}else if(s.curToken().kind == slashToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, slashToken);
+				}else if(s.curToken().kind == percentToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, percentToken);
+				}else if(s.curToken().kind == doubleSlashToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, doubleSlashToken);
+				}else {
+					break;
+				}
+			}
+
+			// skip(s, plusToken);
 		}else if(temp.kind == minusToken){
 			af.prefixTests.add(AspFactorPrefix.parse(s));
-			skip(s, minusToken);
+			// skip(s, minusToken);
+			while(true){
+				af.primaryTests.add(AspPrimary.parse(s));
+				if(s.curToken().kind == astToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, astToken);
+				}else if(s.curToken().kind == slashToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, slashToken);
+				}else if(s.curToken().kind == percentToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, percentToken);
+				}else if(s.curToken().kind == doubleSlashToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+					//skip(s, doubleSlashToken);
+				}else {
+					break;
+				}
+			}
 		}else{
 				while(true){
 					af.primaryTests.add(AspPrimary.parse(s));

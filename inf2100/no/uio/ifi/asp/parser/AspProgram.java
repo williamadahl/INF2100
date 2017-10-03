@@ -38,7 +38,7 @@ public class AspProgram extends AspSyntax {
               break;
             }
             System.out.println("DETTE HER ER I PROGRAM2: " + s.curToken().kind.toString());
-            //s.readNextToken();
+             //s.readNextToken();
 	         }
 	          Main.log.leaveParser("program");
 	          return ap;

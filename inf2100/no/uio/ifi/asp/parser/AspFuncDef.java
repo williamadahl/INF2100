@@ -24,21 +24,35 @@ class AspFuncDef extends AspStmt{
   }
 	static AspFuncDef parse(Scanner s){
 		Main.log.enterParser("func def");
+		System.out.println(ANSI_BLUE + "DETT ER I FUNCDEF: " + s.curToken().kind.toString() + ANSI_RESET);
 		AspFuncDef afd = new AspFuncDef(s.curLineNum());
 		skip(s, defToken);
 		afd.aname.add(AspName.parse(s));
 		skip(s, leftParToken);
+
+		if(s.curToken().kind == rightParToken){
+			skip(s,rightParToken);
+			skip(s,colonToken);
+			afd.pentHouse = AspSuite.parse(s);
+			Main.log.leaveParser("func def");
+			System.out.println(ANSI_BLUE + "DETT ER I FUNCDEF LEAVE: " + s.curToken().kind.toString() + ANSI_RESET);
+
+			return afd;
+		}
+
 		while(true){
 			afd.aname.add(AspName.parse(s));
-			skip(s, nameToken);
 			if(s.curToken().kind != commaToken){
 				break;
 			}
+			skip(s,commaToken);
 		}
 		skip(s,rightParToken);
 		skip(s,colonToken);
 		afd.pentHouse = AspSuite.parse(s);
 		Main.log.leaveParser("func def");
+		System.out.println(ANSI_BLUE + "DETT ER I FUNCDEF LEAVE: " + s.curToken().kind.toString() + ANSI_RESET);
+
 		return afd;
 	}
 	@Override

@@ -35,23 +35,21 @@ class AspDictDisplay extends AspAtom{
 			if(testToken(s, rightBraceToken)){
 				Main.log.leaveParser("dict display");
 				skip(s, s.curToken().kind);
-
+				Main.log.leaveParser("dict display");
 				return add;
-			}else if(testToken(s, newLineToken)){
-				parserError("Expected a " + rightBraceToken + " but found a " +
-				s.curToken().kind + "!", s.curLineNum());
 			}else{
 				add.atl = AspStringLiteral.parse(s);
-				skip(s, stringToken);
+				//skip(s, stringToken);
 				skip(s, colonToken);
 				add.ae = AspExpr.parse(s);
-				s.readNextToken();
-
+				System.out.println("HER HAR DU SHIT ETTER DICTDISPLAY: " + s.curToken().kind.toString());
 				if(s.curToken().kind != commaToken){
 					break;
 				}
+				s.readNextToken();
 			}
 		}
+		skip(s, rightBraceToken);
 		Main.log.leaveParser("dict display");
 		return add;
 	}

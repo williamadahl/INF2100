@@ -22,9 +22,13 @@ class AspName extends AspAtom{
 
 	static AspName parse(Scanner s){
 		AspName an = new AspName(s.curLineNum());
+		System.out.println(ANSI_PURPLE + "DETT ER I NAME " + s.curToken().kind.toString() + ANSI_RESET);
+
 			Main.log.enterParser("name");
 			Main.log.leaveParser("name");
 			skip(s, nameToken);
+			System.out.println(ANSI_PURPLE + "DETT ER I NAME LEAVE " + s.curToken().kind.toString() + ANSI_RESET);
+
 			return an;
 	}
 	@Override

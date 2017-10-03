@@ -16,7 +16,7 @@
       <suite>
    7:    if n == 0:
         <stmt>
-          <if statement>
+          <if stmt>
             <expr>
               <and test>
                 <not test>
@@ -50,7 +50,7 @@
             <suite>
    8:       return m
               <stmt>
-                <return>
+                <return stmt>
                   <expr>
                     <and test>
                       <not test>
@@ -69,14 +69,14 @@
                       </not test>
                     </and test>
                   </expr>
-                </return>
-   9:    else:
+                </return stmt>
               </stmt>
+   9:    else:
             </suite>
             <suite>
   10:       return GCD(n, m % n)
               <stmt>
-                <return>
+                <return stmt>
                   <expr>
                     <and test>
                       <not test>
@@ -143,12 +143,12 @@
                       </not test>
                     </and test>
                   </expr>
-                </return>
+                </return stmt>
+              </stmt>
   11: 
   12: v1 = int(input("A number: "))
-              </stmt>
             </suite>
-          </if statement>
+          </if stmt>
         </stmt>
       </suite>
     </func def>
@@ -219,9 +219,9 @@
           </not test>
         </and test>
       </expr>
-  13: v2 = int(input("Another number: "))
     </assignment>
   </stmt>
+  13: v2 = int(input("Another number: "))
   <stmt>
     <assignment>
       <name>
@@ -288,10 +288,10 @@
           </not test>
         </and test>
       </expr>
-  14: 
-  15: res = GCD(v1,v2)
     </assignment>
   </stmt>
+  14: 
+  15: res = GCD(v1,v2)
   <stmt>
     <assignment>
       <name>
@@ -354,9 +354,9 @@
           </not test>
         </and test>
       </expr>
-  16: print('GCD('+str(v1)+','+str(v2)+') =', res)
     </assignment>
   </stmt>
+  16: print('GCD('+str(v1)+','+str(v2)+') =', res)
   <stmt>
     <expr stmt>
       <expr>
@@ -504,3 +504,13 @@
     </expr stmt>
   </stmt>
 </program>
+PP> def GCD (m, n):
+PP>   if n == 0:
+PP>     return m
+PP>   else:
+PP>     return GCD(n, m % n)
+PP> 
+PP> v1 = int(input("A number: "))
+PP> v2 = int(input("Another number: "))
+PP> res = GCD(v1, v2)
+PP> print("GCD(" + str(v1) + "," + str(v2) + ") =", res)

@@ -30,6 +30,13 @@ abstract class AspStmt extends AspSyntax{
 		switch (s.curToken().kind) {
 			case nameToken:
 			case integerToken:
+			case stringToken:
+			case minusToken:
+			case floatToken:
+			case notToken:
+			case falseToken:
+			case leftBracketToken:
+			case leftBraceToken:
 			if (s.anyEqualToken()){
 				//now we know it is an assignment
 					a = AspAssignment.parse(s);
@@ -70,6 +77,7 @@ abstract class AspStmt extends AspSyntax{
 			s.curToken().kind + "!", s.curLineNum());
 		}
 		System.out.println("DETTE HER ER I STATEMENT2: " + s.curToken().kind.toString());
+
 		Main.log.leaveParser("stmt");
 		return a;
 	}

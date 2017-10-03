@@ -23,11 +23,14 @@ class AspReturnStmt extends AspStmt{
   }
   static AspReturnStmt parse(Scanner s){
     AspReturnStmt ars = new AspReturnStmt(s.curLineNum());
-    Main.log.enterParser("return");
+    System.out.println("DETTE HER ER I RETURN: " +s.curToken().kind.toString());
+    Main.log.enterParser("return stmt");
     skip(s, returnToken);
     ars.ae = AspExpr.parse(s);
     skip(s, newLineToken);
-    Main.log.leaveParser("return");
+    Main.log.leaveParser("return stmt");
+    System.out.println("DETTE HER ER I RETURN LEAVE: " +s.curToken().kind.toString());
+
     return ars;
   }
   @Override

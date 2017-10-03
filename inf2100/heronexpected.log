@@ -127,8 +127,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-   8:   elif b < 1:
               </stmt>
+   8:   elif b < 1:
             </suite>
             <expr>
               <and test>
@@ -241,8 +241,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-  10:   else:
               </stmt>
+  10:   else:
             </suite>
             <suite>
   11:     return a
@@ -267,10 +267,10 @@
                     </and test>
                   </expr>
                 </return stmt>
+              </stmt>
   12:   
   13: 
   14: def rough_log (x):
-              </stmt>
             </suite>
           </if stmt>
         </stmt>
@@ -380,8 +380,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-  17:   if x < 0.1:
               </stmt>
+  17:   if x < 0.1:
             </suite>
           </if stmt>
         </stmt>
@@ -480,8 +480,8 @@
                     </and test>
                   </expr>
                 </return stmt>
-  19:   return 1
               </stmt>
+  19:   return 1
             </suite>
           </if stmt>
         </stmt>
@@ -506,10 +506,10 @@
               </and test>
             </expr>
           </return stmt>
+        </stmt>
   20: 
   21: 
   22: def sqrt (v):
-        </stmt>
       </suite>
     </func def>
   </stmt>
@@ -569,10 +569,10 @@
                 </not test>
               </and test>
             </expr>
-  24: 
-  25:   d = rough_log(v)
           </assignment>
         </stmt>
+  24: 
+  25:   d = rough_log(v)
         <stmt>
           <assignment>
             <name>
@@ -617,9 +617,9 @@
                 </not test>
               </and test>
             </expr>
-  26:   if d%2 == 1:
           </assignment>
         </stmt>
+  26:   if d%2 == 1:
         <stmt>
           <if stmt>
             <expr>
@@ -789,8 +789,8 @@
                     </and test>
                   </expr>
                 </assignment>
-  28:   else:
               </stmt>
+  28:   else:
             </suite>
             <suite>
   29:     x[0] = pow(6*10, (d-2)//2)
@@ -921,9 +921,9 @@
                     </and test>
                   </expr>
                 </assignment>
+              </stmt>
   30: 
   31:   ix = 0
-              </stmt>
             </suite>
           </if stmt>
         </stmt>
@@ -949,9 +949,9 @@
                 </not test>
               </and test>
             </expr>
-  32:   while ix < 11:
           </assignment>
         </stmt>
+  32:   while ix < 11:
         <stmt>
           <while stmt>
             <expr>
@@ -1096,9 +1096,9 @@
                       </not test>
                     </and test>
                   </expr>
-  34:     ix = ix+1
                 </assignment>
               </stmt>
+  34:     ix = ix+1
               <stmt>
                 <assignment>
                   <name>
@@ -1131,9 +1131,9 @@
                       </not test>
                     </and test>
                   </expr>
-  35:     x[ix] = tmp
                 </assignment>
               </stmt>
+  35:     x[ix] = tmp
               <stmt>
                 <assignment>
                   <name>
@@ -1177,8 +1177,8 @@
                     </and test>
                   </expr>
                 </assignment>
-  36:   return x[11]
               </stmt>
+  36:   return x[11]
             </suite>
           </while stmt>
         </stmt>
@@ -1225,11 +1225,11 @@
               </and test>
             </expr>
           </return stmt>
+        </stmt>
   37: 
   38: 
   39: # The main program:
   40: v = float(input("Give a number: "))
-        </stmt>
       </suite>
     </func def>
   </stmt>
@@ -1299,9 +1299,9 @@
           </not test>
         </and test>
       </expr>
-  41: sq2 = sqrt(v)
     </assignment>
   </stmt>
+  41: sq2 = sqrt(v)
   <stmt>
     <assignment>
       <name>
@@ -1346,9 +1346,9 @@
           </not test>
         </and test>
       </expr>
-  42: print(sq2, "squared is", pow(sq2,2))
     </assignment>
   </stmt>
+  42: print(sq2, "squared is", pow(sq2,2))
   <stmt>
     <expr stmt>
       <expr>
@@ -1470,3 +1470,35 @@
     </expr stmt>
   </stmt>
 </program>
+PP> def pow (a, b):
+PP>   if b > 1:
+PP>     return pow(a, b - 1) * a
+PP>   elif b < 1:
+PP>     return pow(a, b + 1) / a
+PP>   else:
+PP>     return a
+PP> 
+PP> def rough_log (x):
+PP>   if x > 10:
+PP>     return rough_log(x / 10) + 1
+PP>   if x < 0.100000:
+PP>     return rough_log(x * 10) - 1
+PP>   return 1
+PP> 
+PP> def sqrt (v):
+PP>   x = [0] * 12
+PP>   d = rough_log(v)
+PP>   if d % 2 == 1:
+PP>     x[0] = pow(2 * 10, (d - 1) // 2)
+PP>   else:
+PP>     x[0] = pow(6 * 10, (d - 2) // 2)
+PP>   ix = 0
+PP>   while ix < 11:
+PP>     tmp = (x[ix] + v / x[ix]) / 2
+PP>     ix = ix + 1
+PP>     x[ix] = tmp
+PP>   return x[11]
+PP> 
+PP> v = float(input("Give a number: "))
+PP> sq2 = sqrt(v)
+PP> print(sq2, "squared is", pow(sq2, 2))

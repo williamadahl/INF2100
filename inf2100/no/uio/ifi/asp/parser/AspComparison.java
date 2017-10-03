@@ -37,22 +37,22 @@ class AspComparison extends AspSyntax{
 
 			if(s.curToken().kind == lessToken){
 				acp.compOprTests.add(AspCompOpr.parse(s));
-				skip(s, lessToken);
+				// skip(s, lessToken);
 			}else if(s.curToken().kind == greaterToken){
 				acp.compOprTests.add(AspCompOpr.parse(s));
-				skip(s, greaterToken);
+				// skip(s, greaterToken);
 			}else if(s.curToken().kind == doubleEqualToken){
 				acp.compOprTests.add(AspCompOpr.parse(s));
-				skip(s, doubleEqualToken);
+				// skip(s, doubleEqualToken);
 			}else if(s.curToken().kind == greaterEqualToken){
 				acp.compOprTests.add(AspCompOpr.parse(s));
-				skip(s, greaterEqualToken);
+				// skip(s, greaterEqualToken);
 			}else if(s.curToken().kind == lessEqualToken){
 				acp.compOprTests.add(AspCompOpr.parse(s));
-				skip(s, lessEqualToken);
+				// skip(s, lessEqualToken);
 			}else if(s.curToken().kind == notEqualToken){
 				acp.compOprTests.add(AspCompOpr.parse(s));
-				skip(s, notEqualToken);
+				// skip(s, notEqualToken);
 			}else{
 				break;
 			}

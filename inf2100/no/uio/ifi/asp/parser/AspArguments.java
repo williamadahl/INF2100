@@ -31,6 +31,12 @@ class AspArguments extends AspPrimarySuffix{
 		AspArguments arar = new AspArguments(s.curLineNum());
 		skip(s, leftParToken);
 
+		if(s.curToken().kind == rightParToken){
+			skip(s, rightParToken);
+			Main.log.leaveParser("arguments");
+			return arar;
+		}
+
 		while (true){
 			arar.asex.add(AspExpr.parse(s));
 
@@ -39,7 +45,7 @@ class AspArguments extends AspPrimarySuffix{
 				Main.log.leaveParser("arguments");
 				return arar;
 			}
-			
+
 			if(s.curToken().kind != commaToken){
 				break;
 			}
