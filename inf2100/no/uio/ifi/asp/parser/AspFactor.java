@@ -26,7 +26,7 @@ class AspFactor extends AspSyntax{
 
 	static AspFactor parse(Scanner s) {
 		Main.log.enterParser("factor");
-		System.out.println("DETTE HER ER I FACTOR: " + s.curToken().kind.toString());
+	//	System.out.println("DETTE HER ER I FACTOR: " + s.curToken().kind.toString());
 
 		AspFactor af = new AspFactor(s.curLineNum());
 		//s.readNextToken();

@@ -24,16 +24,16 @@ class AspPrimary extends AspSyntax{
 	}
 
 	static AspPrimary parse(Scanner s){
-		System.out.println("DETTE HER ER I PRIMARY: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I PRIMARY: " + s.curToken().kind.toString());
 		Main.log.enterParser("primary");
 		AspPrimary ap = new AspPrimary(s.curLineNum());
 		ap.aa = AspAtom.parse(s);
-		System.out.println("DETTE HER ER I PRIMARY 2: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I PRIMARY 2: " + s.curToken().kind.toString());
 		//skip(s, s.curToken().kind);
 
 		while((s.curToken().kind == leftParToken) || (s.curToken().kind == leftBracketToken)){
 				ap.aps.add(AspPrimarySuffix.parse(s));
-				System.out.println("DETTE HER ER I PRIMARY 3: " + s.curToken().kind.toString());
+				//System.out.println("DETTE HER ER I PRIMARY 3: " + s.curToken().kind.toString());
 				//s.readNextToken();
 		}
 

@@ -26,16 +26,16 @@ abstract class AspPrimarySuffix extends AspSyntax{
 	static AspPrimarySuffix parse(Scanner s){
 		AspPrimarySuffix aps = null;
 		Main.log.enterParser("primary suffix");
-		System.out.println("DETTE HER ER I primary suffix: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I primary suffix: " + s.curToken().kind.toString());
 		switch(s.curToken().kind){
 			case leftParToken:
 			aps = AspArguments.parse(s);
-			System.out.println("DETTE HER ER I PIMARYSUFFIX arguments: " + s.curToken().kind.toString());
+			//System.out.println("DETTE HER ER I PIMARYSUFFIX arguments: " + s.curToken().kind.toString());
 			//skip(s, s.curToken().kind);
 			break;
 			case leftBracketToken:
 			aps = AspSubscription.parse(s);
-			System.out.println(ANSI_RED + "DETTE HER ER I PIMARYSUFFIX subscription: " + s.curToken().kind.toString() + ANSI_RESET);
+			//System.out.println(ANSI_RED + "DETTE HER ER I PIMARYSUFFIX subscription: " + s.curToken().kind.toString() + ANSI_RESET);
 			//skip(s, s.curToken().kind);
 			break;
 			default:

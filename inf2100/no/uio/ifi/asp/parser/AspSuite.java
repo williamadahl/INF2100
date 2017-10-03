@@ -23,7 +23,7 @@ class AspSuite extends AspSyntax{
 
 	static AspSuite parse(Scanner s){
 		Main.log.enterParser("suite");
-		System.out.println(ANSI_YELLOW + "DETT ER I SUITE: " + s.curToken().kind.toString() + ANSI_RESET);
+		//System.out.println(ANSI_YELLOW + "DETT ER I SUITE: " + s.curToken().kind.toString() + ANSI_RESET);
 
 		AspSuite as = new AspSuite(s.curLineNum());
 		skip(s, newLineToken);
@@ -31,7 +31,7 @@ class AspSuite extends AspSyntax{
 		while(true){
 			as.astmt.add(AspStmt.parse(s));
 			// System.out.println("DETTE HER ER I IFSTMT: " +s.curToken().kind.toString());
-			System.out.println(ANSI_YELLOW+ "DETT ER I SUITE HHHH: " + s.curToken().kind.toString() + ANSI_RESET);
+			//System.out.println(ANSI_YELLOW+ "DETT ER I SUITE HHHH: " + s.curToken().kind.toString() + ANSI_RESET);
 
 			// s.readNextToken();
 			if(s.curToken().kind == dedentToken){
@@ -40,7 +40,7 @@ class AspSuite extends AspSyntax{
 		}
 		skip(s, dedentToken);
 		Main.log.leaveParser("suite");
-		System.out.println(ANSI_YELLOW+ "DETT ER I SUITE LEAVE: " + s.curToken().kind.toString() + ANSI_RESET);
+		//System.out.println(ANSI_YELLOW+ "DETT ER I SUITE LEAVE: " + s.curToken().kind.toString() + ANSI_RESET);
 
 		return as;
 	}

@@ -26,15 +26,15 @@ class AspSubscription extends AspPrimarySuffix{
 
 	static AspSubscription parse(Scanner s){
 
-		System.out.println( ANSI_GREEN + "DETTE HER ER I SUBSCRITPION 1: " +s.curToken().kind.toString() + ANSI_RESET);
+		//System.out.println( ANSI_GREEN + "DETTE HER ER I SUBSCRITPION 1: " +s.curToken().kind.toString() + ANSI_RESET);
 		Main.log.enterParser("subscription");
 		AspSubscription asub = new AspSubscription(s.curLineNum());
 		skip(s, leftBracketToken);
 		asub.body1 = AspExpr.parse(s);
-		System.out.println(ANSI_GREEN + "DETTE HER ER I SUBSCRITPION 2: " +s.curToken().kind.toString()  + ANSI_RESET);
+		//System.out.println(ANSI_GREEN + "DETTE HER ER I SUBSCRITPION 2: " +s.curToken().kind.toString()  + ANSI_RESET);
 		skip(s, rightBracketToken);
 		Main.log.leaveParser("subscription");
-		System.out.println(ANSI_GREEN + "DETTE HER ER I END SUBSCRITPION: " +s.curToken().kind.toString()  + ANSI_RESET);
+		//System.out.println(ANSI_GREEN + "DETTE HER ER I END SUBSCRITPION: " +s.curToken().kind.toString()  + ANSI_RESET);
 		return asub;
 
 

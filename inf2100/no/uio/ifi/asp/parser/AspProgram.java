@@ -29,7 +29,7 @@ public class AspProgram extends AspSyntax {
 
     public static AspProgram parse(Scanner s) {
 	     Main.log.enterParser("program");
-       System.out.println("DETTE HER ER I PROGRAM: " + s.curToken().kind.toString());
+       //System.out.println("DETTE HER ER I PROGRAM: " + s.curToken().kind.toString());
 
 	      AspProgram ap = new AspProgram(s.curLineNum());
 	       while (s.curToken().kind != eofToken) {
@@ -37,7 +37,7 @@ public class AspProgram extends AspSyntax {
             if(s.curToken().kind == eofToken){
               break;
             }
-            System.out.println("DETTE HER ER I PROGRAM2: " + s.curToken().kind.toString());
+            //System.out.println("DETTE HER ER I PROGRAM2: " + s.curToken().kind.toString());
              //s.readNextToken();
 	         }
 	          Main.log.leaveParser("program");

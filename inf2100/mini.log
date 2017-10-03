@@ -24,9 +24,9 @@
           </not test>
         </and test>
       </expr>
-   4: print("Hei,", navn)
     </assignment>
   </stmt>
+   4: print("Hei,", navn)
   <stmt>
     <expr stmt>
       <expr>

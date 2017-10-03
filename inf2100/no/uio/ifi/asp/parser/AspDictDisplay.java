@@ -42,7 +42,7 @@ class AspDictDisplay extends AspAtom{
 				//skip(s, stringToken);
 				skip(s, colonToken);
 				add.ae = AspExpr.parse(s);
-				System.out.println("HER HAR DU SHIT ETTER DICTDISPLAY: " + s.curToken().kind.toString());
+				//System.out.println("HER HAR DU SHIT ETTER DICTDISPLAY: " + s.curToken().kind.toString());
 				if(s.curToken().kind != commaToken){
 					break;
 				}

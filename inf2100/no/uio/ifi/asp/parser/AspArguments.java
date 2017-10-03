@@ -25,7 +25,7 @@ class AspArguments extends AspPrimarySuffix{
 
 
 	static AspArguments parse(Scanner s){
-		System.out.println("DETTE HER ER I ARGUMENTS 1: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I ARGUMENTS 1: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("arguments");
 		AspArguments arar = new AspArguments(s.curLineNum());

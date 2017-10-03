@@ -27,7 +27,7 @@ class AspAssignment extends AspStmt{
 
 	static AspAssignment parse(Scanner s){
 		AspAssignment asss = new AspAssignment(s.curLineNum());
-		System.out.println(ANSI_CYAN + "DETTE HER ER I ASSIGNMENT: " + s.curToken().kind.toString() + ANSI_RESET);
+		//System.out.println(ANSI_CYAN + "DETTE HER ER I ASSIGNMENT: " + s.curToken().kind.toString() + ANSI_RESET);
 
 		Main.log.enterParser("assignment");
 		// We know it is a nameToken so we parse it to that class
@@ -42,7 +42,7 @@ class AspAssignment extends AspStmt{
 					asss.test2 = AspExpr.parse(s);
 					skip(s, newLineToken);
 					Main.log.leaveParser("assignment");
-					System.out.println("DETTE HER ER I ASSIGNMENT3: " + s.curToken().kind.toString());
+					//System.out.println("DETTE HER ER I ASSIGNMENT3: " + s.curToken().kind.toString());
 					return asss;
 				}
 			}
@@ -52,7 +52,7 @@ class AspAssignment extends AspStmt{
 			skip(s, equalToken);
 			asss.test2 = AspExpr.parse(s);
 			skip(s, newLineToken);
-			System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString());
+			//System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString());
 			Main.log.leaveParser("assignment");
 			return asss;
 		}

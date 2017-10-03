@@ -24,7 +24,7 @@ class AspTerm extends AspSyntax{
 	}
 
 	static AspTerm parse(Scanner s) {
-		System.out.println("DETTE HER ER I TERM: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I TERM: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("term");
 		AspTerm atat = new AspTerm(s.curLineNum());

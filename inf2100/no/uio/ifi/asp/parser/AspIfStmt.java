@@ -27,13 +27,13 @@ class AspIfStmt extends AspStmt{
 	static AspIfStmt parse(Scanner s){
 		AspIfStmt aif = new AspIfStmt(s.curLineNum());
 		Main.log.enterParser("if stmt");
-		System.out.println("DETTE HER ER I IFSTMT: " +s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I IFSTMT: " +s.curToken().kind.toString());
 
 		skip(s, ifToken);
 		while(true){
 			aif.aexp.add(AspExpr.parse(s));
 			// s.readNextToken();
-			System.out.println("DETTE HER ER I IFSTMT 2 : " +s.curToken().kind.toString());
+			//System.out.println("DETTE HER ER I IFSTMT 2 : " +s.curToken().kind.toString());
 
 			skip(s, colonToken);
 
@@ -44,18 +44,18 @@ class AspIfStmt extends AspStmt{
 			}
 			skip(s, elifToken);
 		}
-		System.out.println("DETTE HER ER I ELSE Før IF: " +s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I ELSE Før IF: " +s.curToken().kind.toString());
 		//ute av while
 		if(s.curToken().kind == elseToken){
 			skip(s, elseToken);
-			System.out.println("DETTE HER ER I ELSE: " +s.curToken().kind.toString());
+			//System.out.println("DETTE HER ER I ELSE: " +s.curToken().kind.toString());
 
 			skip(s, colonToken);
 			aif.asui.add(AspSuite.parse(s));
 			// s.readNextToken();
 		}
 		Main.log.leaveParser("if stmt");
-		System.out.println("DETTE HER ER I IFSTMT LEAVE: " +s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I IFSTMT LEAVE: " +s.curToken().kind.toString());
 
 		return aif;
 	}

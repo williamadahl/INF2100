@@ -24,7 +24,7 @@ class AspNotTest extends AspSyntax{
 
 	static AspNotTest parse(Scanner s) {
 		AspNotTest nut = new AspNotTest(s.curLineNum());
-		System.out.println("DETTE HER ER I NOT TEST: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I NOT TEST: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("not test");
 		//s.readNextToken();

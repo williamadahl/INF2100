@@ -25,7 +25,7 @@ abstract class AspStmt extends AspSyntax{
 	static AspStmt parse(Scanner s){
 		AspStmt a = null;
 		Main.log.enterParser("stmt");
-		System.out.println(ANSI_RED +"DETTE HER ER I STATEMENT: " + s.curToken().kind.toString()+ ANSI_RESET);
+		//System.out.println(ANSI_RED +"DETTE HER ER I STATEMENT: " + s.curToken().kind.toString()+ ANSI_RESET);
 
 		switch (s.curToken().kind) {
 			case nameToken:
@@ -44,7 +44,7 @@ abstract class AspStmt extends AspSyntax{
 				// else it is an expression
 					a = AspExprStmt.parse(s);
 			}
-			System.out.println("REEEEEEEEEEEEEEEEEEE");
+			//System.out.println("REEEEEEEEEEEEEEEEEEE");
 			//skip(s, nameToken);
 			break;
 
@@ -76,7 +76,7 @@ abstract class AspStmt extends AspSyntax{
 			parserError("Expected an expression atom but found a " +
 			s.curToken().kind + "!", s.curLineNum());
 		}
-		System.out.println("DETTE HER ER I STATEMENT2: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I STATEMENT2: " + s.curToken().kind.toString());
 
 		Main.log.leaveParser("stmt");
 		return a;

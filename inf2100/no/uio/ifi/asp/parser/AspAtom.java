@@ -28,7 +28,7 @@ abstract class AspAtom extends AspSyntax{
 	static AspAtom parse(Scanner s){
 		AspAtom a = null;
 		Main.log.enterParser("atom");
-		System.out.println("DETTE HER ER I ATOM: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I ATOM: " + s.curToken().kind.toString());
 		switch (s.curToken().kind) {
 			case falseToken:
 			case trueToken:
@@ -41,28 +41,28 @@ abstract class AspAtom extends AspSyntax{
 			break;
 			case integerToken:
 			a = AspIntegerLiteral.parse(s);
-			// skip(s, integerToken); 
+			// skip(s, integerToken);
 			break;
 			case leftBraceToken:
 			a = AspDictDisplay.parse(s);
-			// skip(s, leftBraceToken); 
+			// skip(s, leftBraceToken);
 			 break;
 			case leftBracketToken:
 			a = AspListDisplay.parse(s);
 			System.out.println("oioioi");
-			// skip(s, leftBracketToken);  
+			// skip(s, leftBracketToken);
 			break;
 			case leftParToken:
 			a = AspInnerExpr.parse(s);
-			// skip(s, leftParToken);  
+			// skip(s, leftParToken);
 			break;
 			case nameToken:
 			a = AspName.parse(s);
-			// skip(s, nameToken);  
+			// skip(s, nameToken);
 			break;
 			case noneToken:
 			a = AspNoneLiteral.parse(s);
-			// skip(s, noneToken); 
+			// skip(s, noneToken);
 			 break;
 			case stringToken:
 			a = AspStringLiteral.parse(s);

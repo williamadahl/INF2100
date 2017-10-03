@@ -23,7 +23,7 @@ class AspListDisplay extends AspAtom{
 	}
 
 	static AspListDisplay parse(Scanner s){
-		System.out.println( ANSI_GREEN + "DETTE HER ER I LISTDISPLAY 1: " +s.curToken().kind.toString() + ANSI_RESET);
+		//System.out.println( ANSI_GREEN + "DETTE HER ER I LISTDISPLAY 1: " +s.curToken().kind.toString() + ANSI_RESET);
 
 		Main.log.enterParser("list display");
 		AspListDisplay ald = new AspListDisplay(s.curLineNum());
@@ -50,7 +50,7 @@ class AspListDisplay extends AspAtom{
 		}
 		skip(s, rightBracketToken);
 		Main.log.leaveParser("list display");
-		System.out.println( ANSI_GREEN + "DETTE HER ER I  END LISTDISPLAY 3: " +s.curToken().kind.toString() + ANSI_RESET);
+		//System.out.println( ANSI_GREEN + "DETTE HER ER I  END LISTDISPLAY 3: " +s.curToken().kind.toString() + ANSI_RESET);
 		return ald;
 	}
 

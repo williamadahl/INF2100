@@ -29,7 +29,7 @@ class AspComparison extends AspSyntax{
 
 	static AspComparison parse(Scanner s) {
 		AspComparison acp = new AspComparison(s.curLineNum());
-		System.out.println("DETTE HER ER I COMPARISON: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I COMPARISON: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("comparison");
 		while (true) {

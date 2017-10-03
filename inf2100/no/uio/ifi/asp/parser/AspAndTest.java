@@ -27,7 +27,7 @@ public class AspAndTest extends AspSyntax {
 
 
 	public static AspAndTest parse(Scanner s) {
-		System.out.println("DETTE HER ER I AND: " + s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I AND: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("and test");
 		AspAndTest aat = new AspAndTest(s.curLineNum());

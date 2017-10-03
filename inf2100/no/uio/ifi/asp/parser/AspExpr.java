@@ -26,7 +26,7 @@ public class AspExpr extends AspSyntax {
 
     public static AspExpr parse(Scanner s) {
       AspExpr ae = new AspExpr(s.curLineNum());
-      System.out.println("DETTE HER ER I EXPR: " + s.curToken().kind.toString());
+    //  System.out.println("DETTE HER ER I EXPR: " + s.curToken().kind.toString());
 
 	     Main.log.enterParser("expr");
 
@@ -45,7 +45,7 @@ public class AspExpr extends AspSyntax {
        }
 
 	      Main.log.leaveParser("expr");
-        System.out.println("DETTE HER ER I EXPR2: " + s.curToken().kind.toString());
+      //  System.out.println("DETTE HER ER I EXPR2: " + s.curToken().kind.toString());
 
 	      return ae;
       }

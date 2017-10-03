@@ -21,7 +21,7 @@ class AspCompOpr extends AspSyntax{
 	}
 	static AspCompOpr parse(Scanner s) {
 		AspCompOpr aco = new AspCompOpr(s.curLineNum());
-		System.out.println("DETTE HER ER I COMPOPR: " +s.curToken().kind.toString());
+		//System.out.println("DETTE HER ER I COMPOPR: " +s.curToken().kind.toString());
 
 		Main.log.enterParser("comp opr");
 		skip(s, s.curToken().kind);
