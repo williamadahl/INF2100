@@ -16,11 +16,18 @@ class AspFloatLiteral extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static ArrayList<Double> dong = new ArrayList<>();
+	static int counter = 0;
+
+
 	AspFloatLiteral(int n){
 		super(n);
 	}
 	static AspFloatLiteral parse(Scanner s){
 		AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
+		dong.add(s.curToken().floatLit);
+
 		Main.log.enterParser("float literal");
 		Main.log.leaveParser("float literal");
 		skip(s, floatToken);
@@ -34,7 +41,9 @@ class AspFloatLiteral extends AspAtom{
 
 
 	@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" float literal ");*/
+		void prettyPrint() {
+			System.out.println("KOMMER INN I FLOAT LITERAL");
+			Main.log.prettyWrite(Double.toString(dong.get(counter)));
+			counter++;
 		}
 }

@@ -16,6 +16,9 @@ class AspNoneLiteral extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static String uff = "None";
+
 	AspNoneLiteral(int n){
 		super(n);
 	}
@@ -37,7 +40,7 @@ class AspNoneLiteral extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" none ");*/
+		void prettyPrint() {
+			Main.log.prettyWrite(uff);
 		}
 }

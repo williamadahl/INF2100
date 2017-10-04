@@ -16,6 +16,9 @@ class AspFactorOpr extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static String kek = "";
+
 	AspFactorOpr(int n){
 		super(n);
 	}
@@ -24,6 +27,8 @@ class AspFactorOpr extends AspSyntax{
 		AspFactorOpr noe = new AspFactorOpr(s.curLineNum());
 		Main.log.enterParser("factor opr");
 		Main.log.leaveParser("factor opr");
+		kek = s.curToken().kind.toString();
+
 		skip(s, s.curToken().kind);
 		return noe;
 	}
@@ -34,6 +39,6 @@ class AspFactorOpr extends AspSyntax{
 
 	@Override
 		void prettyPrint() {
-			// Main.log.prettyWrite(" factor opr ");
+			Main.log.prettyWrite(kek);
 		}
 }

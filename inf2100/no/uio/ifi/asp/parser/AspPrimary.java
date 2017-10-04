@@ -16,8 +16,11 @@ class AspPrimary extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	AspAtom aa;
-	ArrayList<AspPrimarySuffix> aps = new ArrayList<>();
+	static ArrayList<AspPrimarySuffix> aps = new ArrayList<>();
+	static int counter = 0;
+	//static int counter = 0;
 
 	AspPrimary(int n){
 		super(n);
@@ -32,7 +35,8 @@ class AspPrimary extends AspSyntax{
 		//skip(s, s.curToken().kind);
 
 		while((s.curToken().kind == leftParToken) || (s.curToken().kind == leftBracketToken)){
-				ap.aps.add(AspPrimarySuffix.parse(s));
+				aps.add(AspPrimarySuffix.parse(s));
+				counter++;
 				//System.out.println("DETTE HER ER I PRIMARY 3: " + s.curToken().kind.toString());
 				//s.readNextToken();
 		}
@@ -45,19 +49,31 @@ class AspPrimary extends AspSyntax{
 		RuntimeValue eval(RuntimeScope curScope) {
 			return null;
 		}
+
 		@Override
 		void prettyPrint() {
-			// int nPrinted = 0;
-			// Main.log.prettyWrite(" primary suffix ");
-			// aa.prettyPrint();
-			//
-			// for (AspPrimarySuffix ap: aps) {
-			// 	if (nPrinted > 0){
-			// 		Main.log.prettyWrite(" pirmary suffix ");
+			System.out.println("Dette er aps size :" + aps.size());
+			System.out.println("Dette er counter : " + counter);
+			System.out.println("KOMMER INN I PRIMARY");
+			aa.prettyPrint();
+			//System.out.println("HER SKAL VI SJEKKE BS");
+			// if(!(aps.isEmpty())){
+			// 	System.out.println("PRIMARY SUFFIX OPPFYLLES");
+			// 	//aps.get(counter).prettyPrint();
+			// 	//counter++;
+			// 	for(AspPrimarySuffix kek : aps){
+			// 		kek.prettyPrint();
 			// 	}
-			// 	ap.prettyPrint();
-			// 	++nPrinted;
 			// }
+			if(counter != 0){
+				System.out.println("OK aa printe denne");
+				for(AspPrimarySuffix kek : aps){
+					counter--;
+					kek.prettyPrint();
+				}
+			// }
+			System.out.println("Ikke flere PrimarySuffix aa printe");
+			//System.out.println("BØR OPPFYLLES");
 		}
-
+	}
 }

@@ -16,8 +16,10 @@ class AspIfStmt extends AspStmt{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-	ArrayList <AspExpr> aexp = new ArrayList<>();
-	ArrayList <AspSuite> asui = new ArrayList<>();
+
+	ArrayList<AspExpr> aexp = new ArrayList<>();
+	ArrayList<AspSuite> asui = new ArrayList<>();
+	static int counter = 0;
 
 
 	AspIfStmt(int n){
@@ -60,26 +62,28 @@ class AspIfStmt extends AspStmt{
 		return aif;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
 
-		@Override
-		void prettyPrint() {/*
-			int nPrinted = 0;
-			for (AspExpr ae: aexp) {
-				if (nPrinted > 0){
-					Main.log.prettyWrite(" if statement ");
-				}
-				ae.prettyPrint();
-				++nPrinted;
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(" if ");
+		for(AspExpr dick : aexp){
+			dick.prettyPrint();
+			Main.log.prettyWrite(" : ");
+			asui.get(counter).prettyPrint();
+			counter++;
+
+			if(counter < aexp.size()){
+				Main.log.prettyWrite(" elif ");
 			}
-			for (AspSuite a: asui) {
-				if (nPrinted > 0){
-					Main.log.prettyWrite(" if statement ");
-				}
-				a.prettyPrint();
-				++nPrinted;
-			}*/
 		}
+		if(counter != asui.size()){
+			Main.log.prettyWrite(" else ");
+			Main.log.prettyWrite(" : ");
+			asui.get(counter).prettyPrint();
+			counter++;
+		}
+	}
 }

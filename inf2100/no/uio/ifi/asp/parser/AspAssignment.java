@@ -16,9 +16,9 @@ class AspAssignment extends AspStmt{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	AspName test;
 	AspExpr test2;
-
 	ArrayList<AspSubscription> as = new ArrayList<>();
 
 	AspAssignment(int n){
@@ -52,7 +52,6 @@ class AspAssignment extends AspStmt{
 			skip(s, equalToken);
 			asss.test2 = AspExpr.parse(s);
 			skip(s, newLineToken);
-			//System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString());
 			Main.log.leaveParser("assignment");
 			return asss;
 		}
@@ -94,24 +93,17 @@ class AspAssignment extends AspStmt{
 
 	@Override
 	public void prettyPrint() {
-		// Main.log.prettyWrite(" 12323 ");
-		//
-		//  test.prettyPrint();
-		//
-		//
-		// int nPrinted = 0;
-		// for (AspSubscription asus : as) {
-		// 	if (nPrinted > 0){
-		// 		Main.log.prettyWrite(" assignment ");
-		// 	}
-		// 	asus.prettyPrint();
-		// 	++nPrinted;
-		// }
-		// if(test == null){
-		// 	test2.prettyPrint();
-		// }
-		// else if(test2 == null){
-		// 	test.prettyPrint();
-		// }
+
+		test.prettyPrint();
+		if(as.size() != 0){
+			for(AspSubscription phub : as){
+				phub.prettyPrint();
+			}
+		}
+		Main.log.prettyWrite(" = ");
+		test2.prettyPrint();
+		Main.log.prettyWrite("NEWLINE");
+		Main.log.prettyWriteLn();
+
 	}
 }

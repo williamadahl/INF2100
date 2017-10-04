@@ -48,14 +48,15 @@ public class AspAndTest extends AspSyntax {
 
 	@Override
 	void prettyPrint() {
-		// int nPrinted = 0;
-		// for (AspNotTest ant: notTests) {
-		// 	if (nPrinted > 0){
-		// 		Main.log.prettyWrite(" and ");
-		// 	}
-		// 	ant.prettyPrint();
-		// 	++nPrinted;
-		// }
+		System.out.println("KOMMER INN I AND");
+		int nPrinted = 0;
+		for (AspNotTest ant: notTests) {
+		 	if (nPrinted > 0){
+		 		Main.log.prettyWrite(" and ");
+		 	}
+		 	ant.prettyPrint();
+	 		++nPrinted;
+		 }
 	}
 
 	@Override

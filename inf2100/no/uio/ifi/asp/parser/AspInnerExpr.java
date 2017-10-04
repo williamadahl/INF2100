@@ -54,8 +54,9 @@ class AspInnerExpr extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" inner expr ");
-			bod1.prettyPrint();*/
+		void prettyPrint() {
+			Main.log.prettyWrite(" ( ");
+			bod1.prettyPrint();
+			Main.log.prettyWrite(" ) ");
 		}
 }

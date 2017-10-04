@@ -17,16 +17,13 @@ abstract class AspAtom extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+	static AspAtom a = null;
+
 	AspAtom(int n) {
 		super(n);
 	}
-	@Override
-		RuntimeValue eval(RuntimeScope curScope){
-			return null;
-		}
 
 	static AspAtom parse(Scanner s){
-		AspAtom a = null;
 		Main.log.enterParser("atom");
 		//System.out.println("DETTE HER ER I ATOM: " + s.curToken().kind.toString());
 		switch (s.curToken().kind) {
@@ -76,5 +73,16 @@ abstract class AspAtom extends AspSyntax{
 
 		return a;
 	}
+
+	@Override
+		RuntimeValue eval(RuntimeScope curScope){
+			return null;
+		}
+
+	@Override
+		void prettyPrint(){
+			System.out.println("KOMMER INN I ATOM");
+			a.prettyPrint();
+		}
 
 }

@@ -25,10 +25,10 @@ class AspFactor extends AspSyntax{
 	}
 
 	static AspFactor parse(Scanner s) {
+		AspFactor af = new AspFactor(s.curLineNum());
 		Main.log.enterParser("factor");
 	//	System.out.println("DETTE HER ER I FACTOR: " + s.curToken().kind.toString());
 
-		AspFactor af = new AspFactor(s.curLineNum());
 		//s.readNextToken();
 		Token temp = s.curToken();
 		if(temp.kind == plusToken){
@@ -105,29 +105,26 @@ class AspFactor extends AspSyntax{
 
 		@Override
 		void prettyPrint() {
-			// int nPrinted = 0;
-			// for (AspFactorOpr afo: factorOprTests) {
-			// 	if (nPrinted > 0){
-			// 		Main.log.prettyWrite(" factor ");
-			// 	}
-			// 	afo.prettyPrint();
-			// 	++nPrinted;
-			// }
-			// int nPrinted2 = 0;
-			// for (AspPrimary ap: primaryTests) {
-			// 	if (nPrinted2 > 0){
-			// 		Main.log.prettyWrite(" factor ");
-			// 	}
-			// 	ap.prettyPrint();
-			// 	++nPrinted2;
-			// }
-			// int nPrinted3 = 0;
-			// for (AspFactorPrefix afp: prefixTests) {
-			// 	if (nPrinted3 > 0){
-			// 		Main.log.prettyWrite(" factor ");
-			// 	}
-			// 	afp.prettyPrint();
-			// 	++nPrinted3;
-			// }
+			System.out.println("KOMMER INN I FACTORY");
+			if(!prefixTests.isEmpty()){
+				prefixTests.get(0).prettyPrint();
+			}
+
+			if(!factorOprTests.isEmpty()){
+				int nPrinted = 0;
+				int i = 0;
+				for(AspPrimary ant : primaryTests){
+					if(nPrinted > 0){
+						factorOprTests.get(i).prettyPrint();
+					}
+					ant.prettyPrint();
+					i++;
+					++nPrinted;
+				}
+			}else{
+				for(AspPrimary ant : primaryTests){
+						ant.prettyPrint();
+					}
+			}
 		}
 }

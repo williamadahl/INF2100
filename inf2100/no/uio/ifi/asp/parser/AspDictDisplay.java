@@ -17,8 +17,11 @@ class AspDictDisplay extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-	AspStringLiteral atl;
-	AspExpr ae;
+	ArrayList<AspStringLiteral> atl = new ArrayList<>();
+	ArrayList<AspExpr> ae = new ArrayList<>();
+	int counter = 0;
+	//AspStringLiteral atl;
+	//AspExpr ae;
 
 	AspDictDisplay(int n){
 		super(n);
@@ -38,10 +41,12 @@ class AspDictDisplay extends AspAtom{
 				Main.log.leaveParser("dict display");
 				return add;
 			}else{
-				add.atl = AspStringLiteral.parse(s);
+				add.atl.add(AspStringLiteral.parse(s));
+				//add.atl = AspStringLiteral.parse(s);
 				//skip(s, stringToken);
 				skip(s, colonToken);
-				add.ae = AspExpr.parse(s);
+				add.ae.add(AspExpr.parse(s));
+				//add.ae = AspExpr.parse(s);
 				//System.out.println("HER HAR DU SHIT ETTER DICTDISPLAY: " + s.curToken().kind.toString());
 				if(s.curToken().kind != commaToken){
 					break;
@@ -60,10 +65,22 @@ class AspDictDisplay extends AspAtom{
 	}
 
 	@Override
+	void prettyPrint() {
+		System.out.println("KOMMER INN I DICT DISPLAY");
+		Main.log.prettyWrite(" { ");
+		int nPrinted = 0;
 
-	void prettyPrint() {/*
-		Main.log.prettyWrite(" dict display ");
-		atl.prettyPrint();
-		ae.prettyPrint();*/
+		if(!atl.isEmpty()){
+			for(AspStringLiteral exp : atl){
+				exp.prettyPrint();
+				Main.log.prettyWrite(" : ");
+				ae.get(counter).prettyPrint();
+				counter++;
+				if(counter < atl.size()){
+					Main.log.prettyWrite(" , ");
+				}
+			}
+		}
+		Main.log.prettyWrite(" } ");
 	}
 }

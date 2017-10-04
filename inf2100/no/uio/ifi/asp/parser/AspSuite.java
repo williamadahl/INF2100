@@ -50,13 +50,13 @@ class AspSuite extends AspSyntax{
 		}
 		@Override
 		void prettyPrint() {
-			// int nPrinted = 0;
-			// for (AspStmt a: astmt) {
-			// 	if (nPrinted > 0){
-			// 		Main.log.prettyWrite(" suite ");
-			// 	}
-			// 	a.prettyPrint();
-			// 	++nPrinted;
-			// }
+			Main.log.prettyWriteLn();
+			Main.log.prettyIndent();
+			if(!astmt.isEmpty()){
+				for(AspStmt freedom : astmt){
+					freedom.prettyPrint();
+				}
+			}
+			Main.log.prettyDedent();
 		}
 }

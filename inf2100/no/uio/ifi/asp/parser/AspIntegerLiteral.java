@@ -16,24 +16,20 @@ class AspIntegerLiteral extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static ArrayList<Long> dong = new ArrayList<>();
+	static int counter = 0;
+	// <|:^)
+
+
 	AspIntegerLiteral(int n){
 		super(n);
 	}
 	static AspIntegerLiteral parse(Scanner s){
 		AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
+		dong.add(s.curToken().integerLit);
+
 		Main.log.enterParser("integer literal");
-		/*if(s.curToken().kind.integerLit == 0){
-			skip(s, integerToken);
-			return ail;
-		}else{
-			for(int i = 0; i<s.curToken().integerLit.length(); i++){
-				if(!(isDigit(s.curToken().integerLit.charAt(i)))){
-					Main.parserError("Not all chars are integers!", s.curLineNum());
-				}
-			}
-			Main.log.leaveParser("integer literal");
-			return ail;
-		}*/
 		Main.log.leaveParser("integer literal");
 		skip(s, integerToken);
 
@@ -45,7 +41,9 @@ class AspIntegerLiteral extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" integer literal ");*/
+		void prettyPrint() {
+			System.out.println("KOMMER INN I INTEGER LITERAL");
+			Main.log.prettyWrite(Long.toString(dong.get(counter)));
+			counter ++;
 		}
 }

@@ -53,6 +53,15 @@ public class AspExpr extends AspSyntax {
 
     @Override
     public void prettyPrint() {
+      System.out.println("KOMMER INN I EXPR");
+      int nPrinted = 0;
+      for (AspAndTest aat: andTests) {
+      	if (nPrinted > 0){
+      		Main.log.prettyWrite(" or ");
+      	}
+      	aat.prettyPrint();
+      	++nPrinted;
+      }
 
     }
 

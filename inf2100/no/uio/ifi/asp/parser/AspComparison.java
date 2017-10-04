@@ -67,23 +67,16 @@ class AspComparison extends AspSyntax{
 
 	@Override
 	void prettyPrint() {
-		// int nPrinted = 0;
-		// for (AspTerm att: termTests) {
-		// 	if (nPrinted > 0){
-		// 		Main.log.prettyWrite(" comparison ");
-		// 	}
-		// 	att.prettyPrint();
-		// 	++nPrinted;
-		// }
-		// for (AspCompOpr aco: compOprTests) {
-		// 	if (nPrinted > 0){
-		// 		Main.log.prettyWrite(" comparison ");
-		// 	}
-		// 	aco.prettyPrint();
-		// 	++nPrinted;
-		// }
-	}
-
-
-
+		System.out.println("KOMMER INN I COMPARISON");
+		int nPrinted = 0;
+		int i = 0;
+		for (AspTerm ant: termTests) {
+			if (nPrinted > 0){
+				compOprTests.get(i).prettyPrint();
+			}
+			ant.prettyPrint();
+			i++;
+			++nPrinted;
+			}
+		}
 }

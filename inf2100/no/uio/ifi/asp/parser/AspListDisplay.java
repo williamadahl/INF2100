@@ -18,6 +18,8 @@ class AspListDisplay extends AspAtom{
 	public static final String ANSI_WHITE = "\u001B[37m";
 	AspExpr bod1;
 
+	ArrayList<AspExpr> boi = new ArrayList<>();
+
 	AspListDisplay(int n){
 		super(n);
 	}
@@ -36,7 +38,8 @@ class AspListDisplay extends AspAtom{
 		}
 
 		while (true){
-			ald.bod1.parse(s);
+			ald.boi.add(AspExpr.parse(s));
+			// ald.bod1.parse(s);
 			if(s.curToken().kind == rightBracketToken){
 				skip(s, rightBracketToken);
 				Main.log.leaveParser("list display");
@@ -55,51 +58,23 @@ class AspListDisplay extends AspAtom{
 	}
 
 
-/*
-	static AspListDisplay parse(Scanner s){
-		System.out.println( ANSI_GREEN + "DETTE HER ER I LISTDISPLAY 1: " +s.curToken().kind.toString() + ANSI_RESET);
-
-		Main.log.enterParser("list display");
-		AspListDisplay ald = new AspListDisplay(s.curLineNum());
-		skip(s, leftBracketToken);
-
-
-
-		while(true){
-			System.out.println( ANSI_GREEN + "DETTE HER ER I LISTDISPLAY 2: " +s.curToken().kind.toString() + ANSI_RESET);
-
-			Token temp = s.curToken();
-			if(testToken(s, rightBracketToken)){
-				Main.log.leaveParser("list display");
-				return ald;
-			}else if(testToken(s, newLineToken)){
-
-				parserError("Expected a " + rightBracketToken + " but found a " +
-				s.curToken().kind + "!", s.curLineNum());
-			}else{
-				while(true){
-					ald.bod1 = AspExpr.parse(s);
-					s.readNextToken();
-					if(s.curToken().kind != commaToken){
-						skip(s, rightBracketToken);
-						break;
-					}
-				}
-			}
-			Main.log.leaveParser("list display");
-			System.out.println( ANSI_GREEN + "DETTE HER ER I  END LISTDISPLAY 3: " +s.curToken().kind.toString() + ANSI_RESET);
-
-			return ald;
-		}
-	}
-*/
 	@Override
 		RuntimeValue eval(RuntimeScope curScope) {
 			return null;
 		}
 		@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" list display ");
-			bod1.prettyPrint();*/
+		void prettyPrint() {
+			Main.log.prettyWrite(" [ ");
+			int nPrinted = 0;
+			if(!boi.isEmpty()){
+				for(AspExpr lol : boi){
+					if(nPrinted > 0){
+						Main.log.prettyWrite(" , ");
+					}
+					lol.prettyPrint();
+					++nPrinted;
+				}
+			}
+			Main.log.prettyWrite(" ] ");
 		}
 }

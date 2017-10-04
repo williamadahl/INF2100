@@ -16,6 +16,10 @@ class AspName extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static ArrayList<String> guitar = new ArrayList<>();
+	static int counter = 0;
+
 	AspName(int n){
 		super(n);
 	}
@@ -26,33 +30,22 @@ class AspName extends AspAtom{
 
 			Main.log.enterParser("name");
 			Main.log.leaveParser("name");
+			guitar.add(s.curToken().name);
 			skip(s, nameToken);
-			//System.out.println(ANSI_PURPLE + "DETT ER I NAME LEAVE " + s.curToken().kind.toString() + ANSI_RESET);
 
 			return an;
 	}
+
 	@Override
 		RuntimeValue eval(RuntimeScope curScope) {
 			return null;
 		}
 
 		@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" name ");*/
-			// Main.log.prettyWrite(" name ");
-			//Main.log.prettyWrite(" = ");
-
-
-			// s.nextToken();
-			// if(s.curToken() == null){
-			// 	Main.log.parserError("Did not expect eof", s.curLineNum());
-			//
-			// }
-			// else if(s.curToken().kind == equalToken){
-			// 	Main.log.prettyWrite(" = ");
-			// }
-			 //AspSubscription.prettyPrint();
-
+		void prettyPrint() {
+			System.out.println("KOMMER INN I NAME");
+			Main.log.prettyWrite(guitar.get(counter));
+			counter++;
 		}
 
 }

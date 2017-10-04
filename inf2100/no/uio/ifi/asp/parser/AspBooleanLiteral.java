@@ -16,6 +16,10 @@ class AspBooleanLiteral extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static ArrayList<String> hi = new ArrayList<>();
+	static int counter = 0;
+
 	AspBooleanLiteral(int n){
 		super(n);
 	}
@@ -24,6 +28,7 @@ class AspBooleanLiteral extends AspAtom{
 		AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum());
 		if(s.curToken().kind == trueToken ||
 		s.curToken().kind == falseToken){
+			hi.add(s.curToken().kind.toString());
 			Main.log.enterParser("boolean literal");
 			Main.log.leaveParser("boolean literal");
 
@@ -44,7 +49,9 @@ class AspBooleanLiteral extends AspAtom{
 	}
 
 	@Override
-	void prettyPrint() {/*
-		Main.log.prettyWrite(" boolean ");*/
+	void prettyPrint() {
+		System.out.println("KOMMER INN I BOOLEAN LITERAL");
+		Main.log.prettyWrite(hi.get(counter));
+		counter++;
 	}
 }

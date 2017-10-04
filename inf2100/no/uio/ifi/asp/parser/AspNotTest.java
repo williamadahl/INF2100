@@ -16,14 +16,17 @@ class AspNotTest extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	AspComparison body1;
+	static AspNotTest nut;
+	static boolean dank = true;
 
 	AspNotTest(int n){
 		super(n);
 	}
 
 	static AspNotTest parse(Scanner s) {
-		AspNotTest nut = new AspNotTest(s.curLineNum());
+		nut = new AspNotTest(s.curLineNum());
 		//System.out.println("DETTE HER ER I NOT TEST: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("not test");
@@ -31,8 +34,10 @@ class AspNotTest extends AspSyntax{
 		Token temp = s.curToken();
 		if(temp.kind == notToken){
 			skip(s, notToken);
+			dank = true;
 			nut.body1 = AspComparison.parse(s);
 		}else{
+			dank = false;
 			nut.body1 = AspComparison.parse(s);
 		}
 		Main.log.leaveParser("not test");
@@ -45,9 +50,12 @@ class AspNotTest extends AspSyntax{
 
 		@Override
 		void prettyPrint() {
-			//
-			// Main.log.prettyWrite(" not ");
-			// body1.prettyPrint();
+			System.out.println("KOMMER INN I NOT");
+			if(dank){
+				Main.log.prettyWrite(" not ");
+			}
+			body1.prettyPrint();
+
 		}
 
 

@@ -22,8 +22,8 @@ abstract class AspStmt extends AspSyntax{
 		super(n);
 	}
 
+	static AspStmt a = null;
 	static AspStmt parse(Scanner s){
-		AspStmt a = null;
 		Main.log.enterParser("stmt");
 		//System.out.println(ANSI_RED +"DETTE HER ER I STATEMENT: " + s.curToken().kind.toString()+ ANSI_RESET);
 
@@ -81,47 +81,10 @@ abstract class AspStmt extends AspSyntax{
 		Main.log.leaveParser("stmt");
 		return a;
 	}
-/*
-	static AspStmt parse(Scanner s) {
-
-		System.out.println("DETTE HER ER I STMT: " + s.curToken().kind.toString());
-
-		Main.log.enterParser("stmt");
-		AspStmt asmt = null;
-
-		if(s.curToken().kind == nameToken){
-			if (s.anyEqualToken()){
-				//now we know it is an assignment
-					asmt.body1 = AspAssignment.parse(s);
-
-			}else{
-				// else it is an expression
-					asmt.body2 = AspExprStmt.parse(s);
-			}
-		}else if(s.curToken().kind == ifToken){
-				asmt.body3 = AspIfStmt.parse(s);
-		}else if(s.curToken().kind == whileToken){
-				asmt.body4 = AspWhileStmt.parse(s);
-		}else if(s.curToken().kind == returnToken){
-				asmt.body5 = AspReturnStmt.parse(s);
-		}else if(s.curToken().kind == passToken){
-				asmt.body6 = AspPassStmt.parse(s);
-		}else if(s.curToken().kind == defToken) {
-				asmt.body7 = AspFuncDef.parse(s);
-		}
-	System.out.println("DETTE HER ER I STMT2: " + s.curToken().kind.toString());
-		Main.log.leaveParser("stmt");
-		return asmt;
-
-	}
-*/
 @Override
  void prettyPrint() {
-	// System.out.println("{}");
-	//
-	// Main.log.prettyWrite(" Statement ");
 
-	//a.prettyPrint();
+	a.prettyPrint();
 
 }
 	@Override

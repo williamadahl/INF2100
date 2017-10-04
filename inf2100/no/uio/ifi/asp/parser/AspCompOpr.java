@@ -19,11 +19,14 @@ class AspCompOpr extends AspSyntax{
 	AspCompOpr(int n){
 		super(n);
 	}
+	static String johnnyGuitar = "";
+
 	static AspCompOpr parse(Scanner s) {
 		AspCompOpr aco = new AspCompOpr(s.curLineNum());
 		//System.out.println("DETTE HER ER I COMPOPR: " +s.curToken().kind.toString());
 
 		Main.log.enterParser("comp opr");
+		johnnyGuitar = s.curToken().kind.toString();
 		skip(s, s.curToken().kind);
 		Main.log.leaveParser("comp opr");
 		return aco;
@@ -36,8 +39,7 @@ class AspCompOpr extends AspSyntax{
 
 	@Override
 	void prettyPrint() {
-
-		// Main.log.prettyWrite(" compOpr ");
+		Main.log.prettyWrite(johnnyGuitar);
 
 	}
 

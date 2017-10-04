@@ -62,16 +62,24 @@ class AspFuncDef extends AspStmt{
 
 
 	@Override
-		void prettyPrint() {/*
-			int nPrinted = 0;
-			for (AspName an: aname) {
-				if (nPrinted > 0){
-					Main.log.prettyWrite(" func def ");
+		void prettyPrint() {
+			int counter = 1;
+			Main.log.prettyWrite(" def ");
+			aname.get(0).prettyPrint();
+			Main.log.prettyWrite(" ( ");
+
+			if(!(aname.size() < 2)){
+				int nPrinted = 0;
+				for(int i = 1; i<aname.size(); i++){
+					if(nPrinted > 0){
+						Main.log.prettyWrite(" , ");
+					}
+					aname.get(i).prettyPrint();
+					++nPrinted;
 				}
-				an.prettyPrint();
-				++nPrinted;
 			}
-			Main.log.prettyWrite(" func def ");
-			pentHouse.prettyPrint();*/
+			Main.log.prettyWrite(" ) ");
+			Main.log.prettyWrite(" : ");
+			pentHouse.prettyPrint();
 		}
 	}

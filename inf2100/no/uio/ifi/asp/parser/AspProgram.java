@@ -47,21 +47,9 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-
-    	// int nPrinted = 0;
-    	// for (AspStmt ast: stmts) {
-      //   Main.log.prettyWrite(" program ");
-      //   //ast.prettyPrint();
-      //   System.out.println("{}");
-    	// 	if (nPrinted > 0){
-    	// 		Main.log.prettyWrite(" program ");
-    	// 	}
-    	// 	 //ast.prettyPrint();
-      //   System.out.println("{}");
-      //
-    	// 	++nPrinted;
-    	// 	}
-
+    	for(AspStmt burger : stmts){
+        burger.prettyPrint();
+      }
     }
 
 

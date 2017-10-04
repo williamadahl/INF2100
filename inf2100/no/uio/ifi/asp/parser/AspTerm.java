@@ -24,18 +24,16 @@ class AspTerm extends AspSyntax{
 	}
 
 	static AspTerm parse(Scanner s) {
+		AspTerm atat = new AspTerm(s.curLineNum());
 		//System.out.println("DETTE HER ER I TERM: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("term");
-		AspTerm atat = new AspTerm(s.curLineNum());
 		while (true) {
 			atat.factorTests.add(AspFactor.parse(s));
 			if(s.curToken().kind == plusToken){
 				atat.termOprTests.add(AspTermOpr.parse(s));
-				skip(s, plusToken);
 			}else if(s.curToken().kind == minusToken){
 				atat.termOprTests.add(AspTermOpr.parse(s));
-				skip(s, minusToken);
 			}else{
 				break;
 			}
@@ -50,21 +48,16 @@ class AspTerm extends AspSyntax{
 
 		@Override
 		void prettyPrint() {
-			// int nPrinted = 0;
-			// for (AspFactor af: factorTests) {
-			// 	if (nPrinted > 0){
-			// 		Main.log.prettyWrite(" term ");
-			// 	}
-			// 	af.prettyPrint();
-			// 	++nPrinted;
-			// }
-			// int nPrinted2 = 0;
-			// for (AspTermOpr ato: termOprTests) {
-			// 	if (nPrinted2 > 0){
-			// 		Main.log.prettyWrite(" term ");
-			// 	}
-			// 	ato.prettyPrint();
-			// 	++nPrinted2;
-			// }
+			System.out.println("KOMMER INN I TERM");
+			int nPrinted = 0;
+			int i = 0;
+			for (AspFactor ant: factorTests){
+				if(nPrinted > 0){
+					termOprTests.get(i).prettyPrint();
+				}
+				ant.prettyPrint();
+				i++;
+				++nPrinted;
+			}
 		}
 }

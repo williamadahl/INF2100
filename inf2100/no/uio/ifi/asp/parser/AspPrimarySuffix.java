@@ -16,15 +16,15 @@ abstract class AspPrimarySuffix extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-	AspSubscription as;
-	AspArguments aa;
+
+	static AspPrimarySuffix aps = null;
+	//static boolean printed = false;
 
 	AspPrimarySuffix(int n){
 		super(n);
 	}
 
 	static AspPrimarySuffix parse(Scanner s){
-		AspPrimarySuffix aps = null;
 		Main.log.enterParser("primary suffix");
 		//System.out.println("DETTE HER ER I primary suffix: " + s.curToken().kind.toString());
 		switch(s.curToken().kind){
@@ -47,33 +47,15 @@ abstract class AspPrimarySuffix extends AspSyntax{
 
 	}
 
-	//
-	// static AspPrimarySuffix parse(Scanner s){
-	// 	AspPrimarySuffix aps = null;
-	// 	System.out.println("DETTE HER ER I PIMARYSUFFIX 1: " + s.curToken().kind.toString());
-	//
-	// 	Main.log.enterParser("primary suffix");
-	// 	if(s.curToken().kind == leftParToken){
-	// 			aps.aa = AspArguments.parse(s);
-	// 			System.out.println("DETTE HER ER I PIMARYSUFFIX ARGUMENTS: " + s.curToken().kind.toString());
-	// 			skip(s, rightParToken);
-	//
-	//
-	// 	}else if(s.curToken().kind == leftBracketToken){
-	// 			aps.as = AspSubscription.parse(s);
-	// 			skip(s, rightBracketToken);
-	// 	}else{
-	// 		//Main.parserError("No brackets", s.curLineNum());
-	// 		Main.log.leaveParser("primary suffix");
-	// 		return aps;
-	// 	}
-	// 	Main.log.leaveParser("primary suffix");
-	// 	System.out.println("DETTE HER ER I PIMARYSUFFIX 2: " + s.curToken().kind.toString());
-	//
-	// 	return aps;
-	// }
 	@Override
 		RuntimeValue eval(RuntimeScope curScope) {
 			return null;
+		}
+
+	@Override
+		void prettyPrint(){
+			System.out.println("KOMMER INN I PRIMARY SUFFIX");
+			aps.prettyPrint();
+			System.out.println("VI ER FERDIGE");
 		}
 }

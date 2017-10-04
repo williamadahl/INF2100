@@ -89,4 +89,7 @@
       </expr>
     </expr stmt>
   </stmt>
+   5: #navn = "Lucas"
 </program>
+PP> navn = "Dag" ( "Hei," , print ) NEWLINE
+PP> navn

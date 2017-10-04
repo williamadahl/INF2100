@@ -16,12 +16,19 @@ class AspStringLiteral extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
+	static ArrayList<String> str = new ArrayList<>();
+	static int counter = 0;
+	static String bing = "";
+
 	AspStringLiteral(int n){
 		super(n);
 	}
 
 	static AspStringLiteral parse(Scanner s){
 		AspStringLiteral asl = new AspStringLiteral(s.curLineNum());
+		str.add(s.curToken().stringLit);
+
 		Main.log.enterParser("string literal");
 		Main.log.leaveParser("string literal");
 		skip(s, stringToken);
@@ -33,7 +40,11 @@ class AspStringLiteral extends AspAtom{
 		}
 
 		@Override
-		void prettyPrint() {/*
-			Main.log.prettyWrite(" string literal ");*/
+		void prettyPrint() {
+			//int counter = 0;
+			System.out.println("KOMMER INN I STRING LITERAL");
+			Main.log.prettyWrite(str.get(counter));
+			counter ++;
 		}
+
 }

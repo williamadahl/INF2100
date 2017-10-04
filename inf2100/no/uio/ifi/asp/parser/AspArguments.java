@@ -56,39 +56,6 @@ class AspArguments extends AspPrimarySuffix{
 		Main.log.leaveParser("arguments");
 		return arar;
 
-		// while(true){
-		// 	Token temp = s.curToken();
-		// 	System.out.println("HER HAR DU TEMP INNI ARGUMENTS: " + temp.kind.toString());
-		// 	if(testToken(s, rightParToken)){
-		// 		Main.log.leaveParser("arguments");
-		// 		skip(s, rightParToken);
-		// 		System.out.println("NAA TREFFER VI RIGHTPARTOKEN HERRRRRRRRR: " + s.curToken().kind.toString());
-		// 		return arar;
-		// 	}else if(testToken(s, newLineToken)){
-		// 		//System.out.println("DETTE HER ER I ARGUMENTS 22222222222222: " + s.curToken().kind.toString());
-		//
-		// 		System.out.println(s.curToken().kind.toString());
-		// 		Main.log.leaveParser("arguments");
-		// 		return arar;
-		// 		// FORTSETT HERFRA AXAXAXAX
-		// 		//
-		// 		//parserError("Expected a " + rightBracketToken + " but found a " +
-		// 		//s.curToken().kind + "!", s.curLineNum());
-		// 	}else{
-		// 		System.out.println(ANSI_PURPLE + "ETTER ELSE I ARGUMENTS: "+s.curToken().kind.toString() + ANSI_RESET);
-		// 		while(true){
-		// 			arar.asex.add(AspExpr.parse(s));
-		// 			s.readNextToken();
-		// 			if(s.curToken().kind != commaToken){
-		// 				break;
-		// 			}
-		// 		}
-		// 	}
-		// 	// return arar;
-		// 	Main.log.leaveParser("arguments");
-		// 	return arar;
-		// }
-
 	}
 
 
@@ -98,14 +65,19 @@ class AspArguments extends AspPrimarySuffix{
 		}
 
 		@Override
-		void prettyPrint() {/*
+		void prettyPrint() {
+			System.out.println("KOMMER INN I ARGUMENTS ");
+			Main.log.prettyWrite(" ( ");
 			int nPrinted = 0;
-			for (AspExpr ae: asex) {
-				if (nPrinted > 0){
-					Main.log.prettyWrite(" arguments ");
+			if(!asex.isEmpty()){
+				for(AspExpr lol : asex){
+					if(nPrinted > 0){
+						Main.log.prettyWrite(" , ");
+					}
+					lol.prettyPrint();
+					++nPrinted;
 				}
-				ae.prettyPrint();
-				++nPrinted;
-			}*/
+			}
+			Main.log.prettyWrite(" ) ");
 		}
 }
