@@ -50,13 +50,15 @@ class AspTerm extends AspSyntax{
 		void prettyPrint() {
 			System.out.println("KOMMER INN I TERM");
 			int nPrinted = 0;
-			int i = 0;
 			for (AspFactor ant: factorTests){
 				if(nPrinted > 0){
-					termOprTests.get(i).prettyPrint();
+					System.out.println("KALLER PAA DENNE SIN PRETTYPRINT : " +termOprTests.get(0) );
+					if(!termOprTests.isEmpty()){
+						termOprTests.get(0).prettyPrint();
+						termOprTests.remove(0);
+					}
 				}
 				ant.prettyPrint();
-				i++;
 				++nPrinted;
 			}
 		}

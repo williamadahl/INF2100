@@ -54,6 +54,7 @@ public class AspAndTest extends AspSyntax {
 		 	if (nPrinted > 0){
 		 		Main.log.prettyWrite(" and ");
 		 	}
+			System.out.println("KALLER NAA PAA DENN NOT - TESTEN SIN PRETTYPRINT" + ant);
 		 	ant.prettyPrint();
 	 		++nPrinted;
 		 }

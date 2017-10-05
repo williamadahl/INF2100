@@ -41,6 +41,7 @@ class AspNoneLiteral extends AspAtom{
 
 		@Override
 		void prettyPrint() {
+			System.out.println("SKAL NAA WRITE NONE : " + uff);
 			Main.log.prettyWrite(uff);
 		}
 }

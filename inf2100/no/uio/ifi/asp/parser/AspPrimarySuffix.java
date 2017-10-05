@@ -54,8 +54,7 @@ abstract class AspPrimarySuffix extends AspSyntax{
 
 	@Override
 		void prettyPrint(){
-			System.out.println("KOMMER INN I PRIMARY SUFFIX");
+			System.out.println("KALLER PAA DENNE SIN PRIMARYSUFFIX  :" + aps);
 			aps.prettyPrint();
-			System.out.println("VI ER FERDIGE");
 		}
 }

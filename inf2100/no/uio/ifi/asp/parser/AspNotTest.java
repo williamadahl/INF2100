@@ -52,8 +52,10 @@ class AspNotTest extends AspSyntax{
 		void prettyPrint() {
 			System.out.println("KOMMER INN I NOT");
 			if(dank){
+				System.out.println("JEG WRITER NOT");
 				Main.log.prettyWrite(" not ");
 			}
+			System.out.println("KALLER PAA DENNE COMPARISON SIN PRETTYPRINT" + body1);
 			body1.prettyPrint();
 
 		}

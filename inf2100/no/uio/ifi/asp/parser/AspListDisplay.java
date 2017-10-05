@@ -71,6 +71,7 @@ class AspListDisplay extends AspAtom{
 					if(nPrinted > 0){
 						Main.log.prettyWrite(" , ");
 					}
+				System.out.println("SKAL NAA KALLE PAA DENNE  EXPRESSION SIN PRETTYPRINT :" + lol);
 					lol.prettyPrint();
 					++nPrinted;
 				}

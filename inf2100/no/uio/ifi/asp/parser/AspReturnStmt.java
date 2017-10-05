@@ -41,7 +41,9 @@ class AspReturnStmt extends AspStmt{
     @Override
     void prettyPrint() {
       Main.log.prettyWrite(" return ");
+      System.out.println("KALLER NAA PAA DENNE EKEPRESSION SIN PRETTYPRINT : " + ae);
       ae.prettyPrint();
+      System.out.println("SKAL NAA SKRIWVE EN NEWLINE");
       Main.log.prettyWriteLn();
     }
 }

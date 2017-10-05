@@ -83,7 +83,7 @@ abstract class AspStmt extends AspSyntax{
 	}
 @Override
  void prettyPrint() {
-
+	System.out.println("KALLER PAA DENNE TOKEN SIN PRETTYPRINT :" + a);
 	a.prettyPrint();
 
 }

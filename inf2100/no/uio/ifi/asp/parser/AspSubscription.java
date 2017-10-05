@@ -46,6 +46,7 @@ class AspSubscription extends AspPrimarySuffix{
 		void prettyPrint() {
 			System.out.println("KOMMER INN I SUBSCRIPTION");
 			Main.log.prettyWrite("[");
+			System.out.println("SKAL NAA KALLE PAA DENNE SIN EKEPRESSION : " + body1);
 			body1.prettyPrint();
 			Main.log.prettyWrite("]");
 

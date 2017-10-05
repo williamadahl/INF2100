@@ -45,8 +45,10 @@ class AspWhileStmt extends AspStmt {
       @Override
   		void prettyPrint() {
         Main.log.prettyWrite(" while ");
+        System.out.println("KALLER PAA DENNE EKEPRESSION SIN PRETTYPRINT : " + test);
         test.prettyPrint();
         Main.log.prettyWrite(" : ");
+          System.out.println("KALLER PAA DENNE SUITE SIN PRETTYPRINT : " + body);
         body.prettyPrint();
 
   		}

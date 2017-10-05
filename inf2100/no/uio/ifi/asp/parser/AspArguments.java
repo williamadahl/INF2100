@@ -69,15 +69,20 @@ class AspArguments extends AspPrimarySuffix{
 			System.out.println("KOMMER INN I ARGUMENTS ");
 			Main.log.prettyWrite(" ( ");
 			int nPrinted = 0;
-			if(!asex.isEmpty()){
+
+			// if(!asex.isEmpty()){
 				for(AspExpr lol : asex){
 					if(nPrinted > 0){
+						System.out.println("NAA MAA JEG SKRIVE EN KOMMA!!!!");
 						Main.log.prettyWrite(" , ");
 					}
+					System.out.println("KALLER PAA EXPRESSION SIN PRETTYPRINT " + lol);
+
 					lol.prettyPrint();
+					System.out.println("NTSHNTSHNTH");
 					++nPrinted;
 				}
-			}
+			// }
 			Main.log.prettyWrite(" ) ");
 		}
 }

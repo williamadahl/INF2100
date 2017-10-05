@@ -17,6 +17,7 @@ abstract class AspAtom extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	static AspAtom a = null;
 
 	AspAtom(int n) {
@@ -81,7 +82,7 @@ abstract class AspAtom extends AspSyntax{
 
 	@Override
 		void prettyPrint(){
-			System.out.println("KOMMER INN I ATOM");
+			System.out.println("KOMMER INN I ATOM og sender en :" + a);
 			a.prettyPrint();
 		}
 

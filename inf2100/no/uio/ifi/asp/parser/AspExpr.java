@@ -59,6 +59,7 @@ public class AspExpr extends AspSyntax {
       	if (nPrinted > 0){
       		Main.log.prettyWrite(" or ");
       	}
+        System.out.println("SKAL KALLE PAA DENNE ANDTESTEN :" + aat+ " : "+ nPrinted);
       	aat.prettyPrint();
       	++nPrinted;
       }

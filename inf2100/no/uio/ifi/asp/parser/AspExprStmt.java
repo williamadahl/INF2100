@@ -42,7 +42,7 @@ class AspExprStmt extends AspStmt{
 
 		@Override
 		public void prettyPrint() {
-			System.out.println("KOMMER INN I EXPR STMT");
+			System.out.println("KOMMER INN I EXPR STMT OG KALLER PAA EXPRESSION SIN prettyPrint");
 			body.prettyPrint();
 			Main.log.prettyWriteLn();
 		}

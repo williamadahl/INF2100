@@ -65,6 +65,7 @@ class AspFuncDef extends AspStmt{
 		void prettyPrint() {
 			int counter = 1;
 			Main.log.prettyWrite(" def ");
+			System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + aname.get(0));
 			aname.get(0).prettyPrint();
 			Main.log.prettyWrite(" ( ");
 
@@ -74,12 +75,14 @@ class AspFuncDef extends AspStmt{
 					if(nPrinted > 0){
 						Main.log.prettyWrite(" , ");
 					}
+						System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + aname.get(i));
 					aname.get(i).prettyPrint();
 					++nPrinted;
 				}
 			}
 			Main.log.prettyWrite(" ) ");
 			Main.log.prettyWrite(" : ");
+				System.out.println("KALLER NAA PA DENNE SUITE SIN PRETTYPRINT :" + pentHouse);
 			pentHouse.prettyPrint();
 		}
 	}

@@ -40,6 +40,7 @@ class AspFactorPrefix extends AspSyntax{
 
 	@Override
 		void prettyPrint() {
+			System.out.println("WRITER NAA DENNE STRENGEN : " + ayy);
 			Main.log.prettyWrite(ayy);
 		}
 	}

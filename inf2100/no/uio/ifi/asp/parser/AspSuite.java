@@ -50,10 +50,13 @@ class AspSuite extends AspSyntax{
 		}
 		@Override
 		void prettyPrint() {
+			System.out.println("SKAL NAA SKRIVE EN NEWLINE!!!");
 			Main.log.prettyWriteLn();
+			System.out.println("SKAL NAA SKRIVE EN INDENT");
 			Main.log.prettyIndent();
 			if(!astmt.isEmpty()){
 				for(AspStmt freedom : astmt){
+					System.out.println("SKAL NAA KALLE PAA DENNE SIN PRETTYPRINT " + freedom);
 					freedom.prettyPrint();
 				}
 			}

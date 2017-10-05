@@ -106,25 +106,42 @@ class AspFactor extends AspSyntax{
 		@Override
 		void prettyPrint() {
 			System.out.println("KOMMER INN I FACTORY");
-			if(!prefixTests.isEmpty()){
-				prefixTests.get(0).prettyPrint();
+			System.out.println("DETTE ER LENGIDEN AV prefixTests :" + prefixTests.size());
+			for(AspFactorPrefix afp : prefixTests){
+				afp.prettyPrint();
 			}
-
-			if(!factorOprTests.isEmpty()){
-				int nPrinted = 0;
-				int i = 0;
-				for(AspPrimary ant : primaryTests){
-					if(nPrinted > 0){
-						factorOprTests.get(i).prettyPrint();
-					}
-					ant.prettyPrint();
-					i++;
-					++nPrinted;
+			for(AspPrimary ap : primaryTests ){
+				ap.prettyPrint();
+				if(!factorOprTests.isEmpty()){
+					factorOprTests.get(0).prettyPrint();
+					factorOprTests.remove(0);
 				}
-			}else{
-				for(AspPrimary ant : primaryTests){
-						ant.prettyPrint();
-					}
 			}
+			// if(!prefixTests.isEmpty()){
+			// 	System.out.println("PREFIX ER IKKE TOM OG VI KALLER ASPREFIX ");
+			// 	prefixTests.get(0).prettyPrint();
+			// }
+			//
+			// if(!factorOprTests.isEmpty()){
+			// 	System.out.println("FACTOROPR ER IKKE TOM ");
+			// 	int nPrinted = 0;
+			// 	int i = 0;
+			// 	for(AspPrimary ant : primaryTests){
+			// 		if(nPrinted > 0){
+			// 			System.out.println("SKAL KALLE PAA DENNE FACTOROPR SIN PRETTYPRINT: " + factorOprTests.get(i));
+			// 			factorOprTests.get(i).prettyPrint();
+			// 		}
+			// 		System.out.println("SKAL KALLE PAA DENNE PRIMARY SIN TEST: " + ant);
+			// 		ant.prettyPrint();
+			// 		i++;
+			// 		++nPrinted;
+			// 	}
+			// }else{
+			// 	System.out.println("FACTOROPR VAR TOM! ");
+			// 	for(AspPrimary ant : primaryTests){
+			// 		System.out.println("KALLEP PAA DENNE PRIMARY TEST : " + ant);
+			// 			ant.prettyPrint();
+			// 		}
+			// }
 		}
 }

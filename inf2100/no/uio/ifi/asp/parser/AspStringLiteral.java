@@ -42,7 +42,7 @@ class AspStringLiteral extends AspAtom{
 		@Override
 		void prettyPrint() {
 			//int counter = 0;
-			System.out.println("KOMMER INN I STRING LITERAL");
+			System.out.println(ANSI_RED + "KOMMER INN I STRING LITERAL" + str.get(counter) + ANSI_RESET);
 			Main.log.prettyWrite(str.get(counter));
 			counter ++;
 		}

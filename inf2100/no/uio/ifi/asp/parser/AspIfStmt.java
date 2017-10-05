@@ -70,8 +70,10 @@ class AspIfStmt extends AspStmt{
 	void prettyPrint() {
 		Main.log.prettyWrite(" if ");
 		for(AspExpr dick : aexp){
+			System.out.println("KALLER DENNE EXPRESSION SIN PRETTYPRINT :" + dick);
 			dick.prettyPrint();
 			Main.log.prettyWrite(" : ");
+			System.out.println("KALLER DENNE SUITE SIN PRETTYPRINT :" + asui.get(counter));
 			asui.get(counter).prettyPrint();
 			counter++;
 
@@ -82,6 +84,7 @@ class AspIfStmt extends AspStmt{
 		if(counter != asui.size()){
 			Main.log.prettyWrite(" else ");
 			Main.log.prettyWrite(" : ");
+			System.out.println("KALLER DENNE SUITE SIN PRETTYPRINT :" + asui.get(counter));
 			asui.get(counter).prettyPrint();
 			counter++;
 		}

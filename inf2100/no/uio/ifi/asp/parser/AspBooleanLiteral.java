@@ -50,7 +50,7 @@ class AspBooleanLiteral extends AspAtom{
 
 	@Override
 	void prettyPrint() {
-		System.out.println("KOMMER INN I BOOLEAN LITERAL");
+		System.out.println("KOMMER INN I BOOLEAN LITERAL OG WRITER : " +  hi.get(counter));
 		Main.log.prettyWrite(hi.get(counter));
 		counter++;
 	}

@@ -39,6 +39,7 @@ class AspFactorOpr extends AspSyntax{
 
 	@Override
 		void prettyPrint() {
+			System.out.println("PRTTYWRITER NAA " + kek);
 			Main.log.prettyWrite(kek);
 		}
 }

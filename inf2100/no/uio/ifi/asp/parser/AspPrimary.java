@@ -54,8 +54,13 @@ class AspPrimary extends AspSyntax{
 		void prettyPrint() {
 			System.out.println("Dette er aps size :" + aps.size());
 			System.out.println("Dette er counter : " + counter);
-			System.out.println("KOMMER INN I PRIMARY");
+			System.out.println("KOMMER INN I PRIMARY KALLER ATOM MED :" + aa.toString());
 			aa.prettyPrint();
+
+			for(AspPrimarySuffix a : aps ){
+				System.out.println(ANSI_BLUE + " VI HAR PRIMARYSUFFIX I PRIMARY: " + ANSI_RESET);
+				a.prettyPrint();
+			}
 			//System.out.println("HER SKAL VI SJEKKE BS");
 			// if(!(aps.isEmpty())){
 			// 	System.out.println("PRIMARY SUFFIX OPPFYLLES");
@@ -65,15 +70,15 @@ class AspPrimary extends AspSyntax{
 			// 		kek.prettyPrint();
 			// 	}
 			// }
-			if(counter != 0){
-				System.out.println("OK aa printe denne");
-				for(AspPrimarySuffix kek : aps){
-					counter--;
-					kek.prettyPrint();
-				}
-			// }
-			System.out.println("Ikke flere PrimarySuffix aa printe");
-			//System.out.println("BØR OPPFYLLES");
-		}
+		// 	if(counter != 0){
+		// 		for(AspPrimarySuffix kek : aps){
+		//
+		// 			System.out.println("KALLER PAA DENNE PRIMARYSUFFIX SIN PRETTYPRINT : " + kek);
+		// 			kek.prettyPrint();
+		// 		}
+		// 	// }
+		// 	System.out.println("Ikke flere PrimarySuffix aa printe");
+		// 	//System.out.println("BØR OPPFYLLES");
+		// }
 	}
 }

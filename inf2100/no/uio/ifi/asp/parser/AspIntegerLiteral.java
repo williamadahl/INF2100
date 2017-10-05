@@ -43,6 +43,7 @@ class AspIntegerLiteral extends AspAtom{
 		@Override
 		void prettyPrint() {
 			System.out.println("KOMMER INN I INTEGER LITERAL");
+			System.out.println("SKAL NAA SKRIVE DENNE  LONG :" + Long.toString(dong.get(counter))	);
 			Main.log.prettyWrite(Long.toString(dong.get(counter)));
 			counter ++;
 		}

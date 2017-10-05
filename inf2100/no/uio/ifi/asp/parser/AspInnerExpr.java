@@ -56,6 +56,7 @@ class AspInnerExpr extends AspAtom{
 		@Override
 		void prettyPrint() {
 			Main.log.prettyWrite(" ( ");
+			System.out.println("KALLER DENNE EXPRESSION SIN PRETTYPRINT :" + bod1);
 			bod1.prettyPrint();
 			Main.log.prettyWrite(" ) ");
 		}

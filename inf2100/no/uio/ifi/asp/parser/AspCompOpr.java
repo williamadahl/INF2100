@@ -39,6 +39,7 @@ class AspCompOpr extends AspSyntax{
 
 	@Override
 	void prettyPrint() {
+		System.out.println("INNE I AspSyntax, writer :" + johnnyGuitar);
 		Main.log.prettyWrite(johnnyGuitar);
 
 	}

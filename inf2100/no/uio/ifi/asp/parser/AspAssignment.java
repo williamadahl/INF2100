@@ -58,34 +58,6 @@ class AspAssignment extends AspStmt{
 	}
 
 
-/*
-		if(s.curToken().kind == leftBracketToken){
-			while(true){
-				asss.as.add(AspSubscription.parse(s));
-				if(s.curToken().kind == equalToken){
-					skip(s, equalToken);
-					break;
-				}
-			}
-		}
-		else{
-
-			skip(s, equalToken);
-
-			asss.test2 = AspExpr.parse(s);
-			Main.log.leaveParser("assignment");
-			skip(s, newLineToken);
-			System.out.println("DETTE HER ER I ASSIGNMENT2: " +s.curToken().kind.toString());
-			return asss;
-		}
-		asss.test2 = AspExpr.parse(s);
-		Main.log.leaveParser("assignment");
-		// skip(s, newLineToken);
-		System.out.println("DETTE HER ER I ASSIGNMENT3: " + s.curToken().kind.toString());
-
-		return asss;
-	}
-*/
 	@Override
 	RuntimeValue eval(RuntimeScope curScope){
 		return null;
@@ -95,14 +67,15 @@ class AspAssignment extends AspStmt{
 	public void prettyPrint() {
 
 		test.prettyPrint();
-		if(as.size() != 0){
-			for(AspSubscription phub : as){
-				phub.prettyPrint();
-			}
+
+		for(AspSubscription phub : as){
+			phub.prettyPrint();
 		}
+	
 		Main.log.prettyWrite(" = ");
+		System.out.println("KALLER PAA EXPRESSION SIN PRETTYPRINT " + test2);
 		test2.prettyPrint();
-		Main.log.prettyWrite("NEWLINE");
+		System.out.println("KALLER PAA EN PRINT NEWLINE");
 		Main.log.prettyWriteLn();
 
 	}

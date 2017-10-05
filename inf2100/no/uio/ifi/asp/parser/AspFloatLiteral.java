@@ -43,6 +43,7 @@ class AspFloatLiteral extends AspAtom{
 	@Override
 		void prettyPrint() {
 			System.out.println("KOMMER INN I FLOAT LITERAL");
+			System.out.println("WRITER NAA UT DENNE DOUBLE : " + Double.toString(dong.get(counter)) );
 			Main.log.prettyWrite(Double.toString(dong.get(counter)));
 			counter++;
 		}

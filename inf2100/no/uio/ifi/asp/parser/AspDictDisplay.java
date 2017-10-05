@@ -17,6 +17,7 @@ class AspDictDisplay extends AspAtom{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	ArrayList<AspStringLiteral> atl = new ArrayList<>();
 	ArrayList<AspExpr> ae = new ArrayList<>();
 	int counter = 0;
@@ -72,8 +73,11 @@ class AspDictDisplay extends AspAtom{
 
 		if(!atl.isEmpty()){
 			for(AspStringLiteral exp : atl){
+				System.out.println("Kaller pa DETTE STRINGLITTERAL SIN PETTYRPRINT :" + exp);
 				exp.prettyPrint();
 				Main.log.prettyWrite(" : ");
+
+				System.out.println("Kaller pa DETTE EKEPRESSION SIN PETTYRPRINT :" + ae.get(counter));		
 				ae.get(counter).prettyPrint();
 				counter++;
 				if(counter < atl.size()){

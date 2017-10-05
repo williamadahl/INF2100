@@ -19,7 +19,7 @@ public class AspProgram extends AspSyntax {
   public static final String ANSI_PURPLE = "\u001B[35m";
   public static final String ANSI_CYAN = "\u001B[36m";
   public static final String ANSI_WHITE = "\u001B[37m";
-    ArrayList<AspStmt> stmts = new ArrayList<>();
+  ArrayList<AspStmt> stmts = new ArrayList<>();
 
 
     AspProgram(int n) {
@@ -47,7 +47,9 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public void prettyPrint() {
+      System.out.println("VI HAR SAA MANGE STATEMENTS :" + stmts.size());
     	for(AspStmt burger : stmts){
+        System.out.println("KALLER PAA DENNE STATEMENT SIN PRETTYPRINT :" + burger);
         burger.prettyPrint();
       }
     }

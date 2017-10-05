@@ -44,6 +44,7 @@ class AspName extends AspAtom{
 		@Override
 		void prettyPrint() {
 			System.out.println("KOMMER INN I NAME");
+			System.out.println(ANSI_PURPLE + "SKAL WRITE DETTE STRENG : " + guitar.get(counter) + ANSI_RESET);
 			Main.log.prettyWrite(guitar.get(counter));
 			counter++;
 		}

@@ -18,6 +18,7 @@ class AspComparison extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	ArrayList<AspTerm> termTests = new ArrayList<>();
 	ArrayList<AspCompOpr> compOprTests = new ArrayList<>();
 
@@ -69,13 +70,16 @@ class AspComparison extends AspSyntax{
 	void prettyPrint() {
 		System.out.println("KOMMER INN I COMPARISON");
 		int nPrinted = 0;
-		int i = 0;
 		for (AspTerm ant: termTests) {
 			if (nPrinted > 0){
-				compOprTests.get(i).prettyPrint();
+				System.out.println("KALLER NAA PAA DENNE COMPOPR SIN PRETTYPRINT: "+ compOprTests.get(0));
+				if(!compOprTests.isEmpty()){
+					compOprTests.get(0).prettyPrint();
+					compOprTests.remove(0);
+				}
 			}
+			System.out.println("KALLER NAA PAA DENNE TERM SIN PRETTYPRINT: "+ ant);
 			ant.prettyPrint();
-			i++;
 			++nPrinted;
 			}
 		}
