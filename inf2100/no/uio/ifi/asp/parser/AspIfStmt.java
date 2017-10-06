@@ -19,7 +19,7 @@ class AspIfStmt extends AspStmt{
 
 	ArrayList<AspExpr> aexp = new ArrayList<>();
 	ArrayList<AspSuite> asui = new ArrayList<>();
-	static int counter = 0;
+
 
 
 	AspIfStmt(int n){
@@ -68,25 +68,27 @@ class AspIfStmt extends AspStmt{
 
 	@Override
 	void prettyPrint() {
-		Main.log.prettyWrite(" if ");
-		for(AspExpr dick : aexp){
-			System.out.println("KALLER DENNE EXPRESSION SIN PRETTYPRINT :" + dick);
-			dick.prettyPrint();
+		Main.log.prettyWrite("if ");
+		int counter = 0;
+		int nPrinted = 0;
+		for (AspExpr ae: aexp) {
+			if (nPrinted > 0){
+				Main.log.prettyWrite("elif ");
+			}
+			ae.prettyPrint();
 			Main.log.prettyWrite(" : ");
-			System.out.println("KALLER DENNE SUITE SIN PRETTYPRINT :" + asui.get(counter));
 			asui.get(counter).prettyPrint();
+			++nPrinted;
 			counter++;
 
-			if(counter < aexp.size()){
-				Main.log.prettyWrite(" elif ");
-			}
-		}
-		if(counter != asui.size()){
-			Main.log.prettyWrite(" else ");
-			Main.log.prettyWrite(" : ");
-			System.out.println("KALLER DENNE SUITE SIN PRETTYPRINT :" + asui.get(counter));
-			asui.get(counter).prettyPrint();
-			counter++;
-		}
+		 }
+
+		 if(asui.size() > aexp.size()){
+
+			 Main.log.prettyWrite(" else ");
+			 Main.log.prettyWrite(" : ");
+			 asui.get(counter).prettyPrint();
+		 }
+
 	}
 }

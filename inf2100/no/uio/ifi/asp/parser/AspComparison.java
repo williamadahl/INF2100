@@ -71,16 +71,19 @@ class AspComparison extends AspSyntax{
 		System.out.println("KOMMER INN I COMPARISON");
 		int nPrinted = 0;
 		for (AspTerm ant: termTests) {
+			System.out.println("KALLER PÅ TERMTESTSTSTSTSTSTSTSTSTSTSTSTSTSST");
 			if (nPrinted > 0){
 				System.out.println("KALLER NAA PAA DENNE COMPOPR SIN PRETTYPRINT: "+ compOprTests.get(0));
+
 				if(!compOprTests.isEmpty()){
-					compOprTests.get(0).prettyPrint();
+					AspCompOpr hi = compOprTests.get(0);
 					compOprTests.remove(0);
+					hi.prettyPrint();
 				}
 			}
 			System.out.println("KALLER NAA PAA DENNE TERM SIN PRETTYPRINT: "+ ant);
 			ant.prettyPrint();
 			++nPrinted;
-			}
 		}
+	}
 }

@@ -54,11 +54,10 @@ class AspSuite extends AspSyntax{
 			Main.log.prettyWriteLn();
 			System.out.println("SKAL NAA SKRIVE EN INDENT");
 			Main.log.prettyIndent();
-			if(!astmt.isEmpty()){
-				for(AspStmt freedom : astmt){
-					System.out.println("SKAL NAA KALLE PAA DENNE SIN PRETTYPRINT " + freedom);
-					freedom.prettyPrint();
-				}
+
+			for(AspStmt freedom : astmt){
+				System.out.println("SKAL NAA KALLE PAA DENNE SIN PRETTYPRINT " + freedom);
+				freedom.prettyPrint();
 			}
 			Main.log.prettyDedent();
 		}

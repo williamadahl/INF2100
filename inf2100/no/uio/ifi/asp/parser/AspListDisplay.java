@@ -66,16 +66,15 @@ class AspListDisplay extends AspAtom{
 		void prettyPrint() {
 			Main.log.prettyWrite(" [ ");
 			int nPrinted = 0;
-			if(!boi.isEmpty()){
-				for(AspExpr lol : boi){
-					if(nPrinted > 0){
-						Main.log.prettyWrite(" , ");
-					}
-				System.out.println("SKAL NAA KALLE PAA DENNE  EXPRESSION SIN PRETTYPRINT :" + lol);
-					lol.prettyPrint();
-					++nPrinted;
+			
+			for(AspExpr lol : boi){
+				if(nPrinted > 0){
+					Main.log.prettyWrite(" , ");
 				}
+				System.out.println("SKAL NAA KALLE PAA DENNE  EXPRESSION SIN PRETTYPRINT :" + lol);
+				lol.prettyPrint();
+				++nPrinted;
 			}
 			Main.log.prettyWrite(" ] ");
 		}
-}
+	}

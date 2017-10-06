@@ -71,7 +71,7 @@ class AspAssignment extends AspStmt{
 		for(AspSubscription phub : as){
 			phub.prettyPrint();
 		}
-	
+
 		Main.log.prettyWrite(" = ");
 		System.out.println("KALLER PAA EXPRESSION SIN PRETTYPRINT " + test2);
 		test2.prettyPrint();

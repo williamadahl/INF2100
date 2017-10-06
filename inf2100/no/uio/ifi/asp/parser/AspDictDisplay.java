@@ -71,18 +71,16 @@ class AspDictDisplay extends AspAtom{
 		Main.log.prettyWrite(" { ");
 		int nPrinted = 0;
 
-		if(!atl.isEmpty()){
-			for(AspStringLiteral exp : atl){
-				System.out.println("Kaller pa DETTE STRINGLITTERAL SIN PETTYRPRINT :" + exp);
-				exp.prettyPrint();
-				Main.log.prettyWrite(" : ");
+		for(AspStringLiteral lit : atl){
+			System.out.println("Kaller pa DETTE STRINGLITTERAL SIN PETTYRPRINT :" + lit);
+			lit.prettyPrint();
+			Main.log.prettyWrite(" : ");
 
-				System.out.println("Kaller pa DETTE EKEPRESSION SIN PETTYRPRINT :" + ae.get(counter));		
-				ae.get(counter).prettyPrint();
-				counter++;
-				if(counter < atl.size()){
-					Main.log.prettyWrite(" , ");
-				}
+			System.out.println("Kaller pa DETTE EKEPRESSION SIN PETTYRPRINT :" + ae.get(counter));
+			ae.get(counter).prettyPrint();
+			counter++;
+			if(counter < atl.size()){
+				Main.log.prettyWrite(" , ");
 			}
 		}
 		Main.log.prettyWrite(" } ");

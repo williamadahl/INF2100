@@ -18,15 +18,15 @@ class AspNotTest extends AspSyntax{
 	public static final String ANSI_WHITE = "\u001B[37m";
 
 	AspComparison body1;
-	static AspNotTest nut;
-	static boolean dank = true;
+	// AspNotTest nut;
+	boolean dank = false;
 
 	AspNotTest(int n){
 		super(n);
 	}
 
 	static AspNotTest parse(Scanner s) {
-		nut = new AspNotTest(s.curLineNum());
+		AspNotTest nut = new AspNotTest(s.curLineNum());
 		//System.out.println("DETTE HER ER I NOT TEST: " + s.curToken().kind.toString());
 
 		Main.log.enterParser("not test");
@@ -34,10 +34,10 @@ class AspNotTest extends AspSyntax{
 		Token temp = s.curToken();
 		if(temp.kind == notToken){
 			skip(s, notToken);
-			dank = true;
+			nut.dank = true;
 			nut.body1 = AspComparison.parse(s);
 		}else{
-			dank = false;
+			nut.dank = false;
 			nut.body1 = AspComparison.parse(s);
 		}
 		Main.log.leaveParser("not test");

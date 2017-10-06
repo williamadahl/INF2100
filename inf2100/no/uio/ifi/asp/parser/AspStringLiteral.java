@@ -17,9 +17,9 @@ class AspStringLiteral extends AspAtom{
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	static ArrayList<String> str = new ArrayList<>();
-	static int counter = 0;
-	static String bing = "";
+	ArrayList<String> str = new ArrayList<>();
+	int counter = 0;
+	String bing = "";
 
 	AspStringLiteral(int n){
 		super(n);
@@ -27,7 +27,7 @@ class AspStringLiteral extends AspAtom{
 
 	static AspStringLiteral parse(Scanner s){
 		AspStringLiteral asl = new AspStringLiteral(s.curLineNum());
-		str.add(s.curToken().stringLit);
+		asl.str.add(s.curToken().stringLit);
 
 		Main.log.enterParser("string literal");
 		Main.log.leaveParser("string literal");

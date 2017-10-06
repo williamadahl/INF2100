@@ -51,6 +51,7 @@ public class AspProgram extends AspSyntax {
     	for(AspStmt burger : stmts){
         System.out.println("KALLER PAA DENNE STATEMENT SIN PRETTYPRINT :" + burger);
         burger.prettyPrint();
+        //Main.log.prettyWriteLn();
       }
     }
 

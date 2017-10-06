@@ -17,7 +17,7 @@ class AspTermOpr extends AspSyntax{
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	static String ayy = "";
+	String ayy = "";
 
 	AspTermOpr(int n){
 		super(n);
@@ -26,7 +26,7 @@ class AspTermOpr extends AspSyntax{
 		AspTermOpr ato = new AspTermOpr(s.curLineNum());
 		Main.log.enterParser("term opr");
 		Main.log.leaveParser("term opr");
-		ayy = s.curToken().kind.toString();
+		ato.ayy = s.curToken().kind.toString();
 		skip(s, s.curToken().kind);
 		return ato;
 	}

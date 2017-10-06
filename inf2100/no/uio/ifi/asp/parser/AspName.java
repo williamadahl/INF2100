@@ -17,8 +17,8 @@ class AspName extends AspAtom{
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	static ArrayList<String> guitar = new ArrayList<>();
-	static int counter = 0;
+	ArrayList<String> guitar = new ArrayList<>();
+	// int counter = 0;
 
 	AspName(int n){
 		super(n);
@@ -30,7 +30,7 @@ class AspName extends AspAtom{
 
 			Main.log.enterParser("name");
 			Main.log.leaveParser("name");
-			guitar.add(s.curToken().name);
+			an.guitar.add(s.curToken().name);
 			skip(s, nameToken);
 
 			return an;
@@ -43,10 +43,10 @@ class AspName extends AspAtom{
 
 		@Override
 		void prettyPrint() {
-			System.out.println("KOMMER INN I NAME");
-			System.out.println(ANSI_PURPLE + "SKAL WRITE DETTE STRENG : " + guitar.get(counter) + ANSI_RESET);
-			Main.log.prettyWrite(guitar.get(counter));
-			counter++;
+			// System.out.println("KOMMER INN I NAME");
+			// System.out.println(ANSI_PURPLE + "SKAL WRITE DETTE STRENG : " + guitar.get(counter) + ANSI_RESET);
+			Main.log.prettyWrite(guitar.get(0));
+			// counter++;
 		}
 
 }

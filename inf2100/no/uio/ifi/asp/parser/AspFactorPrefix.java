@@ -16,7 +16,8 @@ class AspFactorPrefix extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-	static String ayy = "";
+
+	String ayy = "";
 
 	AspFactorPrefix(int n){
 		super(n);
@@ -24,7 +25,7 @@ class AspFactorPrefix extends AspSyntax{
 
 	static AspFactorPrefix parse(Scanner s){
 		AspFactorPrefix afp = new AspFactorPrefix(s.curLineNum());
-		ayy = s.curToken().kind.toString();
+		afp.ayy = s.curToken().kind.toString();
 
 		Main.log.enterParser("factor prefix");
 		skip(s, s.curToken().kind);

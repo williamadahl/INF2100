@@ -18,6 +18,9 @@ abstract class AspPrimarySuffix extends AspSyntax{
 	public static final String ANSI_WHITE = "\u001B[37m";
 
 	static AspPrimarySuffix aps = null;
+	//static ArrayList<AspPrimarySuffix> aps = new ArrayList<>();
+
+
 	//static boolean printed = false;
 
 	AspPrimarySuffix(int n){
@@ -30,11 +33,18 @@ abstract class AspPrimarySuffix extends AspSyntax{
 		switch(s.curToken().kind){
 			case leftParToken:
 			aps = AspArguments.parse(s);
+
+			//aps.add(AspArguments.parse(s));
+
+
 			//System.out.println("DETTE HER ER I PIMARYSUFFIX arguments: " + s.curToken().kind.toString());
 			//skip(s, s.curToken().kind);
 			break;
 			case leftBracketToken:
 			aps = AspSubscription.parse(s);
+
+			//aps.add(AspSubscription.parse(s));
+
 			//System.out.println(ANSI_RED + "DETTE HER ER I PIMARYSUFFIX subscription: " + s.curToken().kind.toString() + ANSI_RESET);
 			//skip(s, s.curToken().kind);
 			break;
@@ -52,9 +62,16 @@ abstract class AspPrimarySuffix extends AspSyntax{
 			return null;
 		}
 
+
 	@Override
 		void prettyPrint(){
-			System.out.println("KALLER PAA DENNE SIN PRIMARYSUFFIX  :" + aps);
+			/*System.out.println("KALLER PAA DENNE SIN PRIMARYSUFFIX  :" + aps);
+			//for (AspPrimarySuffix hue : aps){
+				aps.get(0).prettyPrint();
+				aps.remove(0);
+			//}
+			*/
 			aps.prettyPrint();
 		}
+
 }

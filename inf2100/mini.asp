@@ -1,6 +1,4 @@
-
-# En hyggelig hilsen
+#En hyggelig hilsen
 navn = "Dag"
-navn = "Lucas"
-print("Hei,", "paa")
-print("Hade,", ikke)
+navn = "lucas"
+print("Hei,", navn2)

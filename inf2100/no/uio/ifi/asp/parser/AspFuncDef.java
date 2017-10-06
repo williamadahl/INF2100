@@ -64,25 +64,26 @@ class AspFuncDef extends AspStmt{
 	@Override
 		void prettyPrint() {
 			int counter = 1;
-			Main.log.prettyWrite(" def ");
+			Main.log.prettyWrite("def ");
 			System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + aname.get(0));
-			aname.get(0).prettyPrint();
-			Main.log.prettyWrite(" ( ");
+			AspName kek = aname.get(0);
+			aname.remove(0);
+			kek.prettyPrint();
+			Main.log.prettyWrite("(");
 
-			if(!(aname.size() < 2)){
-				int nPrinted = 0;
-				for(int i = 1; i<aname.size(); i++){
+			int nPrinted = 0;
+			for(AspName heh : aname){
 					if(nPrinted > 0){
-						Main.log.prettyWrite(" , ");
+						Main.log.prettyWrite(", ");
 					}
-						System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + aname.get(i));
-					aname.get(i).prettyPrint();
+					System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + heh);
+					heh.prettyPrint();
 					++nPrinted;
 				}
-			}
-			Main.log.prettyWrite(" ) ");
-			Main.log.prettyWrite(" : ");
-				System.out.println("KALLER NAA PA DENNE SUITE SIN PRETTYPRINT :" + pentHouse);
+			Main.log.prettyWrite(")");
+			Main.log.prettyWrite(":");
+			System.out.println("KALLER NAA PA DENNE SUITE SIN PRETTYPRINT :" + pentHouse);
 			pentHouse.prettyPrint();
+			Main.log.prettyWriteLn();
 		}
 	}

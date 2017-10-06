@@ -16,6 +16,7 @@ class AspTerm extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	ArrayList<AspFactor> factorTests = new ArrayList<>();
 	ArrayList<AspTermOpr> termOprTests = new ArrayList<>();
 
@@ -50,16 +51,20 @@ class AspTerm extends AspSyntax{
 		void prettyPrint() {
 			System.out.println("KOMMER INN I TERM");
 			int nPrinted = 0;
+			System.out.println("Dette er FACTORY size :" + factorTests.size());
 			for (AspFactor ant: factorTests){
+				System.out.println("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
 				if(nPrinted > 0){
-					System.out.println("KALLER PAA DENNE SIN PRETTYPRINT : " +termOprTests.get(0) );
+					//System.out.println("KALLER PAA DENNE SIN PRETTYPRINT : " +termOprTests.get(0) );
+					// ant.prettyPrint();
 					if(!termOprTests.isEmpty()){
-						termOprTests.get(0).prettyPrint();
+						AspTermOpr hi = termOprTests.get(0);
 						termOprTests.remove(0);
+						hi.prettyPrint();
 					}
 				}
-				ant.prettyPrint();
 				++nPrinted;
+				ant.prettyPrint();
 			}
 		}
 }

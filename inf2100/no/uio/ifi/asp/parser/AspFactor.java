@@ -16,6 +16,7 @@ class AspFactor extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	ArrayList<AspFactorOpr> factorOprTests = new ArrayList<>();
 	ArrayList<AspPrimary> primaryTests = new ArrayList<>();
 	ArrayList<AspFactorPrefix> prefixTests = new ArrayList<>();
@@ -107,6 +108,41 @@ class AspFactor extends AspSyntax{
 		void prettyPrint() {
 			System.out.println("KOMMER INN I FACTORY");
 			System.out.println("DETTE ER LENGIDEN AV prefixTests :" + prefixTests.size());
+
+			if(!prefixTests.isEmpty()){
+				prefixTests.get(0).prettyPrint();
+				//prefixTests.remove(0);
+			}
+
+			System.out.println("Dette er primaryTests size :" + primaryTests.size());
+
+			if(primaryTests.size() == 1){
+				primaryTests.get(0).prettyPrint();
+			}else{
+				primaryTests.get(0).prettyPrint();
+				for(int i = 1; i< primaryTests.size(); i++){
+					factorOprTests.get(i-1).prettyPrint();
+					primaryTests.get(i).prettyPrint();
+				}
+			}
+			/*
+			for(AspPrimary ap : primaryTests ){
+				ap.prettyPrint();
+				/*
+				int nPrinted = 0;
+				if (nPrinted > 0){
+					factorOprTests.get(0).prettyPrint();
+					factorOprTests.remove(0);
+				}
+				++nPrinted;
+
+				if(!factorOprTests.isEmpty()){
+					factorOprTests.get(0).prettyPrint();
+					factorOprTests.remove(0);
+				}
+			}
+			*/
+			/*
 			for(AspFactorPrefix afp : prefixTests){
 				afp.prettyPrint();
 			}
@@ -117,6 +153,8 @@ class AspFactor extends AspSyntax{
 					factorOprTests.remove(0);
 				}
 			}
+			*/
+
 			// if(!prefixTests.isEmpty()){
 			// 	System.out.println("PREFIX ER IKKE TOM OG VI KALLER ASPREFIX ");
 			// 	prefixTests.get(0).prettyPrint();

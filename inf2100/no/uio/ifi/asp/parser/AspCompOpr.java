@@ -16,17 +16,18 @@ class AspCompOpr extends AspSyntax{
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+
 	AspCompOpr(int n){
 		super(n);
 	}
-	static String johnnyGuitar = "";
+	String johnnyGuitar = "";
 
 	static AspCompOpr parse(Scanner s) {
 		AspCompOpr aco = new AspCompOpr(s.curLineNum());
 		//System.out.println("DETTE HER ER I COMPOPR: " +s.curToken().kind.toString());
 
 		Main.log.enterParser("comp opr");
-		johnnyGuitar = s.curToken().kind.toString();
+		aco.johnnyGuitar = s.curToken().toString();
 		skip(s, s.curToken().kind);
 		Main.log.leaveParser("comp opr");
 		return aco;

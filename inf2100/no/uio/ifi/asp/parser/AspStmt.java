@@ -17,6 +17,7 @@ abstract class AspStmt extends AspSyntax{
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
+	AspStmt as;
 
 	AspStmt(int n){
 		super(n);
@@ -79,14 +80,17 @@ abstract class AspStmt extends AspSyntax{
 		//System.out.println("DETTE HER ER I STATEMENT2: " + s.curToken().kind.toString());
 
 		Main.log.leaveParser("stmt");
+		a.as = a;
 		return a;
 	}
+
 @Override
  void prettyPrint() {
 	System.out.println("KALLER PAA DENNE TOKEN SIN PRETTYPRINT :" + a);
-	a.prettyPrint();
+	as.prettyPrint();
 
 }
+
 	@Override
 		RuntimeValue eval(RuntimeScope curScope) {
 			return null;

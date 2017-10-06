@@ -17,9 +17,10 @@ class AspPrimary extends AspSyntax{
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	AspAtom aa;
-	static ArrayList<AspPrimarySuffix> aps = new ArrayList<>();
-	static int counter = 0;
+	//AspAtom aa;
+	ArrayList<AspAtom> aa = new ArrayList<>();
+	ArrayList<AspPrimarySuffix> aps = new ArrayList<>();
+	// static int counter = 0;
 	//static int counter = 0;
 
 	AspPrimary(int n){
@@ -30,13 +31,14 @@ class AspPrimary extends AspSyntax{
 		//System.out.println("DETTE HER ER I PRIMARY: " + s.curToken().kind.toString());
 		Main.log.enterParser("primary");
 		AspPrimary ap = new AspPrimary(s.curLineNum());
-		ap.aa = AspAtom.parse(s);
+		//ap.aa = AspAtom.parse(s);
+		ap.aa.add(AspAtom.parse(s));
 		//System.out.println("DETTE HER ER I PRIMARY 2: " + s.curToken().kind.toString());
 		//skip(s, s.curToken().kind);
 
 		while((s.curToken().kind == leftParToken) || (s.curToken().kind == leftBracketToken)){
-				aps.add(AspPrimarySuffix.parse(s));
-				counter++;
+				ap.aps.add(AspPrimarySuffix.parse(s));
+				// counter++;
 				//System.out.println("DETTE HER ER I PRIMARY 3: " + s.curToken().kind.toString());
 				//s.readNextToken();
 		}
@@ -52,15 +54,29 @@ class AspPrimary extends AspSyntax{
 
 		@Override
 		void prettyPrint() {
-			System.out.println("Dette er aps size :" + aps.size());
-			System.out.println("Dette er counter : " + counter);
-			System.out.println("KOMMER INN I PRIMARY KALLER ATOM MED :" + aa.toString());
-			aa.prettyPrint();
 
-			for(AspPrimarySuffix a : aps ){
+			AspAtom hi = aa.get(0);
+			aa.remove(0);
+			hi.prettyPrint();
+
+
+			//aa.prettyPrint();
+
+			/*
+			if(!aps.isEmpty()){
 				System.out.println(ANSI_BLUE + " VI HAR PRIMARYSUFFIX I PRIMARY: " + ANSI_RESET);
-				a.prettyPrint();
+				AspPrimarySuffix kek = aps.get(0);
+				aps.remove(0);
+				kek.prettyPrint();
+			*/
+
+				for(AspPrimarySuffix a : aps ){
+					System.out.println(ANSI_BLUE + " VI HAR PRIMARYSUFFIX I PRIMARY: " + ANSI_RESET);
+					a.prettyPrint();
+				}
+
 			}
+
 			//System.out.println("HER SKAL VI SJEKKE BS");
 			// if(!(aps.isEmpty())){
 			// 	System.out.println("PRIMARY SUFFIX OPPFYLLES");
@@ -80,5 +96,4 @@ class AspPrimary extends AspSyntax{
 		// 	System.out.println("Ikke flere PrimarySuffix aa printe");
 		// 	//System.out.println("BØR OPPFYLLES");
 		// }
-	}
 }
