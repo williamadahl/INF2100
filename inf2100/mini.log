@@ -1,6 +1,7 @@
 <program>
-   1: #En hyggelig hilsen
-   2: navn = "Dag"
+   1: 
+   2: # En hyggelig hilsen
+   3: navn = "Dag"
   <stmt>
     <assignment>
       <name>
@@ -25,32 +26,7 @@
       </expr>
     </assignment>
   </stmt>
-   3: navn = "lucas"
-  <stmt>
-    <assignment>
-      <name>
-      </name>
-      <expr>
-        <and test>
-          <not test>
-            <comparison>
-              <term>
-                <factor>
-                  <primary>
-                    <atom>
-                      <string literal>
-                      </string literal>
-                    </atom>
-                  </primary>
-                </factor>
-              </term>
-            </comparison>
-          </not test>
-        </and test>
-      </expr>
-    </assignment>
-  </stmt>
-   4: print("Hei,", navn2)
+   4: print("Hei,", navn)
   <stmt>
     <expr stmt>
       <expr>
@@ -115,5 +91,4 @@
   </stmt>
 </program>
 PP> navn = "Dag"
-PP> navn = "lucas"
-PP> print ( "Hei," , navn2 ) 
+PP> print("Hei,", navn)

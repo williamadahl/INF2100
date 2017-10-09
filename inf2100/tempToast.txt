@@ -1,4 +1,4 @@
-mini.asp == OK
+mini.asp == OK (identical)
 gcd.asp == OK
 easter.asp == OK
 primes.asp == OK

@@ -1,4 +1,4 @@
-#En hyggelig hilsen
+
+# En hyggelig hilsen
 navn = "Dag"
-navn = "lucas"
-print("Hei,", navn2)
+print("Hei,", navn)
