@@ -47,9 +47,7 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-      System.out.println("VI HAR SAA MANGE STATEMENTS :" + stmts.size());
     	for(AspStmt burger : stmts){
-        System.out.println("KALLER PAA DENNE STATEMENT SIN PRETTYPRINT :" + burger);
         burger.prettyPrint();
         //Main.log.prettyWriteLn();
       }

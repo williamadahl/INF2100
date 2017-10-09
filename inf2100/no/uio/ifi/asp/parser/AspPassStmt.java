@@ -35,7 +35,6 @@ class AspPassStmt extends AspStmt{
     @Override
     void prettyPrint() {
       Main.log.prettyWrite(" pass ");
-      System.out.println("SKAL PRINTE EN NEWLINE NAA ");
       Main.log.prettyWriteLn();
     }
 }

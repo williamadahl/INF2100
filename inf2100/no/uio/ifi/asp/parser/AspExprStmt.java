@@ -7,16 +7,6 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspExprStmt extends AspStmt{
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
-
 	AspExpr body;
 
 	AspExprStmt(int n){
@@ -26,10 +16,9 @@ class AspExprStmt extends AspStmt{
 	static AspExprStmt parse(Scanner s){
 		Main.log.enterParser("expr stmt");
 		AspExprStmt aes = new AspExprStmt(s.curLineNum());
-		//s.readNextToken();
+		//Parses the expression and skips newline
 		aes.body = AspExpr.parse(s);
 		skip(s, newLineToken);
-		//skip(s, s.curToken().kind);
 
 		Main.log.leaveParser("expr stmt");
 		return aes;
@@ -42,7 +31,6 @@ class AspExprStmt extends AspStmt{
 
 		@Override
 		public void prettyPrint() {
-			System.out.println("KOMMER INN I EXPR STMT OG KALLER PAA EXPRESSION SIN prettyPrint");
 			body.prettyPrint();
 			Main.log.prettyWriteLn();
 		}

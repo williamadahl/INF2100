@@ -7,15 +7,6 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspFuncDef extends AspStmt{
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
 	ArrayList<AspName> aname = new ArrayList<>();
 	AspSuite pentHouse;
 
@@ -24,7 +15,6 @@ class AspFuncDef extends AspStmt{
   }
 	static AspFuncDef parse(Scanner s){
 		Main.log.enterParser("func def");
-	//	System.out.println(ANSI_BLUE + "DETT ER I FUNCDEF: " + s.curToken().kind.toString() + ANSI_RESET);
 		AspFuncDef afd = new AspFuncDef(s.curLineNum());
 		skip(s, defToken);
 		afd.aname.add(AspName.parse(s));
@@ -35,8 +25,6 @@ class AspFuncDef extends AspStmt{
 			skip(s,colonToken);
 			afd.pentHouse = AspSuite.parse(s);
 			Main.log.leaveParser("func def");
-			//System.out.println(ANSI_BLUE + "DETT ER I FUNCDEF LEAVE: " + s.curToken().kind.toString() + ANSI_RESET);
-
 			return afd;
 		}
 
@@ -51,7 +39,6 @@ class AspFuncDef extends AspStmt{
 		skip(s,colonToken);
 		afd.pentHouse = AspSuite.parse(s);
 		Main.log.leaveParser("func def");
-		//System.out.println(ANSI_BLUE + "DETT ER I FUNCDEF LEAVE: " + s.curToken().kind.toString() + ANSI_RESET);
 
 		return afd;
 	}
@@ -65,24 +52,21 @@ class AspFuncDef extends AspStmt{
 		void prettyPrint() {
 			int counter = 1;
 			Main.log.prettyWrite("def ");
-			System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + aname.get(0));
 			AspName kek = aname.get(0);
 			aname.remove(0);
 			kek.prettyPrint();
-			Main.log.prettyWrite("(");
+			Main.log.prettyWrite(" (");
 
 			int nPrinted = 0;
 			for(AspName heh : aname){
 					if(nPrinted > 0){
 						Main.log.prettyWrite(", ");
 					}
-					System.out.println("KALLER NAA PA DENNE NAME SIN PRETTYPRINT :" + heh);
 					heh.prettyPrint();
 					++nPrinted;
 				}
 			Main.log.prettyWrite(")");
 			Main.log.prettyWrite(":");
-			System.out.println("KALLER NAA PA DENNE SUITE SIN PRETTYPRINT :" + pentHouse);
 			pentHouse.prettyPrint();
 			Main.log.prettyWriteLn();
 		}

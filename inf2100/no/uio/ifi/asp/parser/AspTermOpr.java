@@ -39,7 +39,6 @@ class AspTermOpr extends AspSyntax{
 
 		@Override
 		void prettyPrint() {
-			System.out.println("SKAL NAA SKRIVE DENNE STRENGEN :" + ayy);
-			Main.log.prettyWrite(ayy);
+			Main.log.prettyWrite(" " + ayy + " ");
 		}
 }

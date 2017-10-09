@@ -8,21 +8,9 @@ import java.util.ArrayList;
 
 
 class AspDictDisplay extends AspAtom{
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
-
 	ArrayList<AspStringLiteral> atl = new ArrayList<>();
 	ArrayList<AspExpr> ae = new ArrayList<>();
 	int counter = 0;
-	//AspStringLiteral atl;
-	//AspExpr ae;
 
 	AspDictDisplay(int n){
 		super(n);
@@ -43,12 +31,8 @@ class AspDictDisplay extends AspAtom{
 				return add;
 			}else{
 				add.atl.add(AspStringLiteral.parse(s));
-				//add.atl = AspStringLiteral.parse(s);
-				//skip(s, stringToken);
 				skip(s, colonToken);
 				add.ae.add(AspExpr.parse(s));
-				//add.ae = AspExpr.parse(s);
-				//System.out.println("HER HAR DU SHIT ETTER DICTDISPLAY: " + s.curToken().kind.toString());
 				if(s.curToken().kind != commaToken){
 					break;
 				}
@@ -67,16 +51,13 @@ class AspDictDisplay extends AspAtom{
 
 	@Override
 	void prettyPrint() {
-		System.out.println("KOMMER INN I DICT DISPLAY");
 		Main.log.prettyWrite(" { ");
 		int nPrinted = 0;
 
 		for(AspStringLiteral lit : atl){
-			System.out.println("Kaller pa DETTE STRINGLITTERAL SIN PETTYRPRINT :" + lit);
 			lit.prettyPrint();
 			Main.log.prettyWrite(" : ");
 
-			System.out.println("Kaller pa DETTE EKEPRESSION SIN PETTYRPRINT :" + ae.get(counter));
 			ae.get(counter).prettyPrint();
 			counter++;
 			if(counter < atl.size()){

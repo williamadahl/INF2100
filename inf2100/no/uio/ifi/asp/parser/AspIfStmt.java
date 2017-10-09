@@ -7,20 +7,8 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspIfStmt extends AspStmt{
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
-
 	ArrayList<AspExpr> aexp = new ArrayList<>();
 	ArrayList<AspSuite> asui = new ArrayList<>();
-
-
 
 	AspIfStmt(int n){
 		super(n);
@@ -29,36 +17,27 @@ class AspIfStmt extends AspStmt{
 	static AspIfStmt parse(Scanner s){
 		AspIfStmt aif = new AspIfStmt(s.curLineNum());
 		Main.log.enterParser("if stmt");
-		//System.out.println("DETTE HER ER I IFSTMT: " +s.curToken().kind.toString());
 
 		skip(s, ifToken);
+		//Sends expr, skips :, sends suite
+		//Until there are no more elif tokens
 		while(true){
 			aif.aexp.add(AspExpr.parse(s));
-			// s.readNextToken();
-			//System.out.println("DETTE HER ER I IFSTMT 2 : " +s.curToken().kind.toString());
-
 			skip(s, colonToken);
-
 			aif.asui.add(AspSuite.parse(s));
-			// s.readNextToken();
 			if(s.curToken().kind != elifToken){
 				break;
 			}
 			skip(s, elifToken);
 		}
-		//System.out.println("DETTE HER ER I ELSE Før IF: " +s.curToken().kind.toString());
-		//ute av while
+
+		//Checks if there is an else in the program
 		if(s.curToken().kind == elseToken){
 			skip(s, elseToken);
-			//System.out.println("DETTE HER ER I ELSE: " +s.curToken().kind.toString());
-
 			skip(s, colonToken);
 			aif.asui.add(AspSuite.parse(s));
-			// s.readNextToken();
 		}
 		Main.log.leaveParser("if stmt");
-		//System.out.println("DETTE HER ER I IFSTMT LEAVE: " +s.curToken().kind.toString());
-
 		return aif;
 	}
 	@Override
@@ -76,7 +55,7 @@ class AspIfStmt extends AspStmt{
 				Main.log.prettyWrite("elif ");
 			}
 			ae.prettyPrint();
-			Main.log.prettyWrite(" : ");
+			Main.log.prettyWrite(":");
 			asui.get(counter).prettyPrint();
 			++nPrinted;
 			counter++;
@@ -84,9 +63,8 @@ class AspIfStmt extends AspStmt{
 		 }
 
 		 if(asui.size() > aexp.size()){
-
-			 Main.log.prettyWrite(" else ");
-			 Main.log.prettyWrite(" : ");
+			 Main.log.prettyWrite("else");
+			 Main.log.prettyWrite(":");
 			 asui.get(counter).prettyPrint();
 		 }
 

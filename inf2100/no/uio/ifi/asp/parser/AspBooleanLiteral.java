@@ -7,16 +7,6 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspBooleanLiteral extends AspAtom{
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
-
 	static ArrayList<String> hi = new ArrayList<>();
 	static int counter = 0;
 
@@ -35,11 +25,8 @@ class AspBooleanLiteral extends AspAtom{
 			skip(s, s.curToken().kind);
 			return abl;
 		}else{
-			//Main.parserError("Neither true or false", s.curLineNum());
 		}
 		return abl;
-		// remember to fix this
-
 	}
 
 
@@ -50,7 +37,6 @@ class AspBooleanLiteral extends AspAtom{
 
 	@Override
 	void prettyPrint() {
-		System.out.println("KOMMER INN I BOOLEAN LITERAL OG WRITER : " +  hi.get(counter));
 		Main.log.prettyWrite(hi.get(counter));
 		counter++;
 	}
