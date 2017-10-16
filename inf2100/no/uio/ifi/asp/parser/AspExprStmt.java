@@ -24,15 +24,18 @@ class AspExprStmt extends AspStmt{
 		return aes;
 	}
 
-	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
 
 		@Override
 		public void prettyPrint() {
 			body.prettyPrint();
 			Main.log.prettyWriteLn();
 		}
+
+
+		@Override
+			RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+				RuntimeValue v = body.eval(curScope);
+				return v;
+			}
 
 }

@@ -29,10 +29,6 @@ class AspNotTest extends AspSyntax{
 		Main.log.leaveParser("not test");
 		return nut;
 	}
-	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
 
 		@Override
 		void prettyPrint() {
@@ -42,6 +38,12 @@ class AspNotTest extends AspSyntax{
 			body1.prettyPrint();
 
 		}
+
+		@Override
+			RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+				RuntimeValue v = body1.eval(curScope);
+				return v;
+			}
 
 
 }

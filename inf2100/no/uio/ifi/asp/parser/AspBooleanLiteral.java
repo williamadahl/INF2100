@@ -31,13 +31,15 @@ class AspBooleanLiteral extends AspAtom{
 
 
 	@Override
-	RuntimeValue eval(RuntimeScope curScope){
-		return null;
-	}
-
-	@Override
 	void prettyPrint() {
 		Main.log.prettyWrite(hi.get(counter));
 		counter++;
 	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope){
+		return new RuntimeBoolValue(hi)
+	}
+
+
 }

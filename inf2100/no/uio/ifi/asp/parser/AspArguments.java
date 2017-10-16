@@ -46,12 +46,6 @@ class AspArguments extends AspPrimarySuffix{
 
 	}
 
-
-	@Override
-		public RuntimeValue eval(RuntimeScope curScope){
-			return null;
-		}
-
 		@Override
 		void prettyPrint() {
 			Main.log.prettyWrite("(");
@@ -65,4 +59,11 @@ class AspArguments extends AspPrimarySuffix{
 			}
 			Main.log.prettyWrite(")");
 		}
+
+
+		@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return  null;
+		}
+
 }

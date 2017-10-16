@@ -41,10 +41,7 @@ class AspComparison extends AspSyntax{
 		Main.log.leaveParser("comparison");
 		return acp;
 	}
-	@Override
-	RuntimeValue eval(RuntimeScope curScope){
-		return null;
-	}
+
 
 	@Override
 	void prettyPrint() {
@@ -62,4 +59,22 @@ class AspComparison extends AspSyntax{
 			++nPrinted;
 		}
 	}
+
+
+//lager bare for AspTerms for naa, vil bare komme ut av denne classen
+// kommentert ut if , aner ikke hva som skal testes mot
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		RuntimeValue v = termTests.get(0).eval(curScope);
+		for(int i = 1 ; i < termTests.size(); ++i){
+			if(! v.getBoolValue("and operator", this)){
+				return v;
+			}
+			v = termTests.get(i).eval(curScope);
+		}
+		return v;
+	}
+
+
 }

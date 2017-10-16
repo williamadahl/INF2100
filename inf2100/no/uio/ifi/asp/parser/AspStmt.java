@@ -29,6 +29,7 @@ abstract class AspStmt extends AspSyntax{
 			case falseToken:
 			case leftBracketToken:
 			case leftBraceToken:
+			case leftParToken:
 			//Checks if any equal token on line
 			//If yes, it's an assignment
 			//Else, it's an expression statement
@@ -75,8 +76,11 @@ abstract class AspStmt extends AspSyntax{
 		as.prettyPrint();
 	}
 
+//bare test for am dette sender videre
+
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+		RuntimeValue v = a.eval(curScope);
+		return v;
 	}
 }
