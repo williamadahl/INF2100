@@ -9,6 +9,7 @@ import java.util.ArrayList;
 class AspFloatLiteral extends AspAtom{
 	static ArrayList<Double> dong = new ArrayList<>();
 	static int counter = 0;
+	TokenKind kind;
 
 
 	AspFloatLiteral(int n){
@@ -20,14 +21,11 @@ class AspFloatLiteral extends AspAtom{
 
 		Main.log.enterParser("float literal");
 		Main.log.leaveParser("float literal");
+		afl.kind = s.curToken().kind;
 		skip(s, floatToken);
 
 		return afl;
 	}
-	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
 
 
 	@Override
@@ -35,4 +33,12 @@ class AspFloatLiteral extends AspAtom{
 			Main.log.prettyWrite(Double.toString(dong.get(counter)));
 			counter++;
 		}
+
+
+		@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
+
 }

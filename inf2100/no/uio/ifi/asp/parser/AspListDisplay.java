@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 class AspListDisplay extends AspAtom{
 	AspExpr bod1;
+	//TokenKind kind;
 
 	ArrayList<AspExpr> boi = new ArrayList<>();
 

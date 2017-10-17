@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 class AspFactorOpr extends AspSyntax{
 	String kek = "";
+	TokenKind kind;
 
 	AspFactorOpr(int n){
 		super(n);
@@ -18,6 +19,7 @@ class AspFactorOpr extends AspSyntax{
 		Main.log.enterParser("factor opr");
 		Main.log.leaveParser("factor opr");
 		noe.kek = s.curToken().kind.toString();
+		noe.kind = s.curToken().kind;
 
 		skip(s, s.curToken().kind);
 		return noe;

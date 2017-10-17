@@ -10,6 +10,7 @@ class AspStringLiteral extends AspAtom{
 	ArrayList<String> str = new ArrayList<>();
 	int counter = 0;
 	String bing = "";
+	TokenKind kind;
 
 	AspStringLiteral(int n){
 		super(n);
@@ -21,6 +22,7 @@ class AspStringLiteral extends AspAtom{
 
 		Main.log.enterParser("string literal");
 		Main.log.leaveParser("string literal");
+		asl.kind = s.curToken().kind;
 		skip(s, stringToken);
 		return asl;
 	}

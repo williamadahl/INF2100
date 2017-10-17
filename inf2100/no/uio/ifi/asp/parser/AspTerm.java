@@ -31,10 +31,6 @@ class AspTerm extends AspSyntax{
 		Main.log.leaveParser("term");
 		return atat;
 	}
-	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
 
 		@Override
 		void prettyPrint() {
@@ -51,4 +47,25 @@ class AspTerm extends AspSyntax{
 				ant.prettyPrint();
 			}
 		}
+
+		@Override
+		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+			RuntimeValue v = factorTests.get(0).eval(curScope);
+			for (int i = 1; i < factorTests.size(); ++i) {
+				TokenKind k = termOprTests.get(i-1).kind;
+				switch (k) {
+					case minusToken:
+					v = v.evalSubtract(factorTests.get(i).eval(curScope), this); break;
+					case plusToken:
+					v = v.evalAdd(factorTests.get(i).eval(curScope), this); break;
+					default:
+					Main.panic("Illegal term operator: " + k + "!");
+				}
+			}
+			return v;
+		}
+
+
+
+
 }

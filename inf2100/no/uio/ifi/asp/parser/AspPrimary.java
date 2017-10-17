@@ -28,10 +28,6 @@ class AspPrimary extends AspSyntax{
 		return ap;
 	}
 
-	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
-	}
 
 	@Override
 	void prettyPrint() {
@@ -43,4 +39,10 @@ class AspPrimary extends AspSyntax{
 			a.prettyPrint();
 		}
 	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
+
 }

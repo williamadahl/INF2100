@@ -9,6 +9,7 @@ import java.util.ArrayList;
 class AspTermOpr extends AspSyntax{
 
 	String ayy = "";
+	TokenKind kind;
 
 	AspTermOpr(int n){
 		super(n);
@@ -18,6 +19,8 @@ class AspTermOpr extends AspSyntax{
 		Main.log.enterParser("term opr");
 		Main.log.leaveParser("term opr");
 		ato.ayy = s.curToken().kind.toString();
+		ato.kind = s.curToken().kind;
+
 		skip(s, s.curToken().kind);
 		return ato;
 	}

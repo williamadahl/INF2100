@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 class AspName extends AspAtom{
 	ArrayList<String> guitar = new ArrayList<>();
-
+	TokenKind kind;
 	AspName(int n){
 		super(n);
 	}
@@ -18,6 +18,7 @@ class AspName extends AspAtom{
 			Main.log.enterParser("name");
 			Main.log.leaveParser("name");
 			an.guitar.add(s.curToken().name);
+			an.kind = s.curToken().kind;
 			skip(s, nameToken);
 
 			return an;

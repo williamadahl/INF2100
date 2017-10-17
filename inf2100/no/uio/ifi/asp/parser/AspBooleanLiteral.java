@@ -9,6 +9,7 @@ import java.util.ArrayList;
 class AspBooleanLiteral extends AspAtom{
 	static ArrayList<String> hi = new ArrayList<>();
 	static int counter = 0;
+	TokenKind kind;
 
 	AspBooleanLiteral(int n){
 		super(n);
@@ -21,7 +22,7 @@ class AspBooleanLiteral extends AspAtom{
 			hi.add(s.curToken().kind.toString());
 			Main.log.enterParser("boolean literal");
 			Main.log.leaveParser("boolean literal");
-
+			abl.kind = s.curToken().kind;
 			skip(s, s.curToken().kind);
 			return abl;
 		}else{
@@ -38,7 +39,7 @@ class AspBooleanLiteral extends AspAtom{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope){
-		return new RuntimeBoolValue(hi)
+		return new RuntimeBoolValue(hi);
 	}
 
 

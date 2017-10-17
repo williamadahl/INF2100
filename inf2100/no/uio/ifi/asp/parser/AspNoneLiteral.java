@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 class AspNoneLiteral extends AspAtom{
 	static String uff = "None";
+	TokenKind kind;
 
 	AspNoneLiteral(int n){
 		super(n);
@@ -17,6 +18,7 @@ class AspNoneLiteral extends AspAtom{
 		if(s.curToken().kind == noneToken){
 			Main.log.enterParser("none");
 			Main.log.leaveParser("none");
+			anl.kind = s.curToken().kind;
 			skip(s, noneToken);
 			return anl;
 		}else{

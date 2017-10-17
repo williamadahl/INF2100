@@ -11,12 +11,15 @@ class AspCompOpr extends AspSyntax{
 		super(n);
 	}
 	String johnnyGuitar = "";
+	TokenKind kind;
 
 	static AspCompOpr parse(Scanner s) {
 		AspCompOpr aco = new AspCompOpr(s.curLineNum());
 
 		Main.log.enterParser("comp opr");
-		aco.johnnyGuitar = s.curToken().toString();
+		aco.johnnyGuitar = s.curToken().toString()
+		aco.kind = s.curToken().kind;
+
 		skip(s, s.curToken().kind);
 		Main.log.leaveParser("comp opr");
 		return aco;

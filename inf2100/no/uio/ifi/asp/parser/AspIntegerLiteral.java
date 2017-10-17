@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 class AspIntegerLiteral extends AspAtom{
 	ArrayList<Long> dong = new ArrayList<>();
+	TokenKind kind;
 
 	int counter = 0;
 	// <|:^)
@@ -22,6 +23,7 @@ class AspIntegerLiteral extends AspAtom{
 
 		Main.log.enterParser("integer literal");
 		Main.log.leaveParser("integer literal");
+		ail.kind = s.curToken().kind;
 		skip(s, integerToken);
 
 		return ail;

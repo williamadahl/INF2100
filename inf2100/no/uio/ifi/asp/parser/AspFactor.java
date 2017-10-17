@@ -72,10 +72,6 @@ class AspFactor extends AspSyntax{
 		return af;
 	}
 
-	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
 
 		@Override
 		void prettyPrint() {
@@ -91,5 +87,40 @@ class AspFactor extends AspSyntax{
 					primaryTests.get(i).prettyPrint();
 				}
 			}
+		}
+
+
+		@Override
+		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+			RuntimeValue v = primaryTests.get(0).eval(curScope);
+			for (int i = 1; i < primaryTests.size(); ++i) {
+				TokenKind k = factorOprTests.get(i-1).kind;
+				switch (k) {
+					case astToken:
+					v = v.evalMultiply(factorOprTests.get(i).eval(curScope), this); break;
+					case slashToken:
+					v = v.evalDivide(factorOprTests.get(i).eval(curScope), this); break;
+					case percentToken:
+					v = v.evalModulo(factorOprTests.get(i).eval(curScope), this); break;
+					case doubleSlashToken:
+					v = v.evalIntDivide(factorOprTests.get(i).eval(curScope), this); break;
+
+					default:
+					Main.panic("Illegal term operator: " + k + "!");
+				}
+			}
+			if(prefixTests.size() != 0) {
+				TokenKind gender = prefixTests.get(0).kind;
+				switch(gender){
+					case minusToken:
+					v = v.evalSubtract(prefixTests.get(i).eval(curScope), this); break;
+					case plusToken:
+					v = v.evalAdd(prefixTests.get(i).eval(curScope), this); break;
+					default:
+					Main.panic("Illegal term operator: " + gender + "!");
+				}
+			}
+
+			return v;
 		}
 }

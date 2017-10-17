@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 class AspInnerExpr extends AspAtom{
 	AspExpr bod1;
+//	TokenKind kind;
 
 	AspInnerExpr(int n){
 		super(n);
@@ -17,9 +18,8 @@ class AspInnerExpr extends AspAtom{
 		skip(s, leftParToken);
 		Main.log.enterParser("inner expr");
 		AspInnerExpr aie = new AspInnerExpr(s.curLineNum());
-
-
 		aie.bod1 = AspExpr.parse(s);
+
 		skip(s, rightParToken);
 		Main.log.leaveParser("inner expr");
 		return aie;
