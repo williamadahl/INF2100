@@ -17,7 +17,7 @@ class AspCompOpr extends AspSyntax{
 		AspCompOpr aco = new AspCompOpr(s.curLineNum());
 
 		Main.log.enterParser("comp opr");
-		aco.johnnyGuitar = s.curToken().toString()
+		aco.johnnyGuitar = s.curToken().toString();
 		aco.kind = s.curToken().kind;
 
 		skip(s, s.curToken().kind);

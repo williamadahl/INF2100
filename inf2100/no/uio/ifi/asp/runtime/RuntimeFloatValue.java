@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.parser.AspSyntax;
 
-public class RuntimeIntValue extends RuntimeValue {
+public class RuntimeFloatValue extends RuntimeValue {
 
   long intValue;
 
-  public RuntimeIntValue(long v) {
+  public RuntimeFloatValue(long v) {
     intValue = v;
   }
 
@@ -31,8 +31,10 @@ public class RuntimeIntValue extends RuntimeValue {
 
   @Override
   protected String typeName() {
-    return "integer";
+    return "float";
   }
+
+
 
   @Override
   public long getIntValue(String what, AspSyntax where) {

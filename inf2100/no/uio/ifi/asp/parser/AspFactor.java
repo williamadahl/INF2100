@@ -110,17 +110,19 @@ class AspFactor extends AspSyntax{
 				}
 			}
 			if(prefixTests.size() != 0) {
+				//System.out.println("Dette er prefik tesst" + prefixTests.get(0).kind);
 				TokenKind gender = prefixTests.get(0).kind;
 				switch(gender){
 					case minusToken:
-					v = v.evalSubtract(prefixTests.get(i).eval(curScope), this); break;
+					v = v.evalSubtract(prefixTests.get(0).eval(curScope), this); break;
 					case plusToken:
-					v = v.evalAdd(prefixTests.get(i).eval(curScope), this); break;
+					v = v.evalAdd(prefixTests.get(0).eval(curScope), this); break;
 					default:
 					Main.panic("Illegal term operator: " + gender + "!");
 				}
 			}
 
 			return v;
+		// return null;
 		}
 }

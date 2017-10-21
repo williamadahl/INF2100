@@ -7,8 +7,8 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspBooleanLiteral extends AspAtom{
-	static ArrayList<String> hi = new ArrayList<>();
-	static int counter = 0;
+	ArrayList<String> hi = new ArrayList<>();
+	int counter = 0;
 	TokenKind kind;
 
 	AspBooleanLiteral(int n){
@@ -19,7 +19,7 @@ class AspBooleanLiteral extends AspAtom{
 		AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum());
 		if(s.curToken().kind == trueToken ||
 		s.curToken().kind == falseToken){
-			hi.add(s.curToken().kind.toString());
+			abl.hi.add(s.curToken().kind.toString());
 			Main.log.enterParser("boolean literal");
 			Main.log.leaveParser("boolean literal");
 			abl.kind = s.curToken().kind;
@@ -34,12 +34,15 @@ class AspBooleanLiteral extends AspAtom{
 	@Override
 	void prettyPrint() {
 		Main.log.prettyWrite(hi.get(counter));
-		counter++;
+		//counter++;
 	}
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope){
-		return new RuntimeBoolValue(hi);
+		if(hi.get(0) == "False"){
+			return new RuntimeBoolValue(false);
+		}
+		return new RuntimeBoolValue(true);
 	}
 
 

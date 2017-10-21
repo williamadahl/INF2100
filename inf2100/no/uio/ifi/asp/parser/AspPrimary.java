@@ -25,6 +25,7 @@ class AspPrimary extends AspSyntax{
 		}
 
 		Main.log.leaveParser("primary");
+		System.out.println("gammle aa sizer : " + ap.aa.size());
 		return ap;
 	}
 
@@ -32,7 +33,7 @@ class AspPrimary extends AspSyntax{
 	@Override
 	void prettyPrint() {
 		AspAtom hi = aa.get(0);
-		aa.remove(0);
+		//aa.remove(0);
 		hi.prettyPrint();
 
 		for(AspPrimarySuffix a : aps ){
@@ -42,7 +43,18 @@ class AspPrimary extends AspSyntax{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
+			//System.out.println("AA size :" + aa.size());
+		RuntimeValue v = null;
+		if(aps.size() != 0){
+			v = aps.get(0).eval(curScope);
+			for (int i = 1; i < aps.size(); ++i) {
+				v = aps.get(i).eval(curScope);
+			}
+		}
+		//System.out.println("AA size :" + aa.size());
+		v = aa.get(0).eval(curScope);
+		return v;
+
 	}
 
 }

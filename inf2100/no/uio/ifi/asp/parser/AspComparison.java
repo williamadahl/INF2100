@@ -46,14 +46,18 @@ class AspComparison extends AspSyntax{
 	@Override
 	void prettyPrint() {
 		int nPrinted = 0;
+		int counter = 0;
 		for (AspTerm ant: termTests) {
 			if (nPrinted > 0){
 
-				if(!compOprTests.isEmpty()){
-					AspCompOpr hi = compOprTests.get(0);
-					compOprTests.remove(0);
+				if(compOprTests.get(counter) != null){
+					AspCompOpr hi = compOprTests.get(counter);
+					//compOprTests.remove(0);
 					hi.prettyPrint();
+					counter ++;
 				}
+				// if(!compOprTests.isEmpty()){
+				// }
 			}
 			ant.prettyPrint();
 			++nPrinted;
@@ -68,22 +72,23 @@ class AspComparison extends AspSyntax{
 			TokenKind bender = compOprTests.get(i-1).kind;
 			switch (bender) {
 				case lessToken:
-				v = v.evalLess(termTests.get(i).eval(curScope), this); break;
+					v = v.evalLess(termTests.get(i).eval(curScope), this); break;
 				case greaterToken:
-				v = v.evalGreater(termTests.get(i).eval(curScope), this); break;
+					v = v.evalGreater(termTests.get(i).eval(curScope), this); break;
 				case doubleEqualToken:
-				v = v.evalEqual(termTests.get(i).eval(curScope), this); break;
+					v = v.evalEqual(termTests.get(i).eval(curScope), this); break;
 				case greaterEqualToken:
-				v = v.evalGreaterEqual(termTests.get(i).eval(curScope), this); break;
+					v = v.evalGreaterEqual(termTests.get(i).eval(curScope), this); break;
 				case lessEqualToken:
-				v = v.evalLessEqual(termTests.get(i).eval(curScope), this); break;
+					v = v.evalLessEqual(termTests.get(i).eval(curScope), this); break;
 				case notEqualToken:
-				v = v.evalNotEqual(termTests.get(i).eval(curScope), this); break;
+					v = v.evalNotEqual(termTests.get(i).eval(curScope), this); break;
 
 				default:
 				Main.panic("Illegal term operator: " + bender + "!");
 			}
 		}
+		System.out.println("comprarrislnet  : " + v);
 		return v;
 	}
 

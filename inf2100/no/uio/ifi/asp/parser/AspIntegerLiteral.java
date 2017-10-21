@@ -32,7 +32,7 @@ class AspIntegerLiteral extends AspAtom{
 		@Override
 		void prettyPrint() {
 			Main.log.prettyWrite(Long.toString(dong.get(counter)));
-			counter ++;
+		
 		}
 
 		@Override

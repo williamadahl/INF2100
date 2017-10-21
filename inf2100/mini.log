@@ -1,32 +1,5 @@
 <program>
-   1: 
-   2: # En hyggelig hilsen
-   3: navn = "Dag"
-  <stmt>
-    <assignment>
-      <name>
-      </name>
-      <expr>
-        <and test>
-          <not test>
-            <comparison>
-              <term>
-                <factor>
-                  <primary>
-                    <atom>
-                      <string literal>
-                      </string literal>
-                    </atom>
-                  </primary>
-                </factor>
-              </term>
-            </comparison>
-          </not test>
-        </and test>
-      </expr>
-    </assignment>
-  </stmt>
-   4: print("Hei,", navn)
+   1: 1 + 1
   <stmt>
     <expr stmt>
       <expr>
@@ -37,49 +10,19 @@
                 <factor>
                   <primary>
                     <atom>
-                      <name>
-                      </name>
+                      <integer literal>
+                      </integer literal>
                     </atom>
-                    <primary suffix>
-                      <arguments>
-                        <expr>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <string literal>
-                                        </string literal>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                        </expr>
-                        <expr>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <name>
-                                        </name>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                        </expr>
-                      </arguments>
-                    </primary suffix>
+                  </primary>
+                </factor>
+                <term opr>
+                </term opr>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
                   </primary>
                 </factor>
               </term>
@@ -89,6 +32,11 @@
       </expr>
     </expr stmt>
   </stmt>
+   2: 
+   3: #not False
+   4: # En hyggelig hilsen
+   5: #navn = "Dag"
+   6: #print("Hei,", navn)
+   7: #not True
 </program>
-PP> navn = "Dag"
-PP> print("Hei,", navn)
+PP> 1 + 1

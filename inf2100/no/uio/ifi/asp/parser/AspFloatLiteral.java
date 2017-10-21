@@ -7,8 +7,8 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 class AspFloatLiteral extends AspAtom{
-	static ArrayList<Double> dong = new ArrayList<>();
-	static int counter = 0;
+	ArrayList<Double> dong = new ArrayList<>();
+	int counter = 0;
 	TokenKind kind;
 
 
@@ -17,7 +17,7 @@ class AspFloatLiteral extends AspAtom{
 	}
 	static AspFloatLiteral parse(Scanner s){
 		AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
-		dong.add(s.curToken().floatLit);
+		afl.dong.add(s.curToken().floatLit);
 
 		Main.log.enterParser("float literal");
 		Main.log.leaveParser("float literal");
@@ -31,7 +31,7 @@ class AspFloatLiteral extends AspAtom{
 	@Override
 		void prettyPrint() {
 			Main.log.prettyWrite(Double.toString(dong.get(counter)));
-			counter++;
+
 		}
 
 

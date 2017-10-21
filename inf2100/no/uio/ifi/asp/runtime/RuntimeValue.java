@@ -9,7 +9,7 @@ public abstract class RuntimeValue {
     abstract protected String typeName();
 
     public String showInfo() {
-	return toString();
+	     return toString();
     }
 
     // For parts 3 and 4:
@@ -134,7 +134,7 @@ public abstract class RuntimeValue {
 	runtimeError("subscription undefined for "+typeName()+"!", where);
     }
 
-    public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, 
+    public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams,
 				     RuntimeScope scope, AspSyntax where) {
 	runtimeError("'Function call (...)' undefined for "+typeName()+"!", where);
 	return null;  // Required by the compiler!
