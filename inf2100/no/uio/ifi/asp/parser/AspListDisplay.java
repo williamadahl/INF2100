@@ -46,10 +46,6 @@ class AspListDisplay extends AspAtom{
 	}
 
 
-	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
 		@Override
 		void prettyPrint() {
 			Main.log.prettyWrite(" [ ");
@@ -64,4 +60,10 @@ class AspListDisplay extends AspAtom{
 			}
 			Main.log.prettyWrite(" ] ");
 		}
+
+		@Override
+		RuntimeValue eval(RuntimeScope curScope) {
+			return null;
+		}
+
 	}

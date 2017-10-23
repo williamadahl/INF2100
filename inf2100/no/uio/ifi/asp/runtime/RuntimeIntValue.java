@@ -22,7 +22,7 @@ public class RuntimeIntValue extends RuntimeValue {
       res = new RuntimeIntValue(intValue + v2);
     } else if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("+ operand",where);
-      res = new RuntimeFloatValue((long)(intValue + v2));
+      res = new RuntimeFloatValue(intValue + v2);
     } else {
       runtimeError("Type error for +.", where);
     }

@@ -16,7 +16,7 @@ public class RuntimeBoolValue extends RuntimeValue {
     }
 
 
-    @Override 
+    @Override
     public String toString() {
 	return (boolValue ? "True" : "False");
     }
