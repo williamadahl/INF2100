@@ -39,13 +39,40 @@ public class RuntimeFloatValue extends RuntimeValue {
       long v2 = v.getIntValue("- operand",where);
       res = new RuntimeFloatValue(floatValue - v2);
     } else {
-      runtimeError("Type error for +.", where);
+      runtimeError("Type error for -.", where);
     }
     return res;
   }
 
   @Override
-  public RuntimeValue evalMultiply()
+  public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where){
+    RuntimeValue res = null;
+    if(v instanceof RuntimeFloatValue){
+      double v2 = v.getFloatValue("* operand", where);
+      res = new RuntimeFloatValue(floatValue * v2);
+    } else if (v instanceof RuntimeIntValue){
+      long v2 = v.getIntValue("* oprenad", where);
+      res = new RuntimeFloatValue(floatValue * v2);
+    } else{
+      runtimeError("Type error for *.", where);
+    }
+    return res;
+  }
+
+  @Override
+  public RuntimeValue evalIntDivide(RuntimeValue v, AspSyntax where){
+    RuntimeValue res = null;
+    if(v instanceof RuntimeFloatValue){
+      double v2 = v.getFloatValue("// operand", where);
+      res = new RuntimeFloatValue(Math.floor(floatValue / v2));
+    } else if (v instanceof RuntimeIntValue){
+      long v2 = v.getIntValue("// oprenad", where);
+      res = new RuntimeFloatValue(Math.floor(floatValue / v2));
+    } else{
+      runtimeError("Type error for //.", where);
+    }
+    return res;
+  }
 
 
 
