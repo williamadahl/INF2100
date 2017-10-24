@@ -37,12 +37,15 @@ public class RuntimeFloatValue extends RuntimeValue {
       res = new RuntimeFloatValue(floatValue - v2);
     } else if (v instanceof RuntimeIntValue) {
       long v2 = v.getIntValue("- operand",where);
-      res = new RuntimeFloatValue(intValue - v2);
+      res = new RuntimeFloatValue(floatValue - v2);
     } else {
       runtimeError("Type error for +.", where);
     }
     return res;
   }
+
+  @Override
+  public RuntimeValue evalMultiply()
 
 
 
