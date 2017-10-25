@@ -35,12 +35,14 @@ class AspTerm extends AspSyntax{
 		@Override
 		void prettyPrint() {
 			int nPrinted = 0;
+			int counter = 0;
 			for (AspFactor ant: factorTests){
 				if(nPrinted > 0){
 					if(!termOprTests.isEmpty()){
-						AspTermOpr hi = termOprTests.get(0);
-						termOprTests.remove(0);
+						AspTermOpr hi = termOprTests.get(counter);
+						// termOprTests.remove(0);
 						hi.prettyPrint();
+						counter++;
 					}
 				}
 				++nPrinted;

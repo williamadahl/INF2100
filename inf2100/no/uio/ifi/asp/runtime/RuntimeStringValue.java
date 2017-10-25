@@ -6,7 +6,7 @@ public class RuntimeStringValue extends RuntimeValue {
   String stringValue;
 
 
-  public RuntimeString(String v) {
+  public RuntimeStringValue(String v) {
     stringValue = v;
   }
 
@@ -34,20 +34,23 @@ public class RuntimeStringValue extends RuntimeValue {
   public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where){
     RuntimeValue res = null;
     if(v instanceof RuntimeIntValue){
-      int v2 = v.getIntValue("* operand", where);
-      res = new RuntimeStringValue(getStringValue(stringValue, v2));
+      long v2 = v.getIntValue("* operand", where);
+      res = new RuntimeStringValue(multiplyString(stringValue, v2));
     }else{
       runtimeError("Type error for *.", where);
     }
+    return res;
   }
 
   @Override
 public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where){
-  RunetimeValue res = null;
+  RuntimeValue res = null;
   if (v instanceof RuntimeStringValue){
     String v2 = v.getStringValue("== operand",where);
-    res = new RunBoolValue((stringValue == v2));
-  } else{
+    res = new RuntimeBoolValue((stringValue == v2));
+  } else if (v instanceof RuntimeNoneValue) {
+    return new RuntimeBoolValue(false);
+  }  else{
    runtimeError("Type error for ==.", where);
   }
   return res;
@@ -55,10 +58,15 @@ public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where){
 
 @Override
 public RuntimeValue evalLess(RuntimeValue v, AspSyntax where){
-RunetimeValue res = null;
+RuntimeValue res = null;
 if (v instanceof RuntimeStringValue){
   String v2 = v.getStringValue("< operand",where);
-  res = new RunBoolValue((stringValue < v2));
+  int temp = stringValue.compareTo(v2);
+  if(temp < 0){
+    res = new RuntimeBoolValue(true);
+  } else{
+    res = new RuntimeBoolValue(false);
+  }
 } else{
  runtimeError("Type error for <.", where);
 }
@@ -66,23 +74,19 @@ return res;
 }
 
 
-  @Override
-  public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
-    if (v instanceof RuntimeNoneValue) {
-      return new RuntimeBoolValue(false);
-    } else {
-      return new RuntimeBoolValue(
-      boolValue == v.getBoolValue("== operand",where));
-    }
-  }
+  // @Override
+  // public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
+  //     // return new RuntimeBoolValue(boolValue == v.getBoolValue("== operand",where));
+  // }
+
 
   @Override
   public String getStringValue(String what, AspSyntax where){
     return stringValue;
   }
 
-  public String multiplyString(String s, int a){
-    String result;
+  public String multiplyString(String s, long a){
+    String result = "";
 
     for(int i = 0; i < a; i++){
       result += s;

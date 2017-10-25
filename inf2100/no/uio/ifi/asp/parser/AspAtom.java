@@ -57,8 +57,8 @@ abstract class AspAtom extends AspSyntax{
 	}
 
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeValue {
-			return a.eval(curScope);
+		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+			return b.eval(curScope);
 		}
 
 	@Override

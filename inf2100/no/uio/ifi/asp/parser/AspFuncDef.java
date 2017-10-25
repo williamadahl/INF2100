@@ -50,21 +50,22 @@ class AspFuncDef extends AspStmt{
 
 	@Override
 		void prettyPrint() {
-			int counter = 1;
 			Main.log.prettyWrite("def ");
 			AspName kek = aname.get(0);
-			aname.remove(0);
+
 			kek.prettyPrint();
 			Main.log.prettyWrite(" (");
 
 			int nPrinted = 0;
-			for(AspName heh : aname){
-					if(nPrinted > 0){
-						Main.log.prettyWrite(", ");
-					}
-					heh.prettyPrint();
-					++nPrinted;
+
+			for (int i = 1;i<aname.size();i++) {
+				if(nPrinted > 0){
+					Main.log.prettyWrite(", ");
 				}
+				aname.get(i).prettyPrint();
+				++nPrinted;
+			}
+
 			Main.log.prettyWrite(")");
 			Main.log.prettyWrite(":");
 			pentHouse.prettyPrint();

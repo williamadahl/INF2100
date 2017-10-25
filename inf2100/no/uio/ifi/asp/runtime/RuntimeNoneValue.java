@@ -26,24 +26,26 @@ public class RuntimeNoneValue extends RuntimeValue {
 
     @Override
   public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where){
-    RunetimeValue res = null;
-    switch (v) {
-      case v instanceof RuntimeIntValue:
+    RuntimeValue res = null;
+    if(v instanceof RuntimeIntValue){
       long v2 = v.getIntValue("== operand",where);
-      break;
-      case v instanceof RuntimeFloatValue:
+
+    }else if(v instanceof RuntimeFloatValue){
       double v2 = v.getFloatValue("== operand",where);
-      break;
-      case v instanceof RuntimeIntValue:
+
+    }else if(v instanceof RuntimeStringValue){
       String v2 = v.getStringValue("== operand",where);
-      break;
-      default:
+
+    }else if(v instanceof RuntimeNoneValue){
+      //res = new RuntimeNoneValue(None == v2);
+      return new RuntimeBoolValue(true);
+
+    }else{
       runtimeError("Type error for ==.",where);
-
     }
-    res = new RuntimeNoneValue(None == v2);
-    return res;
-
+    return new RuntimeBoolValue(false);
+    //return res;
+}
 
 
     @Override

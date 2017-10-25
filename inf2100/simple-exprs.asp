@@ -1,5 +1,5 @@
-"attacc kenobi"
-1 + 1
+#"attacc kenobi"
+1 + 1 
 #"Testing integer expressions:"
 #42
 #-1017
