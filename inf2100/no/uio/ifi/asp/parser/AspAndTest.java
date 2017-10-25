@@ -49,6 +49,7 @@ public class AspAndTest extends AspSyntax {
 			}
 			v = notTests.get(i).eval(curScope);
 		}
+		//System.out.println("Dette er i and: " + v.getIntValue("integer", this));
 		return v;
 	}
 

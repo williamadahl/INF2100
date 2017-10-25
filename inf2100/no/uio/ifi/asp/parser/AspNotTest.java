@@ -46,6 +46,7 @@ class AspNotTest extends AspSyntax{
 			if(dank){
 				v = v.evalNot(this);
 			}
+			//System.out.println("Dette er i not: " + v.getIntValue("integer", this));
 			return v;
 		}
 

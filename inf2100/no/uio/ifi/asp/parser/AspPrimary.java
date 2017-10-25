@@ -42,8 +42,7 @@ class AspPrimary extends AspSyntax{
 	}
 
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-			//System.out.println("AA size :" + aa.size());
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = null;
 		if(aps.size() != 0){
 			v = aps.get(0).eval(curScope);
@@ -54,7 +53,6 @@ class AspPrimary extends AspSyntax{
 		//System.out.println("AA size :" + aa.size());
 		v = aa.get(0).eval(curScope);
 		return v;
-
 	}
 
 }

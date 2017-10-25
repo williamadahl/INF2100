@@ -27,8 +27,13 @@ class AspStringLiteral extends AspAtom{
 		return asl;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
+		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+			//System.out.println("dette er en sau : " + str.get(0));
+			String kek = str.get(0).substring(1, str.get(0).length()-1);
+			//System.out.println("Dette er en kau: " + kek);
+			//return new RuntimeStringValue(str.get(0));
+			return new RuntimeStringValue(kek);
+
 		}
 
 		@Override

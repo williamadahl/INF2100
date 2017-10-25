@@ -35,9 +35,18 @@ public class RuntimeBoolValue extends RuntimeValue {
 	} else {
 	    return new RuntimeBoolValue(
                 boolValue == v.getBoolValue("== operand",where));
-	}
+	    }
     }
 
+    @Override
+    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeNoneValue) {
+            return new RuntimeBoolValue(true);
+        } else {
+            return new RuntimeBoolValue(
+                    boolValue == v.getBoolValue("!= operand",where));
+        }
+    }
 
     @Override
     public RuntimeValue evalNot(AspSyntax where) {
@@ -45,13 +54,5 @@ public class RuntimeBoolValue extends RuntimeValue {
     }
 
 
-    @Override
-    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-	if (v instanceof RuntimeNoneValue) {
-	    return new RuntimeBoolValue(true);
-	} else {
-	    return new RuntimeBoolValue(
-                boolValue != v.getBoolValue("!= operand",where));
-	}
-    }
+
 }

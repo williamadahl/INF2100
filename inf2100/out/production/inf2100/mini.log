@@ -1,0 +1,42 @@
+<program>
+   1: 1 + 1
+  <stmt>
+    <expr stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+                <term opr>
+                </term opr>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </expr stmt>
+  </stmt>
+   2: 
+   3: #not False
+   4: # En hyggelig hilsen
+   5: #navn = "Dag"
+   6: #print("Hei,", navn)
+   7: #not True
+</program>
+PP> 1 + 1

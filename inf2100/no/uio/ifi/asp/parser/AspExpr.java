@@ -57,8 +57,8 @@ public class AspExpr extends AspSyntax {
         }
         v = andTests.get(i).eval(curScope);
       }
-      System.out.println("aoensuht");
-      return v;
+        //System.out.println("Dette er i expr: " + v.getIntValue("integer", this));
+        return v;
     }
 
 

@@ -25,8 +25,9 @@ class AspInnerExpr extends AspAtom{
 		return aie;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
+		RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue {
+			RuntimeValue v = bod1.eval(curScope);
+			return v;
 		}
 
 		@Override

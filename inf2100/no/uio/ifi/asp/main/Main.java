@@ -103,7 +103,6 @@ public class Main {
 				RuntimeValue res = e.eval(emptyScope);
 				
 				log.traceEval(res.showInfo(), e);
-				System.out.println("otehud");
 			} catch (RuntimeReturnValue rrv) {
 				panic("Uncaught return value!");
 			}

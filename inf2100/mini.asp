@@ -1,4 +1,4 @@
-1 + 1
+5 * 2
 
 #not False
 # En hyggelig hilsen

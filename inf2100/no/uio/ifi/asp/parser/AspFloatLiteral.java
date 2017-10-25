@@ -36,8 +36,8 @@ class AspFloatLiteral extends AspAtom{
 
 
 		@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
+		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+			return new RuntimeFloatValue(dong.get(0));
 		}
 
 

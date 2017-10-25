@@ -88,7 +88,7 @@ class AspComparison extends AspSyntax{
 				Main.panic("Illegal term operator: " + bender + "!");
 			}
 		}
-		System.out.println("comprarrislnet  : " + v);
+		//System.out.println("Dette er i comparison: " + v.getIntValue("integer", this));
 		return v;
 	}
 

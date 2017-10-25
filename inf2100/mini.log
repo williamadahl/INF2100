@@ -1,5 +1,5 @@
 <program>
-   1: 1 + 1
+   1: 5 * 2
   <stmt>
     <expr stmt>
       <expr>
@@ -14,10 +14,8 @@
                       </integer literal>
                     </atom>
                   </primary>
-                </factor>
-                <term opr>
-                </term opr>
-                <factor>
+                  <factor opr>
+                  </factor opr>
                   <primary>
                     <atom>
                       <integer literal>
@@ -39,4 +37,4 @@
    6: #print("Hei,", navn)
    7: #not True
 </program>
-PP> 1 + 1
+PP> 5 * 2

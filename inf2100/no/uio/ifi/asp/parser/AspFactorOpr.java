@@ -25,7 +25,7 @@ class AspFactorOpr extends AspSyntax{
 		return noe;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
+		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 			return null;
 		}
 

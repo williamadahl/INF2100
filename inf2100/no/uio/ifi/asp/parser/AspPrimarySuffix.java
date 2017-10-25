@@ -7,21 +7,26 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 abstract class AspPrimarySuffix extends AspSyntax{
-	static AspPrimarySuffix aps = null;
+	AspPrimarySuffix aps = null;
+
+	boolean isArgument = false;
 
 	AspPrimarySuffix(int n){
 		super(n);
 	}
 
 	static AspPrimarySuffix parse(Scanner s){
+		AspPrimarySuffix b = null;
+
 		Main.log.enterParser("primary suffix");
 		switch(s.curToken().kind){
 			case leftParToken:
-			aps = AspArguments.parse(s);
+				b.isArgument = true;
+				b.aps = AspArguments.parse(s);
 
 			break;
 			case leftBracketToken:
-			aps = AspSubscription.parse(s);
+			b.aps = AspSubscription.parse(s);
 
 			break;
 			default:
@@ -29,13 +34,14 @@ abstract class AspPrimarySuffix extends AspSyntax{
 			s.curToken().kind + "!", s.curLineNum());
 		}
 		Main.log.leaveParser("primary suffix");
-		return aps;
+		return b;
 
 	}
 
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
+		RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue {
+			RuntimeValue v = aps.eval(curScope);
+			return v;
 		}
 
 

@@ -97,13 +97,13 @@ class AspFactor extends AspSyntax{
 				TokenKind k = factorOprTests.get(i-1).kind;
 				switch (k) {
 					case astToken:
-					v = v.evalMultiply(factorOprTests.get(i).eval(curScope), this); break;
+					v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);	break;
 					case slashToken:
-					v = v.evalDivide(factorOprTests.get(i).eval(curScope), this); break;
+					v = v.evalDivide(primaryTests.get(i).eval(curScope), this); break;
 					case percentToken:
-					v = v.evalModulo(factorOprTests.get(i).eval(curScope), this); break;
+					v = v.evalModulo(primaryTests.get(i).eval(curScope), this); break;
 					case doubleSlashToken:
-					v = v.evalIntDivide(factorOprTests.get(i).eval(curScope), this); break;
+					v = v.evalIntDivide(primaryTests.get(i).eval(curScope), this); break;
 
 					default:
 					Main.panic("Illegal term operator: " + k + "!");

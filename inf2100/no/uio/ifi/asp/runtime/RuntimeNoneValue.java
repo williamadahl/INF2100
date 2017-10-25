@@ -47,6 +47,29 @@ public class RuntimeNoneValue extends RuntimeValue {
     //return res;
 }
 
+    @Override
+    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where){
+        RuntimeValue res = null;
+        if(v instanceof RuntimeIntValue){
+            long v2 = v.getIntValue("!= operand",where);
+
+        }else if(v instanceof RuntimeFloatValue){
+            double v2 = v.getFloatValue("!= operand",where);
+
+        }else if(v instanceof RuntimeStringValue){
+            String v2 = v.getStringValue("!= operand",where);
+
+        }else if(v instanceof RuntimeNoneValue){
+            //res = new RuntimeNoneValue(None == v2);
+            return new RuntimeBoolValue(false);
+
+        }else{
+            runtimeError("Type error for !=.",where);
+        }
+        return new RuntimeBoolValue(true);
+        //return res;
+    }
+
 
     @Override
     public RuntimeValue evalNot(AspSyntax where) {
@@ -54,8 +77,5 @@ public class RuntimeNoneValue extends RuntimeValue {
     }
 
 
-    @Override
-    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-	return new RuntimeBoolValue(!(v instanceof RuntimeNoneValue));
-    }
+
 }

@@ -2,6 +2,7 @@ package no.uio.ifi.asp.runtime;
 
 import java.util.ArrayList;
 
+//import com.sun.deploy.util.SystemUtils;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.parser.AspSyntax;
 
@@ -13,13 +14,19 @@ public class RuntimeIntValue extends RuntimeValue {
     intValue = v;
   }
 
+  @Override
+  public String showInfo() {
+    return Long.toString(intValue);
+  }
 
   @Override
   public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
     if (v instanceof RuntimeIntValue) {
       long v2 = v.getIntValue("+ operand",where);
+      System.out.println("Hette er : " + v2);
       res = new RuntimeIntValue(intValue + v2);
+      System.out.println("Dette er res: " + res.getIntValue("oxxxxx", where));
     } else if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("+ operand",where);
       res = new RuntimeFloatValue(intValue + v2);
@@ -92,6 +99,24 @@ public class RuntimeIntValue extends RuntimeValue {
     return res;
   }
 
+  @Override
+  public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where){
+    RuntimeValue res = null;
+    if (v instanceof RuntimeFloatValue){
+      double v2 = v.getFloatValue("!= operand",where);
+      res = new RuntimeBoolValue((intValue != v2));
+    } else if (v instanceof RuntimeIntValue) {
+      long v2 = v.getIntValue("!= operand",where);
+      res = new RuntimeBoolValue((intValue != v2));
+    }else if (v instanceof RuntimeNoneValue) {
+      return new RuntimeBoolValue(true);
+    }
+    else{
+      runtimeError("Type error for !=.", where);
+    }
+    return res;
+  }
+
 
 @Override
   public RuntimeValue evalLess(RuntimeValue v, AspSyntax where){
@@ -109,13 +134,60 @@ public class RuntimeIntValue extends RuntimeValue {
   }
 
   @Override
+  public RuntimeValue evalLessEqual(RuntimeValue v, AspSyntax where){
+    RuntimeValue res = null;
+    if (v instanceof RuntimeFloatValue){
+      double v2 = v.getFloatValue("<= operand",where);
+      res = new RuntimeBoolValue((intValue <= v2));
+    } else if (v instanceof RuntimeIntValue) {
+      long v2 = v.getIntValue("<= operand",where);
+      res = new RuntimeBoolValue((intValue <= v2));
+    } else{
+      runtimeError("Type error for <=.", where);
+    }
+    return res;
+  }
+
+  @Override
+  public RuntimeValue evalGreaterEqual(RuntimeValue v, AspSyntax where){
+    RuntimeValue res = null;
+    if (v instanceof RuntimeFloatValue){
+      double v2 = v.getFloatValue(">= operand",where);
+      res = new RuntimeBoolValue((intValue >= v2));
+    } else if (v instanceof RuntimeIntValue) {
+      long v2 = v.getIntValue(">= operand",where);
+      res = new RuntimeBoolValue((intValue >= v2));
+    } else{
+      runtimeError("Type error for >=.", where);
+    }
+    return res;
+  }
+
+  @Override
+  public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where){
+    RuntimeValue res = null;
+    if (v instanceof RuntimeFloatValue){
+      double v2 = v.getFloatValue("> operand",where);
+      res = new RuntimeBoolValue((intValue > v2));
+    } else if (v instanceof RuntimeIntValue) {
+      long v2 = v.getIntValue("> operand",where);
+      res = new RuntimeBoolValue((intValue > v2));
+    } else{
+      runtimeError("Type error for >.", where);
+    }
+    return res;
+  }
+
+  @Override
   public RuntimeValue evalDivide(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
     if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("/ operand",where);
+//      System.out.println("dette er v2 : " + v2);
       res = new RuntimeFloatValue(intValue / v2);
     } else if (v instanceof RuntimeIntValue) {
       long v2 = v.getIntValue("/ operand",where);
+//      System.out.println("dette er v2 : " + v2);
       res = new RuntimeFloatValue(intValue / v2);
     } else {
       runtimeError("Type error for /.", where);
