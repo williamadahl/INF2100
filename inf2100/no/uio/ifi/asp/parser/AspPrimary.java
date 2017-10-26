@@ -50,8 +50,8 @@ class AspPrimary extends AspSyntax{
 				v = aps.get(i).eval(curScope);
 			}
 		}
-		//System.out.println("AA size :" + aa.size());
 		v = aa.get(0).eval(curScope);
+		//   System.out.println(v);
 		return v;
 	}
 

@@ -211,6 +211,29 @@ public class RuntimeIntValue extends RuntimeValue {
     return res;
   }
 
+  @Override
+  public boolean getBoolValue(String what, AspSyntax where){
+    if(intValue == 0){
+      // return new RuntimeBoolValue(false);
+      return false;
+    }else {
+      // return new RuntimeBoolValue(true);
+      return true;
+    }
+  }
+
+
+  @Override
+public RuntimeValue evalNot(AspSyntax where) {
+  if(intValue == 0){
+    return new RuntimeBoolValue(true);
+  }else{
+    return new RuntimeBoolValue(false);
+  }
+}
+
+
+
 
   @Override
   protected String typeName() {

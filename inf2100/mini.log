@@ -1,5 +1,6 @@
 <program>
-   1: 5 * 2
+   1: #5 * 2
+   2: ["a"] * 5
   <stmt>
     <expr stmt>
       <expr>
@@ -10,8 +11,26 @@
                 <factor>
                   <primary>
                     <atom>
-                      <integer literal>
-                      </integer literal>
+                      <list display>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <string literal>
+                                        </string literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </list display>
                     </atom>
                   </primary>
                   <factor opr>
@@ -30,11 +49,10 @@
       </expr>
     </expr stmt>
   </stmt>
-   2: 
    3: #not False
    4: # En hyggelig hilsen
    5: #navn = "Dag"
    6: #print("Hei,", navn)
    7: #not True
 </program>
-PP> 5 * 2
+PP>  [ "a" ]  * 5

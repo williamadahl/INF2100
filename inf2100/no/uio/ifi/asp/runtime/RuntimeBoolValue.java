@@ -48,6 +48,7 @@ public class RuntimeBoolValue extends RuntimeValue {
         }
     }
 
+
     @Override
     public RuntimeValue evalNot(AspSyntax where) {
 	return new RuntimeBoolValue(! boolValue);

@@ -97,7 +97,9 @@ class AspFactor extends AspSyntax{
 				TokenKind k = factorOprTests.get(i-1).kind;
 				switch (k) {
 					case astToken:
-					v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);	break;
+					System.out.println(i);
+					v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);
+					break;
 					case slashToken:
 					v = v.evalDivide(primaryTests.get(i).eval(curScope), this); break;
 					case percentToken:

@@ -205,7 +205,23 @@ public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
     return res;
   }
 
+  @Override
+  public RuntimeValue evalNot(AspSyntax where) {
+    if(floatValue == 0.0){
+      return new RuntimeBoolValue(true);
+    }else{
+      return new RuntimeBoolValue(false);
+    }
+  }
 
+  @Override
+  public boolean getBoolValue(String what, AspSyntax where) {
+    if(floatValue == 0.0){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
 
 

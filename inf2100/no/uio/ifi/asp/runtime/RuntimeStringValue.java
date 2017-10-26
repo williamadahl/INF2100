@@ -141,7 +141,23 @@ return res;
     return res;
   }
 
+  @Override
+  public RuntimeValue evalNot(AspSyntax where) {
+    if(stringValue == ""){
+      return new RuntimeBoolValue(true);
+    }else{
+      return new RuntimeBoolValue(false);
+    }
+  }
 
+  @Override
+  public boolean getBoolValue(String what, AspSyntax where) {
+    if(stringValue == ""){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
 
 
