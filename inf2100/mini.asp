@@ -1,5 +1,6 @@
+[100,102,103][1]
 #5 * 2
-["a"] * 5
+#["a"] * 5
 #not False
 # En hyggelig hilsen
 #navn = "Dag"

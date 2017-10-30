@@ -9,10 +9,19 @@ import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeListValue extends RuntimeValue{
 
-  ArrayList<RuntimeValue> aspList;
+  ArrayList<RuntimeValue> aspList = new ArrayList<>();
+
+  public RuntimeListValue (){
+
+  }
 
   public RuntimeListValue (ArrayList<RuntimeValue> v){
+    System.out.println("jeg kom hit da");
     aspList = v;
+  }
+
+  public void addElem(RuntimeValue v){
+    aspList.add(v);
   }
 
   @Override
@@ -21,11 +30,32 @@ public class RuntimeListValue extends RuntimeValue{
   }
 
   @Override
+  public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
+
+    RuntimeValue res = null;
+    if(v instanceof RuntimeIntValue){
+      System.out.println("This is V: " + v.getIntValue("integer", where));
+      System.out.println(aspList.get(0));
+      long v2 = v.getIntValue("[...] operand", where);
+      int v3 = (int)v2;
+      res = aspList.get(v3);
+    }else{
+      runtimeError("Type error for [...].", where);
+    }
+    return res;
+  }
+
+
+  @Override
   public String showInfo() {
     String listString = "";
     for(RuntimeValue r : aspList){
       listString += r.showInfo();
       listString += ", ";
+    }
+    if(aspList.size() == 0){
+      listString = "[" + listString;
+      listString = listString + "]";
     }
     listString = listString.substring(0,(listString.length()-2));
     listString = "[" + listString;
@@ -42,8 +72,12 @@ public class RuntimeListValue extends RuntimeValue{
     RuntimeValue res = null;
     if(v instanceof RuntimeIntValue){
       long v2 = v.getIntValue("* operand", where);
-      System.out.println("er jeg he");
+  //    System.out.println("er jeg he");
+
+      //temp = multiplyList(aspList, v2);
+
       res = new RuntimeListValue(multiplyList(aspList, v2));
+
     } else{
       runtimeError("Type error for *.", where);
     }
@@ -54,7 +88,7 @@ public class RuntimeListValue extends RuntimeValue{
   public ArrayList multiplyList(ArrayList v, long d){
     ArrayList<RuntimeValue> temp = new ArrayList<RuntimeValue>();
     temp.addAll(v);
-    System.out.println("temp");
+  //  System.out.println("temp");
 
     for(int i = 0; i < d-1; i++){
       v.addAll(temp);

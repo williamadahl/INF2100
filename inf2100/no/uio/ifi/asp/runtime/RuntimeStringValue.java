@@ -21,7 +21,6 @@ public class RuntimeStringValue extends RuntimeValue {
     return '"' + stringValue + '"';
   }
 
-
   @Override
   public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where){
     RuntimeValue res = null;

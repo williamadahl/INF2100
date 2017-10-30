@@ -21,7 +21,12 @@ class AspPrimary extends AspSyntax{
 		ap.aa.add(AspAtom.parse(s));
 
 		while((s.curToken().kind == leftParToken) || (s.curToken().kind == leftBracketToken)){
-				ap.aps.add(AspPrimarySuffix.parse(s));
+				if(s.curToken().kind == leftBracketToken){
+					ap.aps.add(AspSubscription.parse(s));
+				}else{
+					ap.aps.add(AspArguments.parse(s));
+				}
+				//ap.aps.add(AspPrimarySuffix.parse(s));
 		}
 
 		Main.log.leaveParser("primary");
@@ -43,15 +48,27 @@ class AspPrimary extends AspSyntax{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		System.out.println("helllaa");
 		RuntimeValue v = null;
+
+		if(aps.size() != 0){
+			v = aa.get(0).eval(curScope);
+			v = v.evalSubscription(aps.get(0).eval(curScope), this);
+			return v;
+		}
+		v = aa.get(0).eval(curScope);
+
+		/*
 		if(aps.size() != 0){
 			v = aps.get(0).eval(curScope);
 			for (int i = 1; i < aps.size(); ++i) {
 				v = aps.get(i).eval(curScope);
 			}
 		}
-		v = aa.get(0).eval(curScope);
-		//   System.out.println(v);
+		*/
+
+		//v = aa.get(0).eval(curScope);
+		//v = v.evalSubscription(aps.get(0).eval(curScope));
 		return v;
 	}
 

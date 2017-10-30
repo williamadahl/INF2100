@@ -44,7 +44,6 @@ abstract class AspPrimarySuffix extends AspSyntax{
 			return v;
 		}
 
-
 	@Override
 		void prettyPrint(){
 			aps.prettyPrint();
