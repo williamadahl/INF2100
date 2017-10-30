@@ -37,6 +37,16 @@ public class RuntimeIntValue extends RuntimeValue {
   }
 
   @Override
+  public RuntimeValue evalPositive(AspSyntax where) {
+    return new RuntimeIntValue(intValue);
+  }
+
+  @Override
+  public RuntimeValue evalNegate(AspSyntax where) {
+    return new RuntimeIntValue((intValue * -1));
+  }
+
+  @Override
   public RuntimeValue evalSubtract(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
     if (v instanceof RuntimeFloatValue) {
@@ -199,6 +209,7 @@ public class RuntimeIntValue extends RuntimeValue {
   @Override
   public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
+    //System.out.println("KOMMER INN I INT MODULO: " + intValue);
     if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("% operand",where);
       res = new RuntimeFloatValue(intValue - v2 * Math.floor(intValue/v2));

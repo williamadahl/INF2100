@@ -93,6 +93,21 @@ class AspFactor extends AspSyntax{
 		@Override
 		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 			RuntimeValue v = primaryTests.get(0).eval(curScope);
+
+			if(prefixTests.size() != 0) {
+				//System.out.println("Dette er prefik tesst" + prefixTests.get(0).kind);
+				TokenKind gender = prefixTests.get(0).kind;
+				switch(gender){
+					case minusToken:
+					v = v.evalNegate(this); break;
+					
+					case plusToken:
+					v = v.evalPositive(this); break;
+					default:
+					Main.panic("Illegal term operator: " + gender + "!");
+				}
+			}
+			
 			for (int i = 1; i < primaryTests.size(); ++i) {
 				TokenKind k = factorOprTests.get(i-1).kind;
 				switch (k) {
@@ -111,20 +126,7 @@ class AspFactor extends AspSyntax{
 					Main.panic("Illegal term operator: " + k + "!");
 				}
 			}
-			if(prefixTests.size() != 0) {
-				//System.out.println("Dette er prefik tesst" + prefixTests.get(0).kind);
-				TokenKind gender = prefixTests.get(0).kind;
-				switch(gender){
-					case minusToken:
-					v = v.evalSubtract(prefixTests.get(0).eval(curScope), this); break;
-					case plusToken:
-					v = v.evalAdd(prefixTests.get(0).eval(curScope), this); break;
-					default:
-					Main.panic("Illegal term operator: " + gender + "!");
-				}
-			}
 
 			return v;
-		// return null;
 		}
 }

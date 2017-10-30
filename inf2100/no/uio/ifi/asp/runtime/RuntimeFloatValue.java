@@ -19,6 +19,16 @@ public class RuntimeFloatValue extends RuntimeValue {
   }
 
   @Override
+  public RuntimeValue evalPositive(AspSyntax where) {
+    return new RuntimeFloatValue(floatValue);
+  }
+
+  @Override
+  public RuntimeValue evalNegate(AspSyntax where) {
+    return new RuntimeFloatValue((floatValue * -1.0));
+  }
+
+  @Override
   public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
     if (v instanceof RuntimeFloatValue) {

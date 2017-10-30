@@ -23,7 +23,8 @@ not False
 False or True or 144 or "?"
 
 "Testing comparisons"
-1 <= 2 <= 3
+1 <= 2 <= 3 <= 4
+True and True and True and 5
 "a" != "b" > "b" != 99
 3.14 > 2.718281828459045 > 0
 
@@ -34,6 +35,6 @@ False or True or 144 or "?"
 [-1,0,1]*(2)
 "Abcdef"[0]
 
-"Testing dictionaries"
-{"A": "a", "B": 1+2}
-{"Ja": 1, "Nei": 0}["Ja"]
+#"Testing dictionaries"
+#{"A": "a", "B": 1+2}
+#{"Ja": 1, "Nei": 0}["Ja"]
