@@ -25,12 +25,12 @@ class AspFactorOpr extends AspSyntax{
 		return noe;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+		return null;
+	}
 
 	@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(" " + kek + " ");
-		}
+	void prettyPrint() {
+		Main.log.prettyWrite(" " + kek + " ");
+	}
 }

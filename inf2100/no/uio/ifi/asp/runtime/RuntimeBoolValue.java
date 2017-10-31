@@ -27,7 +27,6 @@ public class RuntimeBoolValue extends RuntimeValue {
 	return boolValue;
     }
 
-
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
 	if (v instanceof RuntimeNoneValue) {

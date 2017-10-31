@@ -35,6 +35,4 @@ class AspCompOpr extends AspSyntax{
 		Main.log.prettyWrite(" " + johnnyGuitar + " ");
 
 	}
-
-
 }

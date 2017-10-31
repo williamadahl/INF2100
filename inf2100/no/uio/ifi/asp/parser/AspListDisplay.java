@@ -46,37 +46,35 @@ class AspListDisplay extends AspAtom{
 	}
 
 
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(" [ ");
-			int nPrinted = 0;
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(" [ ");
+		int nPrinted = 0;
 
-			for(AspExpr lol : boi){
-				if(nPrinted > 0){
-					Main.log.prettyWrite(" , ");
-				}
-				lol.prettyPrint();
-				++nPrinted;
+		for(AspExpr lol : boi){
+			if(nPrinted > 0){
+				Main.log.prettyWrite(" , ");
 			}
-			Main.log.prettyWrite(" ] ");
+			lol.prettyPrint();
+			++nPrinted;
 		}
-
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			// RuntimeValue v = null;
-			System.out.println("HIIIIIIIIIIIIIIIIIIII");
-			ArrayList<RuntimeValue> kjeks = new ArrayList<>();
-
-			for(int i = 0; i < boi.size(); i++){
-			 	kjeks.add(boi.get(i).eval(curScope));
-			}
-			RuntimeListValue k = null;
-			k = new RuntimeListValue();
-
-			for(RuntimeValue x : kjeks){
-				k.addElem(x);
-			}
-			return k;
-		}
-
+		Main.log.prettyWrite(" ] ");
 	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		ArrayList<RuntimeValue> kjeks = new ArrayList<>();
+
+		for(int i = 0; i < boi.size(); i++){
+			kjeks.add(boi.get(i).eval(curScope));
+		}
+		RuntimeListValue k = null;
+		k = new RuntimeListValue();
+
+		for(RuntimeValue x : kjeks){
+			k.addElem(x);
+		}
+		return k;
+	}
+
+}

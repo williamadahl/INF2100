@@ -44,6 +44,4 @@ class AspBooleanLiteral extends AspAtom{
 		}
 		return new RuntimeBoolValue(true);
 	}
-
-
 }

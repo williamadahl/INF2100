@@ -233,9 +233,6 @@ public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
     }
   }
 
-
-
-
   @Override
   protected String typeName() {
     return "float";

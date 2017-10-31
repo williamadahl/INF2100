@@ -26,12 +26,12 @@ class AspNoneLiteral extends AspAtom{
 		return anl;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
 
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(uff);
-		}
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(uff);
+	}
 }

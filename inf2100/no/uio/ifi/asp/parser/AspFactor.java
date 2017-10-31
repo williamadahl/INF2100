@@ -53,80 +53,78 @@ class AspFactor extends AspSyntax{
 				}
 			}
 		}else{
-				while(true){
-					af.primaryTests.add(AspPrimary.parse(s));
-					if(s.curToken().kind == astToken){
-						af.factorOprTests.add(AspFactorOpr.parse(s));
-					}else if(s.curToken().kind == slashToken){
-						af.factorOprTests.add(AspFactorOpr.parse(s));
-					}else if(s.curToken().kind == percentToken){
-						af.factorOprTests.add(AspFactorOpr.parse(s));
-					}else if(s.curToken().kind == doubleSlashToken){
-						af.factorOprTests.add(AspFactorOpr.parse(s));
-					}else {
-						break;
-					}
+			while(true){
+				af.primaryTests.add(AspPrimary.parse(s));
+				if(s.curToken().kind == astToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+				}else if(s.curToken().kind == slashToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+				}else if(s.curToken().kind == percentToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+				}else if(s.curToken().kind == doubleSlashToken){
+					af.factorOprTests.add(AspFactorOpr.parse(s));
+				}else {
+					break;
 				}
+			}
 		}
 		Main.log.leaveParser("factor");
 		return af;
 	}
 
 
-		@Override
-		void prettyPrint() {
-			if(!prefixTests.isEmpty()){
-				prefixTests.get(0).prettyPrint();
+	@Override
+	void prettyPrint() {
+		if(!prefixTests.isEmpty()){
+			prefixTests.get(0).prettyPrint();
+		}
+		if(primaryTests.size() == 1){
+			primaryTests.get(0).prettyPrint();
+		}else{
+			primaryTests.get(0).prettyPrint();
+			for(int i = 1; i< primaryTests.size(); i++){
+				factorOprTests.get(i-1).prettyPrint();
+				primaryTests.get(i).prettyPrint();
 			}
-			if(primaryTests.size() == 1){
-				primaryTests.get(0).prettyPrint();
-			}else{
-				primaryTests.get(0).prettyPrint();
-				for(int i = 1; i< primaryTests.size(); i++){
-					factorOprTests.get(i-1).prettyPrint();
-					primaryTests.get(i).prettyPrint();
-				}
+		}
+	}
+
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		RuntimeValue v = primaryTests.get(0).eval(curScope);
+
+		if(prefixTests.size() != 0) {
+			TokenKind gender = prefixTests.get(0).kind;
+			switch(gender){
+				case minusToken:
+				v = v.evalNegate(this); break;
+				
+				case plusToken:
+				v = v.evalPositive(this); break;
+				default:
+				Main.panic("Illegal term operator: " + gender + "!");
+			}
+		}
+		
+		for (int i = 1; i < primaryTests.size(); ++i) {
+			TokenKind k = factorOprTests.get(i-1).kind;
+			switch (k) {
+				case astToken:
+				v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);
+				break;
+				case slashToken:
+				v = v.evalDivide(primaryTests.get(i).eval(curScope), this); break;
+				case percentToken:
+				v = v.evalModulo(primaryTests.get(i).eval(curScope), this); break;
+				case doubleSlashToken:
+				v = v.evalIntDivide(primaryTests.get(i).eval(curScope), this); break;
+
+				default:
+				Main.panic("Illegal term operator: " + k + "!");
 			}
 		}
 
-
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			RuntimeValue v = primaryTests.get(0).eval(curScope);
-
-			if(prefixTests.size() != 0) {
-				//System.out.println("Dette er prefik tesst" + prefixTests.get(0).kind);
-				TokenKind gender = prefixTests.get(0).kind;
-				switch(gender){
-					case minusToken:
-					v = v.evalNegate(this); break;
-					
-					case plusToken:
-					v = v.evalPositive(this); break;
-					default:
-					Main.panic("Illegal term operator: " + gender + "!");
-				}
-			}
-			
-			for (int i = 1; i < primaryTests.size(); ++i) {
-				TokenKind k = factorOprTests.get(i-1).kind;
-				switch (k) {
-					case astToken:
-					System.out.println(i);
-					v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);
-					break;
-					case slashToken:
-					v = v.evalDivide(primaryTests.get(i).eval(curScope), this); break;
-					case percentToken:
-					v = v.evalModulo(primaryTests.get(i).eval(curScope), this); break;
-					case doubleSlashToken:
-					v = v.evalIntDivide(primaryTests.get(i).eval(curScope), this); break;
-
-					default:
-					Main.panic("Illegal term operator: " + k + "!");
-				}
-			}
-
-			return v;
-		}
+		return v;
+	}
 }

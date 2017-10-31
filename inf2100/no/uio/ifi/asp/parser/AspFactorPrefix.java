@@ -25,13 +25,13 @@ class AspFactorPrefix extends AspSyntax{
 
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
 
 
 	@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(ayy);
-		}
+	void prettyPrint() {
+		Main.log.prettyWrite(ayy);
 	}
+}

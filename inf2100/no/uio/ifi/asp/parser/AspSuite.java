@@ -30,17 +30,17 @@ class AspSuite extends AspSyntax{
 		return as;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWriteLn();
-			Main.log.prettyIndent();
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWriteLn();
+		Main.log.prettyIndent();
 
-			for(AspStmt freedom : astmt){
-				freedom.prettyPrint();
-			}
-			Main.log.prettyDedent();
+		for(AspStmt freedom : astmt){
+			freedom.prettyPrint();
 		}
+		Main.log.prettyDedent();
+	}
 }

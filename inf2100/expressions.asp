@@ -35,6 +35,6 @@ True and True and True and 5
 [-1,0,1]*(2)
 "Abcdef"[0]
 
-#"Testing dictionaries"
-#{"A": "a", "B": 1+2}
-#{"Ja": 1, "Nei": 0}["Ja"]
+"Testing dictionaries"
+{"A": "a", "B": 1+2}
+{"Ja": 1, "Nei": 0}["Ja"]

@@ -15,23 +15,23 @@ class AspName extends AspAtom{
 
 	static AspName parse(Scanner s){
 		AspName an = new AspName(s.curLineNum());
-			Main.log.enterParser("name");
-			Main.log.leaveParser("name");
-			an.guitar.add(s.curToken().name);
-			an.kind = s.curToken().kind;
-			skip(s, nameToken);
+		Main.log.enterParser("name");
+		Main.log.leaveParser("name");
+		an.guitar.add(s.curToken().name);
+		an.kind = s.curToken().kind;
+		skip(s, nameToken);
 
-			return an;
+		return an;
 	}
 
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
 
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(guitar.get(0));
-		}
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(guitar.get(0));
+	}
 
 }

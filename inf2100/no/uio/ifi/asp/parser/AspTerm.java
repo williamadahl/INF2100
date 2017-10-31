@@ -32,43 +32,39 @@ class AspTerm extends AspSyntax{
 		return atat;
 	}
 
-		@Override
-		void prettyPrint() {
-			int nPrinted = 0;
-			int counter = 0;
-			for (AspFactor ant: factorTests){
-				if(nPrinted > 0){
-					if(!termOprTests.isEmpty()){
-						AspTermOpr hi = termOprTests.get(counter);
+	@Override
+	void prettyPrint() {
+		int nPrinted = 0;
+		int counter = 0;
+		for (AspFactor ant: factorTests){
+			if(nPrinted > 0){
+				if(!termOprTests.isEmpty()){
+					AspTermOpr hi = termOprTests.get(counter);
 						// termOprTests.remove(0);
-						hi.prettyPrint();
-						counter++;
-					}
+					hi.prettyPrint();
+					counter++;
 				}
-				++nPrinted;
-				ant.prettyPrint();
+			}
+			++nPrinted;
+			ant.prettyPrint();
+		}
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		RuntimeValue v = factorTests.get(0).eval(curScope);
+		for (int i = 1; i < factorTests.size(); ++i) {
+			TokenKind k = termOprTests.get(i-1).kind;
+			switch (k) {
+				case minusToken:
+				v = v.evalSubtract(factorTests.get(i).eval(curScope), this); break;
+				case plusToken:
+				v = v.evalAdd(factorTests.get(i).eval(curScope), this); break;
+				default:
+				Main.panic("Illegal term operator: " + k + "!");
 			}
 		}
-
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			RuntimeValue v = factorTests.get(0).eval(curScope);
-			for (int i = 1; i < factorTests.size(); ++i) {
-				TokenKind k = termOprTests.get(i-1).kind;
-				switch (k) {
-					case minusToken:
-					v = v.evalSubtract(factorTests.get(i).eval(curScope), this); break;
-					case plusToken:
-					v = v.evalAdd(factorTests.get(i).eval(curScope), this); break;
-					default:
-					Main.panic("Illegal term operator: " + k + "!");
-				}
-			}
 			//System.out.println("Dette er i term: " + v.getIntValue("integer", this));
-			return v;
-		}
-
-
-
-
+		return v;
+	}
 }

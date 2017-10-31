@@ -45,8 +45,6 @@ public class AspExpr extends AspSyntax {
 
     }
 
-//usikker paa hva vi skal sjekke mot her men. proever med  or pga jernbane
-
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
       RuntimeValue v = andTests.get(0).eval(curScope);
@@ -56,10 +54,6 @@ public class AspExpr extends AspSyntax {
         }
         v = andTests.get(i).eval(curScope);
       }
-        //System.out.println("Dette er i expr: " + v.getIntValue("integer", this));
         return v;
     }
-
-
-
 }

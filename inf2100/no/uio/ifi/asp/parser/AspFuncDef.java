@@ -11,8 +11,8 @@ class AspFuncDef extends AspStmt{
 	AspSuite pentHouse;
 
 	AspFuncDef(int n){
-  	      super(n);
-  }
+		super(n);
+	}
 	static AspFuncDef parse(Scanner s){
 		Main.log.enterParser("func def");
 		AspFuncDef afd = new AspFuncDef(s.curLineNum());
@@ -43,32 +43,32 @@ class AspFuncDef extends AspStmt{
 		return afd;
 	}
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) {
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) {
+		return null;
+	}
 
 
 	@Override
-		void prettyPrint() {
-			Main.log.prettyWrite("def ");
-			AspName kek = aname.get(0);
+	void prettyPrint() {
+		Main.log.prettyWrite("def ");
+		AspName kek = aname.get(0);
 
-			kek.prettyPrint();
-			Main.log.prettyWrite(" (");
+		kek.prettyPrint();
+		Main.log.prettyWrite(" (");
 
-			int nPrinted = 0;
+		int nPrinted = 0;
 
-			for (int i = 1;i<aname.size();i++) {
-				if(nPrinted > 0){
-					Main.log.prettyWrite(", ");
-				}
-				aname.get(i).prettyPrint();
-				++nPrinted;
+		for (int i = 1;i<aname.size();i++) {
+			if(nPrinted > 0){
+				Main.log.prettyWrite(", ");
 			}
-
-			Main.log.prettyWrite(")");
-			Main.log.prettyWrite(":");
-			pentHouse.prettyPrint();
-			Main.log.prettyWriteLn();
+			aname.get(i).prettyPrint();
+			++nPrinted;
 		}
+
+		Main.log.prettyWrite(")");
+		Main.log.prettyWrite(":");
+		pentHouse.prettyPrint();
+		Main.log.prettyWriteLn();
 	}
+}

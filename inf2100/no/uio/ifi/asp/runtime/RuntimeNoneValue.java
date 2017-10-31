@@ -37,14 +37,12 @@ public class RuntimeNoneValue extends RuntimeValue {
       String v2 = v.getStringValue("== operand",where);
 
     }else if(v instanceof RuntimeNoneValue){
-      //res = new RuntimeNoneValue(None == v2);
       return new RuntimeBoolValue(true);
 
     }else{
       runtimeError("Type error for ==.",where);
     }
     return new RuntimeBoolValue(false);
-    //return res;
 }
 
     @Override
@@ -67,7 +65,6 @@ public class RuntimeNoneValue extends RuntimeValue {
             runtimeError("Type error for !=.",where);
         }
         return new RuntimeBoolValue(true);
-        //return res;
     }
 
 
@@ -75,6 +72,4 @@ public class RuntimeNoneValue extends RuntimeValue {
     public RuntimeValue evalNot(AspSyntax where) {
 	return new RuntimeBoolValue(true);
     }
-
-
 }

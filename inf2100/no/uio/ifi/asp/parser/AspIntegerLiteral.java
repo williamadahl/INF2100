@@ -29,15 +29,15 @@ class AspIntegerLiteral extends AspAtom{
 		return ail;
 	}
 
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(Long.toString(dong.get(counter)));
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(Long.toString(dong.get(counter)));
 		
-		}
+	}
 
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			return new RuntimeIntValue(dong.get(0));
-		}
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		return new RuntimeIntValue(dong.get(0));
+	}
 
 }

@@ -30,25 +30,24 @@ class AspNotTest extends AspSyntax{
 		return nut;
 	}
 
-		@Override
-		void prettyPrint() {
-			if(dank){
-				Main.log.prettyWrite(" not ");
-			}
-			body1.prettyPrint();
-
+	@Override
+	void prettyPrint() {
+		if(dank){
+			Main.log.prettyWrite(" not ");
 		}
+		body1.prettyPrint();
 
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			RuntimeValue v = body1.eval(curScope);
+	}
 
-			if(dank){
-				v = v.evalNot(this);
-			}
-			//System.out.println("Dette er i not: " + v.getIntValue("integer", this));
-			return v;
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		RuntimeValue v = body1.eval(curScope);
+
+		if(dank){
+			v = v.evalNot(this);
 		}
+		return v;
+	}
 
 
 }

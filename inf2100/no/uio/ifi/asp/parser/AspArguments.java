@@ -46,29 +46,27 @@ class AspArguments extends AspPrimarySuffix{
 
 	}
 
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite("(");
-			int nPrinted = 0;
-			for(AspExpr lol : asex){
-				if(nPrinted > 0){
-					Main.log.prettyWrite(", ");
-				}
-				lol.prettyPrint();
-				++nPrinted;
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite("(");
+		int nPrinted = 0;
+		for(AspExpr lol : asex){
+			if(nPrinted > 0){
+				Main.log.prettyWrite(", ");
 			}
-			Main.log.prettyWrite(")");
+			lol.prettyPrint();
+			++nPrinted;
 		}
+		Main.log.prettyWrite(")");
+	}
 
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+		RuntimeValue v = asex.get(0).eval(curScope);
 
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
-			System.out.println("KOMMER INN I ARGUMENTS");
-			RuntimeValue v = asex.get(0).eval(curScope);
-
-			for(int i = 1 ; i < asex.size(); ++i){
-				v = asex.get(i).eval(curScope);
-			}
-			return v;
+		for(int i = 1 ; i < asex.size(); ++i){
+			v = asex.get(i).eval(curScope);
 		}
+		return v;
+	}
 }

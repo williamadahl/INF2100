@@ -24,9 +24,7 @@ public class RuntimeIntValue extends RuntimeValue {
     RuntimeValue res = null;
     if (v instanceof RuntimeIntValue) {
       long v2 = v.getIntValue("+ operand",where);
-      System.out.println("Hette er : " + v2);
       res = new RuntimeIntValue(intValue + v2);
-      System.out.println("Dette er res: " + res.getIntValue("oxxxxx", where));
     } else if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("+ operand",where);
       res = new RuntimeFloatValue(intValue + v2);
@@ -193,11 +191,9 @@ public class RuntimeIntValue extends RuntimeValue {
     RuntimeValue res = null;
     if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("/ operand",where);
-//      System.out.println("dette er v2 : " + v2);
       res = new RuntimeFloatValue(intValue / v2);
     } else if (v instanceof RuntimeIntValue) {
       long v2 = v.getIntValue("/ operand",where);
-//      System.out.println("dette er v2 : " + v2);
       res = new RuntimeFloatValue(intValue / v2);
     } else {
       runtimeError("Type error for /.", where);
@@ -209,7 +205,6 @@ public class RuntimeIntValue extends RuntimeValue {
   @Override
   public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
-    //System.out.println("KOMMER INN I INT MODULO: " + intValue);
     if (v instanceof RuntimeFloatValue) {
       double v2 = v.getFloatValue("% operand",where);
       res = new RuntimeFloatValue(intValue - v2 * Math.floor(intValue/v2));
@@ -225,10 +220,8 @@ public class RuntimeIntValue extends RuntimeValue {
   @Override
   public boolean getBoolValue(String what, AspSyntax where){
     if(intValue == 0){
-      // return new RuntimeBoolValue(false);
       return false;
     }else {
-      // return new RuntimeBoolValue(true);
       return true;
     }
   }
@@ -242,8 +235,6 @@ public RuntimeValue evalNot(AspSyntax where) {
     return new RuntimeBoolValue(false);
   }
 }
-
-
 
 
   @Override

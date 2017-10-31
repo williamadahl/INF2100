@@ -27,12 +27,12 @@ class AspTermOpr extends AspSyntax{
 
 
 	@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			return null;
-		}
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		return null;
+	}
 
-		@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(" " + ayy + " ");
-		}
+	@Override
+	void prettyPrint() {
+		Main.log.prettyWrite(" " + ayy + " ");
+	}
 }

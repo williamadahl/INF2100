@@ -25,18 +25,17 @@ class AspExprStmt extends AspStmt{
 	}
 
 
-		@Override
-		public void prettyPrint() {
-			body.prettyPrint();
-			Main.log.prettyWriteLn();
-		}
+	@Override
+	public void prettyPrint() {
+		body.prettyPrint();
+		Main.log.prettyWriteLn();
+	}
 
 
-		@Override
-			RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
-				RuntimeValue v = body.eval(curScope);
-			//System.out.println("Dette er i ExprStmt: " + v.getIntValue("integer", this));
-			return v;
-			}
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+		RuntimeValue v = body.eval(curScope);
+		return v;
+	}
 
 }

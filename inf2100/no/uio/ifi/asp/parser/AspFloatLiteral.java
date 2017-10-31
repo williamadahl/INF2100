@@ -29,16 +29,14 @@ class AspFloatLiteral extends AspAtom{
 
 
 	@Override
-		void prettyPrint() {
-			Main.log.prettyWrite(Double.toString(dong.get(counter)));
+	void prettyPrint() {
+		Main.log.prettyWrite(Double.toString(dong.get(counter)));
 
-		}
-
-
-		@Override
-		RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-			return new RuntimeFloatValue(dong.get(0));
-		}
+	}
 
 
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		return new RuntimeFloatValue(dong.get(0));
+	}
 }

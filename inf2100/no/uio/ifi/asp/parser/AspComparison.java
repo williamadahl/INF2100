@@ -52,12 +52,9 @@ class AspComparison extends AspSyntax{
 
 				if(compOprTests.get(counter) != null){
 					AspCompOpr hi = compOprTests.get(counter);
-					//compOprTests.remove(0);
 					hi.prettyPrint();
 					counter ++;
 				}
-				// if(!compOprTests.isEmpty()){
-				// }
 			}
 			ant.prettyPrint();
 			++nPrinted;
@@ -96,34 +93,4 @@ class AspComparison extends AspSyntax{
 		}
 		return v;
 	}
-
-/*
-	//This is the original eval():
-
-	@Override
-	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		RuntimeValue v = termTests.get(0).eval(curScope);
-		for (int i = 1; i < termTests.size(); ++i) {
-			TokenKind bender = compOprTests.get(i-1).kind;
-			switch (bender) {
-				case lessToken:
-					v = v.evalLess(termTests.get(i).eval(curScope), this); break;
-				case greaterToken:
-					v = v.evalGreater(termTests.get(i).eval(curScope), this); break;
-				case doubleEqualToken:
-					v = v.evalEqual(termTests.get(i).eval(curScope), this); break;
-				case greaterEqualToken:
-					v = v.evalGreaterEqual(termTests.get(i).eval(curScope), this); break;
-				case lessEqualToken:
-					v = v.evalLessEqual(termTests.get(i).eval(curScope), this); break;
-				case notEqualToken:
-					v = v.evalNotEqual(termTests.get(i).eval(curScope), this); break;
-
-				default:
-				Main.panic("Illegal term operator: " + bender + "!");
-			}
-		}
-		return v;
-	}
-*/
 }

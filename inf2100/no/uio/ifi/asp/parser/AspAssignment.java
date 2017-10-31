@@ -52,13 +52,10 @@ class AspAssignment extends AspStmt{
 
 	@Override
 	public void prettyPrint() {
-
 		test.prettyPrint();
-
 		for(AspSubscription phub : as){
 			phub.prettyPrint();
 		}
-
 		Main.log.prettyWrite(" = ");
 		test2.prettyPrint();
 		Main.log.prettyWriteLn();
