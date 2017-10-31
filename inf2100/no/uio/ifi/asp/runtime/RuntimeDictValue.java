@@ -68,4 +68,13 @@ public class RuntimeDictValue extends RuntimeValue{
     }
     return res;
   }
+
+  @Override
+  public boolean getBoolValue(String what, AspSyntax where){
+    if(key.isEmpty() || value.isEmpty()){
+      return false;
+    }else {
+      return true;
+    }
+  }
 }

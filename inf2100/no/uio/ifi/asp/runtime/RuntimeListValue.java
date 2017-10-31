@@ -35,7 +35,12 @@ public class RuntimeListValue extends RuntimeValue{
     if(v instanceof RuntimeIntValue){
       long v2 = v.getIntValue("[...] operand", where);
       int v3 = (int)v2;
-      res = aspList.get(v3);
+
+      if(v3 > aspList.size()-1){
+        Main.error("Array size is " + aspList.size() + " but you're trying to get element at position " + v3);
+      }else{
+        res = aspList.get(v3);
+      }
     }else{
       runtimeError("Type error for [...].", where);
     }
@@ -84,4 +89,12 @@ public class RuntimeListValue extends RuntimeValue{
     return v;
   }
 
+  @Override
+  public boolean getBoolValue(String what, AspSyntax where){
+    if(aspList.isEmpty()){
+      return false;
+    }else {
+      return true;
+    }
+  }
 }

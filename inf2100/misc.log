@@ -1,0 +1,2 @@
+PP> 2 and  [ 1 , 2 , 3 ]  and  { "lmao" : 3 }  ==>
+Trace line 3: {"lmao" : 3 }

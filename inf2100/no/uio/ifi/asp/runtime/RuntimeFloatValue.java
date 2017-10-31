@@ -238,8 +238,6 @@ public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
     return "float";
   }
 
-
-
   @Override
   public long getIntValue(String what, AspSyntax where) {
     return (long)floatValue;
