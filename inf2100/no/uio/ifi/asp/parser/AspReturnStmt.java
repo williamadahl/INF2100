@@ -12,6 +12,7 @@ class AspReturnStmt extends AspStmt{
   AspReturnStmt(int n){
     super(n);
   }
+  
   static AspReturnStmt parse(Scanner s){
     AspReturnStmt ars = new AspReturnStmt(s.curLineNum());
     Main.log.enterParser("return stmt");
@@ -22,15 +23,16 @@ class AspReturnStmt extends AspStmt{
 
     return ars;
   }
-  @Override
-    RuntimeValue eval(RuntimeScope curScope) {
-      return null;
-    }
 
-    @Override
-    void prettyPrint() {
-      Main.log.prettyWrite("return ");
-      ae.prettyPrint();
-      Main.log.prettyWriteLn();
-    }
+  @Override
+  RuntimeValue eval(RuntimeScope curScope) {
+    return null;
+  }
+
+  @Override
+  void prettyPrint() {
+    Main.log.prettyWrite("return ");
+    ae.prettyPrint();
+    Main.log.prettyWriteLn();
+  }
 }

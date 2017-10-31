@@ -36,7 +36,6 @@ class AspNotTest extends AspSyntax{
 			Main.log.prettyWrite(" not ");
 		}
 		body1.prettyPrint();
-
 	}
 
 	@Override

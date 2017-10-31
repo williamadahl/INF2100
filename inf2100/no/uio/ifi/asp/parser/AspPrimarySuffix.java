@@ -21,8 +21,8 @@ abstract class AspPrimarySuffix extends AspSyntax{
 		Main.log.enterParser("primary suffix");
 		switch(s.curToken().kind){
 			case leftParToken:
-				b.isArgument = true;
-				b.aps = AspArguments.parse(s);
+			b.isArgument = true;
+			b.aps = AspArguments.parse(s);
 
 			break;
 			case leftBracketToken:
@@ -31,7 +31,7 @@ abstract class AspPrimarySuffix extends AspSyntax{
 			break;
 			default:
 			parserError("Expected an expression atom but found a " +
-			s.curToken().kind + "!", s.curLineNum());
+				s.curToken().kind + "!", s.curLineNum());
 		}
 		Main.log.leaveParser("primary suffix");
 		return b;
@@ -39,14 +39,14 @@ abstract class AspPrimarySuffix extends AspSyntax{
 	}
 
 	@Override
-		RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue {
-			RuntimeValue v = aps.eval(curScope);
-			return v;
-		}
+	RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue {
+		RuntimeValue v = aps.eval(curScope);
+		return v;
+	}
 
 	@Override
-		void prettyPrint(){
-			aps.prettyPrint();
-		}
+	void prettyPrint(){
+		aps.prettyPrint();
+	}
 
 }

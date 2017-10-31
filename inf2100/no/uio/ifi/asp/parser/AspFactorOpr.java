@@ -24,6 +24,7 @@ class AspFactorOpr extends AspSyntax{
 		skip(s, s.curToken().kind);
 		return noe;
 	}
+	
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		return null;

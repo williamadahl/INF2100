@@ -119,12 +119,10 @@ class AspFactor extends AspSyntax{
 				v = v.evalModulo(primaryTests.get(i).eval(curScope), this); break;
 				case doubleSlashToken:
 				v = v.evalIntDivide(primaryTests.get(i).eval(curScope), this); break;
-
 				default:
 				Main.panic("Illegal term operator: " + k + "!");
 			}
 		}
-
 		return v;
 	}
 }

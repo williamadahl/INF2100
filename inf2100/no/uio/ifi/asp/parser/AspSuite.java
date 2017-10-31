@@ -33,6 +33,7 @@ class AspSuite extends AspSyntax{
 	RuntimeValue eval(RuntimeScope curScope) {
 		return null;
 	}
+	
 	@Override
 	void prettyPrint() {
 		Main.log.prettyWriteLn();

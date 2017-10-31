@@ -43,7 +43,6 @@ class AspArguments extends AspPrimarySuffix{
 		skip(s, rightParToken);
 		Main.log.leaveParser("arguments");
 		return arar;
-
 	}
 
 	@Override

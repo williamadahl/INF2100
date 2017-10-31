@@ -32,12 +32,12 @@ public class AspAndTest extends AspSyntax {
 	void prettyPrint() {
 		int nPrinted = 0;
 		for (AspNotTest ant: notTests) {
-		 	if (nPrinted > 0){
-		 		Main.log.prettyWrite(" and ");
-		 	}
-		 	ant.prettyPrint();
-	 		++nPrinted;
-		 }
+			if (nPrinted > 0){
+				Main.log.prettyWrite(" and ");
+			}
+			ant.prettyPrint();
+			++nPrinted;
+		}
 	}
 
 	@Override

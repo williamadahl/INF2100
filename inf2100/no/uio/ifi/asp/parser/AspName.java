@@ -33,5 +33,4 @@ class AspName extends AspAtom{
 	void prettyPrint() {
 		Main.log.prettyWrite(guitar.get(0));
 	}
-
 }

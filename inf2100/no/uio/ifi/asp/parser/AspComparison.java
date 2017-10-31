@@ -70,7 +70,6 @@ class AspComparison extends AspSyntax{
 
 			switch (bender) {
 				case lessToken:
-
 					v = v.evalLess(termTests.get(i).eval(curScope), this); break;
 				case greaterToken:
 					v = v.evalGreater(termTests.get(i).eval(curScope), this); break;
@@ -82,13 +81,11 @@ class AspComparison extends AspSyntax{
 					v = v.evalLessEqual(termTests.get(i).eval(curScope), this); break;
 				case notEqualToken:
 					v = v.evalNotEqual(termTests.get(i).eval(curScope), this); break;
-
 				default:
 				Main.panic("Illegal term operator: " + bender + "!");
 			}
 			if(! v.getBoolValue("and operator", this)){
 				return v;
-
 			}
 		}
 		return v;

@@ -42,11 +42,11 @@ class AspFuncDef extends AspStmt{
 
 		return afd;
 	}
+
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) {
 		return null;
 	}
-
 
 	@Override
 	void prettyPrint() {

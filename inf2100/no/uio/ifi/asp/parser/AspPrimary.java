@@ -26,7 +26,6 @@ class AspPrimary extends AspSyntax{
 			}else{
 				ap.aps.add(AspArguments.parse(s));
 			}
-				//ap.aps.add(AspPrimarySuffix.parse(s));
 		}
 
 		Main.log.leaveParser("primary");
@@ -37,7 +36,6 @@ class AspPrimary extends AspSyntax{
 	@Override
 	void prettyPrint() {
 		AspAtom hi = aa.get(0);
-		//aa.remove(0);
 		hi.prettyPrint();
 
 		for(AspPrimarySuffix a : aps ){
@@ -54,6 +52,7 @@ class AspPrimary extends AspSyntax{
 			v = v.evalSubscription(aps.get(0).eval(curScope), this);
 			return v;
 		}
+		
 		v = aa.get(0).eval(curScope);
 		return v;
 	}

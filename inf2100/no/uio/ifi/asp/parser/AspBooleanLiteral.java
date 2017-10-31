@@ -34,7 +34,6 @@ class AspBooleanLiteral extends AspAtom{
 	@Override
 	void prettyPrint() {
 		Main.log.prettyWrite(hi.get(counter));
-		//counter++;
 	}
 
 	@Override

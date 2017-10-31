@@ -27,19 +27,18 @@ class AspWhileStmt extends AspStmt {
 
       Main.log.leaveParser("while stmt");
       return aws;
-
     }
+    
     @Override
-  		RuntimeValue eval(RuntimeScope curScope) {
-  			return null;
-  		}
+  	RuntimeValue eval(RuntimeScope curScope) {
+  		return null;
+  	}
 
-      @Override
-  		void prettyPrint() {
-        Main.log.prettyWrite("while ");
-        test.prettyPrint();
-        Main.log.prettyWrite(":");
-        body.prettyPrint();
-
-  		}
+    @Override
+  	void prettyPrint() {
+      Main.log.prettyWrite("while ");
+      test.prettyPrint();
+      Main.log.prettyWrite(":");
+      body.prettyPrint();
+  	}
 }
