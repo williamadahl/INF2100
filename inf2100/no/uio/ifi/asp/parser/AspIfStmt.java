@@ -9,6 +9,7 @@ import java.util.ArrayList;
 class AspIfStmt extends AspStmt{
 	ArrayList<AspExpr> aexp = new ArrayList<>();
 	ArrayList<AspSuite> asui = new ArrayList<>();
+	boolean hasElse = false;
 
 	AspIfStmt(int n){
 		super(n);
@@ -35,14 +36,27 @@ class AspIfStmt extends AspStmt{
 		if(s.curToken().kind == elseToken){
 			skip(s, elseToken);
 			skip(s, colonToken);
+			aif.hasElse == true;
 			aif.asui.add(AspSuite.parse(s));
 		}
 		Main.log.leaveParser("if stmt");
 		return aif;
 	}
+
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeValue{
+		RuntimeValue v = null;
+		for(int i = 0; i < aexp.size(); i++){
+			v = aexp.get(i).eval(curScope);
+			if(v.getBoolValue("if statement", this)){
+				v = asui.get(i).eval(curScope);
+				return v;
+			}
+		}
+		if(hasElse){
+			v = asui.get(asui.size()-1).eval(curScope);
+		}
+		return v;
 	}
 
 	@Override

@@ -49,10 +49,19 @@ class AspPrimary extends AspSyntax{
 
 		if(aps.size() != 0){
 			v = aa.get(0).eval(curScope);
-			v = v.evalSubscription(aps.get(0).eval(curScope), this);
+			for(int i = 0; i < aps.size(); i++){
+				if(aps.get(i) instanceof AspSubscription){
+					v = v.evalSubscription(aps.get(i).eval(curScope), this);
+				} else{
+					/* maa nesten sjekke curScope*/
+					RuntimeScope r = nev RuntimeScope(curScope);
+					curScope.assign(v.showInfo(),v);
+					// v = v.evalArguments(aps.get(i).eval(curScope), this);
+				}
+			}
 			return v;
 		}
-		
+
 		v = aa.get(0).eval(curScope);
 		return v;
 	}

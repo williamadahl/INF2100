@@ -20,10 +20,11 @@ class AspPassStmt extends AspStmt{
     return aps;
   }
   @Override
-  RuntimeValue eval(RuntimeScope curScope) {
+  RuntimeValue eval(RuntimeScope curScope) throws RuntimeValue{
+    traceEval("none ", this);
     return null;
   }
-  
+
   @Override
   void prettyPrint() {
     Main.log.prettyWrite(" pass ");
