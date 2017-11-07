@@ -30,9 +30,9 @@ class AspWhileStmt extends AspStmt {
     }
 
     @Override
-  	RuntimeValue eval(RuntimeScope curScope) throws RuntimeValue{
+  	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
   		RuntimeValue v = null;
-      while (true)) {
+      while (true) {
         if(!test.eval(curScope).getBoolValue("expression", this)){
           break;
         }

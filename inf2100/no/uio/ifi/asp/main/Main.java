@@ -101,7 +101,7 @@ public class Main {
 			e.prettyPrint();  log.prettyWriteLn(" ==>");
 			try {
 				RuntimeValue res = e.eval(emptyScope);
-				
+
 				log.traceEval(res.showInfo(), e);
 			} catch (RuntimeReturnValue rrv) {
 				panic("Uncaught return value!");

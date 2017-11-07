@@ -1,4 +1,4 @@
-[100,102,103][1]
+#[100,102,103][1]
 #5 * 2
 #["a"] * 5
 #not False
@@ -6,3 +6,6 @@
 #navn = "Dag"
 #print("Hei,", navn)
 #not True
+x = 3
+if x < 4:
+    return x

@@ -36,7 +36,7 @@ class AspIfStmt extends AspStmt{
 		if(s.curToken().kind == elseToken){
 			skip(s, elseToken);
 			skip(s, colonToken);
-			aif.hasElse == true;
+			aif.hasElse = true;
 			aif.asui.add(AspSuite.parse(s));
 		}
 		Main.log.leaveParser("if stmt");
@@ -44,7 +44,7 @@ class AspIfStmt extends AspStmt{
 	}
 
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) throws RuntimeValue{
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		RuntimeValue v = null;
 		for(int i = 0; i < aexp.size(); i++){
 			v = aexp.get(i).eval(curScope);

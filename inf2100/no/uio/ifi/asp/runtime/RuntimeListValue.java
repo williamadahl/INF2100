@@ -97,4 +97,14 @@ public class RuntimeListValue extends RuntimeValue{
       return true;
     }
   }
+
+@Override
+  public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
+    System.out.println("Kommer inn i eval assign");
+    long v2 = inx.getIntValue("[...] operand", where);
+    int v3 = (int)v2;
+
+    aspList.remove(v3);
+    aspList.add(v3, val);
+  }
 }

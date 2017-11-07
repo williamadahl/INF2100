@@ -54,8 +54,8 @@ class AspPrimary extends AspSyntax{
 					v = v.evalSubscription(aps.get(i).eval(curScope), this);
 				} else{
 					/* maa nesten sjekke curScope*/
-					RuntimeScope r = nev RuntimeScope(curScope);
-					curScope.assign(v.showInfo(),v);
+					RuntimeScope r = new RuntimeScope(curScope);
+					r.assign(v.showInfo(),v);
 					// v = v.evalArguments(aps.get(i).eval(curScope), this);
 				}
 			}

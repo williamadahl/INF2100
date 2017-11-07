@@ -46,8 +46,41 @@ class AspAssignment extends AspStmt{
 
 
 	@Override
-	RuntimeValue eval(RuntimeScope curScope){
-		return null;
+	RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue{
+		RuntimeValue v = null;
+
+		v = test.eval(curScope);
+		v = curScope.find(v.showInfo(), this);
+		
+		System.out.println("AspAssignment sin v value : " + temp);
+
+		for(int i = 0; i < as.size()-1; i++){
+			v = v.evalSubscription(as.get(i).eval(curScope), this);
+		}
+
+		//System.out.println("Her har du V " + v);
+
+		if(as.isEmpty()){
+		//	System.out.println("Her har du nøkkelen " + v);
+			curScope.assign(v.showInfo(), test2.eval(curScope));
+			System.out.println("Her har du verdien " + curScope.find(v.showInfo(), this));
+			System.out.println();
+		}else{
+		//	System.out.println("Kommer inn hit+++++++");
+			v = curScope.find(v.showInfo(), this);
+			curScope.assign(v.showInfo(), test2.eval(curScope));
+
+			System.out.println(curScope.find(v.showInfo(), this));
+	//		System.out.println("Ferdig med å komme");
+//
+			System.out.println(curScope.find(v.showInfo(), this).showInfo());
+
+			v.evalAssignElem(as.get(as.size()-1).eval(curScope), test2.eval(curScope), this);
+
+			System.out.println("oxioi"+ curScope.find(v.showInfo(), this).showInfo());
+		}
+
+		return v;
 	}
 
 	@Override

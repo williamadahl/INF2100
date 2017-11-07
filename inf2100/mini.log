@@ -1,101 +1,4 @@
-<program>
-   1: [100,102,103][1]
-  <stmt>
-    <expr stmt>
-      <expr>
-        <and test>
-          <not test>
-            <comparison>
-              <term>
-                <factor>
-                  <primary>
-                    <atom>
-                      <list display>
-                        <expr>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <integer literal>
-                                        </integer literal>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                        </expr>
-                        <expr>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <integer literal>
-                                        </integer literal>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                        </expr>
-                        <expr>
-                          <and test>
-                            <not test>
-                              <comparison>
-                                <term>
-                                  <factor>
-                                    <primary>
-                                      <atom>
-                                        <integer literal>
-                                        </integer literal>
-                                      </atom>
-                                    </primary>
-                                  </factor>
-                                </term>
-                              </comparison>
-                            </not test>
-                          </and test>
-                        </expr>
-                      </list display>
-                    </atom>
-                    <subscription>
-                      <expr>
-                        <and test>
-                          <not test>
-                            <comparison>
-                              <term>
-                                <factor>
-                                  <primary>
-                                    <atom>
-                                      <integer literal>
-                                      </integer literal>
-                                    </atom>
-                                  </primary>
-                                </factor>
-                              </term>
-                            </comparison>
-                          </not test>
-                        </and test>
-                      </expr>
-                    </subscription>
-                  </primary>
-                </factor>
-              </term>
-            </comparison>
-          </not test>
-        </and test>
-      </expr>
-    </expr stmt>
-  </stmt>
+   1: #[100,102,103][1]
    2: #5 * 2
    3: #["a"] * 5
    4: #not False
@@ -103,5 +6,17 @@
    6: #navn = "Dag"
    7: #print("Hei,", navn)
    8: #not True
-</program>
-PP>  [ 100 , 102 , 103 ] [1]
+   9: 
+  10: if x < 4:
+Scanner: if token on line 10
+Scanner: name token on line 10: x
+Scanner: < token on line 10
+Scanner: integer literal token on line 10: 4
+Scanner: : token on line 10
+Scanner: NEWLINE token on line 10
+  11:     none
+Scanner: INDENT token on line 11
+Scanner: name token on line 11: none
+Scanner: NEWLINE token on line 11
+Scanner: DEDENT token
+Scanner: E-o-f token

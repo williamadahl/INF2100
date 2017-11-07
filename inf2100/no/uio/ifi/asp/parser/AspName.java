@@ -18,19 +18,24 @@ class AspName extends AspAtom{
 		Main.log.enterParser("name");
 		Main.log.leaveParser("name");
 		an.guitar.add(s.curToken().name);
+
 		an.kind = s.curToken().kind;
+
 		skip(s, nameToken);
 
 		return an;
 	}
 
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		RuntimeValue v = new RuntimeStringValue(guitar.get(0));
+		curScope.assign(v.showInfo(), v);
+		return v;
 	}
 
 	@Override
 	void prettyPrint() {
+		//System.out.println("HER HAR DU NAME " + guitar.get(0);
 		Main.log.prettyWrite(guitar.get(0));
 	}
 }
