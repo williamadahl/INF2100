@@ -1,22 +1,31 @@
-   1: #[100,102,103][1]
-   2: #5 * 2
-   3: #["a"] * 5
-   4: #not False
-   5: # En hyggelig hilsen
-   6: #navn = "Dag"
-   7: #print("Hei,", navn)
-   8: #not True
-   9: 
-  10: if x < 4:
-Scanner: if token on line 10
-Scanner: name token on line 10: x
-Scanner: < token on line 10
-Scanner: integer literal token on line 10: 4
-Scanner: : token on line 10
-Scanner: NEWLINE token on line 10
-  11:     none
-Scanner: INDENT token on line 11
-Scanner: name token on line 11: none
-Scanner: NEWLINE token on line 11
-Scanner: DEDENT token
-Scanner: E-o-f token
+<program>
+   1: a = 7
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   2: a = 4
+  <stmt>
+    <assignment>
+      <name>
+      </name>

@@ -30,6 +30,7 @@ class AspStringLiteral extends AspAtom{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		String kek = str.get(0).substring(1, str.get(0).length()-1);
+		//System.out.println("streng");
 		return new RuntimeStringValue(kek);
 	}
 

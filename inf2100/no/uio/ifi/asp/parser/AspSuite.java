@@ -30,10 +30,15 @@ class AspSuite extends AspSyntax{
 		return as;
 	}
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
+		RuntimeValue v  = null;
+		for(AspStmt states: astmt){
+			v = states.eval(curScope);
+		}
+
+		return v;
 	}
-	
+
 	@Override
 	void prettyPrint() {
 		Main.log.prettyWriteLn();

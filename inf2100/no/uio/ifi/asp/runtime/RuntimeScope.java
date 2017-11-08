@@ -27,8 +27,7 @@ public class RuntimeScope {
 
     public RuntimeValue find(String id, AspSyntax where) {
 	RuntimeValue v = decls.get(id);
-  System.out.println("RuntimeScope sin v value: " + v );
-  System.out.println();
+  
 
 	if (v != null)
 	    return v;

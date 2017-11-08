@@ -17,6 +17,11 @@ public class RuntimeFloatValue extends RuntimeValue {
   public String showInfo() {
     return Double.toString(floatValue);
   }
+  
+  @Override
+    public String toString() {
+      return Double.toString(floatValue);
+    }
 
   @Override
   public RuntimeValue evalPositive(AspSyntax where) {

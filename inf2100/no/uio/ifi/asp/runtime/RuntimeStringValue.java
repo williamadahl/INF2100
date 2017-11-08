@@ -19,6 +19,11 @@ public class RuntimeStringValue extends RuntimeValue {
   @Override
   public String showInfo() {
     return '"' + stringValue + '"';
+
+  }
+  @Override
+  public String toString() {
+    return '"' + stringValue + '"';   
   }
 
   @Override

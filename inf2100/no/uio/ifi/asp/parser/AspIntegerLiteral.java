@@ -32,11 +32,12 @@ class AspIntegerLiteral extends AspAtom{
 	@Override
 	void prettyPrint() {
 		Main.log.prettyWrite(Long.toString(dong.get(counter)));
-		
+
 	}
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		//System.out.println("interger ");
 		return new RuntimeIntValue(dong.get(0));
 	}
 

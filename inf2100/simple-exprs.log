@@ -1,3 +1,9 @@
-PP> list =  [ 1 , 2 , 3 ] 
-PP> list[1] = 5
-Asp runtime error on line 2: subscription undefined for string!
+PP> b = 1
+PP> a = 4
+PP> fib =  { "Ja" : 1 , "Nei" : 2 } 
+PP> if 1 < 2:
+PP>   fib["Ja"] = 7
+PP> elif A < b:
+PP>   fib["Ja"] = 8
+PP> else:
+PP>   fib["Ja"] = 9

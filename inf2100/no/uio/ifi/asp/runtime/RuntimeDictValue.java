@@ -22,6 +22,32 @@ public class RuntimeDictValue extends RuntimeValue{
     return "dict";
   }
 
+
+  @Override
+  public String toString() {
+    String listString = "";
+
+    if(key.size() == 0 || value.size() == 0){
+      listString = "{" + listString;
+      listString = listString + "}";
+
+    }else{
+      int i = 0;
+      listString += "{";
+      for(RuntimeValue r : key){
+        listString += r.toString();
+        listString += " : ";
+        listString += value.get(i).toString();
+        listString += " , ";
+        i++;
+      }
+      listString = listString.substring(0, listString.length() - 2);
+      listString += "}";
+    }
+    return listString;
+  }
+
+
   @Override
   public String showInfo() {
     String listString = "";
@@ -75,6 +101,21 @@ public class RuntimeDictValue extends RuntimeValue{
       return false;
     }else {
       return true;
+    }
+  }
+
+
+  @Override
+  public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
+
+    String v2 = inx.toString();
+    int position = 0;
+
+    for (RuntimeValue x : key) {
+      if(x.toString().equals(v2)){
+        value.set(position, val);
+      }
+      position ++;
     }
   }
 }

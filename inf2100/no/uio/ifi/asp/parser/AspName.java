@@ -29,7 +29,8 @@ class AspName extends AspAtom{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = new RuntimeStringValue(guitar.get(0));
-		curScope.assign(v.showInfo(), v);
+		Main.log.traceEval("name ", this);
+		//return curScope.find(guitar.get(0) ,this);
 		return v;
 	}
 

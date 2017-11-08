@@ -48,38 +48,29 @@ class AspAssignment extends AspStmt{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue{
 		RuntimeValue v = null;
+		RuntimeValue k = null;
+		boolean multipleSubscription = false;
 
 		v = test.eval(curScope);
-		v = curScope.find(v.showInfo(), this);
-		
-		System.out.println("AspAssignment sin v value : " + temp);
 
 		for(int i = 0; i < as.size()-1; i++){
-			v = v.evalSubscription(as.get(i).eval(curScope), this);
+			if(i == 0){
+				k = curScope.find(v.toString(), this);
+				k = k.evalSubscription(as.get(i).eval(curScope), this);
+				multipleSubscription = true;
+			}else{
+				k = k.evalSubscription(as.get(i).eval(curScope), this);
+			}
 		}
-
-		//System.out.println("Her har du V " + v);
-
 		if(as.isEmpty()){
-		//	System.out.println("Her har du nøkkelen " + v);
-			curScope.assign(v.showInfo(), test2.eval(curScope));
-			System.out.println("Her har du verdien " + curScope.find(v.showInfo(), this));
-			System.out.println();
+			curScope.assign(v.toString(), test2.eval(curScope));
 		}else{
-		//	System.out.println("Kommer inn hit+++++++");
-			v = curScope.find(v.showInfo(), this);
-			curScope.assign(v.showInfo(), test2.eval(curScope));
-
-			System.out.println(curScope.find(v.showInfo(), this));
-	//		System.out.println("Ferdig med å komme");
-//
-			System.out.println(curScope.find(v.showInfo(), this).showInfo());
-
-			v.evalAssignElem(as.get(as.size()-1).eval(curScope), test2.eval(curScope), this);
-
-			System.out.println("oxioi"+ curScope.find(v.showInfo(), this).showInfo());
+			if(!multipleSubscription){
+				k = curScope.find(v.toString(), this);
+			}
+			k.evalAssignElem(as.get(as.size()-1).eval(curScope), test2.eval(curScope), this);
+			System.out.println("dette er det vi vil bytte til : " + curScope.find(v.toString() ,this));
 		}
-
 		return v;
 	}
 

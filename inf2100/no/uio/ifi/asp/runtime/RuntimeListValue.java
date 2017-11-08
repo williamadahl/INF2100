@@ -66,6 +66,23 @@ public class RuntimeListValue extends RuntimeValue{
   }
 
   @Override
+  public String toString() {
+    String listString = "";
+    for(RuntimeValue r : aspList){
+      listString += r.toString();
+      listString += ", ";
+    }
+    if(aspList.size() == 0){
+      listString = "[" + listString;
+      listString = listString + "]";
+    }
+    listString = listString.substring(0,(listString.length()-2));
+    listString = "[" + listString;
+    listString = listString + "]";
+    return listString;
+  }
+
+  @Override
   public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where){
 
     RuntimeValue res = null;
@@ -100,7 +117,7 @@ public class RuntimeListValue extends RuntimeValue{
 
 @Override
   public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
-    System.out.println("Kommer inn i eval assign");
+System.out.println("Hei fro RuntimeListValue");
     long v2 = inx.getIntValue("[...] operand", where);
     int v3 = (int)v2;
 
