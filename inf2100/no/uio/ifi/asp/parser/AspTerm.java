@@ -63,6 +63,7 @@ class AspTerm extends AspSyntax{
 				Main.panic("Illegal term operator: " + k + "!");
 			}
 		}
+		System.out.println("Inne i term : "  + v.toString());
 		return v;
 	}
 }

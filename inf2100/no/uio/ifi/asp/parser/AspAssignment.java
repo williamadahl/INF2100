@@ -64,13 +64,18 @@ class AspAssignment extends AspStmt{
 		}
 		if(as.isEmpty()){
 			curScope.assign(v.toString(), test2.eval(curScope));
+			System.out.println("Inne i enkel assignment : "  + v.toString());
 		}else{
 			if(!multipleSubscription){
 				k = curScope.find(v.toString(), this);
 			}
 			k.evalAssignElem(as.get(as.size()-1).eval(curScope), test2.eval(curScope), this);
 			System.out.println("dette er det vi vil bytte til : " + curScope.find(v.toString() ,this));
+
 		}
+		System.out.println("Dette er verdien til V(A) : " + v);
+
+
 		return v;
 	}
 

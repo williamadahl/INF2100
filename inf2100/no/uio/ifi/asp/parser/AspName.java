@@ -30,10 +30,10 @@ class AspName extends AspAtom{
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = new RuntimeStringValue(guitar.get(0));
 
-			System.out.println("im a string");
+			// System.out.println("im a string");
 			RuntimeValue k = null;
 			System.out.println("----------------");
-			System.out.println("I will now seach for this value : " + v.toString());
+			// System.out.println("I will now seach for this value : " + v.toString());
 			k = curScope.probeValue(v.toString(), this);
 
 			if(k == null){
@@ -42,16 +42,17 @@ class AspName extends AspAtom{
 				/*
 				Need to test for all different Runtimevalues, and evaluate the value they are pointing to, not their name (if they indeed are pointing to a value)
 				*/
+				System.out.println("found a value  : " + v.toString());
 				if(k instanceof RuntimeIntValue){
 					RuntimeIntValue irv = (RuntimeIntValue)k;
-					System.out.println("found varibel in scope: " + v.toString());
-					System.out.println("value of variable : " + curScope.find(v.toString(), this));
+					// System.out.println("found varibel in scope: " + v.toString());
+					// System.out.println("value of variable : " + curScope.find(v.toString(), this));
 					return irv;
 				}
 				else if(k instanceof RuntimeFloatValue){
 					RuntimeFloatValue frv = (RuntimeFloatValue)k;
-					System.out.println("found varibel in scope: " + v.toString());
-					System.out.println("value of variable : " + curScope.find(v.toString(), this));
+					// System.out.println("found varibel in scope: " + v.toString());
+					// System.out.println("value of variable : " + curScope.find(v.toString(), this));
 					return frv;
 				}
 
