@@ -23,7 +23,7 @@ public class RuntimeStringValue extends RuntimeValue {
   }
   @Override
   public String toString() {
-    return '"' + stringValue + '"';   
+    return '"' + stringValue + '"';
   }
 
   @Override
@@ -94,6 +94,9 @@ public class RuntimeStringValue extends RuntimeValue {
 
 @Override
 public RuntimeValue evalLess(RuntimeValue v, AspSyntax where){
+
+
+System.out.println("kommer til STRING ? ");
   RuntimeValue res = null;
   if (v instanceof RuntimeStringValue){
     String v2 = v.getStringValue("< operand",where);

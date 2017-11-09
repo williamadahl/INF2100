@@ -64,6 +64,11 @@ class AspComparison extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = termTests.get(0).eval(curScope);
+		// RuntimeValue k = curScope.find(v.toString(), this);
+    //
+		// System.out.println("Found you");
+
+
 		for (int i = 1; i < termTests.size(); ++i) {
 			v = termTests.get(i-1).eval(curScope);
 			TokenKind bender = compOprTests.get(i-1).kind;

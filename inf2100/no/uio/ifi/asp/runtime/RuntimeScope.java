@@ -25,9 +25,20 @@ public class RuntimeScope {
     }
 
 
+    public RuntimeValue probeValue(String id, AspSyntax where){
+      RuntimeValue v = decls.get(id);
+
+      if (v != null)
+          return v;
+      if (outer != null)
+          return outer.probeValue(id, where);
+
+      return null;
+    }
+
     public RuntimeValue find(String id, AspSyntax where) {
 	RuntimeValue v = decls.get(id);
-  
+
 
 	if (v != null)
 	    return v;

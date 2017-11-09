@@ -133,6 +133,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
 @Override
   public RuntimeValue evalLess(RuntimeValue v, AspSyntax where){
+    System.out.println("kommer til INT ? ");
     RuntimeValue res = null;
     if (v instanceof RuntimeFloatValue){
       double v2 = v.getFloatValue("< operand",where);

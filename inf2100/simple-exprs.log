@@ -1,9 +1,10 @@
-PP> b = 1
+PP> b = 10
 PP> a = 4
-PP> fib =  { "Ja" : 1 , "Nei" : 2 } 
-PP> if 1 < 2:
-PP>   fib["Ja"] = 7
-PP> elif A < b:
+PP> c = 209
+PP> fib =  { "Ja" : 66 , "Nei" : 42 } 
+PP> if a < b > c:
+PP>   fib["Ja"] = 10
+PP> elif c < b:
 PP>   fib["Ja"] = 8
 PP> else:
 PP>   fib["Ja"] = 9

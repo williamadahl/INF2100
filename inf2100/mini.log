@@ -1,5 +1,5 @@
 <program>
-   1: a = 7
+   1: b = 1
   <stmt>
     <assignment>
       <name>
@@ -29,3 +29,325 @@
     <assignment>
       <name>
       </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   3: #navn = "Dag"
+   4: #navn = "CoolMan"
+   5: 
+   6: fib = {"Ja":66, "Nei":42}
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <dict display>
+                        <string literal>
+                        </string literal>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <integer literal>
+                                        </integer literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                        <string literal>
+                        </string literal>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <integer literal>
+                                        </integer literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </dict display>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   7: #fib["Ja"] = 2
+   8: 
+   9: #fib = [1, 1, 2, 3, 5]
+  10: #fib[0] = {"M":0, "K":1}
+  11: #fib[0]["M"] = -1
+  12: 
+  13: 
+  14: if b < a:	 
+  <stmt>
+    <if stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+              <comp opr>
+              </comp opr>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
+  15:    fib["Ja"] = 7
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <subscription>
+              <expr>
+                <and test>
+                  <not test>
+                    <comparison>
+                      <term>
+                        <factor>
+                          <primary>
+                            <atom>
+                              <string literal>
+                              </string literal>
+                            </atom>
+                          </primary>
+                        </factor>
+                      </term>
+                    </comparison>
+                  </not test>
+                </and test>
+              </expr>
+            </subscription>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  16: elif  c < b:
+      </suite>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+              <comp opr>
+              </comp opr>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
+  17:    fib["Ja"] = 8
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <subscription>
+              <expr>
+                <and test>
+                  <not test>
+                    <comparison>
+                      <term>
+                        <factor>
+                          <primary>
+                            <atom>
+                              <string literal>
+                              </string literal>
+                            </atom>
+                          </primary>
+                        </factor>
+                      </term>
+                    </comparison>
+                  </not test>
+                </and test>
+              </expr>
+            </subscription>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  18: else:
+      </suite>
+      <suite>
+  19:    fib["Ja"] = 9
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <subscription>
+              <expr>
+                <and test>
+                  <not test>
+                    <comparison>
+                      <term>
+                        <factor>
+                          <primary>
+                            <atom>
+                              <string literal>
+                              </string literal>
+                            </atom>
+                          </primary>
+                        </factor>
+                      </term>
+                    </comparison>
+                  </not test>
+                </and test>
+              </expr>
+            </subscription>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  20: 
+  21: #abc = [1, 2, 5]
+  22: #abc[1] = 5
+  23: 
+  24: #bcd = [1, [2, [6, 5, 6], 4], 5]
+  25: #bcd[1][1][1] = 6
+  26: 
+  27: #cde = [1, [2, 3, 4], 5, 6]
+  28: #cde[1][2] = 7
+      </suite>
+    </if stmt>
+  </stmt>
+</program>
+PP> b = 1
+PP> a = 4
+PP> fib =  { "Ja" : 66 , "Nei" : 42 } 
+PP> if b < a:
+PP>   fib["Ja"] = 7
+PP> elif c < b:
+PP>   fib["Ja"] = 8
+PP> else:
+PP>   fib["Ja"] = 9

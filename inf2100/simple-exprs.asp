@@ -1,9 +1,10 @@
-b = 1
+b = 10
 a = 4
+c = 209
 #navn = "Dag"
 #navn = "CoolMan"
 
-fib = {"Ja":1, "Nei":2}
+fib = {"Ja":66, "Nei":42}
 #fib["Ja"] = 2
 
 #fib = [1, 1, 2, 3, 5]
@@ -11,9 +12,9 @@ fib = {"Ja":1, "Nei":2}
 #fib[0]["M"] = -1
 
 
-if 1 < 2:	 
-   fib["Ja"] = 7
-elif  A < b:
+if a < b > c:	 
+   fib["Ja"] = 10
+elif  c < b:
    fib["Ja"] = 8
 else:
    fib["Ja"] = 9
