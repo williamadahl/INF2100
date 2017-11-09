@@ -116,6 +116,7 @@ public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where){
   RuntimeValue res = null;
   if (v instanceof RuntimeStringValue){
     String v2 = v.getStringValue("> operand",where);
+    System.out.println("Dette er i string : sammenlikner : " + stringValue+ " and " + v2);
     int temp = stringValue.compareTo(v2);
     if(temp > 0){
       res = new RuntimeBoolValue(true);
@@ -123,6 +124,7 @@ public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where){
       res = new RuntimeBoolValue(false);
     }
   } else{
+
     runtimeError("Type error for >.", where);
   }
   return res;

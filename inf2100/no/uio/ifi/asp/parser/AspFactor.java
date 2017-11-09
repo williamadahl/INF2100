@@ -93,22 +93,36 @@ class AspFactor extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = primaryTests.get(0).eval(curScope);
+		RuntimeValue next = null;
 
 		if(prefixTests.size() != 0) {
 			TokenKind gender = prefixTests.get(0).kind;
 			switch(gender){
 				case minusToken:
 				v = v.evalNegate(this); break;
-				
+
 				case plusToken:
 				v = v.evalPositive(this); break;
 				default:
 				Main.panic("Illegal term operator: " + gender + "!");
 			}
 		}
-		
+
 		for (int i = 1; i < primaryTests.size(); ++i) {
 			TokenKind k = factorOprTests.get(i-1).kind;
+			next = primaryTests.get(i).eval(curScope);
+			v = curScope.probeValue(v.toString(), this);
+			// System.out.println("Value of V : " + v.toString());
+			next = curScope.probeValue(next.toString(), this);
+
+			if(v == null){
+				v = primaryTests.get(0).eval(curScope);
+			}else if(next == null){
+				next = primaryTests.get(i).eval(curScope);
+			}else{
+				System.out.println("Both variables have values!");
+			}
+
 			switch (k) {
 				case astToken:
 				v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);

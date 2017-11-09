@@ -33,13 +33,11 @@ class AspWhileStmt extends AspStmt {
   	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
   		RuntimeValue v = null;
       while (true) {
-
         if(!test.eval(curScope).getBoolValue("expression", this)){
           break;
         }
         v = body.eval(curScope);
         System.out.println("Dette er i while : " + v.toString());
-
       }
 
       return v;

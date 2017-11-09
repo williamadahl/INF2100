@@ -26,7 +26,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
   @Override
   public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
-  
+
 
     RuntimeValue res = null;
     if (v instanceof RuntimeIntValue) {
@@ -107,6 +107,7 @@ public class RuntimeIntValue extends RuntimeValue {
     } else if (v instanceof RuntimeIntValue) {
       long v2 = v.getIntValue("== operand",where);
       res = new RuntimeBoolValue((intValue == v2));
+
     }else if (v instanceof RuntimeNoneValue) {
       return new RuntimeBoolValue(false);
     }
@@ -146,6 +147,8 @@ public class RuntimeIntValue extends RuntimeValue {
 
       long v2 = v.getIntValue("< operand",where);
       res = new RuntimeBoolValue((intValue < v2));
+
+      System.out.println("trying to compare : " + intValue + " and " + v2);
     } else{
      runtimeError("Type error for <.", where);
     }
@@ -192,6 +195,8 @@ public class RuntimeIntValue extends RuntimeValue {
     } else if (v instanceof RuntimeIntValue) {
         long v2 = v.getIntValue("> operand",where);
       res = new RuntimeBoolValue((intValue > v2));
+      System.out.println("trying to compare : " + intValue + " and " + v2);
+
     } else{
       runtimeError("Type error for >.", where);
     }

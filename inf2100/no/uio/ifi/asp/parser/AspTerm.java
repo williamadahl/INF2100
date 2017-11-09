@@ -52,13 +52,29 @@ class AspTerm extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = factorTests.get(0).eval(curScope);
+		System.out.println("dette er i AspTerm : " + v);
+		RuntimeValue next = null;
+
 		for (int i = 1; i < factorTests.size(); ++i) {
 			TokenKind k = termOprTests.get(i-1).kind;
+			next = factorTests.get(i).eval(curScope);
+
+			v = curScope.probeValue(v.toString(), this);
+			next = curScope.probeValue(next.toString(), this);
+
+			if(v == null){
+				v = factorTests.get(0).eval(curScope);
+			}else if(next == null){
+				next = factorTests.get(i).eval(curScope);
+			}else{
+				System.out.println("Both variables have values!");
+			}
+
 			switch (k) {
 				case minusToken:
-				v = v.evalSubtract(factorTests.get(i).eval(curScope), this); break;
+				v = v.evalSubtract(next, this); break;
 				case plusToken:
-				v = v.evalAdd(factorTests.get(i).eval(curScope), this); break;
+				v = v.evalAdd(next, this); break;
 				default:
 				Main.panic("Illegal term operator: " + k + "!");
 			}

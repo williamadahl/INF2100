@@ -64,28 +64,50 @@ class AspComparison extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = termTests.get(0).eval(curScope);
+		RuntimeValue next = null;
 		// RuntimeValue k = curScope.find(v.toString(), this);
-    //
+		//
 		// System.out.println("Found you");
+		System.out.println("Dette er I compariston :" + v.toString());
 
 
 		for (int i = 1; i < termTests.size(); ++i) {
 			v = termTests.get(i-1).eval(curScope);
+			next = termTests.get(i).eval(curScope);
 			TokenKind bender = compOprTests.get(i-1).kind;
+
+			System.out.println("----------------");
+			// System.out.println("I will now seach for this value : " + v.toString());
+			v = curScope.probeValue(v.toString(), this);
+			// System.out.println("Value of V : " + v.toString());
+			next = curScope.probeValue(next.toString(), this);
+			// System.out.println("Value of  next: " + next.toString());
+
+			if(v == null){
+				v = termTests.get(i-1).eval(curScope);
+			}else if(next == null){
+				next = termTests.get(i).eval(curScope);
+			}else{
+				System.out.println("Both variables have values!");
+			}
+
+
+
+			System.out.println("This is the value Im pointing at in Comparison : " + v.showInfo());
 
 			switch (bender) {
 				case lessToken:
-					v = v.evalLess(termTests.get(i).eval(curScope), this); break;
+				v = v.evalLess(next, this); break;
 				case greaterToken:
-					v = v.evalGreater(termTests.get(i).eval(curScope), this); break;
+				v = v.evalGreater(next, this); break;
 				case doubleEqualToken:
-					v = v.evalEqual(termTests.get(i).eval(curScope), this); break;
+				v = v.evalEqual(next, this); break;
 				case greaterEqualToken:
-					v = v.evalGreaterEqual(termTests.get(i).eval(curScope), this); break;
+				v = v.evalGreaterEqual(next, this); break;
 				case lessEqualToken:
-					v = v.evalLessEqual(termTests.get(i).eval(curScope), this); break;
+				v = v.evalLessEqual(next, this); break;
 				case notEqualToken:
-					v = v.evalNotEqual(termTests.get(i).eval(curScope), this); break;
+				v = v.evalNotEqual(next, this); break;
 				default:
 				Main.panic("Illegal term operator: " + bender + "!");
 			}

@@ -52,6 +52,7 @@ class AspAssignment extends AspStmt{
 		boolean multipleSubscription = false;
 
 		v = test.eval(curScope);
+		System.out.println("Dette er V før noe assign " + v.toString());
 
 		for(int i = 0; i < as.size()-1; i++){
 			if(i == 0){
@@ -73,7 +74,7 @@ class AspAssignment extends AspStmt{
 			System.out.println("dette er det vi vil bytte til : " + curScope.find(v.toString() ,this));
 
 		}
-		System.out.println("Dette er verdien til V(A) : " + v);
+		//System.out.println("Dette er verdien til V(A) : " + v);
 
 
 		return v;

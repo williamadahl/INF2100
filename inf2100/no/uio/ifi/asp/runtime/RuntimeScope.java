@@ -21,7 +21,19 @@ public class RuntimeScope {
 
 
     public void assign(String id, RuntimeValue val) {
-	decls.put(id, val);
+      /*
+      * Check if an element in the map exists, if it does, remove it for the
+      * new value
+      */
+      System.out.println("assigner id : " +  id + " til velue: " + val.toString() );
+      RuntimeValue v = decls.get(id);
+      if(v == null){
+        System.out.println("ingen verdi opprettet");
+        decls.put(id, val);
+      } else{
+        System.out.println("fant en gammel verdi");
+        decls.replace(id,val);
+      }
     }
 
 

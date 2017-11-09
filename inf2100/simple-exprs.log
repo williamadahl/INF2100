@@ -1,11 +1,2 @@
-PP> b = 10
-PP> a = 4
-PP> c = 209
-PP> fib =  { "Ja" : 66 , "Nei" : 42 } 
-PP> a = 4 + 5
-PP> if a == 9:
-PP>   fib["Ja"] = 10
-PP> elif c < b:
-PP>   fib["Ja"] = 8
-PP> else:
-PP>   fib["Ja"] = 9
+PP> a = 20
+PP> a = a % 3
