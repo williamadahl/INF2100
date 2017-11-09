@@ -2,9 +2,13 @@ PP> b = 10
 PP> a = 4
 PP> c = 209
 PP> fib =  { "Ja" : 66 , "Nei" : 42 } 
-PP> if a < b > c:
+PP> if a + b == 14:
 PP>   fib["Ja"] = 10
 PP> elif c < b:
 PP>   fib["Ja"] = 8
 PP> else:
 PP>   fib["Ja"] = 9
+PP> while a < b:
+PP>   a + 1
+PP> if a == 9:
+PP>   fib["Ja"] = 999

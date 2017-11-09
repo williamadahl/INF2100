@@ -12,7 +12,7 @@ fib = {"Ja":66, "Nei":42}
 #fib[0]["M"] = -1
 
 
-if a < b > c:	 
+if a + b == 14:	 
    fib["Ja"] = 10
 elif  c < b:
    fib["Ja"] = 8
@@ -27,3 +27,9 @@ else:
 
 #cde = [1, [2, 3, 4], 5, 6]
 #cde[1][2] = 7
+
+while a < b:
+   a + 1
+
+if a == 9:
+   fib["Ja"] = 999
