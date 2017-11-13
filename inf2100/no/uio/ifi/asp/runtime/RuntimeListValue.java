@@ -23,6 +23,10 @@ public class RuntimeListValue extends RuntimeValue{
     aspList.add(v);
   }
 
+  public ArrayList<RuntimeValue> getList(){
+    return aspList;
+  }
+
   @Override
   protected String typeName() {
     return "list";
@@ -124,4 +128,10 @@ System.out.println("Hei fro RuntimeListValue");
     aspList.remove(v3);
     aspList.add(v3, val);
   }
+
+  public int myLength(){
+    return aspList.size();
+  }
+
+
 }

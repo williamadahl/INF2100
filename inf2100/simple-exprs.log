@@ -1,2 +1,5 @@
-PP> a = 20
-PP> a = a % 3
+PP> def method (x, y, z):
+PP>   return 1
+PP> 
+PP> res = method(1, 2, 3)
+PP> method(1, 2)

@@ -44,8 +44,12 @@ public class AspProgram extends AspSyntax {
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
       RuntimeValue v = null;
-      for(int i = 0; i < stmts.size(); i++){
-        v = stmts.get(i).eval(curScope);
+      try{
+        for(int i = 0; i < stmts.size(); i++){
+          v = stmts.get(i).eval(curScope);
+        }
+      } catch (RuntimeReturnValue xxx){
+        System.out.println("Runtime error, return outside func");
       }
       return v;
     }

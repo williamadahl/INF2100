@@ -1,5 +1,5 @@
 <program>
-   1: b = 1
+   1: b = 10
   <stmt>
     <assignment>
       <name>
@@ -342,7 +342,7 @@
     </if stmt>
   </stmt>
 </program>
-PP> b = 1
+PP> b = 10
 PP> a = 4
 PP> fib =  { "Ja" : 66 , "Nei" : 42 } 
 PP> if b < a:

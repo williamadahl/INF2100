@@ -46,6 +46,7 @@ class AspPrimary extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = null;
+		//RuntimeListValue x = null;
 
 		if(aps.size() != 0){
 			v = aa.get(0).eval(curScope);
@@ -54,9 +55,23 @@ class AspPrimary extends AspSyntax{
 					v = v.evalSubscription(aps.get(i).eval(curScope), this);
 				} else{
 					/* maa nesten sjekke curScope*/
-					RuntimeScope r = new RuntimeScope(curScope);
-					r.assign(v.toString(),v);
-					// v = v.evalArguments(aps.get(i).eval(curScope), this);
+					//v = aps.get(i).eval(curScope);
+					RuntimeValue x = aps.get(i).eval(curScope);
+					RuntimeValue t = curScope.probeValue(v.toString(), this);
+
+					if(t != null){
+						if((x instanceof RuntimeListValue) && (t instanceof RuntimeFunc)){
+							RuntimeFunc newFunc = (RuntimeFunc)t;
+							RuntimeListValue newList = (RuntimeListValue)x;
+							t.evalFuncCall(newList.getList(), this, curScope);
+							
+						}
+						Main.error("Error, illegal call on no-function");
+
+					}else{
+						Main.error("Error, function called not found ");
+					}
+
 				}
 			}
 			return v;

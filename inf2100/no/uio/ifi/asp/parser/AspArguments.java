@@ -61,11 +61,12 @@ class AspArguments extends AspPrimarySuffix{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
-		RuntimeValue v = asex.get(0).eval(curScope);
+		RuntimeListValue v = new RuntimeListValue();
 
-		for(int i = 1 ; i < asex.size(); ++i){
-			v = asex.get(i).eval(curScope);
+		for(int i = 0 ; i < asex.size(); ++i){
+			v.addElem(asex.get(i).eval(curScope));
 		}
+		System.out.println("This is V in AspArguments : " + v );
 		return v;
 	}
 }

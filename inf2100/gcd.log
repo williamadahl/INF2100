@@ -1,3 +1,4 @@
+<program>
    1: 
    2: # A program to compute the greatest common divisor
    3: # of two numbers, i.e., the biggest number by which
@@ -5,17 +6,66 @@
    5: 
    6: 
    7: if n == 0:
-Scanner: if token on line 7
-Scanner: name token on line 7: n
-Scanner: == token on line 7
-Scanner: integer literal token on line 7: 0
-Scanner: : token on line 7
-Scanner: NEWLINE token on line 7
+  <stmt>
+    <if stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+              <comp opr>
+              </comp opr>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
    8:    return m
-Scanner: INDENT token on line 8
-Scanner: return token on line 8
-Scanner: name token on line 8: m
-Scanner: NEWLINE token on line 8
+        <stmt>
+          <return stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </return stmt>
+        </stmt>
    9: 
-Scanner: DEDENT token
-Scanner: E-o-f token
+      </suite>
+    </if stmt>
+  </stmt>
+</program>
+PP> if n == 0:
+PP>   return m

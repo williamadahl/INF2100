@@ -44,8 +44,25 @@ class AspFuncDef extends AspStmt{
 	}
 
 	@Override
-	RuntimeValue eval(RuntimeScope curScope) {
-		return null;
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		RuntimeValue v = aname.get(0).eval(curScope);
+		ArrayList<RuntimeValue> list = new ArrayList<>();
+		int counter = 0;
+		if(aname.size() > 1){
+			for(int i = 1; i < aname.size() ; i++){
+				RuntimeValue x = aname.get(i).eval(curScope);
+				counter ++;
+				list.add(x);
+			}
+		}
+		//RuntimeValue s = pentHouse.eval(curScope);
+
+		RuntimeFunc rtf = new RuntimeFunc(v, list, curScope);
+		curScope.assign(v.toString(), rtf);
+		// rtf.checkPara(counter);
+		return rtf;
+		//return v;
+
 	}
 
 	@Override
