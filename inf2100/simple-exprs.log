@@ -1,7 +1,3 @@
-Trace line 1: func def :"make_add_n"
-Trace line 2: func def :"f"
-Trace line 5: assignment 
-Trace line 2: func def :"f"
-Trace line 6: assignment 
-Trace line 7: expr stmt :3
-Trace line 8: expr stmt :7
+Trace line 1: assignment 
+Trace line 3: func def :"methond"
+Error, illegal call on no-function

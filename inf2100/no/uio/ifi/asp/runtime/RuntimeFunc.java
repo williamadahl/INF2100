@@ -1,8 +1,11 @@
-package no.uio.ifi.asp.parser;
+package no.uio.ifi.asp.runtime;
+
+
 
 import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.parser.*;
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeFunc extends RuntimeValue {
@@ -12,11 +15,15 @@ public class RuntimeFunc extends RuntimeValue {
   ArrayList <RuntimeValue> list = new ArrayList<>();
 
 
-  RuntimeFunc(RuntimeValue rv, ArrayList<RuntimeValue> list, RuntimeScope rp, AspFuncDef def){
+  public RuntimeFunc(RuntimeValue rv, ArrayList<RuntimeValue> list, RuntimeScope rp, AspFuncDef def){
     name = rv.showInfo();
     this.list = list;
     defScope = rp;
     this.def = def;
+  }
+
+  public  RuntimeFunc(String s ){
+    name = s;
   }
 
   boolean checkPara(RuntimeValue v){
@@ -24,7 +31,7 @@ public class RuntimeFunc extends RuntimeValue {
     return (rtv.myLength() == list.size());
   }
 
-@Override
+  @Override
   public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> argList, AspSyntax where){
     RuntimeValue hi = null;
     if(argList.size() == list.size()){
@@ -41,9 +48,9 @@ public class RuntimeFunc extends RuntimeValue {
         }
 
       } try{
-          hi = def.runFunction(rss);
+        hi = def.runFunction(rss);
       } catch(RuntimeReturnValue rrv){
-         return rrv.value;
+        return rrv.value;
       }
       //hi = def.runFunction(defScope);
 

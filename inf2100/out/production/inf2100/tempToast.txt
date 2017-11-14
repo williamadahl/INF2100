@@ -1,7 +1,0 @@
-mini.asp == OK (identical)
-gcd.asp == OK
-easter.asp == OK
-primes.asp == OK
-heron.asp == OK
-expressions.asp == OK
-

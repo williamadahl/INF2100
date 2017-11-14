@@ -27,6 +27,12 @@ public class RuntimeStringValue extends RuntimeValue {
   }
 
   @Override
+    public RuntimeValue evalLen(AspSyntax where){
+      RuntimeIntValue v = new RuntimeIntValue(stringValue.length());
+      return v;
+    }
+
+  @Override
   public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
     RuntimeValue res = null;
     if(v instanceof RuntimeIntValue){

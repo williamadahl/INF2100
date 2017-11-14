@@ -6,7 +6,7 @@ import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
-class AspFuncDef extends AspStmt{
+public class AspFuncDef extends AspStmt{
 	ArrayList<AspName> aname = new ArrayList<>();
 	AspSuite pentHouse;
 
@@ -66,7 +66,7 @@ class AspFuncDef extends AspStmt{
 		return v;
 	}
 
-	RuntimeValue runFunction(RuntimeScope s)throws RuntimeReturnValue{
+	public RuntimeValue runFunction(RuntimeScope s)throws RuntimeReturnValue{
 		RuntimeValue suite = pentHouse.eval(s);
 		return suite;
 	}

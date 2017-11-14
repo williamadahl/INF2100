@@ -58,10 +58,21 @@ class AspPrimary extends AspSyntax{
 
 					RuntimeValue x = aps.get(i).eval(curScope);
 					RuntimeValue t = curScope.probeValue(v.toString(), this);
+
+
 					System.out.println("Dette er det vi prober paa  : " +  v.toString() );
 					//curScope.printScope();
+					if(t.toString().equals("\"len\"")){
+						System.out.println("fant en lib");
+						RuntimeListValue newList = (RuntimeListValue)x;
+
+						RuntimeIntValue len = (RuntimeIntValue)t.evalFuncCall(newList.getList(), this);
+						System.out.println("dette er len ettre castin : " + len);
+
+					}
 					if(t != null){
 						if((x instanceof RuntimeListValue) && (t instanceof RuntimeFunc)){
+
 							RuntimeFunc newFunc = (RuntimeFunc)t;
 							RuntimeListValue newList = (RuntimeListValue)x;
 							System.out.println("dette er T her : "  + t.toString());
