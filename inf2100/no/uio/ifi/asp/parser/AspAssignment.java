@@ -64,8 +64,17 @@ class AspAssignment extends AspStmt{
 			}
 		}
 		if(as.isEmpty()){
-			curScope.assign(v.toString(), test2.eval(curScope));
-			System.out.println("Inne i enkel assignment : "  + v.toString());
+			RuntimeValue p = test2.eval(curScope);
+			RuntimeValue potentialValue = curScope.probeValue(p.toString(), this);
+
+			if(potentialValue != null){
+				curScope.assign(v.toString(), potentialValue);	
+			}else{
+				curScope.assign(v.toString(), p);
+			}
+
+			//curScope.assign(v.toString(), test2.eval(curScope));
+			System.out.println("Inne i enkel assignment : "  + v);
 		}else{
 			if(!multipleSubscription){
 				k = curScope.find(v.toString(), this);
@@ -76,7 +85,7 @@ class AspAssignment extends AspStmt{
 		}
 		//System.out.println("Dette er verdien til V(A) : " + v);
 
-
+		trace("assignment ");
 		return v;
 	}
 

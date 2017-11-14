@@ -83,16 +83,18 @@ class AspComparison extends AspSyntax{
 			next = curScope.probeValue(next.toString(), this);
 			// System.out.println("Value of  next: " + next.toString());
 
-			if(v == null){
+			if((v == null) && (next == null)){
+				v = termTests.get(i-1).eval(curScope);
+				next = termTests.get(i).eval(curScope);
+			}
+			else if(v == null){
 				v = termTests.get(i-1).eval(curScope);
 			}else if(next == null){
 				next = termTests.get(i).eval(curScope);
 			}else{
 				System.out.println("Both variables have values!");
 			}
-
-
-
+			// v = curScope.probeValue(v.toString(), this);
 			System.out.println("This is the value Im pointing at in Comparison : " + v.showInfo());
 
 			switch (bender) {
@@ -101,6 +103,9 @@ class AspComparison extends AspSyntax{
 				case greaterToken:
 				v = v.evalGreater(next, this); break;
 				case doubleEqualToken:
+				System.out.println("Here is v in comparison: " + v.toString());
+				System.out.println("This is tokenkind: " + bender);
+				System.out.println("Here is next in comparison: " + next.toString());
 				v = v.evalEqual(next, this); break;
 				case greaterEqualToken:
 				v = v.evalGreaterEqual(next, this); break;

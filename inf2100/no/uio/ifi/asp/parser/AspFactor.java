@@ -115,24 +115,31 @@ class AspFactor extends AspSyntax{
 			// System.out.println("Value of V : " + v.toString());
 			next = curScope.probeValue(next.toString(), this);
 
-			if(v == null){
+			if((v == null) && (next == null)){
+				v = primaryTests.get(0).eval(curScope);
+				next = primaryTests.get(i).eval(curScope);
+			}
+			else if(v == null){
 				v = primaryTests.get(0).eval(curScope);
 			}else if(next == null){
 				next = primaryTests.get(i).eval(curScope);
 			}else{
-				System.out.println("Both variables have values!");
+				// v = curScope.probeValue();
+				System.out.println("V's value = " + v.toString());
+				System.out.println("next's value = " + next.toString());
+				System.out.println("K's tokenkind = " + k);
 			}
 
 			switch (k) {
 				case astToken:
-				v = v.evalMultiply(primaryTests.get(i).eval(curScope), this);
+				v = v.evalMultiply(next, this);
 				break;
 				case slashToken:
-				v = v.evalDivide(primaryTests.get(i).eval(curScope), this); break;
+				v = v.evalDivide(next, this); break;
 				case percentToken:
-				v = v.evalModulo(primaryTests.get(i).eval(curScope), this); break;
+				v = v.evalModulo(next, this); break;
 				case doubleSlashToken:
-				v = v.evalIntDivide(primaryTests.get(i).eval(curScope), this); break;
+				v = v.evalIntDivide(next, this); break;
 				default:
 				Main.panic("Illegal term operator: " + k + "!");
 			}

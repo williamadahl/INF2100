@@ -12,10 +12,11 @@ public class RuntimeFunc extends RuntimeValue {
   ArrayList <RuntimeValue> list = new ArrayList<>();
 
 
-  RuntimeFunc(RuntimeValue rv, ArrayList<RuntimeValue> list, RuntimeScope rs){
+  RuntimeFunc(RuntimeValue rv, ArrayList<RuntimeValue> list, RuntimeScope rp, AspFuncDef def){
     name = rv.showInfo();
     this.list = list;
-
+    defScope = rp;
+    this.def = def;
   }
 
   boolean checkPara(RuntimeValue v){
@@ -23,23 +24,49 @@ public class RuntimeFunc extends RuntimeValue {
     return (rtv.myLength() == list.size());
   }
 
-  void evalFuncCall(ArrayList<RuntimeValue> argList, AspSyntax where, RuntimeScope rs){
+@Override
+  public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> argList, AspSyntax where){
+    RuntimeValue hi = null;
     if(argList.size() == list.size()){
-      defScope = new RuntimeScope(rs);
+      RuntimeScope rss = new RuntimeScope(defScope);
       for(int i = 0; i < list.size(); i ++){
-        list.set(i, argList.get(i));
+        System.out.println("Her har du list sin elem: " + list.get(i).toString());
+        RuntimeValue recValue = null;
+        recValue = defScope.probeValue(argList.get(i).toString(), def);
+        if(recValue != null){
+          rss.assign(list.get(i).toString(), recValue);
+        }else {
+          System.out.println("Her har du argList sin elem: " + argList.get(i).toString());
+          rss.assign(list.get(i).toString(), argList.get(i));
+        }
+
+      } try{
+          hi = def.runFunction(rss);
+      } catch(RuntimeReturnValue rrv){
+         return rrv.value;
       }
-      
+      //hi = def.runFunction(defScope);
+
     }
     else{
       Main.error("Error, actual and formal paramathers don't match");
     }
-
+    return hi;
   }
 
+
+
+  @Override
+  public String toString(){
+    return name;
+  }
 
   @Override
   protected String typeName() {
     return "function";
+  }
+
+  RuntimeScope returnScope(){
+    return defScope;
   }
 }

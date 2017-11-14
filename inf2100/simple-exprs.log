@@ -1,5 +1,7 @@
-PP> def method (x, y, z):
-PP>   return 1
-PP> 
-PP> res = method(1, 2, 3)
-PP> method(1, 2)
+Trace line 1: func def :"make_add_n"
+Trace line 2: func def :"f"
+Trace line 5: assignment 
+Trace line 2: func def :"f"
+Trace line 6: assignment 
+Trace line 7: expr stmt :3
+Trace line 8: expr stmt :7

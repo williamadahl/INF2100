@@ -81,6 +81,7 @@ abstract class AspStmt extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		RuntimeValue v = a.eval(curScope);
+		trace("statement");
 		return v;
 	}
 }

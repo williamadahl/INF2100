@@ -35,7 +35,7 @@ class AspExprStmt extends AspStmt{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		RuntimeValue v = body.eval(curScope);
-	
+		trace("expr stmt :" + v.showInfo());
 		return v;
 	}
 

@@ -40,6 +40,7 @@ public class RuntimeScope {
     public RuntimeValue probeValue(String id, AspSyntax where){
       RuntimeValue v = decls.get(id);
 
+
       if (v != null)
           return v;
       if (outer != null)
@@ -59,5 +60,16 @@ public class RuntimeScope {
 
 	RuntimeValue.runtimeError("Name " + id + " not defined!", where);
 	return null;  // Required by the compiler.
-    }
+}
+
+public void printScope(){
+  for(String r  : decls.keySet()){
+    System.out.println("Strng : " +  r);
+    System.out.println("value : " + decls.get(r));
+
+  }
+}
+
+
+
 }

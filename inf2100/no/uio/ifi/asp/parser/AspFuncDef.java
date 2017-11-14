@@ -46,6 +46,7 @@ class AspFuncDef extends AspStmt{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = aname.get(0).eval(curScope);
+		System.out.println("Dette er v i funcDef: " + v.toString());
 		ArrayList<RuntimeValue> list = new ArrayList<>();
 		int counter = 0;
 		if(aname.size() > 1){
@@ -54,15 +55,20 @@ class AspFuncDef extends AspStmt{
 				counter ++;
 				list.add(x);
 			}
+			System.out.println("Dette er antall parameter i funcDef " + list);
 		}
 		//RuntimeValue s = pentHouse.eval(curScope);
 
-		RuntimeFunc rtf = new RuntimeFunc(v, list, curScope);
+		RuntimeFunc rtf = new RuntimeFunc(v, list, curScope, this);
 		curScope.assign(v.toString(), rtf);
-		// rtf.checkPara(counter);
-		return rtf;
-		//return v;
+		trace("func def :" + v.showInfo());
 
+		return v;
+	}
+
+	RuntimeValue runFunction(RuntimeScope s)throws RuntimeReturnValue{
+		RuntimeValue suite = pentHouse.eval(s);
+		return suite;
 	}
 
 	@Override
