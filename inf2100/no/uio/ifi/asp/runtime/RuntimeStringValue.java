@@ -189,6 +189,13 @@ public long getIntValue(String what, AspSyntax where){
 }
 
 @Override
+public double getFloatValue(String what, AspSyntax where) {
+  double temp = Double.parseDouble(stringValue);
+
+  return temp;
+}
+
+@Override
 public boolean getBoolValue(String what, AspSyntax where) {
   if(stringValue == ""){
     return false;

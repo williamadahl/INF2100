@@ -268,4 +268,11 @@ public RuntimeValue evalNot(AspSyntax where) {
   public double getFloatValue(String what, AspSyntax where) {
     return (double)intValue;
   }
+
+  @Override
+  public String getStringValue(String what, AspSyntax where){
+    String temp = String.valueOf(intValue);
+    return temp;
+  }
+  
 }

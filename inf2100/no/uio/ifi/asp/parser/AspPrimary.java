@@ -68,10 +68,10 @@ class AspPrimary extends AspSyntax{
 						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
 						RuntimeValue convertedValue = null;
 
-						RuntimeListValue kek = (RuntimeListValue)x;
-						RuntimeValue value = curScope.probeValue(kek.getElem(0).toString(), this);
+						RuntimeListValue rtlv = (RuntimeListValue)x;
+						RuntimeValue value = curScope.probeValue(rtlv.getElem(0).toString(), this);
 						if(value == null){
-							convertedValue = kek.getElem(0).evalLen(this);
+							convertedValue = rtlv.getElem(0).evalLen(this);
 							return convertedValue;
 						}
 
@@ -94,12 +94,20 @@ class AspPrimary extends AspSyntax{
 					// if the library method int is called in the program :
 
 					if(t.toString().equals("\"int\"")){
-						System.out.println("vi fant et int call ------------");
 						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
+						RuntimeValue convertedValue = null;
 
-							RuntimeListValue kek = (RuntimeListValue)x;
-							RuntimeValue value = curScope.find(kek.getElem(0).toString(), this);
-							RuntimeValue convertedValue = null;
+							RuntimeListValue rtlv = (RuntimeListValue)x;
+							RuntimeValue value = curScope.probeValue(rtlv.getElem(0).toString(), this);
+
+							if(value == null){
+								System.out.println("vi fant et int call ------------");
+								Long temp;
+								temp = rtlv.getElem(0).getIntValue("integer",this);
+								convertedValue = new RuntimeIntValue(temp);
+								return convertedValue;
+							}
+
 
 							if(value instanceof RuntimeIntValue){
 								convertedValue = (RuntimeIntValue)value;
@@ -114,9 +122,85 @@ class AspPrimary extends AspSyntax{
 							listOfValues.add(convertedValue);
 							RuntimeIntValue len = (RuntimeIntValue)t.evalFuncCall(listOfValues, this);
 							System.out.println("dette er int ettre castin : " + len);
-
 							return len;
 					}
+
+					// if the library method float is called in the program
+
+					if(t.toString().equals("\"float\"")){
+						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
+						RuntimeValue convertedValue = null;
+
+							RuntimeListValue rtlv = (RuntimeListValue)x;
+							RuntimeValue value = curScope.probeValue(rtlv.getElem(0).toString(), this);
+
+							if(value == null){
+								System.out.println("vi fant et float call ------------");
+								double temp;
+								temp = rtlv.getElem(0).getFloatValue("float",this);
+								convertedValue = new RuntimeFloatValue(temp);
+								return convertedValue;
+							}
+
+
+							if(value instanceof RuntimeIntValue){
+								convertedValue = (RuntimeIntValue)value;
+							}else if(value instanceof RuntimeStringValue){
+								convertedValue = (RuntimeStringValue)value;
+							}else if(value instanceof RuntimeFloatValue){
+								convertedValue = (RuntimeFloatValue)value;
+							}else{
+								Main.error("Illegal type for funtion int");
+							}
+
+							listOfValues.add(convertedValue);
+							RuntimeIntValue len = (RuntimeIntValue)t.evalFuncCall(listOfValues, this);
+							System.out.println("dette er int ettre castin : " + len);
+							return len;
+					}
+					// if the library method input is called in the program
+
+					if (t.toString().equals("\"input\"")){
+
+						RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(null, this);
+						return len;
+					}
+
+// if the library method str is called in the program
+					if (t.toString().equals("\"str\"")){
+
+						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
+						RuntimeValue convertedValue = null;
+
+							RuntimeListValue rtlv = (RuntimeListValue)x;
+							RuntimeValue value = curScope.probeValue(rtlv.getElem(0).toString(), this);
+
+							if(value == null){
+								System.out.println("vi fant et str call ------------");
+								String temp;
+								temp = rtlv.getElem(0).getStringValue("str",this);
+								convertedValue = new RuntimeStringValue(temp);
+								return convertedValue;
+							}
+
+              //
+							// if(value instanceof RuntimeIntValue){
+							// 	convertedValue = (RuntimeIntValue)value;
+							// }else if(value instanceof RuntimeStringValue){
+							// 	convertedValue = (RuntimeStringValue)value;
+							// }else if(value instanceof RuntimeFloatValue){
+							// 	convertedValue = (RuntimeFloatValue)value;
+							// }else{
+							// 	Main.error("Illegal type for funtion int");
+							// }
+
+							listOfValues.add(value);
+							RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(listOfValues, this);
+							System.out.println("dette er int ettre castin : " + len);
+							return len;
+
+					}
+
 
 					if(t != null){
 						if((x instanceof RuntimeListValue) && (t instanceof RuntimeFunc)){

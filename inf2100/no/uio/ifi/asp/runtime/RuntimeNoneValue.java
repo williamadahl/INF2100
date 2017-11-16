@@ -72,4 +72,9 @@ public class RuntimeNoneValue extends RuntimeValue {
     public RuntimeValue evalNot(AspSyntax where) {
 	return new RuntimeBoolValue(true);
     }
+
+    @Override
+    public String getStringValue(String what, AspSyntax where){
+      return "none";
+    }
 }

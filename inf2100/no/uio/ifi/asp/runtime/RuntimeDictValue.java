@@ -124,4 +124,29 @@ public class RuntimeDictValue extends RuntimeValue{
       position ++;
     }
   }
+  @Override
+  public String getStringValue(String what, AspSyntax where){
+    String listString = "";
+
+    if(key.size() == 0 || value.size() == 0){
+      listString = "{" + listString;
+      listString = listString + "}";
+
+    }else{
+      int i = 0;
+      listString += "{";
+      for(RuntimeValue r : key){
+        listString += r.toString();
+        listString += " : ";
+        listString += value.get(i).toString();
+        listString += " , ";
+        i++;
+      }
+      listString = listString.substring(0, listString.length() - 2);
+      listString += "}";
+    }
+    return listString;
+
+  }
+  
 }

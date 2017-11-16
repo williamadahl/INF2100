@@ -65,7 +65,7 @@ public class RuntimeListValue extends RuntimeValue{
 
 
   @Override
-  public String showInfo() {
+  public String getStringValue(String what, AspSyntax where) {
     String listString = "";
     for(RuntimeValue r : aspList){
       listString += r.showInfo();

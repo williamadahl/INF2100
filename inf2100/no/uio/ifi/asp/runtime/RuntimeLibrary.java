@@ -33,6 +33,39 @@ public class RuntimeLibrary extends RuntimeScope {
               return i;
           }});
 
+          assign("\"float\"", new RuntimeFunc("\"float\"") {
+            @Override
+            public RuntimeValue evalFuncCall(
+              ArrayList<RuntimeValue> actualParams,
+              AspSyntax where) {
+                checkNumParams(actualParams, 1, "float", where);
+                RuntimeFloatValue i = new RuntimeFloatValue(actualParams.get(0).getFloatValue("double",where));
+                return i;
+            }});
+
+            assign("\"input\"", new RuntimeFunc("\"input\"") {
+              @Override
+              public RuntimeValue evalFuncCall(
+                ArrayList<RuntimeValue> actualParams,
+                AspSyntax where) {
+
+                  RuntimeStringValue i = new RuntimeStringValue(keyboard.nextLine());
+                  System.out.println("jeg leste dette : " + i );
+                  return i;
+              }});
+
+              assign("\"str\"", new RuntimeFunc("\"str\"") {
+                @Override
+                public RuntimeValue evalFuncCall(
+                  ArrayList<RuntimeValue> actualParams,
+                  AspSyntax where) {
+                    checkNumParams(actualParams, 1, "str", where);
+                    RuntimeStringValue i = new RuntimeStringValue(actualParams.get(0).getStringValue("str",where));
+                    return i;
+                }});
+
+
+
 
 
     }

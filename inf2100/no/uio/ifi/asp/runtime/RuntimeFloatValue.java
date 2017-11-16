@@ -17,7 +17,7 @@ public class RuntimeFloatValue extends RuntimeValue {
   public String showInfo() {
     return Double.toString(floatValue);
   }
-  
+
   @Override
     public String toString() {
       return Double.toString(floatValue);
@@ -252,4 +252,11 @@ public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
   public double getFloatValue(String what, AspSyntax where) {
     return floatValue;
   }
+
+  @Override
+  public String getStringValue(String what, AspSyntax where){
+    String temp = String.valueOf(floatValue);
+    return temp;
+  }
+
 }
