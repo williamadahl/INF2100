@@ -179,6 +179,15 @@ public RuntimeValue evalNot(AspSyntax where) {
   }
 }
 
+
+@Override
+public long getIntValue(String what, AspSyntax where){
+  System.out.println("kommer hit");
+    long  v = Long.parseLong(stringValue);
+    return v;
+
+}
+
 @Override
 public boolean getBoolValue(String what, AspSyntax where) {
   if(stringValue == ""){

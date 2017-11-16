@@ -47,6 +47,12 @@ public class RuntimeDictValue extends RuntimeValue{
     return listString;
   }
 
+  @Override
+  public RuntimeValue evalLen(AspSyntax where){
+    RuntimeIntValue v = new RuntimeIntValue(key.size());
+
+    return v;
+  }
 
   @Override
   public String showInfo() {

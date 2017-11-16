@@ -1,3 +1,6 @@
 Trace line 1: assignment 
-Trace line 3: func def :"methond"
-Error, illegal call on no-function
+Trace line 2: assignment 
+Trace line 3: assignment 
+Trace line 5: func def :"methond"
+Trace line 7: expr stmt :2
+Trace line 9: expr stmt :2

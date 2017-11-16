@@ -27,6 +27,11 @@ public class RuntimeListValue extends RuntimeValue{
     return aspList;
   }
 
+  public RuntimeValue getElem(int pos){
+    return aspList.get(pos);
+
+  }
+
   @Override
   protected String typeName() {
     return "list";
