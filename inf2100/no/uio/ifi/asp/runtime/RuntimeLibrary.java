@@ -64,6 +64,18 @@ public class RuntimeLibrary extends RuntimeScope {
                     return i;
                 }});
 
+                assign("\"print\"", new RuntimeFunc("\"print\"") {
+                  @Override
+                  public RuntimeValue evalFuncCall(
+                    ArrayList<RuntimeValue> actualParams,
+                    AspSyntax where) {
+                      for(RuntimeValue rv : actualParams){
+                        System.out.print(rv.toString() + " ");
+                      }
+                      System.out.println();
+                      return new RuntimeNoneValue();
+                  }});
+
 
 
 

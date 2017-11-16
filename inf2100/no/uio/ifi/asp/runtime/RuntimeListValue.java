@@ -44,6 +44,11 @@ public class RuntimeListValue extends RuntimeValue{
     return v;
   }
 
+public int getSize(){
+  return aspList.size();
+}
+
+
   @Override
   public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
 

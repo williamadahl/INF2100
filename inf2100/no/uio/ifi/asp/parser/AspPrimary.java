@@ -183,22 +183,34 @@ class AspPrimary extends AspSyntax{
 								return convertedValue;
 							}
 
-              //
-							// if(value instanceof RuntimeIntValue){
-							// 	convertedValue = (RuntimeIntValue)value;
-							// }else if(value instanceof RuntimeStringValue){
-							// 	convertedValue = (RuntimeStringValue)value;
-							// }else if(value instanceof RuntimeFloatValue){
-							// 	convertedValue = (RuntimeFloatValue)value;
-							// }else{
-							// 	Main.error("Illegal type for funtion int");
-							// }
-
 							listOfValues.add(value);
 							RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(listOfValues, this);
 							System.out.println("dette er int ettre castin : " + len);
 							return len;
 
+					}
+
+					if (t.toString().equals("\"print\"")){
+
+						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
+						RuntimeValue convertedValue = null;
+
+							RuntimeListValue rtlv = (RuntimeListValue)x;
+
+							for (int j = 0; j<rtlv.getSize(); j++) {
+								RuntimeValue value = curScope.probeValue(rtlv.getElem(j).toString(), this);
+								if(value == null){
+									String temp;
+									temp = rtlv.getElem(j).getStringValue("str",this);
+									convertedValue = new RuntimeStringValue(temp);
+									listOfValues.add(convertedValue);
+								} else{
+										listOfValues.add(value);
+								}
+							}
+
+							t.evalFuncCall(listOfValues, this);
+							return new RuntimeNoneValue();
 					}
 
 
@@ -218,7 +230,6 @@ class AspPrimary extends AspSyntax{
 					}else{
 						Main.error("Error, function called not found ");
 					}
-
 				}
 			}
 			return v;

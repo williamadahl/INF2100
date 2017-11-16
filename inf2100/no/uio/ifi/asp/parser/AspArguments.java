@@ -64,7 +64,15 @@ class AspArguments extends AspPrimarySuffix{
 		RuntimeListValue v = new RuntimeListValue();
 
 		for(int i = 0 ; i < asex.size(); ++i){
-			v.addElem(asex.get(i).eval(curScope));
+			RuntimeValue you = asex.get(i).eval(curScope);
+			RuntimeValue temp = curScope.probeValue(you.toString(), this);
+			
+			if(temp == null){
+			 	v.addElem(you);
+			}else{
+			v.addElem(temp);
+			}
+
 		}
 		System.out.println("This is V in AspArguments : " + v );
 		return v;

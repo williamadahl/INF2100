@@ -89,6 +89,7 @@ class AspComparison extends AspSyntax{
 			}
 			else if(v == null){
 				v = termTests.get(i-1).eval(curScope);
+				System.out.println("_______________" + v);
 			}else if(next == null){
 				next = termTests.get(i).eval(curScope);
 			}else{

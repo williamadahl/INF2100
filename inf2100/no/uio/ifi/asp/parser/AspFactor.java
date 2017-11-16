@@ -121,8 +121,10 @@ class AspFactor extends AspSyntax{
 			}
 			else if(v == null){
 				v = primaryTests.get(0).eval(curScope);
+				System.out.println("HHHHHHHHHHHHHHHHH" + v);
 			}else if(next == null){
 				next = primaryTests.get(i).eval(curScope);
+
 			}else{
 				// v = curScope.probeValue();
 				System.out.println("V's value = " + v.toString());

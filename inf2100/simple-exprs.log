@@ -1,8 +1,1 @@
 Trace line 1: assignment 
-Trace line 2: assignment 
-Trace line 3: assignment 
-Trace line 4: assignment 
-Trace line 7: func def :"methond"
-Trace line 9: expr stmt :"[1, 2, 3]"
-Trace line 10: expr stmt :"[1, 2, 3]"
-Trace line 13: expr stmt :"[1, 2, 3]"
