@@ -17,6 +17,7 @@ abstract class AspAtom extends AspSyntax{
 
 	static AspAtom parse(Scanner s){
 		AspAtom a = null;
+	
 		Main.log.enterParser("atom");
 		switch (s.curToken().kind) {
 			case falseToken:

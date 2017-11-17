@@ -184,6 +184,7 @@ public RuntimeValue evalNot(AspSyntax where) {
 public long getIntValue(String what, AspSyntax where){
   System.out.println("kommer hit");
     long  v = Long.parseLong(stringValue);
+    System.out.println("jeg gir dere : " + v);
     return v;
 
 }

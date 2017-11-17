@@ -37,7 +37,7 @@ class AspWhileStmt extends AspStmt {
           break;
         }
         v = body.eval(curScope);
-        System.out.println("Dette er i while : " + v.toString());
+        //("Dette er i while : " + v.toString());
       }
 
       return v;

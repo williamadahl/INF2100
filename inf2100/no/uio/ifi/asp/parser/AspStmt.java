@@ -30,6 +30,7 @@ abstract class AspStmt extends AspSyntax{
 			case leftBracketToken:
 			case leftBraceToken:
 			case leftParToken:
+			case trueToken:
 			//Checks if any equal token on line
 			//If yes, it's an assignment
 			//Else, it's an expression statement

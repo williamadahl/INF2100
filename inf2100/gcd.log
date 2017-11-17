@@ -1,5 +1,13 @@
-Trace line 1: func def :"GCD"
-Trace line 7: assignment 
-Trace line 8: assignment 
-Trace line 10: assignment 
-Trace line 11: expr stmt :None
+Trace line 6: def "GCD"
+Trace line 12: Call function with ["A number: "]
+Trace line 12: Call function with ["30"]
+Trace line 12: "v1" = 30
+Trace line 13: Call function with ["Another number: "]
+Trace line 13: Call function with ["75"]
+Trace line 13: "v2" = 75
+Trace line 15: Call function with [30, 75]
+Trace line 15: "res" = "GCD"
+Trace line 16: Call function with [30]
+Trace line 16: Call function with [75]
+Trace line 16: Call function with ["GCD(30,75) =", "GCD"]
+Trace line 16: None

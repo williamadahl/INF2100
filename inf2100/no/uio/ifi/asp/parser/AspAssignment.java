@@ -52,7 +52,7 @@ class AspAssignment extends AspStmt{
 		boolean multipleSubscription = false;
 
 		v = test.eval(curScope);
-		System.out.println("Dette er V før noe assign " + v.toString());
+		System.out.println("dette er i assignment  : " + v);
 
 		for(int i = 0; i < as.size()-1; i++){
 			if(i == 0){
@@ -68,24 +68,34 @@ class AspAssignment extends AspStmt{
 			RuntimeValue potentialValue = curScope.probeValue(p.toString(), this);
 
 			if(potentialValue != null){
-				curScope.assign(v.toString(), potentialValue);	
+				System.out.println("This is potentialValue " + potentialValue);
+				curScope.assign(v.toString(), potentialValue);
+				trace(v.toString() + " = " + potentialValue.showInfo());
 			}else{
+				System.out.println("This is p: " + p);
 				curScope.assign(v.toString(), p);
+				trace(v.toString() + " = " + p.showInfo());
 			}
 
 			//curScope.assign(v.toString(), test2.eval(curScope));
-			System.out.println("Inne i enkel assignment : "  + v);
+
 		}else{
 			if(!multipleSubscription){
 				k = curScope.find(v.toString(), this);
 			}
-			k.evalAssignElem(as.get(as.size()-1).eval(curScope), test2.eval(curScope), this);
-			System.out.println("dette er det vi vil bytte til : " + curScope.find(v.toString() ,this));
+
+			RuntimeValue vOriginal = as.get(as.size()-1).eval(curScope);
+			RuntimeValue vpotential = curScope.probeValue(vOriginal.toString(), this);
+
+			if(vpotential != null){
+				k.evalAssignElem(vpotential, test2.eval(curScope), this);
+			} else{
+				k.evalAssignElem(vOriginal, test2.eval(curScope), this);
+			}
 
 		}
-		//System.out.println("Dette er verdien til V(A) : " + v);
+		System.out.println("Dette er verdien til V(A) : " + v);
 
-		trace("assignment ");
 		return v;
 	}
 

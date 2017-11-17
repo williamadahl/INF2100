@@ -66,7 +66,7 @@ class AspArguments extends AspPrimarySuffix{
 		for(int i = 0 ; i < asex.size(); ++i){
 			RuntimeValue you = asex.get(i).eval(curScope);
 			RuntimeValue temp = curScope.probeValue(you.toString(), this);
-			
+
 			if(temp == null){
 			 	v.addElem(you);
 			}else{
@@ -74,7 +74,7 @@ class AspArguments extends AspPrimarySuffix{
 			}
 
 		}
-		System.out.println("This is V in AspArguments : " + v );
+		trace("Call function with " + v.showInfo());
 		return v;
 	}
 }

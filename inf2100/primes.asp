@@ -40,5 +40,4 @@ def list_primes():
     print(line_buf)
 
 
-find_primes()
 list_primes()

@@ -50,7 +50,7 @@ public class RuntimeLibrary extends RuntimeScope {
                 AspSyntax where) {
 
                   RuntimeStringValue i = new RuntimeStringValue(keyboard.nextLine());
-                  System.out.println("jeg leste dette : " + i );
+      
                   return i;
               }});
 

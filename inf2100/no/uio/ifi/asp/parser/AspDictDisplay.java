@@ -51,13 +51,12 @@ class AspDictDisplay extends AspAtom{
 		RuntimeDictValue k = null;
 
 		if(atl.size() != ae.size()){
-			System.out.println("Key and Value are different lengths");
 			System.exit(0);
 		}else{
 			for(int i = 0; i < atl.size(); i++){
 				kjeks.add(atl.get(i).eval(curScope));
 				kaffe.add(ae.get(i).eval(curScope));
-			}			
+			}
 			k = new RuntimeDictValue(kjeks, kaffe);
 		}
 		return k;

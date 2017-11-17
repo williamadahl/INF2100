@@ -55,13 +55,13 @@ public class AspFuncDef extends AspStmt{
 				counter ++;
 				list.add(x);
 			}
-			System.out.println("Dette er antall parameter i funcDef " + list);
+
 		}
 		//RuntimeValue s = pentHouse.eval(curScope);
 
 		RuntimeFunc rtf = new RuntimeFunc(v, list, curScope, this);
 		curScope.assign(v.toString(), rtf);
-		trace("func def :" + v.showInfo());
+		trace("def " + v.showInfo());
 
 		return v;
 	}

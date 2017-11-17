@@ -46,16 +46,16 @@ class AspIfStmt extends AspStmt{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		RuntimeValue v = null;
-		System.out.println("We gabe");
 		for(int i = 0; i < aexp.size(); i++){
 			v = aexp.get(i).eval(curScope);
+			System.out.println("dette er vaaar v : " + v);
 			if(v.getBoolValue("if statement", this)){
 				v = asui.get(i).eval(curScope);
-				System.out.println("this is V in if: " + v);
 				return v;
 			}
 		}
 		if(hasElse){
+			trace("else: ...");
 			v = asui.get(asui.size()-1).eval(curScope);
 		}
 		return v;

@@ -16,7 +16,7 @@ class AspTerm extends AspSyntax{
 
 	static AspTerm parse(Scanner s) {
 		AspTerm atat = new AspTerm(s.curLineNum());
-
+		//("kemmer til term");
 		Main.log.enterParser("term");
 		while (true) {
 			atat.factorTests.add(AspFactor.parse(s));
@@ -52,35 +52,39 @@ class AspTerm extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = factorTests.get(0).eval(curScope);
-		System.out.println("dette er i AspTerm : " + v.toString());
+		//("dette er i AspTerm : " + v.toString());
 		RuntimeValue next = null;
-		
+
 		for (int i = 1; i < factorTests.size(); ++i) {
 			TokenKind k = termOprTests.get(i-1).kind;
 			next = factorTests.get(i).eval(curScope);
 
 
-			System.out.println("Naa er vi i Term og prober paa  v : " + v.toString());
-			System.out.println("Naa er vi i Term og prober paa next  : " + next.toString());
+			//("Naa er vi i Term og prober paa  v : " + v.toString());
+			//("Naa er vi i Term og prober paa next  : " + next.toString());
 
-			v = curScope.probeValue(v.toString(), this);
-			next = curScope.probeValue(next.toString(), this);
+			RuntimeValue vpotential = curScope.probeValue(v.toString(), this);
+			RuntimeValue nextpotential = curScope.probeValue(next.toString(), this);
 
-			//System.out.println("Dette er e veriden til Next etter probe : " + next.toString());
+			////("Dette er e veriden til Next etter probe : " + next.toString());
 
-			if((v == null) && (next == null)){
-				System.out.println("1");
-				v = factorTests.get(0).eval(curScope);
-				next = factorTests.get(i).eval(curScope);
+			if((vpotential == null) && (nextpotential == null)){
+				// //("1");
+				// v = factorTests.get(0).eval(curScope);
+				// next = factorTests.get(i).eval(curScope);
 			}
-			else if(v == null){
-				System.out.println("2");
-				v = factorTests.get(0).eval(curScope);
-			}else if(next == null){
-				System.out.println("3");
-				next = factorTests.get(i).eval(curScope);
+			else if(vpotential == null){
+				// //("2");
+				// v = factorTests.get(0).eval(curScope);
+				next = nextpotential;
+			}else if(nextpotential == null){
+				// //("3");
+				// next = factorTests.get(i).eval(curScope);
+				v = vpotential;
 			}else{
-				System.out.println("Both variables have values!");
+				//("Both variables have values!");
+				v = vpotential;
+				next = nextpotential;
 			}
 
 			switch (k) {
@@ -93,7 +97,7 @@ class AspTerm extends AspSyntax{
 			}
 		}
 
-		System.out.println("Inne i term : "  + v.toString());
+		//("Inne i term : "  + v.toString());
 		return v;
 	}
 }

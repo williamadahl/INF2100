@@ -111,25 +111,31 @@ class AspFactor extends AspSyntax{
 		for (int i = 1; i < primaryTests.size(); ++i) {
 			TokenKind k = factorOprTests.get(i-1).kind;
 			next = primaryTests.get(i).eval(curScope);
-			v = curScope.probeValue(v.toString(), this);
+
+
+
+			RuntimeValue vpotential = curScope.probeValue(v.toString(), this);
 			// System.out.println("Value of V : " + v.toString());
-			next = curScope.probeValue(next.toString(), this);
+			RuntimeValue nextpotential = curScope.probeValue(next.toString(), this);
 
-			if((v == null) && (next == null)){
-				v = primaryTests.get(0).eval(curScope);
-				next = primaryTests.get(i).eval(curScope);
+
+			if((vpotential == null) && (nextpotential == null)){
+				// v = primaryTests.get(0).eval(curScope);
+				// next = primaryTests.get(i).eval(curScope);
+
 			}
-			else if(v == null){
-				v = primaryTests.get(0).eval(curScope);
-				System.out.println("HHHHHHHHHHHHHHHHH" + v);
-			}else if(next == null){
-				next = primaryTests.get(i).eval(curScope);
-
+			else if(vpotential == null){
+				// v = primaryTests.get(0).eval(curScope);
+				// System.out.println("HHHHHHHHHHHHHHHHH" + v);
+				next = nextpotential;
+			}else if(nextpotential == null){
+				//next = primaryTests.get(i).eval(curScope);
+				v = vpotential;
 			}else{
 				// v = curScope.probeValue();
-				System.out.println("V's value = " + v.toString());
-				System.out.println("next's value = " + next.toString());
-				System.out.println("K's tokenkind = " + k);
+				v = vpotential;
+				next = nextpotential;
+
 			}
 
 			switch (k) {

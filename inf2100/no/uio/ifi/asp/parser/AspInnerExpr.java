@@ -27,7 +27,7 @@ class AspInnerExpr extends AspAtom{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue {
 		RuntimeValue v = bod1.eval(curScope);
-		System.out.println("detter er v i AspInnerExpr: " + v);
+
 		return v;
 	}
 

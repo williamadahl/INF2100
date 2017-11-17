@@ -49,7 +49,7 @@ public class AspProgram extends AspSyntax {
           v = stmts.get(i).eval(curScope);
         }
       } catch (RuntimeReturnValue xxx){
-        System.out.println("Runtime error, return outside func");
+        //("Runtime error, return outside func");
       }
       return v;
     }

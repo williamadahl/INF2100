@@ -6,4 +6,4 @@ Trace line 23: assignment
 Trace line 25: assignment 
 Trace line 27: assignment 
 Trace line 31: assignment 
-Asp runtime error on line 33: Type error for [...].
+Asp runtime error on line 33: Type error for /.

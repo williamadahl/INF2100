@@ -30,13 +30,11 @@ class AspName extends AspAtom{
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = new RuntimeStringValue(guitar.get(0));
 
-
 		return v;
 	}
 
 	@Override
 	void prettyPrint() {
-		//System.out.println("HER HAR DU NAME " + guitar.get(0);
 		Main.log.prettyWrite(guitar.get(0));
 	}
 }

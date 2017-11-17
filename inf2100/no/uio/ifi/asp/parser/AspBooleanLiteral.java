@@ -17,6 +17,7 @@ class AspBooleanLiteral extends AspAtom{
 
 	static AspBooleanLiteral parse(Scanner s){
 		AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum());
+		
 		if(s.curToken().kind == trueToken ||
 		s.curToken().kind == falseToken){
 			abl.hi.add(s.curToken().kind.toString());

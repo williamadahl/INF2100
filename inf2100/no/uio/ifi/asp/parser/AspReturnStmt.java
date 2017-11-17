@@ -28,12 +28,14 @@ class AspReturnStmt extends AspStmt{
 RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
   RuntimeValue v = ae.eval(curScope);
 
-  v = curScope.probeValue(v.toString(), this);
+  RuntimeValue vpotential = curScope.probeValue(v.toString(), this);
 
-  if(v != null){
-      throw new RuntimeReturnValue(v);
+  if(vpotential != null){
+      trace("return " + vpotential.showInfo());
+      throw new RuntimeReturnValue(vpotential);
   }else{
-    throw new RuntimeReturnValue(ae.eval(curScope));
+      trace("return " + v.showInfo());
+      throw new RuntimeReturnValue(v);
   }
 
   //trace("return "+v.showInfo());

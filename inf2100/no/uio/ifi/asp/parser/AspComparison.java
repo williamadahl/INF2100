@@ -68,7 +68,7 @@ class AspComparison extends AspSyntax{
 		// RuntimeValue k = curScope.find(v.toString(), this);
 		//
 		// System.out.println("Found you");
-		System.out.println("Dette er I compariston :" + v.toString());
+
 
 
 		for (int i = 1; i < termTests.size(); ++i) {
@@ -76,27 +76,31 @@ class AspComparison extends AspSyntax{
 			next = termTests.get(i).eval(curScope);
 			TokenKind bender = compOprTests.get(i-1).kind;
 
-			System.out.println("----------------");
+
 			// System.out.println("I will now seach for this value : " + v.toString());
-			v = curScope.probeValue(v.toString(), this);
+			RuntimeValue vpotential = curScope.probeValue(v.toString(), this);
 			// System.out.println("Value of V : " + v.toString());
-			next = curScope.probeValue(next.toString(), this);
+			RuntimeValue nextpotential = curScope.probeValue(next.toString(), this);
 			// System.out.println("Value of  next: " + next.toString());
 
-			if((v == null) && (next == null)){
-				v = termTests.get(i-1).eval(curScope);
-				next = termTests.get(i).eval(curScope);
+			if((vpotential == null) && (nextpotential == null)){
+				// v = termTests.get(i-1).eval(curScope);
+				// next = termTests.get(i).eval(curScope);
 			}
-			else if(v == null){
-				v = termTests.get(i-1).eval(curScope);
-				System.out.println("_______________" + v);
-			}else if(next == null){
-				next = termTests.get(i).eval(curScope);
+			else if(vpotential == null){
+				// v = termTests.get(i-1).eval(curScope);
+				// System.out.println("_______________" + v);
+				next = nextpotential;
+			}else if(nextpotential == null){
+				//next = termTests.get(i).eval(curScope);
+				v = vpotential;
 			}else{
-				System.out.println("Both variables have values!");
+				v = vpotential;
+				next = nextpotential;
+
 			}
 			// v = curScope.probeValue(v.toString(), this);
-			System.out.println("This is the value Im pointing at in Comparison : " + v.showInfo());
+
 
 			switch (bender) {
 				case lessToken:
@@ -104,9 +108,6 @@ class AspComparison extends AspSyntax{
 				case greaterToken:
 				v = v.evalGreater(next, this); break;
 				case doubleEqualToken:
-				System.out.println("Here is v in comparison: " + v.toString());
-				System.out.println("This is tokenkind: " + bender);
-				System.out.println("Here is next in comparison: " + next.toString());
 				v = v.evalEqual(next, this); break;
 				case greaterEqualToken:
 				v = v.evalGreaterEqual(next, this); break;
@@ -117,7 +118,7 @@ class AspComparison extends AspSyntax{
 				default:
 				Main.panic("Illegal term operator: " + bender + "!");
 			}
-			if(! v.getBoolValue("and operator", this)){
+			if(!v.getBoolValue("and operator", this)){
 				return v;
 			}
 		}
