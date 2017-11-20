@@ -1,19 +1,117 @@
-Trace line 3: assignment 
-Trace line 4: assignment 
-Trace line 5: assignment 
-Trace line 7: assignment 
-Trace line 9: assignment 
-Trace line 10: assignment 
-Trace line 11: assignment 
-Trace line 12: assignment 
-Trace line 13: assignment 
-Trace line 14: assignment 
-Trace line 15: assignment 
-Trace line 16: assignment 
-Trace line 17: assignment 
-Trace line 18: assignment 
-Trace line 19: assignment 
-Trace line 20: assignment 
-Trace line 22: assignment 
-Trace line 23: assignment 
-Asp runtime error on line 24: Type error for [...].
+Trace line 3: "M_name" = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+Trace line 7: "y" = 2015
+Trace line 8: while True: ...
+Trace line 9: "a" = 1
+Trace line 10: "b" = 20
+Trace line 11: "c" = 15
+Trace line 12: "d" = 5
+Trace line 13: "e" = 0
+Trace line 14: "f" = 1
+Trace line 15: "g" = 6
+Trace line 16: "h" = 13
+Trace line 17: "i" = 3
+Trace line 18: "k" = 3
+Trace line 19: "l" = 1
+Trace line 20: "m" = 0
+Trace line 22: "month" = 4
+Trace line 23: "day" = 5
+Trace line 24: Call function "str" with params: [5]
+Trace line 24: Call function "print" with params: ["5. april", "2015"]
+Trace line 24: None
+Trace line 26: "y" = 2016
+Trace line 8: while True: ...
+Trace line 9: "a" = 2
+Trace line 10: "b" = 20
+Trace line 11: "c" = 16
+Trace line 12: "d" = 5
+Trace line 13: "e" = 0
+Trace line 14: "f" = 1
+Trace line 15: "g" = 6
+Trace line 16: "h" = 2
+Trace line 17: "i" = 4
+Trace line 18: "k" = 0
+Trace line 19: "l" = 3
+Trace line 20: "m" = 0
+Trace line 22: "month" = 3
+Trace line 23: "day" = 27
+Trace line 24: Call function "str" with params: [27]
+Trace line 24: Call function "print" with params: ["27. mars", "2016"]
+Trace line 24: None
+Trace line 26: "y" = 2017
+Trace line 8: while True: ...
+Trace line 9: "a" = 3
+Trace line 10: "b" = 20
+Trace line 11: "c" = 17
+Trace line 12: "d" = 5
+Trace line 13: "e" = 0
+Trace line 14: "f" = 1
+Trace line 15: "g" = 6
+Trace line 16: "h" = 21
+Trace line 17: "i" = 4
+Trace line 18: "k" = 1
+Trace line 19: "l" = 4
+Trace line 20: "m" = 0
+Trace line 22: "month" = 4
+Trace line 23: "day" = 16
+Trace line 24: Call function "str" with params: [16]
+Trace line 24: Call function "print" with params: ["16. april", "2017"]
+Trace line 24: None
+Trace line 26: "y" = 2018
+Trace line 8: while True: ...
+Trace line 9: "a" = 4
+Trace line 10: "b" = 20
+Trace line 11: "c" = 18
+Trace line 12: "d" = 5
+Trace line 13: "e" = 0
+Trace line 14: "f" = 1
+Trace line 15: "g" = 6
+Trace line 16: "h" = 10
+Trace line 17: "i" = 4
+Trace line 18: "k" = 2
+Trace line 19: "l" = 0
+Trace line 20: "m" = 0
+Trace line 22: "month" = 4
+Trace line 23: "day" = 1
+Trace line 24: Call function "str" with params: [1]
+Trace line 24: Call function "print" with params: ["1. april", "2018"]
+Trace line 24: None
+Trace line 26: "y" = 2019
+Trace line 8: while True: ...
+Trace line 9: "a" = 5
+Trace line 10: "b" = 20
+Trace line 11: "c" = 19
+Trace line 12: "d" = 5
+Trace line 13: "e" = 0
+Trace line 14: "f" = 1
+Trace line 15: "g" = 6
+Trace line 16: "h" = 29
+Trace line 17: "i" = 4
+Trace line 18: "k" = 3
+Trace line 19: "l" = 1
+Trace line 20: "m" = 0
+Trace line 22: "month" = 4
+Trace line 23: "day" = 21
+Trace line 24: Call function "str" with params: [21]
+Trace line 24: Call function "print" with params: ["21. april", "2019"]
+Trace line 24: None
+Trace line 26: "y" = 2020
+Trace line 8: while True: ...
+Trace line 9: "a" = 6
+Trace line 10: "b" = 20
+Trace line 11: "c" = 20
+Trace line 12: "d" = 5
+Trace line 13: "e" = 0
+Trace line 14: "f" = 1
+Trace line 15: "g" = 6
+Trace line 16: "h" = 18
+Trace line 17: "i" = 5
+Trace line 18: "k" = 0
+Trace line 19: "l" = 3
+Trace line 20: "m" = 0
+Trace line 22: "month" = 4
+Trace line 23: "day" = 12
+Trace line 24: Call function "str" with params: [12]
+Trace line 24: Call function "print" with params: ["12. april", "2020"]
+Trace line 24: None
+Trace line 26: "y" = 2021
+Trace line 8: while False:

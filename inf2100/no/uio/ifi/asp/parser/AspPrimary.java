@@ -47,27 +47,42 @@ class AspPrimary extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = null;
-
+	//	RuntimeValue onlyForYou = null;
 		if(aps.size() != 0){
 			v = aa.get(0).eval(curScope);
 			for(int i = 0; i < aps.size(); i++){
+
 				if(aps.get(i) instanceof AspSubscription){
 					RuntimeValue vOriginal = aps.get(i).eval(curScope);
 					RuntimeValue probern = curScope.probeValue(vOriginal.toString(), this);
+					RuntimeValue forPrint = curScope.probeValue(v.toString(), this);
 
-					if(probern != null){
+
+					if(forPrint == null){
+						if(probern != null){
+
 							v = v.evalSubscription(probern, this);
+						}else{
+							//		onlyForYou = vOriginal;
+
+
+							v = v.evalSubscription(vOriginal, this);
+						}
 					}else{
-						v = v.evalSubscription(vOriginal, this);
+						if(probern != null){
+							v = forPrint.evalSubscription(probern, this);
+						} else{
+							v = forPrint.evalSubscription(vOriginal, this);
+						}
 					}
+
 				} else{
 					/* maa nesten sjekke curScope*/
 					//v = aps.get(i).eval(curScope);
 
 					RuntimeValue x = aps.get(i).eval(curScope);
 					RuntimeValue t = curScope.probeValue(v.toString(), this);
-
-
+					System.out.println("plsssss is at v ikke er endra aaaaa : " + v.toString());
 
 					// if the library method len is called in the program :
 					if(t.toString().equals("\"len\"")){
@@ -93,16 +108,17 @@ class AspPrimary extends AspSyntax{
 
 						listOfValues.add(convertedValue);
 						RuntimeIntValue len = (RuntimeIntValue)t.evalFuncCall(listOfValues, this);
-
+						trace("Call function "  + t.toString() + " with params: " + listOfValues.toString());
 						return len;
 					}
 					// if the library method int is called in the program :
 
-					if(t.toString().equals("\"int\"")){
+					else if(t.toString().equals("\"int\"")){
 						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
 						RuntimeValue convertedValue = null;
 
 							RuntimeListValue rtlv = (RuntimeListValue)x;
+							trace("Call function "  + t.toString() + " with params: " + rtlv.toString());
 							RuntimeValue value = curScope.probeValue(rtlv.getElem(0).toString(), this);
 
 							if(value == null){
@@ -132,7 +148,7 @@ class AspPrimary extends AspSyntax{
 
 					// if the library method float is called in the program
 
-					if(t.toString().equals("\"float\"")){
+					else if(t.toString().equals("\"float\"")){
 						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
 						RuntimeValue convertedValue = null;
 
@@ -160,51 +176,67 @@ class AspPrimary extends AspSyntax{
 
 							listOfValues.add(convertedValue);
 							RuntimeIntValue len = (RuntimeIntValue)t.evalFuncCall(listOfValues, this);
-
+							trace("Call function "  + t.toString() + " with params: " + listOfValues.toString());
 							return len;
 					}
 					// if the library method input is called in the program
 
-					if (t.toString().equals("\"input\"")){
-
+					else if (t.toString().equals("\"input\"")){
+						RuntimeListValue rtlv = (RuntimeListValue)x;
+						System.out.print(rtlv.getList().toString());
 						RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(null, this);
+
+						if(rtlv.getList().size() == 0){
+							trace("Call function "  + t.toString());
+						} else{
+							trace("Call function "  + t.toString() + " with params: " + rtlv.getList().toString());
+						}
+
 						return len;
 					}
 
 // if the library method str is called in the program
-					if (t.toString().equals("\"str\"")){
+					else if (t.toString().equals("\"str\"")){
 
 						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
 						RuntimeValue convertedValue = null;
 
 							RuntimeListValue rtlv = (RuntimeListValue)x;
+							trace("Call function "  + t.toString() + " with params: " + rtlv.getList().toString());
 							RuntimeValue value = curScope.probeValue(rtlv.getElem(0).toString(), this);
 
 							if(value == null){
-
 								String temp;
 								temp = rtlv.getElem(0).getStringValue("str",this);
 								convertedValue = new RuntimeStringValue(temp);
-								return convertedValue;
+
+								RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(rtlv.getList(), this);
+
+								return len;
 							}
 
 							listOfValues.add(value);
-							RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(listOfValues, this);
 
+							RuntimeStringValue len = (RuntimeStringValue)t.evalFuncCall(listOfValues, this);
 							return len;
 
 					}
 
-					if (t.toString().equals("\"print\"")){
+					else if (t.toString().equals("\"print\"")){
 
 						ArrayList<RuntimeValue>listOfValues = new ArrayList<>();
 						RuntimeValue convertedValue = null;
 
 							RuntimeListValue rtlv = (RuntimeListValue)x;
+							System.out.println("T sin tostreng: " + t.toString());
+
+
+						//	System.out.println("Liste med parameter: " + onlyForYou);
 
 							for (int j = 0; j<rtlv.getSize(); j++) {
 								RuntimeValue value = curScope.probeValue(rtlv.getElem(j).toString(), this);
 								if(value == null){
+									System.out.println("FANT IKKE EN DRETTTTT");
 									String temp;
 									temp = rtlv.getElem(j).getStringValue("str",this);
 									convertedValue = new RuntimeStringValue(temp);
@@ -215,16 +247,19 @@ class AspPrimary extends AspSyntax{
 							}
 
 							t.evalFuncCall(listOfValues, this);
+							trace("Call function "  + t.toString() + " with params: " + listOfValues.toString());
 							return new RuntimeNoneValue();
 					}
 
 
-					if(t != null){
+					else if(t != null){
 						if((x instanceof RuntimeListValue) && (t instanceof RuntimeFunc)){
 
 							RuntimeFunc newFunc = (RuntimeFunc)t;
 							RuntimeListValue newList = (RuntimeListValue)x;
-
+							trace("Call function "  + newFunc.toString() + " with params: " + newList.getList().toString());
+							v = newFunc.evalFuncCall(newList.getList(), this);
+							return v;
 						} else{
 							trace(v.showInfo() + " = " + t.showInfo());
 							Main.error("Error, illegal call on no-function");

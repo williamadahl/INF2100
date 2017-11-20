@@ -74,7 +74,7 @@ class AspArguments extends AspPrimarySuffix{
 			}
 
 		}
-		trace("Call function with " + v.showInfo());
+		// trace("Call function"  + you.showInfo() + "with params: " + v.showInfo());
 		return v;
 	}
 }

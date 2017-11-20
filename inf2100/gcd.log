@@ -1,13 +1,21 @@
 Trace line 6: def "GCD"
-Trace line 12: Call function with ["A number: "]
-Trace line 12: Call function with ["30"]
-Trace line 12: "v1" = 30
-Trace line 13: Call function with ["Another number: "]
-Trace line 13: Call function with ["75"]
-Trace line 13: "v2" = 75
-Trace line 15: Call function with [30, 75]
-Trace line 15: "res" = "GCD"
-Trace line 16: Call function with [30]
-Trace line 16: Call function with [75]
-Trace line 16: Call function with ["GCD(30,75) =", "GCD"]
+Trace line 12: Call function "input" with params: ["A number: "]
+Trace line 12: Call function "int" with params: ["18"]
+Trace line 12: "v1" = 18
+Trace line 13: Call function "input" with params: ["Another number: "]
+Trace line 13: Call function "int" with params: ["81"]
+Trace line 13: "v2" = 81
+Trace line 15: Call function "GCD" with params: [18, 81]
+Trace line 7: else: ...
+Trace line 10: Call function "GCD" with params: [81, 18]
+Trace line 7: else: ...
+Trace line 10: Call function "GCD" with params: [18, 9]
+Trace line 7: else: ...
+Trace line 10: Call function "GCD" with params: [9, 0]
+Trace line 8: return 9
+Trace line 10: return 9
+Trace line 10: return 9
+Trace line 10: return 9
+Trace line 15: "res" = 9
+Trace line 16: Call function "print" with params: ["GCD(18,81) =", "9"]
 Trace line 16: None

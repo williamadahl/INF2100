@@ -47,11 +47,13 @@ class AspAssignment extends AspStmt{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue{
+		System.out.println("kommeir inn hit ... aa ");
 		RuntimeValue v = null;
 		RuntimeValue k = null;
 		boolean multipleSubscription = false;
 
 		v = test.eval(curScope);
+
 		System.out.println("dette er i assignment  : " + v);
 
 		for(int i = 0; i < as.size()-1; i++){

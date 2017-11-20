@@ -10,6 +10,7 @@ class AspWhileStmt extends AspStmt {
     AspExpr test;
     AspSuite body;
 
+
     AspWhileStmt(int n) {
     super(n);
     }
@@ -34,8 +35,10 @@ class AspWhileStmt extends AspStmt {
   		RuntimeValue v = null;
       while (true) {
         if(!test.eval(curScope).getBoolValue("expression", this)){
+          trace("while False:");
           break;
         }
+        trace("while True: ...");
         v = body.eval(curScope);
         //("Dette er i while : " + v.toString());
       }

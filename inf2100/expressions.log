@@ -1,34 +1,34 @@
-Trace line 1: expr stmt :"Testing integer expressions:"
-Trace line 2: expr stmt :42
-Trace line 3: expr stmt :-1017
-Trace line 4: expr stmt :33
-Trace line 5: expr stmt :22
-Trace line 6: expr stmt :1234
-Trace line 8: expr stmt :"Testing float expressions:"
-Trace line 9: expr stmt :42.0
-Trace line 10: expr stmt :-1017.1
-Trace line 11: expr stmt :33.0
-Trace line 12: expr stmt :22.0
-Trace line 13: expr stmt :1234.0
-Trace line 15: expr stmt :"Testing string expressions"
-Trace line 16: expr stmt :"Abc"
-Trace line 17: expr stmt :"α-----ω"
-Trace line 19: expr stmt :"Testing boolean expressions"
-Trace line 20: expr stmt :True
-Trace line 21: expr stmt :"To be"
-Trace line 22: expr stmt :3.14
-Trace line 23: expr stmt :True
-Trace line 25: expr stmt :"Testing comparisons"
-Trace line 26: expr stmt :True
-Trace line 27: expr stmt :5
-Trace line 28: expr stmt :False
-Trace line 29: expr stmt :True
-Trace line 31: expr stmt :"Testing lists"
-Trace line 32: expr stmt :[]
-Trace line 33: expr stmt :[22, "w", [-1, 1], 3.14159265]
-Trace line 34: expr stmt :102
-Trace line 35: expr stmt :[-1, 0, 1, -1, 0, 1]
-Trace line 36: expr stmt :"A"
-Trace line 38: expr stmt :"Testing dictionaries"
-Trace line 39: expr stmt :{"A" : "a" , "B" : 3 }
-Trace line 40: expr stmt :1
+Trace line 1: "Testing integer expressions:"
+Trace line 2: 42
+Trace line 3: -1017
+Trace line 4: 33
+Trace line 5: 22
+Trace line 6: 1234
+Trace line 8: "Testing float expressions:"
+Trace line 9: 42.0
+Trace line 10: -1017.1
+Trace line 11: 33.0
+Trace line 12: 22.0
+Trace line 13: 1234.0
+Trace line 15: "Testing string expressions"
+Trace line 16: "Abc"
+Trace line 17: "α-----ω"
+Trace line 19: "Testing boolean expressions"
+Trace line 20: True
+Trace line 21: "To be"
+Trace line 22: 3.14
+Trace line 23: True
+Trace line 25: "Testing comparisons"
+Trace line 26: True
+Trace line 27: 5
+Trace line 28: False
+Trace line 29: True
+Trace line 31: "Testing lists"
+Trace line 32: []
+Trace line 33: [22, "w", [-1, 1], 3.14159265]
+Trace line 34: 102
+Trace line 35: [-1, 0, 1, -1, 0, 1]
+Trace line 36: "A"
+Trace line 38: "Testing dictionaries"
+Trace line 39: {"A" : "a" , "B" : 3 }
+Trace line 40: 1

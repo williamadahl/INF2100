@@ -48,9 +48,8 @@ public class RuntimeLibrary extends RuntimeScope {
               public RuntimeValue evalFuncCall(
                 ArrayList<RuntimeValue> actualParams,
                 AspSyntax where) {
-
                   RuntimeStringValue i = new RuntimeStringValue(keyboard.nextLine());
-      
+
                   return i;
               }});
 
