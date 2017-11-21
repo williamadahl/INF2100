@@ -38,8 +38,6 @@ RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
       throw new RuntimeReturnValue(v);
   }
 
-  //trace("return "+v.showInfo());
-  //throw new RuntimeReturnValue(v);
 }
 
   @Override

@@ -46,7 +46,6 @@ public class AspFuncDef extends AspStmt{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = aname.get(0).eval(curScope);
-		System.out.println("Dette er v i funcDef: " + v.toString());
 		ArrayList<RuntimeValue> list = new ArrayList<>();
 		int counter = 0;
 		if(aname.size() > 1){
@@ -57,7 +56,6 @@ public class AspFuncDef extends AspStmt{
 			}
 
 		}
-		//RuntimeValue s = pentHouse.eval(curScope);
 
 		RuntimeFunc rtf = new RuntimeFunc(v, list, curScope, this);
 		curScope.assign(v.toString(), rtf);

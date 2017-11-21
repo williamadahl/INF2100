@@ -48,7 +48,6 @@ class AspIfStmt extends AspStmt{
 		RuntimeValue v = null;
 		for(int i = 0; i < aexp.size(); i++){
 			v = aexp.get(i).eval(curScope);
-			System.out.println("dette er vaaar v : " + v);
 			if(v.getBoolValue("if statement", this)){
 				v = asui.get(i).eval(curScope);
 				return v;

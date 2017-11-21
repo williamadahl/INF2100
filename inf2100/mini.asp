@@ -1,2 +1,2 @@
-a = 5
-print(str(a) + "." + "hehe")
+a = 5 + 5
+print(a)

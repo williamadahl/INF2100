@@ -40,7 +40,6 @@ class AspWhileStmt extends AspStmt {
         }
         trace("while True: ...");
         v = body.eval(curScope);
-        //("Dette er i while : " + v.toString());
       }
 
       return v;

@@ -643,7 +643,6 @@ public class Scanner {
   private void addDedent(){
     while(n < theStack.peek()){
       theStack.pop();
-      System.out.println("dedent i dag sin algo");
       curLineTokens.add(new Token(dedentToken, curLineNum()));
     }
     if(n != theStack.peek()){

@@ -65,10 +65,6 @@ class AspComparison extends AspSyntax{
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = termTests.get(0).eval(curScope);
 		RuntimeValue next = null;
-		// RuntimeValue k = curScope.find(v.toString(), this);
-		//
-		// System.out.println("Found you");
-
 
 
 		for (int i = 1; i < termTests.size(); ++i) {
@@ -77,29 +73,22 @@ class AspComparison extends AspSyntax{
 			TokenKind bender = compOprTests.get(i-1).kind;
 
 
-			// System.out.println("I will now seach for this value : " + v.toString());
 			RuntimeValue vpotential = curScope.probeValue(v.toString(), this);
-			// System.out.println("Value of V : " + v.toString());
 			RuntimeValue nextpotential = curScope.probeValue(next.toString(), this);
-			// System.out.println("Value of  next: " + next.toString());
 
+			// if both vpotential and nextpotential are null (no value with those names) we let v and next
+			// point to what they are pointing at.
 			if((vpotential == null) && (nextpotential == null)){
-				// v = termTests.get(i-1).eval(curScope);
-				// next = termTests.get(i).eval(curScope);
 			}
 			else if(vpotential == null){
-				// v = termTests.get(i-1).eval(curScope);
-				// System.out.println("_______________" + v);
 				next = nextpotential;
 			}else if(nextpotential == null){
-				//next = termTests.get(i).eval(curScope);
 				v = vpotential;
 			}else{
 				v = vpotential;
 				next = nextpotential;
 
 			}
-			// v = curScope.probeValue(v.toString(), this);
 
 
 			switch (bender) {

@@ -37,7 +37,6 @@ class AspIntegerLiteral extends AspAtom{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		//System.out.println("interger ");
 		return new RuntimeIntValue(dong.get(0));
 	}
 

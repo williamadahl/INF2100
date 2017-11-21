@@ -31,28 +31,6 @@ class AspStringLiteral extends AspAtom{
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue{
 		String kek = str.get(0).substring(1, str.get(0).length()-1);
 
-		// ////("streng");
-		// // if(v instanceof RuntimeStringValue){
-    // //
-		// // 	//("im a string");
-		// // 	RuntimeValue k = null;
-		// // 	//("----------------");
-		// // 	//("I will now seach for this value : " + v.toString());
-		// //("WE CAME IN HER");
-		// 	if(curScope.probeValue(kek.toString(), this) == null ){
-		// 		//("did not find value : " + kek.toString() );
-		// 	} else{
-    //
-		// 		//("found varibel in scope: " + kek.toString());
-		// 		//("value of variable : " + curScope.find(kek.toString(), this));
-    //
-		// 	}
-		// 	// k = curScope.probeValue(v.toString(), this);
-		// //	//(k.toString());
-		// // }
-
-
-
 		return new RuntimeStringValue(kek);
 	}
 

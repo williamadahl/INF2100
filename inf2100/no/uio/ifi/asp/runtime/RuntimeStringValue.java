@@ -102,7 +102,6 @@ public class RuntimeStringValue extends RuntimeValue {
 public RuntimeValue evalLess(RuntimeValue v, AspSyntax where){
 
 
-System.out.println("kommer til STRING ? ");
   RuntimeValue res = null;
   if (v instanceof RuntimeStringValue){
     String v2 = v.getStringValue("< operand",where);
@@ -122,7 +121,6 @@ public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where){
   RuntimeValue res = null;
   if (v instanceof RuntimeStringValue){
     String v2 = v.getStringValue("> operand",where);
-    System.out.println("Dette er i string : sammenlikner : " + stringValue+ " and " + v2);
     int temp = stringValue.compareTo(v2);
     if(temp > 0){
       res = new RuntimeBoolValue(true);
@@ -182,9 +180,7 @@ public RuntimeValue evalNot(AspSyntax where) {
 
 @Override
 public long getIntValue(String what, AspSyntax where){
-  System.out.println("kommer hit");
     long  v = Long.parseLong(stringValue);
-    System.out.println("jeg gir dere : " + v);
     return v;
 
 }

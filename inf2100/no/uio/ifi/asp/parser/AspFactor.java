@@ -115,24 +115,18 @@ class AspFactor extends AspSyntax{
 
 
 			RuntimeValue vpotential = curScope.probeValue(v.toString(), this);
-			// System.out.println("Value of V : " + v.toString());
+
 			RuntimeValue nextpotential = curScope.probeValue(next.toString(), this);
 
-
+			// same as in the comparison 
 			if((vpotential == null) && (nextpotential == null)){
-				// v = primaryTests.get(0).eval(curScope);
-				// next = primaryTests.get(i).eval(curScope);
 
 			}
 			else if(vpotential == null){
-				// v = primaryTests.get(0).eval(curScope);
-				// System.out.println("HHHHHHHHHHHHHHHHH" + v);
 				next = nextpotential;
 			}else if(nextpotential == null){
-				//next = primaryTests.get(i).eval(curScope);
 				v = vpotential;
 			}else{
-				// v = curScope.probeValue();
 				v = vpotential;
 				next = nextpotential;
 

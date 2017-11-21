@@ -17,7 +17,6 @@ class AspExprStmt extends AspStmt{
 		Main.log.enterParser("expr stmt");
 		AspExprStmt aes = new AspExprStmt(s.curLineNum());
 		//Parses the expression and skips newline
-		System.out.println("asp exprs : ");
 		aes.body = AspExpr.parse(s);
 		skip(s, newLineToken);
 

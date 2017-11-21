@@ -47,14 +47,12 @@ class AspAssignment extends AspStmt{
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope)throws RuntimeReturnValue{
-		System.out.println("kommeir inn hit ... aa ");
 		RuntimeValue v = null;
 		RuntimeValue k = null;
 		boolean multipleSubscription = false;
 
 		v = test.eval(curScope);
 
-		System.out.println("dette er i assignment  : " + v);
 
 		for(int i = 0; i < as.size()-1; i++){
 			if(i == 0){
@@ -70,11 +68,9 @@ class AspAssignment extends AspStmt{
 			RuntimeValue potentialValue = curScope.probeValue(p.toString(), this);
 
 			if(potentialValue != null){
-				System.out.println("This is potentialValue " + potentialValue);
 				curScope.assign(v.toString(), potentialValue);
 				trace(v.toString() + " = " + potentialValue.showInfo());
 			}else{
-				System.out.println("This is p: " + p);
 				curScope.assign(v.toString(), p);
 				trace(v.toString() + " = " + p.showInfo());
 			}
@@ -96,8 +92,6 @@ class AspAssignment extends AspStmt{
 			}
 
 		}
-		System.out.println("Dette er verdien til V(A) : " + v);
-
 		return v;
 	}
 

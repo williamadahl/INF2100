@@ -47,7 +47,6 @@ class AspPrimary extends AspSyntax{
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		RuntimeValue v = null;
-	//	RuntimeValue onlyForYou = null;
 		if(aps.size() != 0){
 			v = aa.get(0).eval(curScope);
 			for(int i = 0; i < aps.size(); i++){
@@ -57,15 +56,12 @@ class AspPrimary extends AspSyntax{
 					RuntimeValue probern = curScope.probeValue(vOriginal.toString(), this);
 					RuntimeValue forPrint = curScope.probeValue(v.toString(), this);
 
-
+ // if we have a subscription insid an argument, we need to make sure that the subscription, is not treated as part of the
+ // argument
 					if(forPrint == null){
 						if(probern != null){
-
 							v = v.evalSubscription(probern, this);
 						}else{
-							//		onlyForYou = vOriginal;
-
-
 							v = v.evalSubscription(vOriginal, this);
 						}
 					}else{
@@ -77,12 +73,10 @@ class AspPrimary extends AspSyntax{
 					}
 
 				} else{
-					/* maa nesten sjekke curScope*/
-					//v = aps.get(i).eval(curScope);
 
 					RuntimeValue x = aps.get(i).eval(curScope);
 					RuntimeValue t = curScope.probeValue(v.toString(), this);
-					System.out.println("plsssss is at v ikke er endra aaaaa : " + v.toString());
+
 
 					// if the library method len is called in the program :
 					if(t.toString().equals("\"len\"")){
@@ -228,15 +222,10 @@ class AspPrimary extends AspSyntax{
 						RuntimeValue convertedValue = null;
 
 							RuntimeListValue rtlv = (RuntimeListValue)x;
-							System.out.println("T sin tostreng: " + t.toString());
-
-
-						//	System.out.println("Liste med parameter: " + onlyForYou);
 
 							for (int j = 0; j<rtlv.getSize(); j++) {
 								RuntimeValue value = curScope.probeValue(rtlv.getElem(j).toString(), this);
 								if(value == null){
-									System.out.println("FANT IKKE EN DRETTTTT");
 									String temp;
 									temp = rtlv.getElem(j).getStringValue("str",this);
 									convertedValue = new RuntimeStringValue(temp);

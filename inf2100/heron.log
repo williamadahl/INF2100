@@ -2,61 +2,58 @@ Trace line 5: def "pow"
 Trace line 14: def "rough_log"
 Trace line 22: def "sqrt"
 Trace line 40: Call function "input" with params: ["Give a number: "]
-Trace line 40: "v" = 100.0
-Trace line 41: Call function "sqrt" with params: [100.0]
+Trace line 40: "v" = 9.0
+Trace line 41: Call function "sqrt" with params: [9.0]
 Trace line 23: "x" = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Trace line 25: Call function "rough_log" with params: [100.0]
-Trace line 16: Call function "rough_log" with params: [10.0]
+Trace line 25: Call function "rough_log" with params: [9.0]
 Trace line 19: return 1
-Trace line 16: return 2
-Trace line 25: "d" = 2
-Trace line 26: else: ...
-Trace line 29: Call function "pow" with params: [60, 0]
-Trace line 9: Call function "pow" with params: [60, 1]
+Trace line 25: "d" = 1
+Trace line 27: Call function "pow" with params: [20, 0]
+Trace line 9: Call function "pow" with params: [20, 1]
 Trace line 6: else: ...
-Trace line 11: return 60
+Trace line 11: return 20
 Trace line 9: return 1.0
 Trace line 31: "ix" = 0
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 50.5
+Trace line 33: "tmp" = 5.0
 Trace line 34: "ix" = 1
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 26.24009900990099
+Trace line 33: "tmp" = 3.4
 Trace line 34: "ix" = 2
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 15.025530119986813
+Trace line 33: "tmp" = 3.023529411764706
 Trace line 34: "ix" = 3
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.840434673026925
+Trace line 33: "tmp" = 3.00009155413138
 Trace line 34: "ix" = 4
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.032578510960604
+Trace line 33: "tmp" = 3.000000001396984
 Trace line 34: "ix" = 5
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.000052895642693
+Trace line 33: "tmp" = 3.0
 Trace line 34: "ix" = 6
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.000000000139897
+Trace line 33: "tmp" = 3.0
 Trace line 34: "ix" = 7
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.0
+Trace line 33: "tmp" = 3.0
 Trace line 34: "ix" = 8
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.0
+Trace line 33: "tmp" = 3.0
 Trace line 34: "ix" = 9
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.0
+Trace line 33: "tmp" = 3.0
 Trace line 34: "ix" = 10
 Trace line 32: while True: ...
-Trace line 33: "tmp" = 10.0
+Trace line 33: "tmp" = 3.0
 Trace line 34: "ix" = 11
 Trace line 32: while False:
-Trace line 36: return 10.0
-Trace line 41: "sq2" = 10.0
-Trace line 42: Call function "pow" with params: [10.0, 2]
-Trace line 7: Call function "pow" with params: [10.0, 1]
+Trace line 36: return 3.0
+Trace line 41: "sq2" = 3.0
+Trace line 42: Call function "pow" with params: [3.0, 2]
+Trace line 7: Call function "pow" with params: [3.0, 1]
 Trace line 6: else: ...
-Trace line 11: return 10.0
-Trace line 7: return 100.0
-Trace line 42: Call function "print" with params: ["10.0", "squared is", "100.0"]
+Trace line 11: return 3.0
+Trace line 7: return 9.0
+Trace line 42: Call function "print" with params: ["3.0", "squared is", "9.0"]
 Trace line 42: None

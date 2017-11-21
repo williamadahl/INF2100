@@ -51,7 +51,6 @@ public class RuntimeFunc extends RuntimeValue {
       } catch(RuntimeReturnValue rrv){
         return rrv.value;
       }
-      //hi = def.runFunction(defScope);
 
     }
     else{

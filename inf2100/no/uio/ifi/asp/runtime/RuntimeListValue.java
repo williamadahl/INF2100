@@ -138,7 +138,6 @@ public int getSize(){
 
 @Override
   public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
-System.out.println("Hei fro RuntimeListValue");
     long v2 = inx.getIntValue("[...] operand", where);
     int v3 = (int)v2;
 

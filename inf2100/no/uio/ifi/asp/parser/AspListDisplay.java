@@ -74,7 +74,6 @@ class AspListDisplay extends AspAtom{
 			k.addElem(x);
 		}
 
-		//curScope.assign(k.toString(), k);
 		return k;
 	}
 
