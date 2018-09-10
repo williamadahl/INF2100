@@ -1,6 +1,5 @@
-( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
+INF2100 - Prosjektoppgave i programmering
 
-╰⋃╯ლ(´ڡ`ლ)
-
-When the white kid reaches for something in his bag
-    ー═┻┳︻▄ξ(✿ ❛‿❛)ξ▄︻┻┳═一
+Authors: 
+William Arild Dahl
+Lucas Paruch
